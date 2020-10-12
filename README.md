@@ -1,20 +1,30 @@
-# cosnet 
+# cosnet
 
 ## Project description
-This app is meant to be used as a cosplay planner and is currently under development.
+
+CosNet is a modern cosplay planner giving you all the tools needed for managing your cosplay.
+You can manage your cosplays from anywhere on any device.
+You can share your cospalys with others and draw inspiration from other cosplayers.
 
 ## Project Layout
 
-- [API](Backend/API) - API for cosnet
-- [IDP](Backend/IDP) - IDP for cosnet
-- [Mobile-app](MobileApp) - Mobile app development
-- [Website UI](WebUI) - Website development
+- [CosNet.API] - API for CosNet
+- [CosNet.IDP] - Identity provider for CosNet
+- [CosNet.WebUI] - CosNet Web app
+- [CosNet.WebUI.Server] - Webserver for hosting web app
+- [CosNet.Shared] - Shared code between API and WebUI
+- [CosNet.Android] - Mobile app development
 
 ## Development
-Our mobile app is being created in android studio.
-Our website is being developed using ASP.net core.
+
+Our mobile app is being developed in Android studio.
+Our API is developed using ASP.NET Core.
+Our web app is built using Blazor.
 
 ## Usage
 
-1) Clone the repository however you see fit.
-2) Open the repository with your favourite IDE, for example VS CODE.
+1. Clone the repository however you see fit.
+2. Install the .NET Core 3.1 SDK.
+3. Open the repository with your favourite IDE, for example VS CODE.
+4. Run `dotnet restore` to install all dependencies.
+5. For Android app: open it in Android studio.
