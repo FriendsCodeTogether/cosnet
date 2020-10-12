@@ -13,7 +13,7 @@ You can share your cospalys with others and draw inspiration from other cosplaye
 - [CosNet.WebUI] - CosNet Web app
 - [CosNet.WebUI.Server] - Webserver for hosting web app
 - [CosNet.Shared] - Shared code between API and WebUI
-- [CosNet.Android] - Mobile app development
+- [CosNet.AppUi.Android] - Mobile app
 
 ## Development
 
