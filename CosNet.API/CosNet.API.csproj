@@ -8,5 +8,4 @@
     <ProjectReference Include="..\CosNet.Shared\CosNet.Shared.csproj" />
   </ItemGroup>
 
-
 </Project>
