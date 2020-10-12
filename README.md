@@ -17,8 +17,8 @@ You can share your cospalys with others and draw inspiration from other cosplaye
 
 ## Development
 
-Our mobile app is being developed in Android studio.
-Our API is developed using ASP.NET Core.
+Our mobile app is being developed in Android studio.</br>
+Our API is developed using ASP.NET Core.</br>
 Our web app is built using Blazor.
 
 ## Usage
@@ -27,4 +27,4 @@ Our web app is built using Blazor.
 2. Install the .NET Core 3.1 SDK.
 3. Open the repository with your favourite IDE, for example VS CODE.
 4. Run `dotnet restore` to install all dependencies.
-5. For Android app: open it in Android studio.
+5. For Android app: Open the app in Android studio.
