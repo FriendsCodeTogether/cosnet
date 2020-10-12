@@ -8,15 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.WebUI", "CosNet.WebUI\CosNet.WebUI.csproj", "{64703D19-646B-4641-8D1B-11EA37694398}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.WebUI.Server", "CosNet.WebUI.Server\CosNet.WebUI.Server.csproj", "{504E44F1-5D5E-4853-9D99-95D10F5C910D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.WebUI.Server", "CosNet.WebUI.Server\CosNet.WebUI.Server.csproj", "{504E44F1-5D5E-4853-9D99-95D10F5C910D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.API", "CosNet.API\CosNet.API.csproj", "{316113D6-5607-4368-9430-162EB846E609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.API", "CosNet.API\CosNet.API.csproj", "{316113D6-5607-4368-9430-162EB846E609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.Shared", "CosNet.Shared\CosNet.Shared.csproj", "{88E8CD66-66BC-4613-84B9-E3860CE0045A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.Shared", "CosNet.Shared\CosNet.Shared.csproj", "{88E8CD66-66BC-4613-84B9-E3860CE0045A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.IDP", "CosNet.IDP\CosNet.IDP.csproj", "{981DB379-4809-4FD3-98DC-DD3685FBC77C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.IDP", "CosNet.IDP\CosNet.IDP.csproj", "{981DB379-4809-4FD3-98DC-DD3685FBC77C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.WebUI", "CosNet.WebUI\CosNet.WebUI.csproj", "{DA3A98CC-DBEB-46FD-855C-7E3317812274}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{64703D19-646B-4641-8D1B-11EA37694398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64703D19-646B-4641-8D1B-11EA37694398}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64703D19-646B-4641-8D1B-11EA37694398}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64703D19-646B-4641-8D1B-11EA37694398}.Release|Any CPU.Build.0 = Release|Any CPU
 		{504E44F1-5D5E-4853-9D99-95D10F5C910D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{504E44F1-5D5E-4853-9D99-95D10F5C910D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{504E44F1-5D5E-4853-9D99-95D10F5C910D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,6 +40,10 @@ Global
 		{981DB379-4809-4FD3-98DC-DD3685FBC77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{981DB379-4809-4FD3-98DC-DD3685FBC77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{981DB379-4809-4FD3-98DC-DD3685FBC77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3A98CC-DBEB-46FD-855C-7E3317812274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3A98CC-DBEB-46FD-855C-7E3317812274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3A98CC-DBEB-46FD-855C-7E3317812274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3A98CC-DBEB-46FD-855C-7E3317812274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
