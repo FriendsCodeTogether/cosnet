@@ -18,10 +18,9 @@ namespace CosNet.WebUI
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddScoped<HttpClient>();
-            
+            builder.Services.AddScoped(sp => new HttpClient());
 
-            builder.Services.AddOidcAuthentication(options =>
+         builder.Services.AddOidcAuthentication(options =>
             {
                 // Configure your authentication provider options here.
                 // For more information, see https://aka.ms/blazor-standalone-auth
