@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using Microsoft.VisualBasic;
 
-namespace CosNet.API.Models
+namespace CosNet.API.Entities
 {
    public class Cosplay
    {
@@ -15,7 +15,7 @@ namespace CosNet.API.Models
       public string Serie { get; set; }
       public DateTime StartDate { get; set; }
       public DateTime DueDate { get; set; }
-      public double Budget { get; set; }
+      public decimal Budget { get; set; }
       public string Status { get; set; }
    }
 }

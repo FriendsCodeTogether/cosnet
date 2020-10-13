@@ -23,7 +23,7 @@ namespace CosNet.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CosNet.API.Models.Cosplay", b =>
+            modelBuilder.Entity("CosNet.API.Entities.Cosplay", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

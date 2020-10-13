@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using CosNet.API.Models;
+using CosNet.API.Entities;
 
 using Microsoft.EntityFrameworkCore;
 

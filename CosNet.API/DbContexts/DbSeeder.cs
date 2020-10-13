@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using CosNet.API.Models;
+using CosNet.API.Entities;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,7 @@ namespace CosNet.API.DBContexts
                     {
                        Name = "Ichigo Kurosaki - Final Gestuga Tenshou",
                        Serie = "Bleach",
-                       Budget= 100.0,
+                       Budget= 100.0m,
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now.AddDays(40),
                        Status = "In Progress"
@@ -30,7 +30,7 @@ namespace CosNet.API.DBContexts
                     {
                        Name = "Lelouch Lamperouge",
                        Serie = "Code Geass",
-                       Budget= 90.0,
+                       Budget= 90.0m,
                        StartDate = DateTime.Now.AddDays(2),
                        DueDate = DateTime.Now.AddDays(50),
                        Status = "Planned"
@@ -39,7 +39,7 @@ namespace CosNet.API.DBContexts
                     {
                        Name = "Trafalgar D. Law",
                        Serie = "One Piece",
-                       Budget= 120.0,
+                       Budget= 120.0m,
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now,
                        Status = "Finished"
@@ -48,7 +48,7 @@ namespace CosNet.API.DBContexts
                     {
                        Name = "Satoru Gojo",
                        Serie = "Jujutsu Kaisen",
-                       Budget= 70.0,
+                       Budget= 70.0m,
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now.AddDays(100),
                        Status = "In Progress"
@@ -57,7 +57,7 @@ namespace CosNet.API.DBContexts
                     {
                        Name = "Misha Necron",
                        Serie = "Maō Gakuin no Futekigōsha ~Shijō Saikyō no Maō no Shiso, Tensei Shite Shison-tachi no Gakkō e Kayou~",
-                       Budget= 120.0,
+                       Budget= 120.0m,
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now.AddDays(170),
                        Status = "In Progress"
