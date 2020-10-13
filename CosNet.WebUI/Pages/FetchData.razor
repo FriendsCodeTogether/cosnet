@@ -1,5 +1,6 @@
 @page "/fetchdata"
 @inject HttpClient Http
+@inject IConfiguration Configuration
 
 <h1>Weather forecast</h1>
 
@@ -39,7 +40,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-       forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+       forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>($"{Configuration.GetSection("CosNetAPIUrl").Value}/weatherforecast");
     }
 
     public class WeatherForecast
@@ -48,8 +49,8 @@ else
 
        public int TemperatureC { get; set; }
 
-       public string Summary { get; set; }
-
        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+       public string Summary { get; set; }
     }
 }

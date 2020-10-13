@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace CosNet.WebUI
 {
@@ -18,6 +19,7 @@ namespace CosNet.WebUI
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped<HttpClient>();
+            
 
             builder.Services.AddOidcAuthentication(options =>
             {
