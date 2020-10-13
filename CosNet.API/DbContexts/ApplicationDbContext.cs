@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CosNet.API.Models;
+
 using Microsoft.EntityFrameworkCore;
 
-namespace CosNet.API.Models
+namespace CosNet.API.DBContexts
 {
-   public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+   public class ApplicationDbContext : DbContext
    {
       public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
       {
