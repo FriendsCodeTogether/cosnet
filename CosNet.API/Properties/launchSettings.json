@@ -14,10 +14,7 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "COSNET_WEBUI_URL": "https://localhost:5001",
-        "COSNET_API_URL": "https://localhost:6001",
-        "COSNET_IDP_URL": "https://localhost:7001"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "CosNet.API": {
@@ -25,9 +22,7 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "COSNET_WEBUI_URL": "https://localhost:5001",
-        "COSNET_API_URL": "https://localhost:6001",
-        "COSNET_IDP_URL": "https://localhost:7001"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:6001;http://localhost:6000"
     }
