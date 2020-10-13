@@ -13,7 +13,10 @@
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "COSNET_WEBUI_URL": "https://localhost:5001",
+        "COSNET_API_URL": "https://localhost:6001",
+        "COSNET_IDP_URL": "https://localhost:7001"
       }
     },
     "CosNet.WebUI": {
@@ -22,7 +25,10 @@
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "COSNET_WEBUI_URL": "https://localhost:5001",
+        "COSNET_API_URL": "https://localhost:6001",
+        "COSNET_IDP_URL": "https://localhost:7001"
       }
     }
   }
