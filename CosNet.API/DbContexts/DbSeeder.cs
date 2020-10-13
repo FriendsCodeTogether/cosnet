@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using CosNet.API.Models;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace CosNet.API.DBContexts
