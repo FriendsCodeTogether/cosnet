@@ -80,7 +80,7 @@ dotnet_code_quality_unused_parameters = all:suggestion
 
 # Organize usings
 dotnet_sort_system_directives_first = true
-dotnet_separate_import_directive_groups = true
+dotnet_separate_import_directive_groups = false
 
 
 ###############################
