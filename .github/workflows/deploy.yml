@@ -9,47 +9,42 @@ on:
       - develop
 
 jobs:
-   build-api:
-      runs-on: ubuntu-latest
+  build-api:
+    runs-on: ubuntu-latest
+    steps:
+       - uses: actions/checkout@master
+       - name: Set up .NET Core
+       uses: actions/setup-dotnet@v1
+       with:
+          dotnet-version: '3.1.102'
+       - name: Build with dotnet
+       run: dotnet build --configuration Release
 
-      steps:
-         - uses: actions/checkout@master
+  build-idp:
+  runs-on: ubuntu-latest
 
-         - name: Set up .NET Core
-         uses: actions/setup-dotnet@v1
-         with:
-            dotnet-version: '3.1.102'
+  steps:
+    - uses: actions/checkout@maste
+    - name: Set up .NET Core
+       uses: actions/setup-dotnet@v1
+       with:
+       dotnet-version: '3.1.102'
+    - name: Build with dotnet
+       run: dotnet build --configuration Release
 
-         - name: Build with dotnet
-         run: dotnet build --configuration Release
+  build-webui:
+    runs-on: ubuntu-latest
 
-   build-idp:
-   runs-on: ubuntu-latest
-
-   steps:
+    steps:
       - uses: actions/checkout@master
 
       - name: Set up .NET Core
-         uses: actions/setup-dotnet@v1
-         with:
-         dotnet-version: '3.1.102'
+        uses: actions/setup-dotnet@v1
+        with:
+        dotnet-version: '3.1.102'
 
       - name: Build with dotnet
-         run: dotnet build --configuration Release
-
-   build-webui:
-      runs-on: ubuntu-latest
-
-      steps:
-         - uses: actions/checkout@master
-
-         - name: Set up .NET Core
-            uses: actions/setup-dotnet@v1
-            with:
-            dotnet-version: '3.1.102'
-
-         - name: Build with dotnet
-            run: dotnet build --configuration Release
+        run: dotnet build --configuration Release
 
    deploy-api:
    runs-on: ubuntu-latest
