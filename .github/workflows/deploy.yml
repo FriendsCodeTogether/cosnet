@@ -23,14 +23,14 @@ jobs:
   build-idp:
     runs-on: ubuntu-latest
 
-   steps:
-     - uses: actions/checkout@maste
-     - name: Set up .NET Core
-       uses: actions/setup-dotnet@v1
-       with:
-        dotnet-version: '3.1.102'
-     - name: Build with dotnet
-       run: dotnet build --configuration Release
+    steps:
+      - uses: actions/checkout@maste
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+         dotnet-version: '3.1.102'
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
 
   build-webui:
     runs-on: ubuntu-latest
