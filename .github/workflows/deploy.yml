@@ -91,23 +91,23 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/cosnet-idp
 
   deploy-webui:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@master
+    steps:
+      - uses: actions/checkout@master
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.102'
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
 
-    - name: dotnet publish
-      run: dotnet publish ${{env.DOTNET_ROOT}}/CosNet.WebUI.Server/CosNet.WebUI.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/cosnet
+      - name: dotnet publish
+        run: dotnet publish ${{env.DOTNET_ROOT}}/CosNet.WebUI.Server/CosNet.WebUI.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/cosnet
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'cosnet'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AZURE_COSNET_PUBLISH_PROFILE }}
-        package: ${{env.DOTNET_ROOT}}/cosnet
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'cosnet'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_COSNET_PUBLISH_PROFILE }}
+          package: ${{env.DOTNET_ROOT}}/cosnet
