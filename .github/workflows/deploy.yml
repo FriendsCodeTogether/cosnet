@@ -70,6 +70,7 @@ jobs:
           package: ./cosnet-api
 
   deploy-idp:
+    needs: [build-idp]
     runs-on: ubuntu-latest
 
     steps:
@@ -92,6 +93,7 @@ jobs:
           package: ./cosnet-idp
 
   deploy-webui:
+    needs: [build-webui]
     runs-on: ubuntu-latest
 
     steps:
