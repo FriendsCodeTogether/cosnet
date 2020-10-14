@@ -9,19 +9,19 @@ on:
       - develop
 
 jobs:
-  build-api:
-    runs-on: ubuntu-latest
+   build-api:
+      runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@master
+      steps:
+         - uses: actions/checkout@master
 
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.102'
+         - name: Set up .NET Core
+         uses: actions/setup-dotnet@v1
+         with:
+            dotnet-version: '3.1.102'
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+         - name: Build with dotnet
+         run: dotnet build --configuration Release
 
    build-idp:
    runs-on: ubuntu-latest
