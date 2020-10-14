@@ -361,5 +361,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-#Exclude design folder
+# Exclude design folder
 Design/
+
+# Exclude the temporary files from dotnet tye
+.tye/
