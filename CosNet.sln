@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.Shared", "CosNet.Sha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.IDP", "CosNet.IDP\CosNet.IDP.csproj", "{981DB379-4809-4FD3-98DC-DD3685FBC77C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosNet.WebUI", "CosNet.WebUI\CosNet.WebUI.csproj", "{DA3A98CC-DBEB-46FD-855C-7E3317812274}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosNet.WebUI", "CosNet.WebUI\CosNet.WebUI.csproj", "{DA3A98CC-DBEB-46FD-855C-7E3317812274}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -23,17 +23,17 @@ namespace CosNet.API.Controllers
 
       // GET: <CosplayController>
       [HttpGet]
-      public IEnumerable<Cosplay> Get()
+      public IEnumerable<Cosplay> GetAll()
       {
-         IEnumerable<Cosplay> cosplays = _cosplayRepository.GetAllCosplays();
-         return cosplays;
+         return _cosplayRepository.GetAllCosplays();
       }
 
       // GET <CosplayController>/5
       [HttpGet("{id}")]
-      public string Get(int id)
+      public Cosplay GetCosplay(Guid id)
       {
-         return "value";
+         Cosplay cosplay = _cosplayRepository.GetCosplayById(id);
+         return cosplay;
       }
 
       // POST <CosplayController>
@@ -50,8 +50,9 @@ namespace CosNet.API.Controllers
 
       // DELETE <CosplayController>/5
       [HttpDelete("{id}")]
-      public void Delete(int id)
+      public void Delete(Guid id)
       {
+         _cosplayRepository.DeleteCosplay(id);
       }
    }
 }
