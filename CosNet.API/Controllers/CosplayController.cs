@@ -38,14 +38,16 @@ namespace CosNet.API.Controllers
 
       // POST <CosplayController>
       [HttpPost]
-      public void Post([FromBody] string value)
+      public void Post(Cosplay cosplay) //[FromBody] string value
       {
+         _cosplayRepository.AddCosplay(cosplay);
       }
 
       // PUT <CosplayController>/5
       [HttpPut("{id}")]
-      public void Put(int id, [FromBody] string value)
+      public void Put(Cosplay cosplay) //int id, [FromBody] string value
       {
+         _cosplayRepository.UpdateCosplay(cosplay);
       }
 
       // DELETE <CosplayController>/5
