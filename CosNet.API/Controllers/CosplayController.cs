@@ -3,45 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CosNet.API.Entities;
+using CosNet.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CosNet.API.Controllers
 {
-   [Route("api/[controller]")]
    [ApiController]
+   [Route("[controller]")]
    public class CosplayController : ControllerBase
    {
-      // GET: api/<CosplayController>
-      [HttpGet]
-      public IEnumerable<string> Get()
-      {
-         List<Cosplay> cosplays = new List<Cosplay>();
+      private readonly ICosplayRepository _cosplayRepository;
 
-         return new string[] { "value1", "value2" };
+      public CosplayController(ICosplayRepository cosplayRepository)
+      {
+         _cosplayRepository = cosplayRepository;
       }
 
-      // GET api/<CosplayController>/5
+      // GET: <CosplayController>
+      [HttpGet]
+      public IEnumerable<Cosplay> Get()
+      {
+         IEnumerable<Cosplay> cosplays = _cosplayRepository.GetAllCosplays();
+         return cosplays;
+      }
+
+      // GET <CosplayController>/5
       [HttpGet("{id}")]
       public string Get(int id)
       {
          return "value";
       }
 
-      // POST api/<CosplayController>
+      // POST <CosplayController>
       [HttpPost]
       public void Post([FromBody] string value)
       {
       }
 
-      // PUT api/<CosplayController>/5
+      // PUT <CosplayController>/5
       [HttpPut("{id}")]
       public void Put(int id, [FromBody] string value)
       {
       }
 
-      // DELETE api/<CosplayController>/5
+      // DELETE <CosplayController>/5
       [HttpDelete("{id}")]
       public void Delete(int id)
       {
