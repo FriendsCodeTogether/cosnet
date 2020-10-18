@@ -1,11 +1,12 @@
 package cosnet.android;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -19,7 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+   private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Log.d(TAG, "onCreate: Starting.");
+        Button addNewCosplayBTN = (Button) findViewById(R.id.addNewCosplayBTN);
+        addNewCosplayBTN.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+              Log.d(TAG, "onClick: clicked addNewCosplay");
+
+              Intent intent = new Intent(MainActivity.this, AddCosplay.class);
+              startActivity(intent);
+           }
+        });
     }
 
     @Override
@@ -52,4 +65,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+   public static class AddCosplay {
+   }
 }

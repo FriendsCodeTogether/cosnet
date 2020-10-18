@@ -18,27 +18,29 @@
          app:popupTheme="@style/AppTheme.PopupOverlay">
 
          <Button
-            android:id="@+id/AddCosplay"
+            android:id="@+id/AddCosplayBTN"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:background="null"
+            android:background="@null"
             android:textSize="40sp"
             android:padding="0dp"
             android:baselineAligned = "false"
             tools:text="@string/Adding_plus"
             style="@style/Widget.AppCompat.Button.Borderless"/>
+
          <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/cancelNewCosplayBTN"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:adjustViewBounds="true"
             android:layout_gravity="end"
-            android:maxHeight="30dp"
-            android:maxWidth="30dp"
-            android:scaleType="fitCenter"
+            android:layout_marginStart="3dp"
+            android:adjustViewBounds="true"
             android:background="@null"
-            android:layout_marginLeft="3dp"
+            android:contentDescription="@string/cancelButtonDesc"
+            android:maxWidth="30dp"
+            android:maxHeight="30dp"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/icon_cancel" />
 
       </androidx.appcompat.widget.Toolbar>
