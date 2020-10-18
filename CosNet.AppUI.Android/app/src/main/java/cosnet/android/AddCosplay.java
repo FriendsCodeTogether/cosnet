@@ -3,12 +3,28 @@ package cosnet.android;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import cosnet.android.Models.Cosplay;
+
+import static com.google.android.material.snackbar.Snackbar.LENGTH_LONG;
 
 
 public class AddCosplay extends Activity {
@@ -31,7 +47,21 @@ public class AddCosplay extends Activity {
          }
       });
 
+      final EditText characterEditText = (EditText)findViewById(R.id.characterTextView) ;
+      final EditText seriesEditText = (EditText)findViewById(R.id.seriesTextView) ;
+      final EditText startDateEditText = (EditText)findViewById(R.id.startDateTextView) ;
+      final EditText dueDateEditText = (EditText)findViewById(R.id.dueDateTextView) ;
+      final EditText budgetEditText = (EditText)findViewById(R.id.budgetTextView) ;
+      final Spinner statusSpinner = (Spinner)findViewById(R.id.statusSpinner) ;
 
+      List<String> statusses = new ArrayList<String>();
+      statusses.add("Planned");
+      statusses.add("In porgress");
+      statusses.add("completed");
+
+      ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, statusses);
+
+      statusSpinner.setAdapter(adapterSpinnerStatus);
 
 
       Button addCosplayBTN = (Button) findViewById(R.id.addCosplayBTN);
@@ -40,8 +70,62 @@ public class AddCosplay extends Activity {
          public void onClick(View v) {
             Log.d(TAG, "onClick: clicked cancelBUttonBTN");
 
-            Intent intent = new Intent(AddCosplay.this, MainActivity.class);
-            startActivity(intent);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd//MM/yyyy");
+
+
+            if(characterEditText.getText().toString().isEmpty()) {
+               AlertDialog alertDialog = new AlertDialog.Builder(AddCosplay.this).create();
+               alertDialog.setTitle("Oh No");
+               alertDialog.setMessage("Character name is required to be filled in");
+               alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+
+                  }
+               });
+               alertDialog.show();
+//               Snackbar mySnackbar = Snackbar.make(coordinatorLayout,R.string.message, Snackbar.LENGTH_LONG);
+//               mySnackbar.show();
+            } else  {
+               Cosplay newCosplay = new Cosplay();
+               newCosplay.Name = characterEditText.getText().toString();
+
+               if (!seriesEditText.getText().toString().isEmpty())
+               {
+                  newCosplay.Serie = seriesEditText.getText().toString();
+               }
+
+               if(!startDateEditText.getText().toString().isEmpty())
+               {
+                  try {
+                     newCosplay.StartDate = sdf.parse(startDateEditText.getText().toString());
+                  } catch (ParseException e) {
+                     e.printStackTrace();
+                  }
+               }
+
+               if(!dueDateEditText.getText().toString().isEmpty()) {
+                  try {
+                     newCosplay.DueDate = sdf.parse(dueDateEditText.getText().toString());
+                  } catch (ParseException e) {
+                     e.printStackTrace();
+                  }
+               }
+
+               if (!budgetEditText.getText().toString().isEmpty())
+               {
+                  newCosplay.Budget = Integer.parseInt(budgetEditText.getText().toString());
+
+               }
+
+               if (!statusSpinner.getSelectedItem().toString().isEmpty())
+                  {
+                     newCosplay.Status = statusSpinner.getSelectedItem().toString();
+                  }
+               //Log.d(TAG, newCosplay.Status);
+               Intent intent = new Intent(AddCosplay.this, MainActivity.class);
+               startActivity(intent);
+            }
          }
       });
 

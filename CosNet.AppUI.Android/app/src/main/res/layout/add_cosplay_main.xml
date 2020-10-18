@@ -4,7 +4,8 @@
    android:layout_width="match_parent"
    android:layout_height="match_parent"
    xmlns:app="http://schemas.android.com/apk/res-auto"
-   android:background="@color/colorPrimaryDark">
+   android:background="@color/colorPrimaryDark"
+   android:id="@+id/add_cosplay_main_layout">
 
 
 
@@ -203,7 +204,7 @@
       app:layout_constraintTop_toBottomOf="@+id/budgetTextView" />
 
    <Spinner
-      android:id="@+id/spinner"
+      android:id="@+id/statusSpinner"
       android:layout_width="0dp"
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
