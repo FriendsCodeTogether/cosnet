@@ -76,11 +76,19 @@ namespace CosNet.IDP
                 app.UseDatabaseErrorPage();
             }
 
+            app.UseCors(options =>
+            {
+               options.AllowAnyOrigin();
+            });
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
             app.UseIdentityServer();
+
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
