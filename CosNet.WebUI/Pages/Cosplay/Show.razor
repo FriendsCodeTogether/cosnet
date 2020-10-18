@@ -1,0 +1,19 @@
+@page "/cosplay/{Id}"
+@inject HttpClient Http
+@inject IConfiguration Configuration
+@using CosNet.Shared.ViewModels
+
+<h3>Cosplay - @cosplay.Name</h3>
+
+
+@code {
+   private CosplayVM cosplay;
+
+   [Parameter]
+   public Guid Id { get; set; }
+
+   protected override async Task OnInitializedAsync()
+   {
+      cosplay = await Http.GetFromJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl").Value}/cosplay/{Id}");
+   }
+}
