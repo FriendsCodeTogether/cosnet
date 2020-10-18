@@ -66,6 +66,4 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-   public static class AddCosplay {
-   }
 }
