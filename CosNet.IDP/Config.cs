@@ -4,7 +4,6 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
-using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Configuration;
 
