@@ -78,7 +78,6 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="@string/Due_Date"
-      android:labelFor="@+id/dueDateEditText"
       app:layout_constraintStart_toStartOf="@+id/startDateEditText"
       app:layout_constraintTop_toBottomOf="@+id/startDateEditText" />
 
@@ -134,7 +133,6 @@
 
    <TextView
       style="@style/CustomText"
-      android:labelFor="@+id/seriesEditText"
       android:id="@+id/textView3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -152,7 +150,6 @@
       android:layout_marginTop="12dp"
       android:text="@string/Character"
       app:layout_constraintStart_toStartOf="parent"
-      android:labelFor="@+id/characterEditText"
       app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
    <EditText
@@ -185,7 +182,6 @@
       app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
    <TextView
-      android:labelFor="@+id/budgetEditText"
       style="@style/CustomText"
       android:id="@+id/textView6"
       android:layout_width="wrap_content"
