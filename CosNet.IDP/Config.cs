@@ -20,17 +20,20 @@ namespace CosNet.IDP
          };
 
       public static IEnumerable<ApiScope> ApiScopes =>
-         new ApiScope[] { };
+         new ApiScope[]
+         {
+            new ApiScope("cosnetapi")
+         };
 
       public static IEnumerable<ApiResource> ApiResources =>
          new ApiResource[]
          {
             new ApiResource(
-               "cosnet-api",
+               "cosnetapi",
                "CosNet API",
                new List<string>() { "role" })
             {
-               Scopes = { "cosnet-api"},
+               Scopes = { "cosnetapi"},
 
                // temp for ref token
                ApiSecrets = { new Secret("apisecret".Sha256()) }
@@ -42,22 +45,20 @@ namespace CosNet.IDP
          {
             new Client
             {
-               ClientId = "cosnet-webui",
-               ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
-
+               ClientId = "cosnetwebui",
                AllowedGrantTypes = GrantTypes.Code,
-
-               AllowedCorsOrigins = { $"{ConfigurationManager.AppSettings["CosNetWebUIUrl"]}" },
-               RedirectUris = { $"{ConfigurationManager.AppSettings["CosNetWebUIUrl"]}/signin-oidc" },
-               FrontChannelLogoutUri = $"{ConfigurationManager.AppSettings["CosNetWebUIUrl"]}/signout-oidc",
-               PostLogoutRedirectUris = { $"{ConfigurationManager.AppSettings["CosNetWebUIUrl"]}/signout-callback-oidc" },
+               RequireClientSecret = false,
+               AllowedCorsOrigins = { $"https://localhost:5001" },
+               RedirectUris = { $"https://localhost:5001/authentication/login-callback" },
+               FrontChannelLogoutUri = $"https://localhost:5001/",
+               PostLogoutRedirectUris = { $"https://localhost:5001/" },
 
                AllowOfflineAccess = true,
                AllowedScopes =
                {
                   IdentityServerConstants.StandardScopes.OpenId,
                   IdentityServerConstants.StandardScopes.Profile,
-                  "cosnet-api"
+                  "cosnetapi"
                }
             },
          };
