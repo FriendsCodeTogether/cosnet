@@ -7,9 +7,6 @@
    android:background="@color/colorPrimaryDark"
    android:id="@+id/add_cosplay_main_layout">
 
-
-
-
    <com.google.android.material.appbar.AppBarLayout
       android:id="@+id/appBarLayout"
       android:layout_width="match_parent"
@@ -29,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/kalam_bold"
             android:text="@string/CosNet"
             android:textSize="40sp" />
 
@@ -80,32 +78,34 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="@string/Due_Date"
-      android:labelFor="@+id/dueDateTextView"
-      app:layout_constraintStart_toStartOf="@+id/startDateTextView"
-      app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
+      android:labelFor="@+id/dueDateEditText"
+      app:layout_constraintStart_toStartOf="@+id/startDateEditText"
+      app:layout_constraintTop_toBottomOf="@+id/startDateEditText" />
 
    <EditText
-      android:id="@+id/dueDateTextView"
+      android:id="@+id/dueDateEditText"
       style="@style/EditText"
       android:layout_width="0dp"
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
       android:autofillHints="@string/DateHint"
       android:inputType="date"
-      app:layout_constraintEnd_toEndOf="@+id/characterTextView"
+      android:hint="@string/DueDateHint"
+      app:layout_constraintEnd_toEndOf="@+id/characterEditText"
       app:layout_constraintStart_toStartOf="@+id/textView5"
       app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
    <EditText
 
-      android:id="@+id/budgetTextView"
+      android:id="@+id/budgetEditText"
       style="@style/EditText"
       android:layout_width="0dp"
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
-      android:autofillHints="@string/BudgetHint"
-      android:inputType="number|numberDecimal"
-      app:layout_constraintEnd_toEndOf="@+id/characterTextView"
+      android:autofillHints="@string/BudgetAutoHint"
+      android:inputType="numberDecimal"
+      android:hint="@string/BudgetHint"
+      app:layout_constraintEnd_toEndOf="@+id/characterEditText"
       app:layout_constraintStart_toStartOf="@+id/textView6"
       app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -116,33 +116,32 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="@string/Start_Date"
-      android:labelFor="@+id/startDateTextView"
-      app:layout_constraintStart_toStartOf="@+id/seriesTextView"
-      app:layout_constraintTop_toBottomOf="@+id/seriesTextView" />
+      android:labelFor="@+id/startDateEditText"
+      app:layout_constraintStart_toStartOf="@+id/seriesEditText"
+      app:layout_constraintTop_toBottomOf="@+id/seriesEditText" />
 
    <EditText
-      android:id="@+id/startDateTextView"
+      android:id="@+id/startDateEditText"
       style="@style/EditText"
       android:layout_width="0dp"
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
-
+      android:autofillHints="@string/DateHint"
       android:inputType="date"
-      app:layout_constraintEnd_toEndOf="@+id/characterTextView"
+      app:layout_constraintEnd_toEndOf="@+id/characterEditText"
       app:layout_constraintStart_toStartOf="@+id/textView4"
       app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-
    <TextView
       style="@style/CustomText"
-      android:labelFor="@+id/seriesTextView"
+      android:labelFor="@+id/seriesEditText"
       android:id="@+id/textView3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="@string/Series"
-      app:layout_constraintStart_toStartOf="@+id/characterTextView"
-      app:layout_constraintTop_toBottomOf="@+id/characterTextView" />
+      app:layout_constraintStart_toStartOf="@+id/characterEditText"
+      app:layout_constraintTop_toBottomOf="@+id/characterEditText" />
 
    <TextView
       android:id="@+id/textView2"
@@ -153,11 +152,11 @@
       android:layout_marginTop="12dp"
       android:text="@string/Character"
       app:layout_constraintStart_toStartOf="parent"
-      android:labelFor="@+id/characterTextView"
+      android:labelFor="@+id/characterEditText"
       app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
    <EditText
-      android:id="@+id/characterTextView"
+      android:id="@+id/characterEditText"
       style="@style/EditText"
       android:layout_width="0dp"
       android:layout_height="27dp"
@@ -166,33 +165,35 @@
       android:autofillHints="@string/Character"
       android:inputType="text"
       android:text="@string/CharacterInput"
+      android:hint="@string/CharacterHint"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="@+id/textView2"
       app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
    <EditText
-      android:id="@+id/seriesTextView"
+      android:id="@+id/seriesEditText"
       style="@style/EditText"
       android:layout_height="24dp"
       android:layout_width="0dp"
       android:layout_marginTop="8dp"
       android:inputType="text"
       android:text="@string/SeriesInput"
+      android:hint="@string/SeriesHint"
       android:autofillHints="@string/Series"
-      app:layout_constraintEnd_toEndOf="@+id/characterTextView"
+      app:layout_constraintEnd_toEndOf="@+id/characterEditText"
       app:layout_constraintStart_toStartOf="@+id/textView3"
       app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
    <TextView
-      android:labelFor="@+id/budgetTextView"
+      android:labelFor="@+id/budgetEditText"
       style="@style/CustomText"
       android:id="@+id/textView6"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="@string/Budget"
-      app:layout_constraintStart_toStartOf="@+id/dueDateTextView"
-      app:layout_constraintTop_toBottomOf="@+id/dueDateTextView" />
+      app:layout_constraintStart_toStartOf="@+id/dueDateEditText"
+      app:layout_constraintTop_toBottomOf="@+id/dueDateEditText" />
 
    <TextView
       style="@style/CustomText"
@@ -201,8 +202,8 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:text="@string/Status"
-      app:layout_constraintStart_toStartOf="@+id/budgetTextView"
-      app:layout_constraintTop_toBottomOf="@+id/budgetTextView" />
+      app:layout_constraintStart_toStartOf="@+id/budgetEditText"
+      app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
 
    <Spinner
       android:id="@+id/statusSpinner"
@@ -210,8 +211,8 @@
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
       android:background="@android:color/white"
-      app:layout_constraintEnd_toEndOf="@+id/characterTextView"
-      app:layout_constraintStart_toStartOf="@+id/budgetTextView"
+      app:layout_constraintEnd_toEndOf="@+id/characterEditText"
+      app:layout_constraintStart_toStartOf="@+id/budgetEditText"
       app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

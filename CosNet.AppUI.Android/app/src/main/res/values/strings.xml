@@ -16,14 +16,18 @@
    <string name="message">Not all field have been filled in</string>
 
    <string name="hello_blank_fragment">Hello blank fragment</string>
-   <string name="Character">Character:</string>
+   <string name="Character">Character*:</string>
    <string name="Series">Series:</string>
    <string name="Start_Date">Start Date:</string>
    <string name="Due_Date">Due Date:</string>
    <string name="Budget">Budget:</string>
    <string name="Status">Status:</string>
+   <string name="CharacterHint">Character name</string>
+   <string name="SeriesHint">Serie name (optional)</string>
+   <string name="BudgetHint">Amount of budget (optional)</string>
+   <string name="DueDateHint">example: 15/09/2025 (optional)</string>
    <string name="DateHint">dd/mm/yyyy</string>
-   <string name="BudgetHint">15€</string>
+   <string name="BudgetAutoHint">15€</string>
    <string name="CharacterInput" />
    <string name="SeriesInput" />
 </resources>

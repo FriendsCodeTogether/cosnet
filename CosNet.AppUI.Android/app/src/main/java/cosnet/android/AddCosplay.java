@@ -1,7 +1,5 @@
 package cosnet.android;
 
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,17 +13,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import com.google.android.material.snackbar.Snackbar;
-
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import cosnet.android.Models.Cosplay;
-
-import static com.google.android.material.snackbar.Snackbar.LENGTH_LONG;
-
 
 public class AddCosplay extends Activity {
    private static final String TAG = "AddCosplay";
@@ -47,22 +43,26 @@ public class AddCosplay extends Activity {
          }
       });
 
-      final EditText characterEditText = (EditText)findViewById(R.id.characterTextView) ;
-      final EditText seriesEditText = (EditText)findViewById(R.id.seriesTextView) ;
-      final EditText startDateEditText = (EditText)findViewById(R.id.startDateTextView) ;
-      final EditText dueDateEditText = (EditText)findViewById(R.id.dueDateTextView) ;
-      final EditText budgetEditText = (EditText)findViewById(R.id.budgetTextView) ;
+      final EditText characterEditText = (EditText)findViewById(R.id.characterEditText) ;
+      final EditText seriesEditText = (EditText)findViewById(R.id.seriesEditText) ;
+      final EditText startDateEditText = (EditText)findViewById(R.id.startDateEditText) ;
+      final EditText dueDateEditText = (EditText)findViewById(R.id.dueDateEditText) ;
+      final EditText budgetEditText = (EditText)findViewById(R.id.budgetEditText) ;
       final Spinner statusSpinner = (Spinner)findViewById(R.id.statusSpinner) ;
 
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+         LocalDateTime now = LocalDateTime.now();
+         startDateEditText.setText(dtf.format(now));
+      }
+
       List<String> statusses = new ArrayList<String>();
-      statusses.add("Planned");
       statusses.add("In porgress");
-      statusses.add("completed");
+      statusses.add("Planned");
 
       ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, statusses);
 
       statusSpinner.setAdapter(adapterSpinnerStatus);
-
 
       Button addCosplayBTN = (Button) findViewById(R.id.addCosplayBTN);
       addCosplayBTN.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,6 @@ public class AddCosplay extends Activity {
             Log.d(TAG, "onClick: clicked cancelBUttonBTN");
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd//MM/yyyy");
-
 
             if(characterEditText.getText().toString().isEmpty()) {
                AlertDialog alertDialog = new AlertDialog.Builder(AddCosplay.this).create();
@@ -128,6 +127,5 @@ public class AddCosplay extends Activity {
             }
          }
       });
-
    }
 }
