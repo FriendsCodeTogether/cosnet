@@ -24,7 +24,7 @@ namespace CosNet.WebUI
                {
                   var handler = sp.GetService<AuthorizationMessageHandler>()
                      .ConfigureHandler(
-                         authorizedUrls: new[] { "https://localhost:6001" },
+                         authorizedUrls: new[] { builder.Configuration["CosNetAPIUrl"] },
                          scopes: new[] { "cosnet-api" });
 
                   return handler;
