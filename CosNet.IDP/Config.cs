@@ -33,8 +33,6 @@ namespace CosNet.IDP
                new List<string>() { "role" })
             {
                Scopes = { "cosnet-api"},
-
-               // temp for ref token
                ApiSecrets = { new Secret(System.Environment.GetEnvironmentVariable("COSNET_API_SECRET").Sha256()) }
             }
          };
