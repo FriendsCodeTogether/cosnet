@@ -4,8 +4,9 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "COSNET_WEBUI_URL": "https://localhost:5001"
+         "ASPNETCORE_ENVIRONMENT": "Development",
+         "COSNET_WEBUI_URL": "https://localhost:5001",
+         "COSNET_API_SECRET": "apisecret"
       },
       "applicationUrl": "https://localhost:7001"
     }
