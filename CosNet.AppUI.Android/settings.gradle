@@ -1,3 +1,2 @@
-include ':greenDaoGenerator'
 include ':app'
 rootProject.name = "CosNet.AppUI.Android"
