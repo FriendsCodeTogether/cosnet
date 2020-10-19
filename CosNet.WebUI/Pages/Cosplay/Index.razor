@@ -1,7 +1,6 @@
 @page "/cosplay"
 @inject HttpClient Http
 @inject IConfiguration Configuration
-@using CosNet.Shared.ViewModels
 @inject NavigationManager NavigationManager
 
 <h3>My Cosplay</h3>
@@ -37,6 +36,9 @@ else
 
     public void ClickedToId(Guid id)
     {
-       NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
+       if(id != null)
+       {
+          NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
+       }
     }
 }

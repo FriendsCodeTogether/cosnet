@@ -1,7 +1,6 @@
 @page "/cosplay/{Id:guid}"
 @inject HttpClient Http
 @inject IConfiguration Configuration
-@using CosNet.Shared.ViewModels
 
 <table class="table table-dark table-hover mt-4">
    <tbody>
@@ -28,13 +27,16 @@
 
 
 @code {
-   private CosplayVM cosplay;
+    private CosplayVM cosplay;
 
-   [Parameter]
-   public Guid Id { get; set; }
+    [Parameter]
+    public Guid Id { get; set; }
 
-   protected override async Task OnInitializedAsync()
-   {
-      cosplay = await Http.GetFromJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl").Value}/cosplay/{Id}");
-   }
+    protected override async Task OnInitializedAsync()
+    {
+       if (Id != null)
+       {
+          cosplay = await Http.GetFromJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl")?.Value}/cosplay/{Id}");
+       }
+    }
 }
