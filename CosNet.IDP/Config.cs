@@ -21,18 +21,18 @@ namespace CosNet.IDP
       public static IEnumerable<ApiScope> ApiScopes =>
          new ApiScope[]
          {
-            new ApiScope("cosnetapi")
+            new ApiScope("cosnet-api")
          };
 
       public static IEnumerable<ApiResource> ApiResources =>
          new ApiResource[]
          {
             new ApiResource(
-               "cosnetapi",
+               "cosnet-api",
                "CosNet API",
                new List<string>() { "role" })
             {
-               Scopes = { "cosnetapi"},
+               Scopes = { "cosnet-api"},
 
                // temp for ref token
                ApiSecrets = { new Secret("apisecret".Sha256()) }
@@ -57,7 +57,7 @@ namespace CosNet.IDP
                {
                   IdentityServerConstants.StandardScopes.OpenId,
                   IdentityServerConstants.StandardScopes.Profile,
-                  "cosnetapi"
+                  "cosnet-api"
                }
             },
          };
