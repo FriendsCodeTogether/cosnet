@@ -48,10 +48,10 @@ namespace CosNet.IDP
                ClientId = "cosnetwebui",
                AllowedGrantTypes = GrantTypes.Code,
                RequireClientSecret = false,
-               AllowedCorsOrigins = { $"https://localhost:5001" },
-               RedirectUris = { $"https://localhost:5001/authentication/login-callback" },
-               FrontChannelLogoutUri = $"https://localhost:5001/",
-               PostLogoutRedirectUris = { $"https://localhost:5001/" },
+               AllowedCorsOrigins = { System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL") },
+               RedirectUris = { $"{System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL")}/authentication/login-callback" },
+               FrontChannelLogoutUri = $"{System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL")}/",
+               PostLogoutRedirectUris = { $"{System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL")}/" },
 
                AllowOfflineAccess = true,
                AllowedScopes =
