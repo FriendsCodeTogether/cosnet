@@ -49,7 +49,7 @@
                android:maxHeight="30dp"
                android:paddingTop="8dp"
                android:scaleType="fitCenter"
-               android:src="@drawable/icon_cancel" />
+               android:src="@drawable/ic_cancel_white_18dp" />
 
             <Button
                android:id="@+id/addCosplayBTN"
@@ -104,7 +104,7 @@
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
       android:autofillHints="@string/BudgetHint"
-      android:inputType="number"
+      android:inputType="number|numberDecimal"
       app:layout_constraintEnd_toEndOf="@+id/characterTextView"
       app:layout_constraintStart_toStartOf="@+id/textView6"
       app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -126,11 +126,12 @@
       android:layout_width="0dp"
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
-      android:autofillHints="@string/DateHint"
+
       android:inputType="date"
       app:layout_constraintEnd_toEndOf="@+id/characterTextView"
       app:layout_constraintStart_toStartOf="@+id/textView4"
       app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
 
    <TextView
       style="@style/CustomText"
@@ -162,8 +163,8 @@
       android:layout_height="27dp"
       android:layout_marginTop="8dp"
       android:layout_marginEnd="16dp"
-      android:inputType="text"
       android:autofillHints="@string/Character"
+      android:inputType="text"
       android:text="@string/CharacterInput"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="@+id/textView2"
