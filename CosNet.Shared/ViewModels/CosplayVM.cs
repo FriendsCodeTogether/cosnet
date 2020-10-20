@@ -14,8 +14,8 @@ namespace CosNet.Shared.ViewModels
       public string Name { get; set; }
 
       public string Serie { get; set; }
-      public DateTime StartDate { get; set; }
-      public DateTime DueDate { get; set; }
+      public DateTime StartDate { get; set; } = DateTime.Now;
+      public DateTime DueDate { get; set; } = DateTime.Now.AddDays(5);
       public decimal Budget { get; set; }
       public string Status { get; set; }
    }

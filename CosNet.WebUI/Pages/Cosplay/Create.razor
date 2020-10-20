@@ -1,5 +1,49 @@
-﻿<h3>Create</h3>
+@page "/cosplay/create"
+@inject HttpClient Http
+
+<EditForm Model="@cosplayVM" OnValidSubmit="@HandleValidSubmit">
+   <DataAnnotationsValidator />
+   <ValidationSummary />
+   <p>
+      <label for="name">Character:</label><br />
+      <InputText id="name" placeholder="Character name" @bind-Value="cosplayVM.Name" />
+   </p>
+   <p>
+      <label for="serie">Series:</label><br />
+      <InputText id="serie" placeholder="Series" @bind-Value="cosplayVM.Serie" />
+   </p>
+   <p>
+      <label for="startDate">Start Date:</label><br />
+      <InputDate id="startDate" @bind-Value="cosplayVM.StartDate" />
+   </p>
+   <p>
+      <label for="dueDate">Due Date:</label><br />
+      <InputDate id="dueDate" @bind-Value="cosplayVM.DueDate" />
+   </p>
+   <p>
+      <label for="budget">Budget:</label><br />
+      € <InputNumber id="budget" @bind-Value="cosplayVM.Budget" />
+   </p>
+   <p>
+      <label for="status">Status:</label><br />
+      <InputSelect id="status" @bind-Value="cosplayVM.Status">
+         <option value="in progress">in progress</option>
+         <option value="on hold">on hold</option>
+      </InputSelect>
+   </p>
+   <p>
+      <a class="btn btn-primary" href="" type="submit">Submit</a>
+      <a class="btn btn-primary" href="">Cancel</a>
+   </p>
+</EditForm>
 
 @code {
 
+   private CosplayVM cosplayVM = new CosplayVM();
+   private bool disabled = true;
+
+   private void HandleValidSubmit()
+   {
+      //we do the thing
+   }
 }
