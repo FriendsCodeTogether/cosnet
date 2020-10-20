@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import cosnet.android.DAOs.CosplayDAO;
 import cosnet.android.Entities.Cosplay;
 
-@Database(entities = {Cosplay.class}, version = 1)
+@Database(entities = {Cosplay.class}, version = 2)
 public abstract class CosnetDb extends RoomDatabase {
 
    private static CosnetDb minstance;
@@ -20,6 +20,7 @@ public abstract class CosnetDb extends RoomDatabase {
    public static synchronized CosnetDb getInstance(Context ctx){
       if (minstance == null){
          minstance = Room.databaseBuilder(ctx.getApplicationContext(), CosnetDb.class, DB_NAME)
+            .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build();
 
