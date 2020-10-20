@@ -1,0 +1,116 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy to Acceptance Environment
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
+      - name: Build with dotnet
+        run: dotnet build ./CosNet.API/CosNet.API.csproj --configuration Release
+
+  build-idp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
+      - name: Build with dotnet
+        run: dotnet build ./CosNet.IDP/CosNet.IDP.csproj --configuration Release
+
+  build-webui:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
+
+      - name: Build with dotnet
+        run: dotnet build ./CosNet.WebUI.Server/CosNet.WebUI.Server.csproj --configuration Release
+
+  deploy-api:
+    needs: [build-api]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
+
+      - name: dotnet publish
+        run: dotnet publish ./CosNet.API/CosNet.API.csproj -c Release -o ./cosnet-api
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'cosnet-api'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_COSNET_API_PUBLISH_PROFILE }}
+          package: ./cosnet-api
+
+  deploy-idp:
+    needs: [build-idp]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
+
+      - name: dotnet publish
+        run: dotnet publish ./CosNet.IDP/CosNet.IDP.csproj -c Release -o ./cosnet-idp
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'cosnet-idp'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_COSNET_IDP_PUBLISH_PROFILE }}
+          package: ./cosnet-idp
+
+  deploy-webui:
+    needs: [build-webui]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.102'
+
+      - name: dotnet publish
+        run: dotnet publish ./CosNet.WebUI.Server/CosNet.WebUI.Server.csproj -c Release -o ./cosnet
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'cosnet'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_COSNET_PUBLISH_PROFILE }}
+          package: ./cosnet

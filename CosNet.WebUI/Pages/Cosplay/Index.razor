@@ -1,0 +1,44 @@
+@page "/cosplay"
+@inject HttpClient Http
+@inject IConfiguration Configuration
+@inject NavigationManager NavigationManager
+
+<h3>My Cosplay</h3>
+
+@if (cosplays == null)
+{
+   <p><em>Loading...</em></p>
+}
+else
+{
+   <table class="table table-dark table-hover mt-4">
+      <tbody>
+         @foreach (var cosplay in cosplays)
+         {
+            <tr @onclick="() => ClickedToId(cosplay.Id)">
+               <td>Pic</td>
+               <td>Character: @cosplay.Name <br /> Series: @cosplay.Serie <br /> Status: @cosplay.Status</td>
+               <td><br /> @cosplay.DueDate</td>
+               <td>Icon</td>
+            </tr>
+         }
+      </tbody>
+   </table>
+}
+
+@code {
+    private List<CosplayVM> cosplays;
+
+    protected override async Task OnInitializedAsync()
+    {
+       cosplays = await Http.GetFromJsonAsync<List<CosplayVM>>($"{Configuration.GetSection("CosNetAPIUrl").Value}/cosplay");
+    }
+
+    public void ClickedToId(Guid id)
+    {
+       if(id != null)
+       {
+          NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
+       }
+    }
+}

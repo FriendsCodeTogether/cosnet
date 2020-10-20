@@ -25,8 +25,8 @@ namespace CosNet.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("Budget")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Budget")
+                        .HasColumnType("decimal");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");

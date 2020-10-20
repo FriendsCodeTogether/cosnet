@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace CosNet.WebUI
 {
@@ -18,13 +19,24 @@ namespace CosNet.WebUI
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddScoped(sp => new HttpClient());
+            builder.Services.AddHttpClient("api")
+               .AddHttpMessageHandler(sp =>
+               {
+                  var handler = sp.GetService<AuthorizationMessageHandler>()
+                     .ConfigureHandler(
+                         authorizedUrls: new[] { builder.Configuration["CosNetAPIUrl"] },
+                         scopes: new[] { "cosnet-api" });
+
+                  return handler;
+               });
+
+         builder.Services.AddScoped(sp => sp.GetService<IHttpClientFactory>().CreateClient("api"));
 
          builder.Services.AddOidcAuthentication(options =>
             {
                 // Configure your authentication provider options here.
                 // For more information, see https://aka.ms/blazor-standalone-auth
-                builder.Configuration.Bind("Local", options.ProviderOptions);
+                builder.Configuration.Bind("oidc", options.ProviderOptions);
             });
 
             await builder.Build().RunAsync();
