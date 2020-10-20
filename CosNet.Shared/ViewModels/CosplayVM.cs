@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
-namespace CosNet.API.Entities
+namespace CosNet.Shared.ViewModels
 {
-   public class Cosplay
+   public class CosplayVM
    {
       public Guid Id { get; set; }
       public Guid UserId { get; set; }

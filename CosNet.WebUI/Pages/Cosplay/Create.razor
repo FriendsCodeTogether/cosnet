@@ -1,0 +1,56 @@
+@page "/cosplay/create"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h1>Create cosplay</h1>
+<EditForm Model="@cosplayVM" OnValidSubmit="@HandleValidSubmit">
+   <DataAnnotationsValidator />
+   <ValidationSummary />
+   <p>
+      <label for="name">Character:</label><br />
+      <InputText id="name" placeholder="Character name" @bind-Value="cosplayVM.Name" />
+   </p>
+   <p>
+      <label for="serie">Series:</label><br />
+      <InputText id="serie" placeholder="Series" @bind-Value="cosplayVM.Serie" />
+   </p>
+   <p>
+      <label for="startDate">Start Date:</label><br />
+      <InputDate id="startDate" @bind-Value="cosplayVM.StartDate" />
+   </p>
+   <p>
+      <label for="dueDate">Due Date:</label><br />
+      <InputDate id="dueDate" @bind-Value="cosplayVM.DueDate" />
+   </p>
+   <p>
+      <label for="budget">Budget:</label><br />
+      € <InputNumber id="budget" @bind-Value="cosplayVM.Budget" />
+   </p>
+   <p>
+      <label for="status">Status:</label><br />
+      <InputSelect id="status" @bind-Value="cosplayVM.Status">
+         <option value="in progress">in progress</option>
+         <option value="on hold">on hold</option>
+      </InputSelect>
+   </p>
+   <p>
+      <button class="btn btn-primary" type="submit">Create</button>
+      <a class="btn btn-primary" href="cosplay">Cancel</a>
+   </p>
+</EditForm>
+
+@code {
+
+   private CosplayVM cosplayVM = new CosplayVM
+   {
+      StartDate = DateTime.Now,
+      DueDate = DateTime.Now.AddDays(5)
+   };
+
+   private async Task HandleValidSubmit()
+   {
+      var response = await Http.PostAsJsonAsync<CosplayVM>("/cosplay", cosplayVM);
+
+      NavigationManager.NavigateTo("cosplay/");
+   }
+}
