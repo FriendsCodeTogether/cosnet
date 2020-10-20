@@ -49,11 +49,8 @@
 
    private async Task HandleValidSubmit()
    {
-      //we do the thing
-
       var response = await Http.PostAsJsonAsync<CosplayVM>("/cosplay", cosplayVM);
 
       NavigationManager.NavigateTo("cosplay/");
-
    }
 }
