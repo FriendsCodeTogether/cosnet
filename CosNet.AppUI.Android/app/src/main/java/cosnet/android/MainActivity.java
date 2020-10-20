@@ -33,25 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = CosnetDb.getInstance(this);
-       /*Log.d("COSPLAY", "onCreate: db");
-       Cosplay cosplay = new Cosplay("testname2","testseries","19/10/2020","19/10/2020",20, "In progress");
-       db.getCosplayDAO().insertCosplay(cosplay);
-       List<Cosplay> cosplayList = db.getCosplayDAO().getAllCosplays();
-       for(Cosplay c:cosplayList) {
-                Log.d("COSPLAY", "run: "+ c.cosplay_name);
-            }*/
-       new Thread(new Runnable() {
-          @Override
-          public void run() {
-             Cosplay cosplay = new Cosplay("testname4","testseries3","19/10/2020","19/10/2020",20, "In progress");
-             CosplayDAO dao = db.getCosplayDAO();
-             dao.insertCosplay(cosplay);
-             List<Cosplay> cosplayList = dao.getAllCosplays();
-             for(Cosplay c:cosplayList) {
-                Log.d("COSPLAY", "run: "+ c.cosplay_name);
-             }
-          }
-       }).start();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
