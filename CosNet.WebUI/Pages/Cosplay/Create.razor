@@ -1,6 +1,5 @@
 @page "/cosplay/create"
 @inject HttpClient Http
-@inject IConfiguration Configuration
 @inject NavigationManager NavigationManager
 
 <h1>Create cosplay</h1>
@@ -52,7 +51,7 @@
    {
       //we do the thing
 
-      var response = await Http.PostAsJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl")?.Value}/cosplay", cosplayVM);
+      var response = await Http.PostAsJsonAsync<CosplayVM>("/cosplay", cosplayVM);
 
       NavigationManager.NavigateTo("cosplay/");
 

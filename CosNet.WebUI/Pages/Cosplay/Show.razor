@@ -1,6 +1,5 @@
 @page "/cosplay/{Id:guid}"
 @inject HttpClient Http
-@inject IConfiguration Configuration
 
 @if (cosplay == null)
 {
@@ -42,6 +41,6 @@ else
 
    protected override async Task OnInitializedAsync()
    {
-      cosplay = await Http.GetFromJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl")?.Value}/cosplay/{Id}");
+      cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{Id}");
    }
 }

@@ -1,6 +1,5 @@
 @page "/cosplay"
 @inject HttpClient Http
-@inject IConfiguration Configuration
 @inject NavigationManager NavigationManager
 
 <h3>My Cosplay</h3>
@@ -32,7 +31,7 @@ else
 
    protected override async Task OnInitializedAsync()
    {
-      cosplays = await Http.GetFromJsonAsync<List<CosplayVM>>($"{Configuration.GetSection("CosNetAPIUrl").Value}/cosplay");
+      cosplays = await Http.GetFromJsonAsync<List<CosplayVM>>("/cosplay");
    }
 
    public void ClickedToId(Guid id)
