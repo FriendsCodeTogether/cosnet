@@ -1,31 +1,31 @@
 {
-   "$schema": "http://json.schemastore.org/launchsettings.json",
-   "iisSettings": {
-      "windowsAuthentication": false,
-      "anonymousAuthentication": true,
-      "iisExpress": {
-         "applicationUrl": "http://localhost:6001",
-         "sslPort": 44308
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6001",
+      "sslPort": 44308
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
-   },
-   "profiles": {
-      "IIS Express": {
-         "commandName": "IISExpress",
-         "launchBrowser": true,
-         "launchUrl": "",
-         "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-         }
+    },
+    "CosNet.API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "COSNET_API_SECRET": "apisecret"
       },
-      "CosNet.API": {
-         "commandName": "Project",
-         "launchBrowser": true,
-         "launchUrl": "",
-         "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development",
-            "COSNET_API_SECRET": "apisecret"
-         },
-         "applicationUrl": "https://localhost:6001;http://localhost:6000"
-      }
-   }
+      "applicationUrl": "https://localhost:6001;http://localhost:6000"
+    }
+  }
 }

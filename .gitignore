@@ -366,3 +366,6 @@ Design/
 
 # Exclude the temporary files from dotnet tye
 .tye/
+
+# Exclude db files
+*.db

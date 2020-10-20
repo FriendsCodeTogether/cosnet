@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using CosNet.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CosNet.API.DBContexts
 {
-   public static class DbSeeder
-   {
-      public static void Seed(ApplicationDbContext context)
-      {
-         if (!context.Cosplays.Any())
-         {
-            var cosplays = new List<Cosplay>()
+    public static class DbSeeder
+    {
+        public static void Seed(ApplicationDbContext context)
+        {
+            if (!context.Cosplays.Any())
+            {
+                var cosplays = new List<Cosplay>()
                 {
                     new Cosplay
                     {
@@ -61,15 +60,15 @@ namespace CosNet.API.DBContexts
                        Status = "In Progress"
                     }
                 };
-            context.Cosplays.AddRange(cosplays);
-            context.SaveChanges();
-         }
-      }
+                context.Cosplays.AddRange(cosplays);
+                context.SaveChanges();
+            }
+        }
 
-      public static void RecreateDatabase(ApplicationDbContext context)
-      {
-         context.Database.EnsureDeleted();
-         context.Database.Migrate();
-      }
-   }
+        public static void RecreateDatabase(ApplicationDbContext context)
+        {
+            context.Database.EnsureDeleted();
+            context.Database.Migrate();
+        }
+    }
 }
