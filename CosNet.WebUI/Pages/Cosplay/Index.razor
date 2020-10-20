@@ -37,9 +37,6 @@ else
 
    public void ClickedToId(Guid id)
    {
-      if (id != null)
-      {
-         NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
-      }
+      NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
    }
 }

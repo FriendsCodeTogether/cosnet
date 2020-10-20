@@ -42,9 +42,6 @@ else
 
    protected override async Task OnInitializedAsync()
    {
-      if (Id != null)
-      {
-         cosplay = await Http.GetFromJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl")?.Value}/cosplay/{Id}");
-      }
+      cosplay = await Http.GetFromJsonAsync<CosplayVM>($"{Configuration.GetSection("CosNetAPIUrl")?.Value}/cosplay/{Id}");
    }
 }
