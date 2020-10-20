@@ -18,7 +18,7 @@
          android:id="@+id/toolbar"
          android:layout_width="match_parent"
          android:layout_height="?attr/actionBarSize"
-         android:background="?attr/colorPrimary"
+         android:background="@drawable/gradient"
          app:popupTheme="@style/AppTheme.PopupOverlay">
 
          <TextView
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/kalam_bold"
+            android:textColor="@android:color/white"
             android:text="@string/CosNet"
             android:textSize="40sp" />
 
