@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace CosNet.Shared.ViewModels
 {
@@ -8,7 +9,10 @@ namespace CosNet.Shared.ViewModels
    {
       public Guid Id { get; set; }
       public Guid UserId { get; set; }
+
+      [Required]
       public string Name { get; set; }
+
       public string Serie { get; set; }
       public DateTime StartDate { get; set; }
       public DateTime DueDate { get; set; }
