@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using CosNet.API.DBContexts;
+using IdentityServer4.AccessTokenValidation;
 using CosNet.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,15 +33,34 @@ namespace CosNet.API
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllers();
-         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-         services.AddTransient<ICosplayRepository, CosplayRepository>();
-         //register the swagger generator, defining a swagger document
          services.AddMvc();
+
+         services.AddCors(options =>
+         {
+            options.AddPolicy(
+               "cosnet-cors-policy",
+               builder => builder.WithOrigins(Configuration.GetSection("CosNetWebUIUrl").Value)
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials());
+         });
+
+         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
          services.AddSwaggerGen(c =>
          {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "CosNet API", Version = "v1" });
+               c.SwaggerDoc("v1", new OpenApiInfo { Title = "CosNet API", Version = "v1" });
          });
+
+         services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+            .AddIdentityServerAuthentication(options =>
+            {
+               options.Authority = Configuration.GetSection("CosNetIDPUrl").Value;
+               options.ApiName = "cosnet-api";
+               options.ApiSecret = Environment.GetEnvironmentVariable("COSNET_API_SECRET");
+            });
+
+         services.AddTransient<ICosplayRepository, CosplayRepository>();
          services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       }
 
@@ -54,11 +74,6 @@ namespace CosNet.API
 
          app.UseHttpsRedirection();
 
-         app.UseCors(options =>
-         {
-            options.AllowAnyOrigin();
-         });
-
          app.UseSwagger();
 
          app.UseSwaggerUI(c =>
@@ -68,6 +83,10 @@ namespace CosNet.API
          });
 
          app.UseRouting();
+
+         app.UseCors("cosnet-cors-policy");
+
+         app.UseAuthentication();
 
          app.UseAuthorization();
 
