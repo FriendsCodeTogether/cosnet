@@ -88,11 +88,12 @@
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
       android:autofillHints="@string/DateHint"
-      android:inputType="date"
       android:hint="@string/DueDateHint"
       app:layout_constraintEnd_toEndOf="@+id/characterEditText"
       app:layout_constraintStart_toStartOf="@+id/textView5"
-      app:layout_constraintTop_toBottomOf="@+id/textView5" />
+      app:layout_constraintTop_toBottomOf="@+id/textView5"
+      android:focusableInTouchMode="false"
+      />
 
    <EditText
 
@@ -126,10 +127,11 @@
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
       android:autofillHints="@string/DateHint"
-      android:inputType="date"
+      android:hint="@string/StartDateHint"
       app:layout_constraintEnd_toEndOf="@+id/characterEditText"
       app:layout_constraintStart_toStartOf="@+id/textView4"
-      app:layout_constraintTop_toBottomOf="@+id/textView4" />
+      app:layout_constraintTop_toBottomOf="@+id/textView4"
+      android:focusableInTouchMode="false"/>
 
    <TextView
       style="@style/CustomText"

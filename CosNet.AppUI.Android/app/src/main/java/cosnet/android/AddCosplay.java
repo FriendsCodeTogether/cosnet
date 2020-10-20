@@ -2,13 +2,17 @@ package cosnet.android;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -19,13 +23,14 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import cosnet.android.Models.Cosplay;
 
 public class AddCosplay extends Activity {
    private static final String TAG = "AddCosplay";
-
+   DatePickerDialog.OnDateSetListener setListener;
    @Override
    protected void onCreate( Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
@@ -49,12 +54,46 @@ public class AddCosplay extends Activity {
       final EditText dueDateEditText = (EditText)findViewById(R.id.dueDateEditText) ;
       final EditText budgetEditText = (EditText)findViewById(R.id.budgetEditText) ;
       final Spinner statusSpinner = (Spinner)findViewById(R.id.statusSpinner) ;
+      Calendar calendar = Calendar.getInstance();
+      final int year = calendar.get(Calendar.YEAR);
+      final int month = calendar.get(Calendar.MONTH);
+      final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-         LocalDateTime now = LocalDateTime.now();
-         startDateEditText.setText(dtf.format(now));
-      }
+      startDateEditText.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+
+           DatePickerDialog datePickerDialog=new DatePickerDialog(AddCosplay.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+            datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            datePickerDialog.show();
+            setListener = new DatePickerDialog.OnDateSetListener(){
+               @Override
+               public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                  month = month+1;
+                  String date = day + "-" + month +"-"+year;
+                  startDateEditText.setText(date);
+               }
+            };
+      }});
+
+      dueDateEditText.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+
+            DatePickerDialog datePickerDialog=new DatePickerDialog(AddCosplay.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+            datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            datePickerDialog.show();
+            setListener = new DatePickerDialog.OnDateSetListener(){
+               @Override
+               public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                  month = month+1;
+                  String date = day + "-" + month +"-"+year;
+                  dueDateEditText.setText(date);
+               }
+            };
+         }});
+
+
 
       List<String> statusses = new ArrayList<String>();
       statusses.add("In porgress");

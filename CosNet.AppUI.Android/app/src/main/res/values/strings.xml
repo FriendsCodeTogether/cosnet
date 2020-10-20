@@ -30,4 +30,5 @@
    <string name="BudgetAutoHint">15€</string>
    <string name="CharacterInput" />
    <string name="SeriesInput" />
+    <string name="StartDateHint">example: 20/10/2020  (optional)</string>
 </resources>
