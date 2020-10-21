@@ -24,7 +24,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import cosnet.android.Models.Cosplay;
 
@@ -93,7 +95,10 @@ public class AddCosplay extends Activity {
             };
          }});
 
-
+     Date c = Calendar.getInstance().getTime(); //get current date
+     System.out.println("Current time => " + c);
+     SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+     startDateEditText.setText(df.format(c));
 
       List<String> statusses = new ArrayList<String>();
       statusses.add("In porgress");
@@ -118,7 +123,6 @@ public class AddCosplay extends Activity {
                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
-
                   }
                });
                alertDialog.show();
@@ -140,6 +144,13 @@ public class AddCosplay extends Activity {
                   } catch (ParseException e) {
                      e.printStackTrace();
                   }
+               }
+               else
+               {
+                 Date c = Calendar.getInstance().getTime(); //get current date
+                 System.out.println("Current time => " + c);
+                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                 //save
                }
 
                if(!dueDateEditText.getText().toString().isEmpty()) {
