@@ -11,7 +11,6 @@ You can share your cospalys with others and draw inspiration from other cosplaye
 - [CosNet.API] - API for CosNet
 - [CosNet.IDP] - Identity provider for CosNet
 - [CosNet.WebUI] - CosNet Web app
-- [CosNet.WebUI.Server] - Webserver for hosting web app
 - [CosNet.Shared] - Shared code between API and WebUI
 - [CosNet.AppUI.Android] - Mobile app
 
@@ -27,4 +26,5 @@ Our web app is built using Blazor.
 2. Install the .NET Core 3.1 SDK.
 3. Open the repository with your favourite IDE, for example VS CODE.
 4. Run `dotnet restore` to install all dependencies.
-5. For Android app: Open the app in Android studio.
+5. Run Migrations
+6. For Android app: Open the app in Android studio.
