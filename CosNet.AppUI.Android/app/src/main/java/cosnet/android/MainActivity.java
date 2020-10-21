@@ -48,13 +48,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Log.d(TAG, "onCreate: Starting.");
         Button addNewCosplayBTN = (Button) findViewById(R.id.addNewCosplayBTN);
         addNewCosplayBTN.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-              Log.d(TAG, "onClick: clicked addNewCosplay");
-
               Intent intent = new Intent(MainActivity.this, AddCosplay.class);
               startActivity(intent);
            }
