@@ -25,11 +25,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import cosnet.android.Models.Cosplay;
+import me.abhinay.input.CurrencyEditText;
 
 public class AddCosplay extends Activity {
    private static final String TAG = "AddCosplay";
@@ -54,12 +56,15 @@ public class AddCosplay extends Activity {
       final EditText seriesEditText = (EditText)findViewById(R.id.seriesEditText) ;
       final EditText startDateEditText = (EditText)findViewById(R.id.startDateEditText) ;
       final EditText dueDateEditText = (EditText)findViewById(R.id.dueDateEditText) ;
-      final EditText budgetEditText = (EditText)findViewById(R.id.budgetEditText) ;
+      final CurrencyEditText budgetEditText = (CurrencyEditText)findViewById(R.id.budgetEditText) ;
       final Spinner statusSpinner = (Spinner)findViewById(R.id.statusSpinner) ;
       Calendar calendar = Calendar.getInstance();
       final int year = calendar.get(Calendar.YEAR);
       final int month = calendar.get(Calendar.MONTH);
       final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+      budgetEditText.setCurrency("€");
+      budgetEditText.setSpacing(true);
 
       startDateEditText.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -76,7 +81,6 @@ public class AddCosplay extends Activity {
           datePickerDialog.show();
         }
       });
-
      dueDateEditText.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View v) {
@@ -93,14 +97,11 @@ public class AddCosplay extends Activity {
        }
      });
 
-     Date c = Calendar.getInstance().getTime(); //get current date
-     System.out.println("Current time => " + c);
-     SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-     startDateEditText.setText(df.format(c));
-
       List<String> statusses = new ArrayList<String>();
       statusses.add("In porgress");
       statusses.add("Planned");
+
+      startDateEditText.setText(GetCurrentDay());
 
       ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, statusses);
 
@@ -111,7 +112,6 @@ public class AddCosplay extends Activity {
          @Override
          public void onClick(View v) {
             Log.d(TAG, "onClick: clicked cancelBUttonBTN");
-
             SimpleDateFormat sdf = new SimpleDateFormat("dd//MM/yyyy");
 
             if(characterEditText.getText().toString().isEmpty()) {
@@ -145,9 +145,7 @@ public class AddCosplay extends Activity {
                }
                else
                {
-                 Date c = Calendar.getInstance().getTime(); //get current date
-                 System.out.println("Current time => " + c);
-                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                 String date = GetCurrentDay();
                  //save
                }
 
@@ -175,6 +173,14 @@ public class AddCosplay extends Activity {
             }
          }
       });
+   }
+
+   private String GetCurrentDay()
+   {
+     Date c = Calendar.getInstance().getTime(); //get current date
+     System.out.println("Current time => " + c);
+     SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+     return df.format(c);
    }
 
 }
