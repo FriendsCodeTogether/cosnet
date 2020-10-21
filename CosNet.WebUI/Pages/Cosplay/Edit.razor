@@ -1,0 +1,59 @@
+﻿@page "/cosplay/{Id:guid}/edit"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Edit cosplay</h3>
+<EditForm Model="@cosplay" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <p>
+        <label for="name">Character:</label><br />
+        <InputText id="name" placeholder="Character name" @bind-Value="cosplay.Name" />
+    </p>
+    <p>
+        <label for="serie">Series:</label><br />
+        <InputText id="serie" placeholder="Series" @bind-Value="cosplay.Serie" />
+    </p>
+    <p>
+        <label for="startDate">Start Date:</label><br />
+        <InputDate id="startDate" @bind-Value="cosplay.StartDate" />
+    </p>
+    <p>
+        <label for="dueDate">Due Date:</label><br />
+        <InputDate id="dueDate" @bind-Value="cosplay.DueDate" />
+    </p>
+    <p>
+        <label for="budget">Budget:</label><br />
+        € <InputNumber id="budget" @bind-Value="cosplay.Budget" />
+    </p>
+    <p>
+        <label for="status">Status:</label><br />
+        <InputSelect id="status" @bind-Value="cosplay.Status">
+            <option value="in progress">in progress</option>
+            <option value="on hold">on hold</option>
+        </InputSelect>
+    </p>
+    <p>
+        <button class="btn btn-primary" type="submit">Edit</button>
+        <a class="btn btn-primary" href="cosplay">Cancel</a>
+    </p>
+</EditForm>
+
+@code {
+    private CosplayVM cosplay;
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{Id}");
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PutAsJsonAsync<CosplayVM>($"/cosplay/{Id}", cosplay);
+
+        NavigationManager.NavigateTo($"cosplay/{Id}");
+    }
+}
