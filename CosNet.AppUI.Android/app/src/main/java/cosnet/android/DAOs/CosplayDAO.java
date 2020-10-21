@@ -23,9 +23,9 @@ public interface CosplayDAO {
    void deleteCosplay(Cosplay cosplay);
 
    @Query("SELECT * FROM cosplay")
-   public List<Cosplay> getAllCosplays();
+   List<Cosplay> getAllCosplays();
 
    @Query("SELECT * FROM cosplay WHERE id = :id")
-   public Cosplay getCosplayById(int id);
+   Cosplay getCosplayById(int id);
 
 }
