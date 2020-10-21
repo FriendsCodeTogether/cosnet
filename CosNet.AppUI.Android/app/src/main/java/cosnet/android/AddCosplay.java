@@ -36,7 +36,7 @@ public class AddCosplay extends Activity {
   private CurrencyEditText budgetEditText;
   private Spinner statusSpinner;
   private ImageButton cancelButton;
-  private Button addCosplayButton;
+  private ImageButton addCosplayButton;
   private List<String> statusses;
   private int year;
   private int month;
@@ -56,7 +56,7 @@ public class AddCosplay extends Activity {
     budgetEditText = (CurrencyEditText) findViewById(R.id.budgetEditText);
     statusSpinner = (Spinner) findViewById(R.id.statusSpinner);
     cancelButton = (ImageButton) findViewById(R.id.cancelNewCosplayBTN);
-    addCosplayButton = (Button) findViewById(R.id.addCosplayBTN);
+    addCosplayButton = (ImageButton) findViewById(R.id.addCosplayBTN);
     Calendar calendar = Calendar.getInstance();
     year = calendar.get(Calendar.YEAR);
     month = calendar.get(Calendar.MONTH);
@@ -68,8 +68,6 @@ public class AddCosplay extends Activity {
     statusses = new ArrayList<>();
     statusses.add("In porgress");
     statusses.add("Planned");
-
-    startDateEditText.setText(getCurrentDay());
 
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
     statusSpinner.setAdapter(adapterSpinnerStatus);
@@ -125,12 +123,5 @@ public class AddCosplay extends Activity {
   private void onClickCancelButton() {
     Intent intent = new Intent(AddCosplay.this, MainActivity.class);
     startActivity(intent);
-  }
-
-  private String getCurrentDay() {
-    Date c = Calendar.getInstance().getTime(); //get current date
-    System.out.println("Current time => " + c);
-    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-    return df.format(c);
   }
 }

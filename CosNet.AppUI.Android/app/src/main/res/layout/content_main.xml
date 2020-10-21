@@ -24,7 +24,7 @@
       android:layout_height="40dp"
       android:layout_marginTop="16dp"
       android:layout_marginEnd="16dp"
-      android:text="@string/Adding_plus"
+      android:text="+"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
       android:background="@drawable/roundbutton"/>

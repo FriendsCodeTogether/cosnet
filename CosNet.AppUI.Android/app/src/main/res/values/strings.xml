@@ -10,8 +10,7 @@
    <string name="menu_home">Home</string>
    <string name="menu_gallery">Gallery</string>
    <string name="menu_slideshow">Slideshow</string>
-   <string name="Adding_plus">+</string>
-   <string name="cancelButtonDesc">cancel</string>
+   <string name="cancelButtonDesc">Cancel</string>
    <string name="CosNet">CosNet</string>
    <string name="message">Not all field have been filled in</string>
 
@@ -23,12 +22,10 @@
    <string name="Budget">Budget:</string>
    <string name="Status">Status:</string>
    <string name="CharacterHint">Character name</string>
-   <string name="SeriesHint">Serie name (optional)</string>
-   <string name="BudgetHint">Amount of budget (optional)</string>
-   <string name="DueDateHint">example: 15/09/2025 (optional)</string>
-   <string name="DateHint">dd/mm/yyyy</string>
-   <string name="BudgetAutoHint">15€</string>
+   <string name="SeriesHint">Serie name</string>
+   <string name="BudgetHint">Budget</string>
+   <string name="DueDateHint">15/09/2025</string>
+   <string name="StartDateHint">20/10/2020</string>
    <string name="CharacterInput" />
    <string name="SeriesInput" />
-    <string name="StartDateHint">example: 20/10/2020  (optional)</string>
 </resources>
