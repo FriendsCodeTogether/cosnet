@@ -29,11 +29,11 @@
     <p>
         <label for="status">Status:</label><br />
         <InputSelect id="status" @bind-Value="cosplay.Status">
-            <option value="in progress">in progress</option>
-            <option value="on hold">on hold</option>
-            <option value="planned">planned</option>
-            <option value="finished">finished</option>
-            <option value="cancelled">cancelled</option>
+            <option value="In Progress">In Progress</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Planned">Planned</option>
+            <option value="Finished">Finished</option>
+            <option value="Cancelled">Cancelled</option>
         </InputSelect>
     </p>
     <p>
@@ -43,7 +43,7 @@
 </EditForm>
 
 @code {
-    private CosplayVM cosplay;
+    private CosplayVM cosplay = new CosplayVM();
 
     [Parameter]
     public Guid Id { get; set; }
