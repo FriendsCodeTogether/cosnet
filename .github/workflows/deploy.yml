@@ -44,7 +44,7 @@ jobs:
           dotnet-version: '3.1.102'
 
       - name: Build with dotnet
-        run: dotnet build ./CosNet.WebUI.Server/CosNet.WebUI.Server.csproj --configuration Release
+        run: dotnet build ./CosNet.WebUI/CosNet.WebUI.csproj --configuration Release
 
   deploy-api:
     needs: [build-api]
@@ -105,7 +105,7 @@ jobs:
           dotnet-version: '3.1.102'
 
       - name: dotnet publish
-        run: dotnet publish ./CosNet.WebUI.Server/CosNet.WebUI.Server.csproj -c Release -o ./cosnet
+        run: dotnet publish ./CosNet.WebUI/CosNet.WebUI.csproj -c Release -o ./cosnet
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
