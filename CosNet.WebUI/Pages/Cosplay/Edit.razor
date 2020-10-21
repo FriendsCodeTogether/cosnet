@@ -31,10 +31,13 @@
         <InputSelect id="status" @bind-Value="cosplay.Status">
             <option value="in progress">in progress</option>
             <option value="on hold">on hold</option>
+            <option value="planned">planned</option>
+            <option value="finished">finished</option>
+            <option value="cancelled">cancelled</option>
         </InputSelect>
     </p>
     <p>
-        <button class="btn btn-primary" type="submit">Edit</button>
+        <button class="btn btn-primary" type="submit">Save</button>
         <a class="btn btn-primary" href="cosplay">Cancel</a>
     </p>
 </EditForm>
