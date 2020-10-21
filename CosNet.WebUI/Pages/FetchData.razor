@@ -1,6 +1,5 @@
 @page "/fetchdata"
 @inject HttpClient Http
-@inject IConfiguration Configuration
 @attribute [Authorize]
 
 <h1>Weather forecast</h1>
@@ -41,7 +40,7 @@ else
 
    protected override async Task OnInitializedAsync()
    {
-      forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>($"{Configuration.GetSection("CosNetAPIUrl").Value}/weatherforecast");
+      forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("/weatherforecast");
    }
 
    public class WeatherForecast

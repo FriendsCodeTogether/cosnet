@@ -1,9 +1,9 @@
 @page "/cosplay"
 @inject HttpClient Http
-@inject IConfiguration Configuration
 @inject NavigationManager NavigationManager
 
 <h3>My Cosplay</h3>
+<a class="btn btn-primary" href="cosplay/create">Create</a>
 
 @if (cosplays == null)
 {
@@ -27,18 +27,15 @@ else
 }
 
 @code {
-    private List<CosplayVM> cosplays;
+   private List<CosplayVM> cosplays;
 
-    protected override async Task OnInitializedAsync()
-    {
-       cosplays = await Http.GetFromJsonAsync<List<CosplayVM>>($"{Configuration.GetSection("CosNetAPIUrl").Value}/cosplay");
-    }
+   protected override async Task OnInitializedAsync()
+   {
+      cosplays = await Http.GetFromJsonAsync<List<CosplayVM>>("/cosplay");
+   }
 
-    public void ClickedToId(Guid id)
-    {
-       if(id != null)
-       {
-          NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
-       }
-    }
+   public void ClickedToId(Guid id)
+   {
+      NavigationManager.NavigateTo($"cosplay/{id.ToString()}");
+   }
 }
