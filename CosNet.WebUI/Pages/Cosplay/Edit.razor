@@ -1,8 +1,8 @@
-﻿@page "/cosplay/create"
+﻿@page "/cosplay/{Id:guid}/edit"
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 
-<h3>Create cosplay</h3>
+<h3>Edit cosplay</h3>
 <EditForm Model="@cosplay" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -31,25 +31,32 @@
         <InputSelect id="status" @bind-Value="cosplay.Status">
             <option value="In Progress">In Progress</option>
             <option value="On Hold">On Hold</option>
+            <option value="Planned">Planned</option>
+            <option value="Finished">Finished</option>
+            <option value="Cancelled">Cancelled</option>
         </InputSelect>
     </p>
     <p>
-        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">Save</button>
         <a class="btn btn-primary" href="cosplay">Cancel</a>
     </p>
 </EditForm>
 
 @code {
-    private CosplayVM cosplay = new CosplayVM
+    private CosplayVM cosplay = new CosplayVM();
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-        StartDate = DateTime.Now,
-        DueDate = DateTime.Now.AddDays(5)
-    };
+        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{Id}");
+    }
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PostAsJsonAsync<CosplayVM>("/cosplay", cosplay);
+        var response = await Http.PutAsJsonAsync<CosplayVM>($"/cosplay/{Id}", cosplay);
 
-        NavigationManager.NavigateTo("cosplay/");
+        NavigationManager.NavigateTo($"cosplay/{Id}");
     }
 }
