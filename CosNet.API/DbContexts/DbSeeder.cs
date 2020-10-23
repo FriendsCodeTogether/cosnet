@@ -16,7 +16,8 @@ namespace CosNet.API.DBContexts
                 {
                     new Cosplay
                     {
-                       CosplayId = Guid.NewGuid(), Name = "Ichigo Kurosaki - Final Gestuga Tenshou",
+                       CosplayId = Guid.NewGuid(),
+                       Name = "Ichigo Kurosaki - Final Gestuga Tenshou",
                        Serie = "Bleach",
                        Budget= 100.0m,
                        StartDate = DateTime.Now,
@@ -37,29 +38,31 @@ namespace CosNet.API.DBContexts
                     {
                         CosplayId = Guid.NewGuid(),
                         Name = "Trafalgar D. Law",
-                       Serie = "One Piece",
-                       Budget= 120.0m,
-                       StartDate = DateTime.Now,
-                       DueDate = DateTime.Now,
-                       Status = "Finished"
+                        Serie = "One Piece",
+                        Budget= 120.0m,
+                        StartDate = DateTime.Now,
+                        DueDate = DateTime.Now,
+                        Status = "Finished"
                     },
                     new Cosplay
                     {
                         CosplayId = Guid.NewGuid(),
                         Name = "Satoru Gojo",
-                       Serie = "Jujutsu Kaisen",
-                       Budget= 70.0m,
-                       StartDate = DateTime.Now,
-                       DueDate = DateTime.Now.AddDays(100),
-                       Status = "In Progress"
+                        Serie = "Jujutsu Kaisen",
+                        Budget= 70.0m,
+                        StartDate = DateTime.Now,
+                        DueDate = DateTime.Now.AddDays(100),
+                        Status = "In Progress"
                     },
                     new Cosplay
-                    {CosplayId = Guid.NewGuid(),Name = "Misha Necron",
-                       Serie = "Maō Gakuin no Futekigōsha ~Shijō Saikyō no Maō no Shiso, Tensei Shite Shison-tachi no Gakkō e Kayou~",
-                       Budget= 120.0m,
-                       StartDate = DateTime.Now,
-                       DueDate = DateTime.Now.AddDays(170),
-                       Status = "In Progress"
+                    {
+                        CosplayId = Guid.NewGuid(),
+                        Name = "Misha Necron",
+                        Serie = "Maō Gakuin no Futekigōsha ~Shijō Saikyō no Maō no Shiso, Tensei Shite Shison-tachi no Gakkō e Kayou~",
+                        Budget= 120.0m,
+                        StartDate = DateTime.Now,
+                        DueDate = DateTime.Now.AddDays(170),
+                        Status = "In Progress"
                     }
                 };
                 context.Cosplays.AddRange(cosplays);
