@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosNet.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201023122730_initialmigration")]
+    [Migration("20201023132423_initialmigration")]
     partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

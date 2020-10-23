@@ -43,7 +43,8 @@
     private CosplayDTO cosplay = new CosplayDTO
     {
         StartDate = DateTime.Now,
-        DueDate = DateTime.Now.AddDays(5)
+        DueDate = DateTime.Now.AddDays(5),
+        Status = "In Progress"
     };
 
     private async Task HandleValidSubmit()
