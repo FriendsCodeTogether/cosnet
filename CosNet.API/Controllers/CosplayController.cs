@@ -4,7 +4,6 @@ using CosNet.API.Entities;
 using CosNet.API.Repositories;
 using CosNet.Shared.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

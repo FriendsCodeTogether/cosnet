@@ -16,8 +16,7 @@ namespace CosNet.API.DBContexts
                 {
                     new Cosplay
                     {
-                        CosplayId = Guid.NewGuid(),
-                        Name = "Ichigo Kurosaki - Final Gestuga Tenshou",
+                       CosplayId = Guid.NewGuid(), Name = "Ichigo Kurosaki - Final Gestuga Tenshou",
                        Serie = "Bleach",
                        Budget= 100.0m,
                        StartDate = DateTime.Now,
@@ -26,8 +25,8 @@ namespace CosNet.API.DBContexts
                     },
                     new Cosplay
                     {
-                        CosplayId = Guid.NewGuid(),
-                        Name = "Lelouch Lamperouge",
+                       CosplayId = Guid.NewGuid(),
+                       Name = "Lelouch Lamperouge",
                        Serie = "Code Geass",
                        Budget= 90.0m,
                        StartDate = DateTime.Now.AddDays(2),
@@ -55,9 +54,7 @@ namespace CosNet.API.DBContexts
                        Status = "In Progress"
                     },
                     new Cosplay
-                    {
-                        CosplayId = Guid.NewGuid(),
-                        Name = "Misha Necron",
+                    {CosplayId = Guid.NewGuid(),Name = "Misha Necron",
                        Serie = "Maō Gakuin no Futekigōsha ~Shijō Saikyō no Maō no Shiso, Tensei Shite Shison-tachi no Gakkō e Kayou~",
                        Budget= 120.0m,
                        StartDate = DateTime.Now,
