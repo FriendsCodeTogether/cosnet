@@ -62,7 +62,7 @@ namespace CosNet.IDP
                ClientId = "cosnetappui",
                AllowedGrantTypes = GrantTypes.Code,
                RequireClientSecret = false,
-               RedirectUris = { "net.openid.appauthdemo://oauth2redirect" },
+               RedirectUris = { "net.openid.appauthdemo:/oauth2redirect" },
                AllowOfflineAccess = true,
                AllowedScopes =
                {
