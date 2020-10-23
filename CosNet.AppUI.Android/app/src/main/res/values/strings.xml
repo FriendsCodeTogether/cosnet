@@ -28,4 +28,5 @@
    <string name="StartDateHint">20/10/2020</string>
    <string name="CharacterInput" />
    <string name="SeriesInput" />
+  <string name="add_button_plus">+</string>
 </resources>
