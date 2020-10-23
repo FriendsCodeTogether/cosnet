@@ -3,6 +3,7 @@ package cosnet.android.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cosnet.android.AddCosplay;
@@ -27,16 +29,14 @@ import cosnet.android.R;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    ListView cosplayList;
-    List<Cosplay> cosplays;
-    String characternames[];
+  private HomeViewModel homeViewModel;
+  ListView cosplayList;
+  ArrayList<Cosplay> cosplays;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+    homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+    View root = inflater.inflate(R.layout.fragment_home, container, false);
         /*final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -45,62 +45,63 @@ public class HomeFragment extends Fragment {
             }
         });*/
 
-        cosplayList = (ListView) root.findViewById(R.id.CosplayList);
+    cosplayList = (ListView) root.findViewById(R.id.CosplayList);
+    ImageButton addNewCosplayBTN = (ImageButton) root.findViewById(R.id.addNewCosplayBTN);
 
-        ImageButton addNewCosplayBTN = (ImageButton) root.findViewById(R.id.addNewCosplayBTN);
-        addNewCosplayBTN.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), AddCosplay.class);
-            startActivity(intent);
-          }
-        });
+    //Get all cosplays from the database and put them in an ArrayList
+    CosnetDb db = CosnetDb.getInstance(getContext());
+    List<Cosplay> cosplayListDb = db.getCosplayDAO().getAllCosplays();
+    cosplays = new ArrayList<>();
+    cosplays.addAll(cosplayListDb);
 
-        CosnetDb db = CosnetDb.getInstance(getContext());
-        cosplays = db.getCosplayDAO().getAllCosplays();
-        int i =0;
-        characternames = new String[cosplays.size()];
-        for (Cosplay c : cosplays)
-        {
-          characternames[i] = c.cosplayName;
-          i++;
-        }
-        MyAdapter adapter = new MyAdapter(getContext(), cosplays,characternames);
-        cosplayList.setAdapter(adapter);
-        cosplayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          @Override
-          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-          }
-        });
+    //Create an adapter to handle the list
+    CosplayListAdapter adapter = new CosplayListAdapter(getContext(), R.layout.cosplay_list_item, cosplays);
+    cosplayList.setAdapter(adapter);
 
-        return root;
+    //Set event listeners
+    cosplayList.setOnItemClickListener((parent, view, position, id) -> {
+    });
+    addNewCosplayBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(getActivity(), AddCosplay.class);
+      startActivity(intent);
+    });
+
+    return root;
+  }
+
+  class CosplayListAdapter extends ArrayAdapter<Cosplay> {
+    private Context context;
+    int resource;
+
+
+    CosplayListAdapter(Context c, int resource, ArrayList<Cosplay> cosplays) {
+      super(c, resource, cosplays);
+      this.context = c;
+      this.resource = resource;
     }
 
-    class MyAdapter extends ArrayAdapter<String>{
-      Context context;
-      List<Cosplay> cosplays;
-      String characters[];
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+      //Get current Cosplay
+      Cosplay cosplay = getItem(position);
 
-      MyAdapter(Context c, List<Cosplay> cosplays, String characters[])
-      {super(c, R.layout.cosplay_list_item, R.id.CharacterName, characters);
-        this.context = c;
-        this.cosplays = cosplays;
-        this.characters = characters;
-      }
+      LayoutInflater inflater = LayoutInflater.from(context);
+      convertView = inflater.inflate(resource, parent, false);
 
-      @NonNull
-      @Override
-      public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater layoutInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = layoutInflater.inflate(R.layout.cosplay_list_item, parent, false);
-        ImageView images = row.findViewById(R.id.imageView);
-        TextView character = row.findViewById(R.id.CharacterName);
-        TextView serie = row.findViewById(R.id.SeriesName);
+      //Get views to set
+      ImageView image = convertView.findViewById(R.id.imageView);
+      TextView character = convertView.findViewById(R.id.CharacterName);
+      TextView serie = convertView.findViewById(R.id.SeriesName);
 
-       // images.setImageResource(cosplays[position].image);
-        character.setText(characters[position]);
-       // serie.setText(cosplays[position].cosplaySeries);
-        return row;
-      }
+      //Set views
+      // image.setImageResource(cosplays[position].image);
+      character.setText(cosplay.cosplayName);
+      Log.d("CosplayList", "getView: " + cosplay.cosplayName);
+      serie.setText(cosplay.cosplaySeries);
+      Log.d("CosplayList", "getView: " + cosplay.cosplaySeries);
+
+      return convertView;
     }
+  }
 }
