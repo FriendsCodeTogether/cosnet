@@ -49,7 +49,20 @@ namespace CosNet.IDP
                RedirectUris = { $"{System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL")}/authentication/login-callback" },
                FrontChannelLogoutUri = $"{System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL")}/",
                PostLogoutRedirectUris = { $"{System.Environment.GetEnvironmentVariable("COSNET_WEBUI_URL")}/" },
-
+               AllowOfflineAccess = true,
+               AllowedScopes =
+               {
+                  IdentityServerConstants.StandardScopes.OpenId,
+                  IdentityServerConstants.StandardScopes.Profile,
+                  "cosnet-api"
+               }
+            },
+            new Client
+            {
+               ClientId = "cosnetappui",
+               AllowedGrantTypes = GrantTypes.Code,
+               RequireClientSecret = false,
+               RedirectUris = { "net.openid.appauthdemo://oauth2redirect" },
                AllowOfflineAccess = true,
                AllowedScopes =
                {
