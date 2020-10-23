@@ -49,11 +49,11 @@
     private CosplayVM cosplay = new CosplayVM();
 
     [Parameter]
-    public Guid Id { get; set; }
+    public Guid CosplayId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{Id}");
+        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{CosplayId}");
     }
 
     async Task Delete(CosplayVM cosplay)
@@ -61,15 +61,15 @@
         if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay '{cosplay.Name}'?"))
             return;
 
-        await Http.DeleteAsync($"/cosplay/{Id}");
+        await Http.DeleteAsync($"/cosplay/{CosplayId}");
 
         NavigationManager.NavigateTo("cosplay");
     }
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PutAsJsonAsync<CosplayVM>($"/cosplay/{Id}", cosplay);
+        var response = await Http.PutAsJsonAsync<CosplayVM>($"/cosplay/{CosplayId}", cosplay);
 
-        NavigationManager.NavigateTo($"cosplay/{Id}");
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}");
     }
 }

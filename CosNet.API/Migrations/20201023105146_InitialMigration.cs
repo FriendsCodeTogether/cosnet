@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CosNet.API.Migrations
 {
-    public partial class InitializeDb : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,9 +11,11 @@ namespace CosNet.API.Migrations
                 name: "Cosplays",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CosplayId = table.Column<Guid>(nullable: false),
                     UserId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Serie = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
@@ -24,6 +26,12 @@ namespace CosNet.API.Migrations
                 {
                     table.PrimaryKey("PK_Cosplays", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cosplays_CosplayId",
+                table: "Cosplays",
+                column: "CosplayId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

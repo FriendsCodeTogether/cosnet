@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace CosNet.API.Entities
 {
     public class Cosplay
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
+
+        public Guid CosplayId { get; set; }
         public Guid UserId { get; set; }
 
         [Required]

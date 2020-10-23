@@ -10,5 +10,13 @@ namespace CosNet.API.DBContexts
         }
 
         public DbSet<Cosplay> Cosplays { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Cosplay>(entity =>
+            {
+                entity.HasIndex(e => e.CosplayId).IsUnique();
+            });
+        }
     }
 }

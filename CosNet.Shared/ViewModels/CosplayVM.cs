@@ -5,7 +5,7 @@ namespace CosNet.Shared.ViewModels
 {
     public class CosplayVM
     {
-        public Guid Id { get; set; }
+        public Guid CosplayId { get; set; }
         public Guid UserId { get; set; }
 
         [Required]
