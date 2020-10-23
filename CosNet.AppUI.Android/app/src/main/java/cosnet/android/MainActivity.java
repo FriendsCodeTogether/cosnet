@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Button addNewCosplayBTN = (Button) findViewById(R.id.addNewCosplayBTN);
+        ImageButton addNewCosplayBTN = (ImageButton) findViewById(R.id.addNewCosplayBTN);
         addNewCosplayBTN.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
