@@ -35,13 +35,13 @@ else
 }
 
 @code {
-    private CosplayVM cosplay;
+    private CosplayDTO cosplay;
 
     [Parameter]
     public Guid CosplayId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{CosplayId}");
+        cosplay = await Http.GetFromJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}");
     }
 }

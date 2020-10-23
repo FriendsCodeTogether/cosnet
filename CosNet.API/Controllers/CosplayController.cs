@@ -2,8 +2,9 @@
 using AutoMapper;
 using CosNet.API.Entities;
 using CosNet.API.Repositories;
-using CosNet.Shared.ViewModels;
+using CosNet.Shared.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,35 +31,47 @@ namespace CosNet.API.Controllers
         }
 
         // GET <CosplayController>/5
-        [HttpGet("{id}")]
-        public IActionResult GetCosplay(Guid id)
+        [HttpGet("{cosplayId}")]
+        public IActionResult GetCosplay(Guid cosplayId)
         {
-            Cosplay cosplay = _cosplayRepository.GetCosplayById(id);
-            var cosplayVM = _mapper.Map<CosplayVM>(cosplay);
+            Cosplay cosplay = _cosplayRepository.GetCosplayById(cosplayId);
+            var cosplayVM = _mapper.Map<CosplayDTO>(cosplay);
             return Ok(cosplayVM);
         }
 
         // POST <CosplayController>
         [HttpPost]
-        public IActionResult Post([FromBody] Cosplay cosplay)
+        public IActionResult Post([FromBody] CosplayForCreationDTO cosplay)
         {
-            _cosplayRepository.AddCosplay(cosplay);
+            var cosplayEntity = _mapper.Map<Cosplay>(cosplay);
+            _cosplayRepository.AddCosplay(cosplayEntity);
+            _cosplayRepository.SaveChanges();
             return NoContent();
         }
 
         // PUT <CosplayController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put([FromRoute] Guid id, [FromBody] Cosplay cosplay)
+        [HttpPut("{cosplayId}")]
+        public IActionResult Put([FromRoute] Guid cosplayId, [FromBody] CosplayForUpdateDTO cosplay)
         {
-            _cosplayRepository.UpdateCosplay(cosplay);
+            var existingCosplay = _cosplayRepository.GetCosplayById(cosplayId);
+
+            // map the entity to a courseForUpdateDto
+            // apply the updated field values to that dto
+            // map the courseForUpdateDto back to an Entity
+            _mapper.Map(cosplay, existingCosplay);
+
+            _cosplayRepository.UpdateCosplay(existingCosplay);
+
+            _cosplayRepository.SaveChanges();
+
             return NoContent();
         }
 
         // DELETE <CosplayController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        [HttpDelete("{cosplayId}")]
+        public IActionResult Delete(Guid cosplayId)
         {
-            _cosplayRepository.DeleteCosplay(id);
+            _cosplayRepository.DeleteCosplay(cosplayId);
             return NoContent();
         }
     }

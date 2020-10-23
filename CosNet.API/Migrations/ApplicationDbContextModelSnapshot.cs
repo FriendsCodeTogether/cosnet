@@ -54,9 +54,6 @@ namespace CosNet.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CosplayId")
-                        .IsUnique();
-
                     b.ToTable("Cosplays");
                 });
 #pragma warning restore 612, 618

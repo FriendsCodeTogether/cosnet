@@ -27,11 +27,11 @@ else
 }
 
 @code {
-    private List<CosplayVM> cosplays;
+    private List<CosplayDTO> cosplays;
 
     protected override async Task OnInitializedAsync()
     {
-        cosplays = await Http.GetFromJsonAsync<List<CosplayVM>>("/cosplay");
+        cosplays = await Http.GetFromJsonAsync<List<CosplayDTO>>("/cosplay");
     }
 
     public void ClickedToId(Guid cosplayId)

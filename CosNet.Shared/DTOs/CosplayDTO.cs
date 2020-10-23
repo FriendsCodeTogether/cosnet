@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CosNet.Shared.ViewModels
+namespace CosNet.Shared.DTOs
 {
-    public class CosplayVM
+    public class CosplayDTO
     {
         public Guid CosplayId { get; set; }
         public Guid UserId { get; set; }

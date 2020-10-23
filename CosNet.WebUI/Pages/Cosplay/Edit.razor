@@ -46,17 +46,17 @@
 <button class="btn btn-danger" @onclick="() => Delete(cosplay)">Delete</button>
 
 @code {
-    private CosplayVM cosplay = new CosplayVM();
+    private CosplayDTO cosplay = new CosplayDTO();
 
     [Parameter]
     public Guid CosplayId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{CosplayId}");
+        cosplay = await Http.GetFromJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}");
     }
 
-    async Task Delete(CosplayVM cosplay)
+    async Task Delete(CosplayDTO cosplay)
     {
         if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay '{cosplay.Name}'?"))
             return;
@@ -68,7 +68,7 @@
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PutAsJsonAsync<CosplayVM>($"/cosplay/{CosplayId}", cosplay);
+        var response = await Http.PutAsJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}", cosplay);
 
         NavigationManager.NavigateTo($"cosplay/{CosplayId}");
     }

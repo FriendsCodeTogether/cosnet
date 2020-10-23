@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using CosNet.API.DBContexts;
 using CosNet.API.Entities;
 
@@ -27,14 +28,15 @@ namespace CosNet.API.Repositories
 
         public void AddCosplay(Cosplay cosplay)
         {
+            if (cosplay.CosplayId == Guid.Empty || cosplay.CosplayId == null)
+            {
+                cosplay.CosplayId = Guid.NewGuid();
+            }
             _dbContext.Cosplays.Add(cosplay);
-            _dbContext.SaveChanges();
         }
 
         public void UpdateCosplay(Cosplay cosplay)
         {
-            _dbContext.Cosplays.Update(cosplay);
-            _dbContext.SaveChanges();
         }
 
         public void DeleteCosplay(Guid cosplayId)
@@ -42,6 +44,11 @@ namespace CosNet.API.Repositories
             Cosplay cosplay = GetCosplayById(cosplayId);
             _dbContext.Cosplays.Remove(cosplay);
             _dbContext.SaveChanges();
+        }
+
+        public bool SaveChanges()
+        {
+            return (_dbContext.SaveChanges() >= 0);
         }
     }
 }

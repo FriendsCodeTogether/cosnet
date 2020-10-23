@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CosNet.API.Entities;
-using CosNet.Shared.ViewModels;
+using CosNet.Shared.DTOs;
 
 namespace CosNet.API.Profiles
 {
@@ -8,7 +8,9 @@ namespace CosNet.API.Profiles
     {
         public CosplayProfile()
         {
-            CreateMap<Cosplay, CosplayVM>().ReverseMap();
+            CreateMap<Cosplay, CosplayDTO>().ReverseMap();
+            CreateMap<Cosplay, CosplayForCreationDTO>().ReverseMap();
+            CreateMap<Cosplay, CosplayForUpdateDTO>().ReverseMap();
         }
     }
 }

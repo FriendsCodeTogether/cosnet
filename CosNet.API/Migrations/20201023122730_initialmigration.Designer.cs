@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosNet.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201023112313_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201023122730_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,9 +55,6 @@ namespace CosNet.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CosplayId")
-                        .IsUnique();
 
                     b.ToTable("Cosplays");
                 });

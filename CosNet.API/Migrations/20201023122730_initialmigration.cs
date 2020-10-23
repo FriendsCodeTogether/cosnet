@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CosNet.API.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,12 +26,6 @@ namespace CosNet.API.Migrations
                 {
                     table.PrimaryKey("PK_Cosplays", x => x.Id);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cosplays_CosplayId",
-                table: "Cosplays",
-                column: "CosplayId",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
