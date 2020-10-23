@@ -72,6 +72,7 @@ namespace CosNet.API.Controllers
         public IActionResult Delete(Guid cosplayId)
         {
             _cosplayRepository.DeleteCosplay(cosplayId);
+            _cosplayRepository.SaveChanges();
             return NoContent();
         }
     }

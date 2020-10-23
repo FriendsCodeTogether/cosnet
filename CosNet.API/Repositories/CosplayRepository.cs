@@ -43,7 +43,6 @@ namespace CosNet.API.Repositories
         {
             Cosplay cosplay = GetCosplayById(cosplayId);
             _dbContext.Cosplays.Remove(cosplay);
-            _dbContext.SaveChanges();
         }
 
         public bool SaveChanges()
