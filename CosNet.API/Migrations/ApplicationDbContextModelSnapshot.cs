@@ -30,6 +30,7 @@ namespace CosNet.API.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("CosplayId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DueDate")

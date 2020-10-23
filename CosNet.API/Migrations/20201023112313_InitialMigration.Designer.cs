@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosNet.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201023105146_InitialMigration")]
+    [Migration("20201023112313_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,7 @@ namespace CosNet.API.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("CosplayId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DueDate")

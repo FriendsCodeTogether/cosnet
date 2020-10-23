@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
 namespace CosNet.API.Entities
@@ -9,7 +10,9 @@ namespace CosNet.API.Entities
         [Key]
         public int Id { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid CosplayId { get; set; }
+
         public Guid UserId { get; set; }
 
         [Required]
