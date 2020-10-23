@@ -94,7 +94,7 @@ public class AddCosplay extends Activity {
     newCosplay.cosplaySeries = seriesEditText.getText().toString();
     newCosplay.startDate = startDateEditText.getText().toString();
     newCosplay.dueDate = dueDateEditText.getText().toString();
-    newCosplay.budget = budgetEditText.getCleanDoubleValue();
+    newCosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     newCosplay.status = statusSpinner.getSelectedItem().toString();
 
     db.getCosplayDAO().insertCosplay(newCosplay);
