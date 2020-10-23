@@ -21,18 +21,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-      android:id="@+id/addNewCosplayBTN"
-      android:layout_width="40dp"
-      android:layout_height="40dp"
-      android:layout_marginTop="16dp"
-      android:layout_marginEnd="16dp"
-      android:background="@drawable/roundbutton"
-      android:contentDescription="@string/add_button_plus"
-      android:src="@drawable/ic_baseline_add_24"
-      android:text="@string/add_button_plus"
-      android:textAlignment="center"
-      android:textColor="@color/cardview_light_background"
-      android:textSize="40sp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/addNewCosplayBTN"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/roundbutton"
+        android:contentDescription="@string/add_button_plus"
+        android:src="@drawable/ic_baseline_add_24"
+        android:text="@string/add_button_plus"
+        android:textAlignment="center"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="60dp"
+    android:orientation="vertical"
+    app:layout_constraintTop_toBottomOf="@+id/addNewCosplayBTN">
+
+    <ListView
+      android:id="@+id/CosplayList"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    </ListView>
+
+  </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
