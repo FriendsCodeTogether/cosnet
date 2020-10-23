@@ -56,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
               startActivity(intent);
            }
         });
+
+        Button goToLoginBTN = (Button) findViewById(R.id.goToLoginBTN);
+        goToLoginBTN.setOnClickListener(new View.OnClickListener(){
+          @Override
+          public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, loginActivity.class);
+            startActivity(intent);
+          }
+        });
     }
 
     @Override
