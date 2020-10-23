@@ -28,4 +28,16 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
       android:background="@drawable/roundbutton"/>
+
+  <Button
+    android:id="@+id/goToLoginBTN"
+    android:layout_width="80dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="88dp"
+    android:layout_marginEnd="144dp"
+    android:background="@drawable/roundbutton"
+    android:text="login"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/nav_host_fragment" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
