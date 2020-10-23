@@ -12,12 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import java.util.List;
@@ -25,7 +23,6 @@ import java.util.List;
 import cosnet.android.AddCosplay;
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
-import cosnet.android.MainActivity;
 import cosnet.android.R;
 
 public class HomeFragment extends Fragment {
@@ -85,7 +82,7 @@ public class HomeFragment extends Fragment {
       String characters[];
 
       MyAdapter(Context c, List<Cosplay> cosplays, String characters[])
-      {super(c, R.layout.row, R.id.CharacterName, characters);
+      {super(c, R.layout.cosplay_list_item, R.id.CharacterName, characters);
         this.context = c;
         this.cosplays = cosplays;
         this.characters = characters;
@@ -95,7 +92,7 @@ public class HomeFragment extends Fragment {
       @Override
       public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = layoutInflater.inflate(R.layout.row, parent, false);
+        View row = layoutInflater.inflate(R.layout.cosplay_list_item, parent, false);
         ImageView images = row.findViewById(R.id.imageView);
         TextView character = row.findViewById(R.id.CharacterName);
         TextView serie = row.findViewById(R.id.SeriesName);
