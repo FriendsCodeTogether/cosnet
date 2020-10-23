@@ -1,19 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CosNet.API.Entities
+namespace CosNet.Shared.DTOs
 {
-    public class Cosplay
+    public class CosplayForUpdateDTO
     {
-        [Key]
-        public int Id { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid CosplayId { get; set; }
-
-        public Guid UserId { get; set; }
-
         [Required]
         public string Name { get; set; }
 

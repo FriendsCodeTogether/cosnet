@@ -1,6 +1,7 @@
-﻿@page "/cosplay/{Id:guid}/edit"
+﻿@page "/cosplay/{CosplayId:guid}/edit"
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 
 <h3>Edit cosplay</h3>
 <EditForm Model="@cosplay" OnValidSubmit="@HandleValidSubmit">
@@ -42,21 +43,33 @@
     </p>
 </EditForm>
 
+<button class="btn btn-danger" @onclick="() => Delete(cosplay)">Delete</button>
+
 @code {
-    private CosplayVM cosplay = new CosplayVM();
+    private CosplayDTO cosplay = new CosplayDTO();
 
     [Parameter]
-    public Guid Id { get; set; }
+    public Guid CosplayId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        cosplay = await Http.GetFromJsonAsync<CosplayVM>($"/cosplay/{Id}");
+        cosplay = await Http.GetFromJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}");
+    }
+
+    async Task Delete(CosplayDTO cosplay)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay '{cosplay.Name}'?"))
+            return;
+
+        await Http.DeleteAsync($"/cosplay/{CosplayId}");
+
+        NavigationManager.NavigateTo("cosplay");
     }
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PutAsJsonAsync<CosplayVM>($"/cosplay/{Id}", cosplay);
+        var response = await Http.PutAsJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}", cosplay);
 
-        NavigationManager.NavigateTo($"cosplay/{Id}");
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}");
     }
 }
