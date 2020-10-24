@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoMapper;
-using CosNet.API.DBContexts;
+using CosNet.API.Data.DBContexts;
 using CosNet.API.Repositories;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;

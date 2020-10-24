@@ -4,7 +4,7 @@ using System.Linq;
 using CosNet.API.Data.DBContexts;
 using CosNet.API.Entities;
 
-namespace CosNet.API.Repositories
+namespace CosNet.API.Data.Repositories
 {
     public class CosplayRepository : ICosplayRepository
     {
