@@ -113,7 +113,7 @@ app {
 }
 
   .main .navbar {
-    background: linear-gradient(135deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 175%);
+    background: linear-gradient(135deg, rgba(123, 163, 251, 1) 0%, rgba(255, 57, 240, 1) 100%);
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
   }
@@ -130,7 +130,7 @@ app {
     }
 
 .sidenavbar {
-  background: linear-gradient(135deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 200%);
+  background: linear-gradient(135deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 100%);
 }
 
   .sidenavbar .navbar-brand {
