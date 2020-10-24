@@ -1,5 +1,151 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: rgb(82,196,255);
+  background: linear-gradient(135deg, rgba(82,196,255,1) 0%, rgba(255,57,240,1) 100%);
+}
+
+.main {
+  height: 100%;
+  margin-top: 30px;
+  position: fixed;
+}
+
+.content {
+}
+
+.content-wrapper {
+  background-color: #414141;
+  margin-left: 250px;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.main .navbar {
+  justify-content: right;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+.sidenavbar {
+  float: left;
+  top: 30px;
+}
+
+  .sidenavbar .navbar {
+    position: fixed;
+  }
+
+  .sidenavbar .navbar-brand {
+    font-size: 1.1rem;
+    position: fixed;
+    top: 0;
+  }
+
+  .sidenavbar .oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+  }
+
+  .sidenavbar .nav-item {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+  }
+
+    .sidenavbar .nav-item:first-of-type {
+      padding-top: 1rem;
+    }
+
+    .sidenavbar .nav-item:last-of-type {
+      padding-bottom: 1rem;
+    }
+
+    .sidenavbar .nav-item a {
+      color: #d7d7d7;
+      border-radius: 4px;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      line-height: 3rem;
+    }
+
+      .sidenavbar .nav-item a.active {
+        background-color: rgba(255,255,255,0.25);
+        color: white;
+      }
+
+      .sidenavbar .nav-item a:hover {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+      }
+
+#blazor-error-ui {
+  background: lightyellow;
+  bottom: 0;
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  display: none;
+  left: 0;
+  padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+  #blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+  }
+
+@media (max-width: 767.98px) {
+  .main .navbar:not(.auth) {
+    display: none;
+  }
+
+  .main .navbar.auth {
+    justify-content: space-between;
+  }
+
+  .main .navbar a, .main .navbar .btn-link {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  app {
+    flex-direction: row;
+  }
+
+  .sidenavbar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+  }
+
+  .main .navbar {
+    justify-content: right;
+  }
+
+  .main > div {
+    padding-left: 2rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  .sidenavbar .collapse {
+    /* Never collapse the sidenavbar for wide screens */
+    display: block;
+  }
 }
