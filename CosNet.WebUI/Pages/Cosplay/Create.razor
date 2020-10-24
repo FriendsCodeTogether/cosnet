@@ -8,27 +8,27 @@
     <ValidationSummary />
     <p>
         <label for="name">Character:</label><br />
-        <InputText id="name" placeholder="Character name" @bind-Value="cosplay.Name" />
+        <InputText class="form-input" id="name" placeholder="Character name" @bind-Value="cosplay.Name" />
     </p>
     <p>
         <label for="serie">Series:</label><br />
-        <InputText id="serie" placeholder="Series" @bind-Value="cosplay.Serie" />
+        <InputText class="form-input" id="serie" placeholder="Series" @bind-Value="cosplay.Serie" />
     </p>
     <p>
         <label for="startDate">Start Date:</label><br />
-        <InputDate id="startDate" @bind-Value="cosplay.StartDate" />
+        <InputDate class="form-input" id="startDate" @bind-Value="cosplay.StartDate" />
     </p>
     <p>
         <label for="dueDate">Due Date:</label><br />
-        <InputDate id="dueDate" @bind-Value="cosplay.DueDate" />
+        <InputDate class="form-input" id="dueDate" @bind-Value="cosplay.DueDate" />
     </p>
     <p>
         <label for="budget">Budget:</label><br />
-        € <InputNumber id="budget" @bind-Value="cosplay.Budget" />
+        € <InputNumber class="form-input" id="budget" @bind-Value="cosplay.Budget" />
     </p>
     <p>
         <label for="status">Status:</label><br />
-        <InputSelect id="status" @bind-Value="cosplay.Status">
+        <InputSelect class="form-input" id="status" @bind-Value="cosplay.Status">
             <option value="In Progress">In Progress</option>
             <option value="On Hold">On Hold</option>
         </InputSelect>

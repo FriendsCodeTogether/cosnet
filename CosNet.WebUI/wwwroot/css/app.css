@@ -23,6 +23,7 @@ a,
   border: #414141;
 }
 
+
 .container .row {
   position: relative;
   z-index: 0;
@@ -45,6 +46,15 @@ a,
     background-color: #808080;
   }
 
+
+.form-input {
+  width: 195px;
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  background-color: #808080;
+}
 app {
   position: relative;
   display: flex;
