@@ -1,5 +1,5 @@
 ﻿using System;
-using CosNet.API.DBContexts;
+using CosNet.API.Data.DBContexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

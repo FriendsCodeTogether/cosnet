@@ -2,6 +2,7 @@
 using AutoMapper;
 using CosNet.API.Data.DBContexts;
 using CosNet.API.Data.Repositories;
+using CosNet.API.Services;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -53,8 +54,10 @@ namespace CosNet.API
                    options.ApiSecret = Environment.GetEnvironmentVariable("COSNET_API_SECRET");
                });
 
-            services.AddTransient<ICosplayRepository, CosplayRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddTransient<ICosplayRepository, CosplayRepository>();
+            services.AddTransient<CosplayService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
