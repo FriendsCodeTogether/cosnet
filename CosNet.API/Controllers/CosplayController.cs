@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using CosNet.API.Entities;
-using CosNet.API.Repositories;
+using CosNet.API.Data.Repositories;
 using CosNet.Shared.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
