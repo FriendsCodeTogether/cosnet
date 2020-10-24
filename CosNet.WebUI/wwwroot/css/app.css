@@ -7,6 +7,11 @@ body {
   padding: 0px;
 }
 
+a,
+.btn-link {
+  color: #0366d6;
+}
+
 .table-dark {
   border-collapse;
   background-color: #808080;
@@ -24,7 +29,7 @@ a,
 
 .btn-primary {
   color: #fff;
-  background: linear-gradient(90deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 100%);
+  background: linear-gradient(90deg,rgba(82,196,255,1) 0,rgba(255,57,240,1) 100%);
   border: #414141;
 }
 
@@ -113,13 +118,12 @@ app {
 }
 
   .main .navbar {
-    background: linear-gradient(135deg, rgba(123, 163, 251, 1) 0%, rgba(255, 57, 240, 1) 100%);
+    background: linear-gradient(135deg,rgba(123,163,251,1) 0,rgba(255,57,240,1) 100%);
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
   }
 
-    .main .navbar > a,
-    .main .navbar .btn-link {
+    .main .navbar .btn-link, .main .navbar > a {
       white-space: nowrap;
       margin-left: 1.5rem;
     }
@@ -145,8 +149,8 @@ app {
   }
 
   .sidenavbar .nav-item {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
+    font-size: .9rem;
+    padding-bottom: .5rem;
   }
 
     .sidenavbar .nav-item:first-of-type {
@@ -166,13 +170,12 @@ app {
       line-height: 3rem;
     }
 
-      .sidenavbar .nav-item a.active {
-        background-color: rgba(255, 255, 255, 0.25);
-        color: white;
-      }
-
+.sidenavbar .nav-item a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
       .sidenavbar .nav-item a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255,255,255,.1);
         color: white;
       }
 
@@ -181,7 +184,7 @@ app {
 }
 
 .navbar-toggler {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, .1);
 }
 
 .valid.modified:not([type='checkbox']) {
@@ -215,7 +218,7 @@ app {
     top: 0.5rem;
   }
 
-@media (max-width: 767.98px) {
+@media (max-width:767.98px) {
   .main .navbar:not(.auth) {
     display: none;
   }
@@ -224,13 +227,12 @@ app {
     justify-content: space-between;
   }
 
-  .main .navbar a,
-  .main .navbar .btn-link {
+  .main .navbar .btn-link, .main .navbar a {
     margin-left: 0;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width:768px) {
   app {
     flex-direction: row;
   }
@@ -257,7 +259,6 @@ app {
   }
 
   .sidenavbar .collapse {
-    /* Never collapse the sidenavbar for wide screens */
     display: block;
   }
 }
