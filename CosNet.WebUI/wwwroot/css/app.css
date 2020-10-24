@@ -8,8 +8,13 @@ body {
 }
 
 .table-dark {
+  border-collapse;
   background-color: #808080;
   font-weight: bold;
+}
+
+.table-dark-row {
+  border-top: 20px solid #414141;
 }
 
 a,
