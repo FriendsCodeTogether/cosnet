@@ -1,88 +1,124 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-html, body {
-  margin: 0px;
-  height: 100%;
-  width: 100%;
+html,
+body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: rgb(82,196,255);
-  background: linear-gradient(135deg, rgba(82,196,255,1) 0%, rgba(255,57,240,1) 100%);
+  padding: 0px;
+}
+
+a,
+.btn-link {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 100%);
+  border: #414141;
+}
+
+app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.content-wrapper {
+  background-color: #414141;
+  height: 100%;
+}
+.navbar {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .main {
-  height: 100%;
-  margin-top: 30px;
-}
-
-.content {
-}
-
-.content-wrapper {
-  background-color: #414141;
-  margin-left: 250px;
-  height: 100vh;
+  flex: 1;
 }
 
 .main .navbar {
-  justify-content: right;
-  position: fixed;
-  top: 0px;
-  right: 0px;
+  background: linear-gradient(135deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 175%);
+  border-bottom: 1px solid #d6d5d5;
+  justify-content: flex-end;
+}
+
+.main .navbar > a,
+.main .navbar .btn-link {
+  white-space: nowrap;
+  margin-left: 1.5rem;
+}
+
+.main .navbar a:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidenavbar {
-  float: left;
-  top: 30px;
+  background: linear-gradient(135deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 200%);
 }
 
-  .sidenavbar .navbar {
-    position: fixed;
-  }
+.sidenavbar .navbar-brand {
+  font-size: 1.1rem;
+}
 
-  .sidenavbar .navbar-brand {
-    font-size: 1.1rem;
-    position: fixed;
-    top: 0;
-  }
+.sidenavbar .oi {
+  width: 2rem;
+  font-size: 1.1rem;
+  vertical-align: text-top;
+  top: -2px;
+}
 
-  .sidenavbar .oi {
-    width: 2rem;
-    font-size: 1.1rem;
-    vertical-align: text-top;
-    top: -2px;
-  }
+.sidenavbar .nav-item {
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
+}
 
-  .sidenavbar .nav-item {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
-  }
+.sidenavbar .nav-item:first-of-type {
+  padding-top: 1rem;
+}
 
-    .sidenavbar .nav-item:first-of-type {
-      padding-top: 1rem;
-    }
+.sidenavbar .nav-item:last-of-type {
+  padding-bottom: 1rem;
+}
 
-    .sidenavbar .nav-item:last-of-type {
-      padding-bottom: 1rem;
-    }
+.sidenavbar .nav-item a {
+  color: #d7d7d7;
+  border-radius: 4px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  line-height: 3rem;
+}
 
-    .sidenavbar .nav-item a {
-      color: #d7d7d7;
-      border-radius: 4px;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      line-height: 3rem;
-    }
+.sidenavbar .nav-item a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
 
-      .sidenavbar .nav-item a.active {
-        background-color: rgba(255,255,255,0.25);
-        color: white;
-      }
+.sidenavbar .nav-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
 
-      .sidenavbar .nav-item a:hover {
-        background-color: rgba(255,255,255,0.1);
-        color: white;
-      }
+.content {
+  padding-top: 1.1rem;
+}
+
+.navbar-toggler {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.valid.modified:not([type='checkbox']) {
+  outline: 1px solid #26b050;
+}
+
+.invalid {
+  outline: 1px solid red;
+}
+
+.validation-message {
+  color: red;
+}
 
 #blazor-error-ui {
   background: lightyellow;
@@ -91,17 +127,17 @@ html, body {
   display: none;
   left: 0;
   padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-  position: relative;
+  position: fixed;
   width: 100%;
   z-index: 1000;
 }
 
-  #blazor-error-ui .dismiss {
-    cursor: pointer;
-    position: absolute;
-    right: 0.75rem;
-    top: 0.5rem;
-  }
+#blazor-error-ui .dismiss {
+  cursor: pointer;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+}
 
 @media (max-width: 767.98px) {
   .main .navbar:not(.auth) {
@@ -112,7 +148,8 @@ html, body {
     justify-content: space-between;
   }
 
-  .main .navbar a, .main .navbar .btn-link {
+  .main .navbar a,
+  .main .navbar .btn-link {
     margin-left: 0;
   }
 }
@@ -124,12 +161,14 @@ html, body {
 
   .sidenavbar {
     width: 250px;
-    height: 100%;
-    position: fixed;
+    height: 100vh;
+    position: sticky;
+    top: 0;
   }
 
   .main .navbar {
-    justify-content: right;
+    position: sticky;
+    top: 0;
   }
 
   .main > div {
