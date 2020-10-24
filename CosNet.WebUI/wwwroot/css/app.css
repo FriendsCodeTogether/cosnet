@@ -46,28 +46,36 @@ a,
   }
 
 .form-input {
-  width: 195px;
+  width: 300px;
+  height: 45px;
   -ms-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   -webkit-box-sizing: content-box;
   background-color: #808080;
   color: white;
+  padding-left: 10px;
+  border: 0px;
+}
+
+.form-btn {
+  width: 155px;
 }
 
 .currencyinput {
   position: relative;
 }
-.currencyinput:before {
-  position: absolute;
-  top: -3px;
-  content: "€";
-  left: 7px;
-}
+
+  .currencyinput:before {
+    position: absolute;
+    top: -4px;
+    content: "€";
+    left: 7px;
+  }
 
   .currencyinput .form-input {
     padding-left: 18px;
-    width: 177px;
+    width: 292px;
   }
 
 app {
