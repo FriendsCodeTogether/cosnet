@@ -26,25 +26,16 @@ import cosnet.android.AddCosplay;
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.R;
+import cosnet.android.adapters.CosplayListAdapter;
 
 public class HomeFragment extends Fragment {
 
-  private HomeViewModel homeViewModel;
   ListView cosplayList;
   ArrayList<Cosplay> cosplays;
 
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
     View root = inflater.inflate(R.layout.fragment_home, container, false);
-        /*final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-
     cosplayList = (ListView) root.findViewById(R.id.CosplayList);
     ImageButton addNewCosplayBTN = (ImageButton) root.findViewById(R.id.addNewCosplayBTN);
 
@@ -67,47 +58,5 @@ public class HomeFragment extends Fragment {
     });
 
     return root;
-  }
-
-  class CosplayListAdapter extends ArrayAdapter<Cosplay> {
-    private Context context;
-    int resource;
-
-
-    CosplayListAdapter(Context c, int resource, ArrayList<Cosplay> cosplays) {
-      super(c, resource, cosplays);
-      this.context = c;
-      this.resource = resource;
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-      //Get current Cosplay
-      Cosplay cosplay = getItem(position);
-
-      LayoutInflater inflater = LayoutInflater.from(context);
-      convertView = inflater.inflate(resource, parent, false);
-
-      //Get views to set
-      ImageView image = convertView.findViewById(R.id.imageView);
-      TextView character = convertView.findViewById(R.id.CharacterName);
-      TextView serie = convertView.findViewById(R.id.SeriesName);
-      ImageView status = convertView.findViewById(R.id.StatusPic);
-
-      //Set views
-      // image.setImageResource(cosplays[position].image);
-      character.setText(cosplay.cosplayName);
-      serie.setText(cosplay.cosplaySeries);
-
-      //Check status and set imageresource to the right symbol (we had to use ifelse because java is bullshit and switches dont work)
-      if (cosplay.status.equals(context.getString(R.string.In_Progess))) {
-        status.setImageResource(R.drawable.ic_construction_white_10dp);
-      } else if (cosplay.status.equals(context.getString(R.string.Planned))) {
-        status.setImageResource(R.drawable.ic_emoji_objects_white_18dp);
-      }
-
-      return convertView;
-    }
   }
 }
