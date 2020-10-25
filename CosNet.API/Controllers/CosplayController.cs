@@ -41,6 +41,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Get a cosplay by id
         /// </summary>
+        /// <param name="cosplayId">The id of the desired cosplay</param>
         /// <returns>a cosplay</returns>
         [HttpGet("{cosplayId}")]
         [Description("Get a cosplay by id")]
@@ -69,6 +70,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Update a cosplay
         /// </summary>
+        /// <param name="cosplayId">The id of the desired cosplay</param>
         [HttpPut("{cosplayId}")]
         [Description("Update a cosplay")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -83,6 +85,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Delete a cosplay
         /// </summary>
+        /// <param name="cosplayId">The id of the desired cosplay</param>
         [HttpDelete("{cosplayId}")]
         [Description("Delete a cosplay")]
         [ProducesResponseType(StatusCodes.Status200OK)]
