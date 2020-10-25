@@ -17,9 +17,9 @@ namespace CosNet.API.Controllers
     [Route("[controller]")]
     public class CosplayController : ControllerBase
     {
-        private readonly CosplayService _cosplayService;
+        private readonly ICosplayService _cosplayService;
 
-        public CosplayController(CosplayService cosplayService)
+        public CosplayController(ICosplayService cosplayService)
         {
             _cosplayService = cosplayService;
         }

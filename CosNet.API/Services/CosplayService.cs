@@ -10,7 +10,7 @@ using CosNet.Shared.DTOs;
 
 namespace CosNet.API.Services
 {
-    public class CosplayService
+    public class CosplayService : ICosplayService
     {
         private readonly IMapper _mapper;
         private readonly ICosplayRepository _cosplayRepository;
@@ -32,7 +32,7 @@ namespace CosNet.API.Services
         {
             var cosplay = _cosplayRepository.GetCosplay(cosplayId);
 
-            if(cosplay == null)
+            if (cosplay == null)
             {
                 throw new NotFoundException();
             }
