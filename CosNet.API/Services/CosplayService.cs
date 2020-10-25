@@ -23,14 +23,14 @@ namespace CosNet.API.Services
 
         public IEnumerable<CosplayDTO> GetCosplays()
         {
-            var cosplays = _cosplayRepository.GetAllCosplays();
+            var cosplays = _cosplayRepository.GetCosplays();
             var cosplayDTOs = _mapper.Map<IEnumerable<CosplayDTO>>(cosplays);
             return cosplayDTOs;
         }
 
         public CosplayDTO GetCosplay(Guid cosplayId)
         {
-            var cosplay = _cosplayRepository.GetCosplayById(cosplayId);
+            var cosplay = _cosplayRepository.GetCosplay(cosplayId);
 
             if(cosplay == null)
             {
@@ -50,8 +50,8 @@ namespace CosNet.API.Services
 
         public void UpdateCosplay(Guid cosplayId, CosplayForUpdateDTO cosplay)
         {
-            var existingCosplay = _cosplayRepository.GetCosplayById(cosplayId);
-            
+            var existingCosplay = _cosplayRepository.GetCosplay(cosplayId);
+
             if (existingCosplay == null)
             {
                 throw new NotFoundException();
@@ -69,7 +69,7 @@ namespace CosNet.API.Services
 
         public void DeleteCosplay(Guid cosplayId)
         {
-            var cosplay = _cosplayRepository.GetCosplayById(cosplayId);
+            var cosplay = _cosplayRepository.GetCosplay(cosplayId);
 
             if (cosplay == null)
             {

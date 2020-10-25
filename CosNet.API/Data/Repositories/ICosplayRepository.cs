@@ -6,9 +6,9 @@ namespace CosNet.API.Data.Repositories
 {
     public interface ICosplayRepository
     {
-        IEnumerable<Cosplay> GetAllCosplays();
+        IEnumerable<Cosplay> GetCosplays();
 
-        Cosplay GetCosplayById(Guid cosplayId);
+        Cosplay GetCosplay(Guid cosplayId);
 
         void AddCosplay(Cosplay cosplay);
 

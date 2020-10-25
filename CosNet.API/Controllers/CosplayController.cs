@@ -33,7 +33,7 @@ namespace CosNet.API.Controllers
         [ProducesResponseType(typeof(List<CosplayDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult GetAll()
+        public IActionResult GetCosplays()
         {
             return Ok(_cosplayService.GetCosplays());
         }
