@@ -4,7 +4,7 @@ using System.Linq;
 using CosNet.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CosNet.API.DBContexts
+namespace CosNet.API.Data.DBContexts
 {
     public static class DbSeeder
     {

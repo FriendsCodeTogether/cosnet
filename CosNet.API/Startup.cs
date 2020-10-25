@@ -1,15 +1,13 @@
 ﻿using System;
 using AutoMapper;
-using CosNet.API.DBContexts;
-using CosNet.API.Repositories;
-using IdentityServer4.AccessTokenValidation;
+using CosNet.API.StartupSections.Configuration;
+using CosNet.API.StartupSections.Middleware;
+using CosNet.API.StartupSections.Middleware.Extentions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace CosNet.API
 {
@@ -25,36 +23,21 @@ namespace CosNet.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddMvc();
+            services.AddCosNetControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy(
-                "cosnet-cors-policy",
-                builder => builder.WithOrigins(Configuration.GetSection("CosNetWebUIUrl").Value)
-                   .AllowAnyMethod()
-                   .AllowAnyHeader()
-                   .AllowCredentials());
-            });
+            services.AddCosNetCorsPolicy(Configuration);
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddCosNetDbContexts(Configuration);
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CosNet API", Version = "v1" });
-            });
+            services.AddCosNetSwagger();
 
-            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-               .AddIdentityServerAuthentication(options =>
-               {
-                   options.Authority = Configuration.GetSection("CosNetIDPUrl").Value;
-                   options.ApiName = "cosnet-api";
-                   options.ApiSecret = Environment.GetEnvironmentVariable("COSNET_API_SECRET");
-               });
+            services.AddCosNetAuthentication(Configuration);
 
-            services.AddTransient<ICosplayRepository, CosplayRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddCosNetRepositories();
+
+            services.AddCosNetServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,21 +50,17 @@ namespace CosNet.API
 
             app.UseHttpsRedirection();
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                c.RoutePrefix = string.Empty;
-            });
+            app.UseCosNetSwagger();
 
             app.UseRouting();
 
-            app.UseCors("cosnet-cors-policy");
+            app.UseCosNetCorsPolicy();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseExceptionMiddleware();
 
             app.UseEndpoints(endpoints =>
             {

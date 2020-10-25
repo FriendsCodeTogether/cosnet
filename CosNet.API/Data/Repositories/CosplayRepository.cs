@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CosNet.API.DBContexts;
+using CosNet.API.Data.DBContexts;
 using CosNet.API.Entities;
 
-namespace CosNet.API.Repositories
+namespace CosNet.API.Data.Repositories
 {
     public class CosplayRepository : ICosplayRepository
     {
@@ -15,12 +15,12 @@ namespace CosNet.API.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Cosplay> GetAllCosplays()
+        public IEnumerable<Cosplay> GetCosplays()
         {
             return _dbContext.Cosplays;
         }
 
-        public Cosplay GetCosplayById(Guid cosplayId)
+        public Cosplay GetCosplay(Guid cosplayId)
         {
             return _dbContext.Cosplays.FirstOrDefault(a => a.CosplayId == cosplayId);
         }
@@ -40,7 +40,7 @@ namespace CosNet.API.Repositories
 
         public void DeleteCosplay(Guid cosplayId)
         {
-            Cosplay cosplay = GetCosplayById(cosplayId);
+            Cosplay cosplay = GetCosplay(cosplayId);
             _dbContext.Cosplays.Remove(cosplay);
         }
 
