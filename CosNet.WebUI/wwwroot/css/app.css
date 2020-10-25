@@ -13,9 +13,17 @@ a,
 }
 
 .table-dark {
-  border-collapse;
+  width: 100%;
+  border-collapse: collapse;
   background-color: #808080;
   font-weight: bold;
+}
+
+.table-header-show-cosplay {
+  width: 100%;
+  position: relative;
+  margin-top: -18px;
+  margin-left: -56px;
 }
 
 .table-dark-row {
@@ -50,6 +58,7 @@ a,
   grid-row-gap: 50px;
   justify-items: stretch;
   align-items: stretch;
+  top: 100px;
   text-align: center;
   vertical-align: middle;
 }
@@ -170,10 +179,11 @@ app {
       line-height: 3rem;
     }
 
-.sidenavbar .nav-item a.active {
-  background-color: rgba(255, 255, 255, 0.25);
-  color: white;
-}
+      .sidenavbar .nav-item a.active {
+        background-color: rgba(255, 255, 255, 0.25);
+        color: white;
+      }
+
       .sidenavbar .nav-item a:hover {
         background-color: rgba(255,255,255,.1);
         color: white;
