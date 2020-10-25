@@ -23,9 +23,9 @@ namespace CosNet.API.Entities
         public DateTime StartDate { get; set; }
         public DateTime DueDate { get; set; }
 
-        [Column(TypeName = "decimal(16,3)")]
+        [Column(TypeName = "decimal(9,2)")]
         public decimal Budget { get; set; }
-        [MaxLength(50)]
+        [MaxLength(25)]
         public string Status { get; set; }
     }
 }
