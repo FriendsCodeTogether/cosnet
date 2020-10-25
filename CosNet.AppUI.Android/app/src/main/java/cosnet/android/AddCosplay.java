@@ -66,8 +66,8 @@ public class AddCosplay extends Activity {
     budgetEditText.setSpacing(true);
 
     statusses = new ArrayList<>();
-    statusses.add("In porgress");
-    statusses.add("Planned");
+    statusses.add(getApplicationContext().getString(R.string.In_Progess));
+    statusses.add(getApplicationContext().getString(R.string.Planned));
 
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
     statusSpinner.setAdapter(adapterSpinnerStatus);
