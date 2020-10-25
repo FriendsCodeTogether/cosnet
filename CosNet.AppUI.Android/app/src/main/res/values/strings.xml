@@ -29,4 +29,5 @@
    <string name="CharacterInput" />
    <string name="SeriesInput" />
   <string name="add_button_plus">+</string>
+    <string name="my_cosplays">My Cosplays</string>
 </resources>
