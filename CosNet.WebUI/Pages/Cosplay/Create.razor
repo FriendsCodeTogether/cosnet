@@ -40,15 +40,16 @@
 </EditForm>
 
 @code {
-    private CosplayVM cosplay = new CosplayVM
+    private CosplayDTO cosplay = new CosplayDTO
     {
         StartDate = DateTime.Now,
-        DueDate = DateTime.Now.AddDays(5)
+        DueDate = DateTime.Now.AddDays(5),
+        Status = "In Progress"
     };
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PostAsJsonAsync<CosplayVM>("/cosplay", cosplay);
+        var response = await Http.PostAsJsonAsync<CosplayDTO>("/cosplay", cosplay);
 
         NavigationManager.NavigateTo("cosplay/");
     }

@@ -15,5 +15,7 @@ namespace CosNet.API.Repositories
         void UpdateCosplay(Cosplay cosplay);
 
         void DeleteCosplay(Guid cosplayId);
+
+        bool SaveChanges();
     }
 }

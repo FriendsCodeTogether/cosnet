@@ -22,26 +22,31 @@ namespace CosNet.API.Repositories
 
         public Cosplay GetCosplayById(Guid cosplayId)
         {
-            return _dbContext.Cosplays.FirstOrDefault(a => a.Id == cosplayId);
+            return _dbContext.Cosplays.FirstOrDefault(a => a.CosplayId == cosplayId);
         }
 
         public void AddCosplay(Cosplay cosplay)
         {
+            if (cosplay.CosplayId == Guid.Empty || cosplay.CosplayId == null)
+            {
+                cosplay.CosplayId = Guid.NewGuid();
+            }
             _dbContext.Cosplays.Add(cosplay);
-            _dbContext.SaveChanges();
         }
 
         public void UpdateCosplay(Cosplay cosplay)
         {
-            _dbContext.Cosplays.Update(cosplay);
-            _dbContext.SaveChanges();
         }
 
         public void DeleteCosplay(Guid cosplayId)
         {
             Cosplay cosplay = GetCosplayById(cosplayId);
             _dbContext.Cosplays.Remove(cosplay);
-            _dbContext.SaveChanges();
+        }
+
+        public bool SaveChanges()
+        {
+            return (_dbContext.SaveChanges() >= 0);
         }
     }
 }
