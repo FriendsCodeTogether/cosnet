@@ -3,6 +3,7 @@ using AutoMapper;
 using CosNet.API.Data.DBContexts;
 using CosNet.API.Data.Repositories;
 using CosNet.API.Services;
+using CosNet.API.StartupSections.Middleware;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -85,6 +86,8 @@ namespace CosNet.API
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

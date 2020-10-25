@@ -31,10 +31,12 @@ namespace CosNet.API.Services
         public CosplayDTO GetCosplay(Guid cosplayId)
         {
             var cosplay = _cosplayRepository.GetCosplayById(cosplayId);
+
             if(cosplay == null)
             {
                 throw new NotFoundException();
             }
+
             var cosplayDTO = _mapper.Map<CosplayDTO>(cosplay);
             return cosplayDTO;
         }
@@ -49,6 +51,11 @@ namespace CosNet.API.Services
         public void UpdateCosplay(Guid cosplayId, CosplayForUpdateDTO cosplay)
         {
             var existingCosplay = _cosplayRepository.GetCosplayById(cosplayId);
+            
+            if (existingCosplay == null)
+            {
+                throw new NotFoundException();
+            }
 
             // map the entity to a cosplayForUpdateDto
             // apply the updated field values to that dto
@@ -62,6 +69,13 @@ namespace CosNet.API.Services
 
         public void DeleteCosplay(Guid cosplayId)
         {
+            var cosplay = _cosplayRepository.GetCosplayById(cosplayId);
+
+            if (cosplay == null)
+            {
+                throw new NotFoundException();
+            }
+
             _cosplayRepository.DeleteCosplay(cosplayId);
             _cosplayRepository.SaveChanges();
         }
