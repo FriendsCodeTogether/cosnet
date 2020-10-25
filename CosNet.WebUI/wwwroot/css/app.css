@@ -19,11 +19,10 @@ a,
 }
 
 .table-header-show-cosplay {
-  width: 106.7%;
-  position: relative;
+  width: 100%;
+  position: center;
   margin-top: -18px;
   margin-left: -56px;
-  margin-right: 100px;
 }
 
 .table-dark-row {
@@ -46,6 +45,11 @@ a,
   right: 50px;
   top: 80px;
   width: 150px;
+}
+
+.container {
+    margin-right: -55px;
+    margin-top: -30px;
 }
 
 .container .row {
@@ -124,6 +128,7 @@ app {
 
 .main {
   flex: 1;
+  margin-bottom: 3.5rem;
 }
 
   .main .navbar {
@@ -144,6 +149,7 @@ app {
 
 .sidenavbar {
   background: linear-gradient(135deg, rgba(82, 196, 255, 1) 0%, rgba(255, 57, 240, 1) 100%);
+  position: sticky;
 }
 
   .sidenavbar .navbar-brand {
@@ -195,6 +201,15 @@ app {
 
 .navbar-toggler {
   background-color: rgba(255, 255, 255, .1);
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+::placeholder { 
+  color: white;
+  opacity: 0.5;
 }
 
 .valid.modified:not([type='checkbox']) {
