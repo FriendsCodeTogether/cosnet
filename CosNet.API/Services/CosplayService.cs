@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CosNet.API.Data.Repositories;
 using CosNet.API.Entities;
+using CosNet.API.Exceptions.Web;
 using CosNet.Shared.DTOs;
 
 namespace CosNet.API.Services
@@ -30,6 +31,10 @@ namespace CosNet.API.Services
         public CosplayDTO GetCosplay(Guid cosplayId)
         {
             var cosplay = _cosplayRepository.GetCosplayById(cosplayId);
+            if(cosplay == null)
+            {
+                throw new NotFoundException();
+            }
             var cosplayDTO = _mapper.Map<CosplayDTO>(cosplay);
             return cosplayDTO;
         }
