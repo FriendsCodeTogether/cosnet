@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CosNet.API.Migrations
+namespace CosNet.API.Data.Migrations
 {
     public partial class initialmigration : Migration
     {
