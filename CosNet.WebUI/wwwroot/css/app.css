@@ -22,7 +22,8 @@ a,
   width: 100%;
   position: center;
   margin-top: -18px;
-  margin-left: -56px;
+  padding-left: -3.5rem;
+  padding-right: -3rem;
 }
 
 .table-dark-row {
