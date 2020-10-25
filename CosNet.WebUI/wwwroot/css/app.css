@@ -13,17 +13,17 @@ a,
 }
 
 .table-dark {
-  width: 100%;
   border-collapse: collapse;
   background-color: #808080;
   font-weight: bold;
 }
 
 .table-header-show-cosplay {
-  width: 100%;
+  width: 106.7%;
   position: relative;
   margin-top: -18px;
   margin-left: -56px;
+  margin-right: 100px;
 }
 
 .table-dark-row {
