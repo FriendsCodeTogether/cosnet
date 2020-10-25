@@ -93,13 +93,19 @@ public class HomeFragment extends Fragment {
       ImageView image = convertView.findViewById(R.id.imageView);
       TextView character = convertView.findViewById(R.id.CharacterName);
       TextView serie = convertView.findViewById(R.id.SeriesName);
+      ImageView status = convertView.findViewById(R.id.StatusPic);
 
       //Set views
       // image.setImageResource(cosplays[position].image);
       character.setText(cosplay.cosplayName);
-      Log.d("CosplayList", "getView: " + cosplay.cosplayName);
       serie.setText(cosplay.cosplaySeries);
-      Log.d("CosplayList", "getView: " + cosplay.cosplaySeries);
+
+      //Check status and set imageresource to the right symbol (we had to use ifelse because java is bullshit and switches dont work)
+      if (cosplay.status.equals(context.getString(R.string.In_Progess))) {
+        status.setImageResource(R.drawable.ic_construction_white_10dp);
+      } else if (cosplay.status.equals(context.getString(R.string.Planned))) {
+        status.setImageResource(R.drawable.ic_emoji_objects_white_18dp);
+      }
 
       return convertView;
     }
