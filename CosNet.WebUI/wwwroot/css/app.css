@@ -111,6 +111,10 @@ body {
   background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
 }
 
+.cosplay-list-btn:hover {
+  filter: brightness(50%);
+}
+
 .cosplay-list-item {
   background-color: #808080;
   margin-bottom: 0.5rem;
@@ -118,6 +122,11 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+.cosplay-list-item:hover {
+  filter: brightness(80%);
+  cursor: pointer;
 }
 
 .cosplay-list-item-image {
@@ -181,11 +190,19 @@ body {
   background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
 }
 
+.cosplay-form-group-button-save:hover {
+  filter: brightness(50%);
+}
+
 .cosplay-form-group-button-cancel {
   border: none;
   padding: 0.4rem 4rem;
   font-size: 1.1em;
   background-color: #808080;
+}
+
+.cosplay-form-group-button-cancel:hover {
+  background-color: #80808077;
 }
 
 .form-input {
@@ -245,11 +262,28 @@ body {
   background-color: #be1616;
 }
 
+.cosplay-form-group-button-delete:hover {
+  background-color: #be161680;
+}
+
+.cosplay-show-item {
+  background-color: #808080;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .cosplay-show-edit-btn {
   margin-right: 2rem;
   border: none;
   padding: 0.2rem 1.3rem;
   background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
+}
+
+.cosplay-show-edit-btn:hover {
+  filter: brightness(50%);
 }
 
 .cosplay-show-container {
@@ -267,6 +301,14 @@ body {
   display: grid;
   place-items: center;
   font-size: 1.7em;
+}
+
+.logout-btn {
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  opacity: 0.7;
 }
 
 .flex-spacer {

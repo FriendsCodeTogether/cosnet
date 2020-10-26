@@ -7,7 +7,7 @@
 <AuthorizeView>
     <Authorized>
         <a>@context.User.Identity.Name</a>
-        <a @onclick="BeginSignOut">Log out</a>
+        <a class="logout-btn" @onclick="BeginSignOut">Log out</a>
     </Authorized>
     <NotAuthorized>
         <a href="authentication/login">Log in</a>
