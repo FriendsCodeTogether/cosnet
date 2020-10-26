@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  tools:context=".ShowCosplay">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="@drawable/gradient"
+      app:popupTheme="@style/AppTheme.PopupOverlay">
+
+      <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/kalam_bold"
+        android:text="@string/CosNet"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <ImageView
+    android:id="@+id/CosplayPic"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+    app:srcCompat="@drawable/ic_launcher_background" />
+
+  <TextView
+    android:id="@+id/Character"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CharacterHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/CosplayPic"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
+  <TextView
+    android:id="@+id/Series"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/SeriesHint"
+    android:textColor="@android:color/background_light"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/Character"
+    app:layout_constraintTop_toBottomOf="@+id/Character" />
+
+  <TextView
+    android:id="@+id/StatusLbl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Status"
+    android:textColor="@android:color/tertiary_text_light"
+    android:textSize="12sp"
+    app:layout_constraintBottom_toBottomOf="@+id/CosplayPic"
+    app:layout_constraintStart_toStartOf="@+id/Series"
+    app:layout_constraintTop_toBottomOf="@+id/Series" />
+
+  <TextView
+    android:id="@+id/Status"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Planned"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/StatusLbl"
+    app:layout_constraintTop_toTopOf="@+id/StatusLbl" />
+
+  <TextView
+    android:id="@+id/textView13"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Due_Date"
+    android:textColor="@android:color/tertiary_text_light"
+    android:textSize="12sp"
+    app:layout_constraintEnd_toStartOf="@+id/textView14"
+    app:layout_constraintTop_toTopOf="@+id/Status" />
+
+  <TextView
+    android:id="@+id/textView14"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/DueDateHint"
+    android:textColor="@color/cardview_light_background"
+    android:textSize="12sp"
+    app:layout_constraintEnd_toEndOf="@+id/Series"
+    app:layout_constraintTop_toTopOf="@+id/textView13" />
+</androidx.constraintlayout.widget.ConstraintLayout>
