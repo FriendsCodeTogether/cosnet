@@ -7,30 +7,29 @@
 }
 else
 {
-    <table class="table table-header-show-cosplay table-dark table-hover col-md-4">
-        <tbody>
-            <tr>
-                <td>Pic</td>
-                <td>Character: @cosplay.Name <br /> Series: @cosplay.Serie <br /> Status: @cosplay.Status</td>
-                <td>@cosplay.DueDate</td>
-                <td>Icon</td>
-                <td><a class="btn btn-primary rounded-pill" href="cosplay/@cosplay.CosplayId/edit">Edit</a></td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="container">
-        <div class="row">
-            <div class="col">Items</div>
-            <div class="col">Tasks</div>
-            <div class="col">Notes</div>
-            <div class="col">Statistics</div>
+    <div class="cosplay-list-item">
+        <img class="cosplay-list-item-image" src="https://placekitten.com/300/300" alt="Picture of the cosplay"/>
+        <div class="cosplay-list-item-text">
+            <p>Character: @cosplay.Name</p>
+            <p>Series: @cosplay.Serie</p>
+            <p>Status: @cosplay.Status</p>
         </div>
-        <div class="row">
-            <div class="col">Reference Pics</div>
-            <div class="col">Process Pics</div>
-            <div class="col">After Pics</div>
-            <div class="col">???</div>
+        <span class="flex-spacer"></span>
+        <div class="cosplay-list-item-date">
+            @cosplay.DueDate
         </div>
+        <a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@cosplay.CosplayId/edit">Edit</a>
+    </div>
+
+    <div class="cosplay-show-container">
+        <div class="cosplay-show-card">Items</div>
+        <div class="cosplay-show-card">Tasks</div>
+        <div class="cosplay-show-card">Notes</div>
+        <div class="cosplay-show-card">Statistics</div>
+        <div class="cosplay-show-card">Reference Pics</div>
+        <div class="cosplay-show-card">Process Pics</div>
+        <div class="cosplay-show-card">After Pics</div>
+        <div class="cosplay-show-card">???</div>
     </div>
 }
 

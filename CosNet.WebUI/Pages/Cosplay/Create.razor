@@ -2,42 +2,59 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 
-<h3>Create cosplay</h3>
-<EditForm Model="@cosplay" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <p>
-        <label for="name">Character:</label><br />
-        <InputText class="form-input" id="name" placeholder="Character name" @bind-Value="cosplay.Name" />
-    </p>
-    <p>
-        <label for="serie">Series:</label><br />
-        <InputText class="form-input" id="serie" placeholder="Series" @bind-Value="cosplay.Serie" />
-    </p>
-    <p>
-        <label for="startDate">Start Date:</label><br />
-        <InputDate class="form-input" id="startDate" @bind-Value="cosplay.StartDate" />
-    </p>
-    <p>
-        <label for="dueDate">Due Date:</label><br />
-        <InputDate class="form-input" id="dueDate" @bind-Value="cosplay.DueDate" />
-    </p>
-    <p>
-        <label for="budget">Budget:</label><br />
-        <span class="currencyinput"><InputNumber class="form-input" id="budget" @bind-Value="cosplay.Budget" /></span>
-    </p>
-    <p>
-        <label for="status">Status:</label><br />
-        <InputSelect class="form-input" id="status" @bind-Value="cosplay.Status">
-            <option value="In Progress">In Progress</option>
-            <option value="On Hold">On Hold</option>
-        </InputSelect>
-    </p>
-    <p>
-        <button class="btn-form btn btn-primary rounded-pill" type="submit">Create</button>
-        <a class="btn-form btn btn-secondary rounded-pill" href="cosplay">Cancel</a>
-    </p>
-</EditForm>
+<div class="cosplay-form-container">
+
+    <h2 class="title cosplay-form-title">Create cosplay</h2>
+
+    <div class="cosplay-form-content">
+
+        <div class="cosplay-form-group">
+
+            <EditForm Model="@cosplay" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <p>
+                    <label class="form-label" for="name">Character:</label><br />
+                    <InputText class="form-input" id="name" placeholder="Character name" @bind-Value="cosplay.Name" />
+                </p>
+                <p>
+                    <label class="form-label" for="serie">Series:</label><br />
+                    <InputText class="form-input" id="serie" placeholder="Series" @bind-Value="cosplay.Serie" />
+                </p>
+                <p>
+                    <label class="form-label" for="startDate">Start Date:</label><br />
+                    <InputDate class="form-input" id="startDate" @bind-Value="cosplay.StartDate" />
+                </p>
+                <p>
+                    <label class="form-label" for="dueDate">Due Date:</label><br />
+                    <InputDate class="form-input" id="dueDate" @bind-Value="cosplay.DueDate" />
+                </p>
+                <p>
+                    <label class="form-label" for="budget">Budget:</label><br />
+                    <span class="currencyinput"><InputNumber class="form-input" id="budget" @bind-Value="cosplay.Budget" /></span>
+                </p>
+                <p>
+                    <label class="form-label" for="status">Status:</label><br />
+                    <InputSelect class="form-input" id="status" @bind-Value="cosplay.Status">
+                        <option value="In Progress">In Progress</option>
+                        <option value="On Hold">On Hold</option>
+                    </InputSelect>
+                </p>
+                <div class="cosplay-form-group-button-row">
+                    <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
+                    <span class="flex-spacer"></span>
+                    <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay">Cancel</a>
+                </div>
+            </EditForm>
+            </div>
+
+        <span class="flex-spacer"></span>
+
+        <div class="cosplay-form-image-group">
+            <img class="cosplay-form-image" src="https://placekitten.com/300/300" alt="Picture of the cosplay">
+        </div>
+    </div>
+</div>
 
 @code {
     private CosplayDTO cosplay = new CosplayDTO
