@@ -1,5 +1,5 @@
 ﻿@page "/cosplay/{CosplayId:guid}/edit"
-@inject HttpClient Http
+@inject ICosplayService CosplayService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 
@@ -59,6 +59,7 @@
         </div>
     </div>
 </div>
+
 @code {
     private CosplayDTO cosplay = new CosplayDTO();
 
@@ -67,7 +68,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        cosplay = await Http.GetFromJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}");
+        cosplay = await CosplayService.GetCosplayAsync(CosplayId);
     }
 
     async Task Delete(CosplayDTO cosplay)
@@ -75,14 +76,13 @@
         if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay '{cosplay.Name}'?"))
             return;
 
-        await Http.DeleteAsync($"/cosplay/{CosplayId}");
-
+        await CosplayService.DeleteCosplayAsync(CosplayId);
         NavigationManager.NavigateTo("cosplay");
     }
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PutAsJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}", cosplay);
+        await CosplayService.UpdateCosplayAsync(CosplayId, cosplay);
 
         NavigationManager.NavigateTo($"cosplay/{CosplayId}");
     }

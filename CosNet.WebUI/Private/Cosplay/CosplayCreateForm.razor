@@ -1,5 +1,5 @@
 ﻿@page "/cosplay/create"
-@inject HttpClient Http
+@inject ICosplayService CosplayService
 @inject NavigationManager NavigationManager
 
 <div class="cosplay-form-container">
@@ -66,7 +66,7 @@
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PostAsJsonAsync<CosplayDTO>("/cosplay", cosplay);
+        await CosplayService.CreateCosplayAsync(cosplay);
 
         NavigationManager.NavigateTo("cosplay/");
     }
