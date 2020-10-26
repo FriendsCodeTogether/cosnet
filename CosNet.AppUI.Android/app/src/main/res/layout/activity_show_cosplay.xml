@@ -8,7 +8,7 @@
   tools:context=".ShowCosplay">
 
   <com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/appBarLayout2"
+    android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/AppTheme.AppBarOverlay"
@@ -41,7 +41,7 @@
     android:layout_height="100dp"
     android:contentDescription="@string/CosplayPic"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
     app:srcCompat="@drawable/ic_launcher_background" />
 
   <TextView
@@ -58,7 +58,7 @@
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/CosplayPic"
-    app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
   <TextView
     android:id="@+id/Series"
@@ -98,7 +98,7 @@
     app:layout_constraintTop_toTopOf="@+id/StatusLbl" />
 
   <TextView
-    android:id="@+id/textView13"
+    android:id="@+id/DueDateLbl"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
@@ -106,11 +106,11 @@
     android:text="@string/Due_Date"
     android:textColor="@android:color/tertiary_text_light"
     android:textSize="12sp"
-    app:layout_constraintEnd_toStartOf="@+id/textView14"
+    app:layout_constraintEnd_toStartOf="@+id/DueDate"
     app:layout_constraintTop_toTopOf="@+id/Status" />
 
   <TextView
-    android:id="@+id/textView14"
+    android:id="@+id/DueDate"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:fontFamily="@font/lato_bold"
@@ -118,5 +118,5 @@
     android:textColor="@android:color/background_light"
     android:textSize="12sp"
     app:layout_constraintEnd_toEndOf="@+id/Series"
-    app:layout_constraintTop_toTopOf="@+id/textView13" />
+    app:layout_constraintTop_toTopOf="@+id/DueDateLbl" />
 </androidx.constraintlayout.widget.ConstraintLayout>
