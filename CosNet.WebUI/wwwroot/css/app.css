@@ -66,19 +66,24 @@ body {
   align-items: center;
 }
 
-.sidenav-item {
+.sidenav-link {
   width: 100%;
   height: 4rem;
   line-height: 4rem;
   font-size: 1.8em;
+  font-weight: bold;
   padding-left: 2rem;
-  list-style-type: none;
-}
-
-.sidenav-item a {
-  list-style: none;
   text-decoration: none;
   color: white;
+}
+
+.sidenav-link:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sidenav-link.active {
+  background-color: #5292bf;
 }
 
 .app-content {
