@@ -39,6 +39,7 @@
     android:id="@+id/CosplayPic"
     android:layout_width="100dp"
     android:layout_height="100dp"
+    android:contentDescription="@string/CosplayPic"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
     app:srcCompat="@drawable/ic_launcher_background" />
@@ -114,7 +115,7 @@
     android:layout_height="wrap_content"
     android:fontFamily="@font/lato_bold"
     android:text="@string/DueDateHint"
-    android:textColor="@color/cardview_light_background"
+    android:textColor="@android:color/background_light"
     android:textSize="12sp"
     app:layout_constraintEnd_toEndOf="@+id/Series"
     app:layout_constraintTop_toTopOf="@+id/textView13" />

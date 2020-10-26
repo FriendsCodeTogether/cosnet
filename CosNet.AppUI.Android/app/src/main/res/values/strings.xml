@@ -13,24 +13,31 @@
   <string name="cancelButtonDesc">Cancel</string>
   <string name="CosNet">CosNet</string>
   <string name="message">Not all field have been filled in</string>
-
   <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="my_cosplays">My Cosplays</string>
+
+  <!--LABELS-->
   <string name="Character">Character*:</string>
   <string name="Series">Series:</string>
   <string name="Start_Date">Start Date:</string>
   <string name="Due_Date">Due Date:</string>
   <string name="Budget">Budget:</string>
   <string name="Status">Status:</string>
+  <string name="add_button_plus">+</string>
+
+  <!--HINTS-->
   <string name="CharacterHint">Character name</string>
   <string name="SeriesHint">Serie name</string>
   <string name="BudgetHint">Budget</string>
   <string name="DueDateHint">15/09/2025</string>
   <string name="StartDateHint">20/10/2020</string>
+
+  <!--CONTENTDESCRIPTIONS-->
+  <string name="CosplayPic">Cosplay Picture</string>
+
+  <!--INPUTS-->
   <string name="CharacterInput" />
   <string name="SeriesInput" />
-  <string name="add_button_plus">+</string>
-  <string name="my_cosplays">My Cosplays</string>
-
 
   <!--STATUSSEN-->
   <string name="In_Progess">In Progress</string>
