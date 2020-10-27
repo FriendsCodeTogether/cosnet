@@ -1,35 +1,31 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CosNet.API.Entities
 {
-    public class Cosplay
+    public class CosplayItem
     {
         [Key]
         public int Id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid CosplayId { get; set; }
+        public Guid CosplayItemId { get; set; }
 
-        public Guid UserId { get; set; }
+        public Guid CosplayId { get; set; }
 
         [Required]
         [MinLength(1)]
         [MaxLength(150)]
         public string Name { get; set; }
-        [MaxLength(150)]
-        public string Serie { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime DueDate { get; set; }
 
-        [Column(TypeName = "decimal(9,2)")]
-        public decimal Budget { get; set; }
         [MaxLength(25)]
         public string Status { get; set; }
 
-        public IEnumerable<CosplayItem> Items { get; set; }
+        [MaxLength(150)]
+        public string Description { get; set; }
     }
 }
