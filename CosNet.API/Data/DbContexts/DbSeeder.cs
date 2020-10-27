@@ -68,6 +68,81 @@ namespace CosNet.API.Data.DBContexts
                 context.Cosplays.AddRange(cosplays);
                 context.SaveChanges();
             }
+
+            if (!context.CosplayItems.Any())
+            {
+                var cosplayItems = new List<CosplayItem>
+                {
+                    new CosplayBoughtItem
+                    {
+                        CosplayItemId = Guid.NewGuid(),
+                        Name = "Black Shirt",
+                        Status = "Bought",
+                        BuyLink = "https://www.kittyconnection.net/",
+                        Price = 25.0m,
+                        Description = "It's a black shirt! What else?",
+                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                    },
+                    new CosplayBoughtItem
+                    {
+                        CosplayItemId = Guid.NewGuid(),
+                        Name = "Black Trouser",
+                        Status = "Bought",
+                        BuyLink = "https://www.kittyconnection.net/",
+                        Price = 30.0m,
+                        Description = "It's a black trouser! What else?",
+                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                    },
+                    new CosplayBoughtItem
+                    {
+                        CosplayItemId = Guid.NewGuid(),
+                        Name = "Black Gloves",
+                        Status = "Ordered",
+                        BuyLink = "https://www.kittyconnection.net/",
+                        Price = 15.0m,
+                        Description = "It's a black gloves! What else?",
+                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                    },
+                    new CosplayMadeItem
+                    {
+                        CosplayItemId = Guid.NewGuid(),
+                        Name = "Black Katana",
+                        Status = "On Hold",
+                        Description = "It's a black katana! Forged by the underdark dwarves",
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.Now.AddMonths(5),
+                        Progress = 10,
+                        WorkTime = new TimeSpan(5, 10, 00),
+                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                    },
+                    new CosplayMadeItem
+                    {
+                        CosplayItemId = Guid.NewGuid(),
+                        Name = "Black Boots",
+                        Status = "In Progress",
+                        Description = "Their black boots! Made from demon-cow leather",
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.Now.AddMonths(1),
+                        Progress = 50,
+                        WorkTime = new TimeSpan(4, 25, 00),
+                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                    },
+                    new CosplayMadeItem
+                    {
+                        CosplayItemId = Guid.NewGuid(),
+                        Name = "Black Cap",
+                        Status = "In Progress",
+                        Description = "It's a black cap! To hide from nosy people or Corona",
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.Now.AddMonths(3),
+                        Progress = 30,
+                        WorkTime = new TimeSpan(1, 30, 00),
+                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                    }
+                };
+                context.CosplayItems.AddRange(cosplayItems);
+                context.SaveChanges();
+            }
         }
 
         public static void RecreateDatabase(ApplicationDbContext context)
