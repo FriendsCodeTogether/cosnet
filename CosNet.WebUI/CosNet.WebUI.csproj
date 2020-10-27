@@ -28,14 +28,6 @@
     <ComponentScssFiles Include="**/*/*.scss" Exclude="node_modules/**;wwwroot/**;Styles/**" />
   </ItemGroup>
 
-  <Target Name="SassCheck" BeforeTargets="CompileComponentSass">
-    <Exec Command="npm run sass --version" ContinueOnError="true">
-      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
-    </Exec>
-    <Error Condition="'$(ErrorCode)' != '0'" Text="Oops looks like you're not Sass-y enough. Running npm install" />
-    <Exec Condition="'$(ErrorCode)' != '0'"  Command="npm install" />
-  </Target>
-
   <Target Name="CompileComponentSass" BeforeTargets="CompileWwwrootSass">
     <Message Text="Compiling Component SCSS files" Importance="high" />
     <Exec Command="npm run sass -- --style=compressed --no-source-map %(ComponentScssFiles.Identity) %(relativedir)%(filename).css" />
