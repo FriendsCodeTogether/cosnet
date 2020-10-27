@@ -6,7 +6,7 @@ using AutoMapper;
 using CosNet.API.Data.Repositories;
 using CosNet.API.Entities;
 using CosNet.API.Exceptions.Web;
-using CosNet.Shared.DTOs;
+using CosNet.Shared.DTOs.Cosplay;
 
 namespace CosNet.API.Services
 {

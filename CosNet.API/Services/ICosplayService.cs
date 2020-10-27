@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CosNet.Shared.DTOs;
+using CosNet.Shared.DTOs.Cosplay;
 
 namespace CosNet.API.Services
 {

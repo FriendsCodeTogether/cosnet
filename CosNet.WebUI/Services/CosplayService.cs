@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using CosNet.Shared.DTOs;
+using CosNet.Shared.DTOs.Cosplay;
 using Microsoft.AspNetCore.Components;
 
 namespace CosNet.WebUI.Services

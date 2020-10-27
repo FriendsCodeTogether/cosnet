@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CosNet.API.Entities;
-using CosNet.Shared.DTOs;
+using CosNet.Shared.DTOs.Cosplay;
 
 namespace CosNet.API.Profiles
 {
