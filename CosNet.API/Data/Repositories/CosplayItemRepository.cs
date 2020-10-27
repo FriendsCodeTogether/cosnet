@@ -16,9 +16,9 @@ namespace CosNet.API.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Cosplay> GetCosplayItems()
+        public IEnumerable<CosplayItem> GetCosplayItems()
         {
-            return _dbContext.CosplayItems();
+            return _dbContext.CosplayItems;
         }
 
         public CosplayItem GetCosplayItem(Guid cosplayItemId)
@@ -26,7 +26,7 @@ namespace CosNet.API.Data.Repositories
             return _dbContext.CosplayItems.FirstOrDefault(a => a.CosplayItemId == cosplayItemId);
         }
 
-        public void AddCosplay(CosplayItem cosplayItem)
+        public void AddCosplayItem(CosplayItem cosplayItem)
         {
             if (cosplayItem.CosplayItemId == Guid.Empty || cosplayItem.CosplayItemId == null)
             {
@@ -35,11 +35,11 @@ namespace CosNet.API.Data.Repositories
             _dbContext.CosplayItems.Add(cosplayItem);
         }
 
-        public void UpdateCosplay(CosplayItem cosplayItem)
+        public void UpdateCosplayItem(CosplayItem cosplayItem)
         {
         }
 
-        public void DeleteCosplay(Guid cosplayItemId)
+        public void DeleteCosplayItem(Guid cosplayItemId)
         {
             CosplayItem cosplayItem = GetCosplayItem(cosplayItemId);
             _dbContext.CosplayItems.Remove(cosplayItem);
