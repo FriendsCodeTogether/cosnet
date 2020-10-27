@@ -1,47 +1,128 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using CosNet.API.Services;
+using CosNet.Shared.DTOs.CosplayItem;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CosNet.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CosplayItemController : ControllerBase
     {
-        // GET: api/<CosplayItemController>
+        private readonly ICosplayItemService _cosplayItemService;
+
+        public CosplayItemController(ICosplayItemService cosplayItemService)
+        {
+            _cosplayItemService = cosplayItemService;
+        }
+
+        /// <summary>
+        /// Get all cosplays items
+        /// </summary>
+        /// <returns>A list of cosplay items</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Description("Get all cosplay items")]
+        [ProducesResponseType(typeof(List<CosplayItemDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult GetCosplayItems()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_cosplayItemService.GetCosplayItems());
         }
 
-        // GET api/<CosplayItemController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        /// <summary>
+        /// Get a cosplay Item by id
+        /// </summary>
+        /// <param name="cosplayItemId">The id of the desired cosplay item</param>
+        /// <returns>a cosplay</returns>
+        [HttpGet("{cosplayItemId}")]
+        [Description("Get a cosplay item by id")]
+        [ProducesResponseType(typeof(CosplayItemDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult GetCosplayItem([FromRoute] Guid cosplayItemId)
         {
-            return "value";
+            return Ok(_cosplayItemService.GetCosplayItem(cosplayItemId));
         }
 
-        // POST api/<CosplayItemController>
+        /// <summary>
+        /// Create cosplay bought item
+        /// </summary>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Description("Create cosplay bought item")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult CreateCosplayBoughtItem([FromBody] CosplayBoughtItemForCreationDTO cosplayBoughtItem)
         {
+            _cosplayItemService.CreateCosplayBoughtItem(cosplayBoughtItem);
+            return NoContent();
         }
 
-        // PUT api/<CosplayItemController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        /// <summary>
+        /// Create cosplay made item
+        /// </summary>
+        [HttpPost]
+        [Description("Create cosplay made item")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult CreateCosplayMadeItem([FromBody] CosplayMadeItemForCreationDTO cosplayMadeItem)
         {
+            _cosplayItemService.CreateCosplayMadeItem(cosplayMadeItem);
+            return NoContent();
         }
 
-        // DELETE api/<CosplayItemController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        /// <summary>
+        /// Update a cosplay bought item
+        /// </summary>
+        /// <param name="cosplayItemId">The id of the desired cosplay bought item</param>
+        [HttpPut("{cosplayItemId}")]
+        [Description("Update a cosplay bought item")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult UpdateCosplayBoughtItem([FromRoute] Guid cosplayItemId, [FromBody] CosplayBoughtItemForUpdateDTO cosplayBoughtItem)
         {
+            _cosplayItemService.UpdateCosplayBoughtItem(cosplayItemId, cosplayBoughtItem);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Update a cosplay made item
+        /// </summary>
+        /// <param name="cosplayItemId">The id of the desired cosplay made item</param>
+        [HttpPut("{cosplayItemId}")]
+        [Description("Update a cosplay made item")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult UpdateCosplayMadeItem([FromRoute] Guid cosplayItemId, [FromBody] CosplayMadeItemForUpdateDTO cosplayMadeItem)
+        {
+            _cosplayItemService.UpdateCosplayMadeItem(cosplayItemId, cosplayMadeItem);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Delete a cosplay
+        /// </summary>
+        /// <param name="cosplayItemId">The id of the desired cosplay</param>
+        [HttpDelete("{cosplayItemId}")]
+        [Description("Delete a cosplay item")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public IActionResult DeleteCosplayItem([FromRoute] Guid cosplayItemId)
+        {
+            _cosplayItemService.DeleteCosplayItem(cosplayItemId);
+            return NoContent();
         }
     }
 }
