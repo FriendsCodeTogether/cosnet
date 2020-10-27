@@ -1,10 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CosNet.Shared.DTOs
+namespace CosNet.Shared.DTOs.Cosplay
 {
-    public class CosplayForCreationDTO
+    public class CosplayDTO
     {
+        public Guid CosplayId { get; set; }
+        public Guid UserId { get; set; }
+
         [Required]
         public string Name { get; set; }
 

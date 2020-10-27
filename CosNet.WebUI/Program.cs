@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using CosNet.WebUI.Services;
 
 namespace CosNet.WebUI
 {
@@ -32,6 +33,8 @@ namespace CosNet.WebUI
             });
 
          builder.Services.AddScoped(sp => sp.GetService<IHttpClientFactory>().CreateClient("api"));
+
+         builder.Services.AddScoped<ICosplayService, CosplayService>();
 
          builder.Services.AddOidcAuthentication(options =>
             {

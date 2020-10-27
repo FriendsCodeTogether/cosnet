@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CosNet.Shared.DTOs
+namespace CosNet.Shared.DTOs.Cosplay
 {
     public class CosplayForUpdateDTO
     {
