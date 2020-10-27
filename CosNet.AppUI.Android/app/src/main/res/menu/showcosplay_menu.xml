@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+    android:id="@+id/showCosplayEditMenu"
+    app:showAsAction="never"
+    android:title="Edit"
+    android:actionLayout="@layout/activity_show_cosplay"/>
+  <item
+    android:id="@+id/showCosplayFinishMenu"
+    app:showAsAction="never"
+    android:title="Finish"
+    android:actionLayout="@layout/activity_show_cosplay"/>
+  <item
+    android:id="@+id/showCosplayDeleteMenu"
+    app:showAsAction="never"
+    android:title="Delete"
+    android:actionLayout="@layout/activity_show_cosplay"/>
+  <item
+    android:id="@+id/showCosplayStatsMenu"
+    app:showAsAction="never"
+    android:title="Stats"
+    android:actionLayout="@layout/activity_show_cosplay"/>
+</menu>
