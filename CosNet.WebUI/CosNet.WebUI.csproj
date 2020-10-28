@@ -30,7 +30,7 @@
 
   <Target Name="CompileComponentSass" BeforeTargets="CompileWwwrootSass">
     <Message Text="Compiling Component SCSS files" Importance="high" />
-    <Exec Command="npm run sass -- --style=compressed --no-source-map %(ComponentScssFiles.Identity) %(relativedir)%(filename).css" />
+    <Exec Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('%(ComponentScssFiles.Identity)', `.*[/\\]_.*`))" Command="npm run sass -- --style=compressed --no-source-map --load-path=Styles/Core %(ComponentScssFiles.Identity) %(relativedir)%(filename).css" />
   </Target>
 
   <Target Name="CompileWwwrootSass" BeforeTargets="Compile">
