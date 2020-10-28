@@ -54,8 +54,6 @@ public class HomeFragment extends Fragment {
     //Set event listeners
     cosplayList.setOnItemClickListener((parent, view, position, id) -> {
       Cosplay cosplay = cosplays.get(position);
-      Log.d("COSPLAY", "onCreateView: " + cosplay.cosplayName + " " + cosplay.cosplaySeries);
-
       Intent intent = new Intent(getActivity(), ShowCosplay.class);
       intent.putExtra("cosplay",(Serializable) cosplay);
       startActivity(intent);
