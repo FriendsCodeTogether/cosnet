@@ -15,8 +15,6 @@ namespace CosNet.API.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid CosplayItemId { get; set; }
 
-        public Guid CosplayId { get; set; }
-
         [Required]
         [MinLength(1)]
         [MaxLength(150)]
@@ -27,5 +25,9 @@ namespace CosNet.API.Entities
 
         [MaxLength(150)]
         public string Description { get; set; }
+
+
+        public Guid CosplayId { get; set; }
+        public Cosplay Cosplay { get; set; }
     }
 }

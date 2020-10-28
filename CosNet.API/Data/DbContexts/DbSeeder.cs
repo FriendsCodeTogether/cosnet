@@ -10,7 +10,7 @@ namespace CosNet.API.Data.DBContexts
     {
         public static void Seed(ApplicationDbContext context)
         {
-            if (!context.Cosplays.Any())
+            if (!context.Cosplays.Any() && !context.CosplayItems.Any())
             {
                 var cosplays = new List<Cosplay>()
                 {
@@ -67,10 +67,7 @@ namespace CosNet.API.Data.DBContexts
                 };
                 context.Cosplays.AddRange(cosplays);
                 context.SaveChanges();
-            }
 
-            if (!context.CosplayItems.Any())
-            {
                 var cosplayItems = new List<CosplayItem>
                 {
                     new CosplayBoughtItem
@@ -81,7 +78,7 @@ namespace CosNet.API.Data.DBContexts
                         BuyLink = "https://www.kittyconnection.net/",
                         Price = 25.0m,
                         Description = "It's a black shirt! What else?",
-                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                        Cosplay = cosplays[0]
                     },
                     new CosplayBoughtItem
                     {
@@ -91,7 +88,7 @@ namespace CosNet.API.Data.DBContexts
                         BuyLink = "https://www.kittyconnection.net/",
                         Price = 30.0m,
                         Description = "It's a black trouser! What else?",
-                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                        Cosplay = cosplays[0]
                     },
                     new CosplayBoughtItem
                     {
@@ -101,7 +98,7 @@ namespace CosNet.API.Data.DBContexts
                         BuyLink = "https://www.kittyconnection.net/",
                         Price = 15.0m,
                         Description = "It's a black gloves! What else?",
-                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                        Cosplay = cosplays[0]
                     },
                     new CosplayMadeItem
                     {
@@ -113,7 +110,7 @@ namespace CosNet.API.Data.DBContexts
                         EndDate = DateTime.Now.AddMonths(5),
                         Progress = 10,
                         WorkTime = new TimeSpan(5, 10, 00),
-                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                        Cosplay = cosplays[0]
                     },
                     new CosplayMadeItem
                     {
@@ -125,7 +122,7 @@ namespace CosNet.API.Data.DBContexts
                         EndDate = DateTime.Now.AddMonths(1),
                         Progress = 50,
                         WorkTime = new TimeSpan(4, 25, 00),
-                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                        Cosplay = cosplays[0]
                     },
                     new CosplayMadeItem
                     {
@@ -137,7 +134,7 @@ namespace CosNet.API.Data.DBContexts
                         EndDate = DateTime.Now.AddMonths(3),
                         Progress = 30,
                         WorkTime = new TimeSpan(1, 30, 00),
-                        CosplayId = Guid.NewGuid() //Needs to change when introducing users
+                        Cosplay = cosplays[0]
                     }
                 };
                 context.CosplayItems.AddRange(cosplayItems);
