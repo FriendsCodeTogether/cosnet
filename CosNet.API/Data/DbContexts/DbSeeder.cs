@@ -78,6 +78,7 @@ namespace CosNet.API.Data.DBContexts
                         BuyLink = "https://www.kittyconnection.net/",
                         Price = 25.0m,
                         Description = "It's a black shirt! What else?",
+                        CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
                     new CosplayBoughtItem
@@ -88,6 +89,7 @@ namespace CosNet.API.Data.DBContexts
                         BuyLink = "https://www.kittyconnection.net/",
                         Price = 30.0m,
                         Description = "It's a black trouser! What else?",
+                        CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
                     new CosplayBoughtItem
@@ -98,6 +100,7 @@ namespace CosNet.API.Data.DBContexts
                         BuyLink = "https://www.kittyconnection.net/",
                         Price = 15.0m,
                         Description = "It's a black gloves! What else?",
+                        CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
                     new CosplayMadeItem
@@ -110,6 +113,7 @@ namespace CosNet.API.Data.DBContexts
                         EndDate = DateTime.Now.AddMonths(5),
                         Progress = 10,
                         WorkTime = new TimeSpan(5, 10, 00),
+                        CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
                     new CosplayMadeItem
@@ -122,6 +126,7 @@ namespace CosNet.API.Data.DBContexts
                         EndDate = DateTime.Now.AddMonths(1),
                         Progress = 50,
                         WorkTime = new TimeSpan(4, 25, 00),
+                        CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
                     new CosplayMadeItem
@@ -134,6 +139,7 @@ namespace CosNet.API.Data.DBContexts
                         EndDate = DateTime.Now.AddMonths(3),
                         Progress = 30,
                         WorkTime = new TimeSpan(1, 30, 00),
+                        CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     }
                 };
