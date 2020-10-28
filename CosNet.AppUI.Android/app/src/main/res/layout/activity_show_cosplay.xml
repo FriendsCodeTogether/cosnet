@@ -7,34 +7,26 @@
   android:background="@color/colorPrimaryDark"
   tools:context=".ShowCosplay">
 
-  <com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/appBarLayout"
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:theme="@style/AppTheme.AppBarOverlay"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@drawable/gradient"
     app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      android:background="@drawable/gradient"
-      app:popupTheme="@style/AppTheme.PopupOverlay">
 
+    <TextView
+      android:id="@+id/toolbarTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:fontFamily="@font/kalam_bold"
+      android:text="@string/CosNet"
+      android:textColor="@android:color/white"
+      android:textSize="40sp" />
+  </androidx.appcompat.widget.Toolbar>
 
-      <TextView
-        android:id="@+id/toolbarTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/kalam_bold"
-        android:text="@string/CosNet"
-        android:textColor="@android:color/white"
-        android:textSize="40sp" />
-    </androidx.appcompat.widget.Toolbar>
-
-
-  </com.google.android.material.appbar.AppBarLayout>
 
   <ImageView
     android:id="@+id/CosplayPic"
@@ -42,7 +34,7 @@
     android:layout_height="100dp"
     android:contentDescription="@string/CosplayPic"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar"
     app:srcCompat="@drawable/ic_launcher_background" />
 
   <TextView
@@ -59,7 +51,7 @@
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/CosplayPic"
-    app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+    app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
   <TextView
     android:id="@+id/Series"
