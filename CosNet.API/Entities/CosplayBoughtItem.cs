@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CosNet.API.Entities
 {
-    public class CosplayBoughtItem : CosplayItem
+    public class CosplayBoughtItem : CosplayItemBase
     {
         [MaxLength(150)]
         public string BuyLink { get; set; }

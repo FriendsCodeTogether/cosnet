@@ -29,7 +29,7 @@ namespace CosNet.API.Controllers
         /// <returns>A list of cosplay items</returns>
         [HttpGet]
         [Description("Get all cosplay items")]
-        [ProducesResponseType(typeof(List<CosplayItemDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<CosplayItemBaseDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult GetCosplayItems()
@@ -44,7 +44,7 @@ namespace CosNet.API.Controllers
         /// <returns>a cosplay</returns>
         [HttpGet("{cosplayItemId}")]
         [Description("Get a cosplay item by id")]
-        [ProducesResponseType(typeof(CosplayItemDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CosplayItemBaseDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult GetCosplayItem([FromRoute] Guid cosplayItemId)
@@ -55,7 +55,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Create cosplay bought item
         /// </summary>
-        [HttpPost]
+        [HttpPost("bought")]
         [Description("Create cosplay bought item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -69,7 +69,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Create cosplay made item
         /// </summary>
-        [HttpPost]
+        [HttpPost("made")]
         [Description("Create cosplay made item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -84,7 +84,7 @@ namespace CosNet.API.Controllers
         /// Update a cosplay bought item
         /// </summary>
         /// <param name="cosplayItemId">The id of the desired cosplay bought item</param>
-        [HttpPut("{cosplayItemId}")]
+        [HttpPut("bought/{cosplayItemId}")]
         [Description("Update a cosplay bought item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -99,7 +99,7 @@ namespace CosNet.API.Controllers
         /// Update a cosplay made item
         /// </summary>
         /// <param name="cosplayItemId">The id of the desired cosplay made item</param>
-        [HttpPut("{cosplayItemId}")]
+        [HttpPut("made/{cosplayItemId}")]
         [Description("Update a cosplay made item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

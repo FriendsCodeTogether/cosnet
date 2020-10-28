@@ -21,14 +21,14 @@ namespace CosNet.API.Services
             _cosplayItemRepository = cosplayItemRepository;
         }
 
-        public IEnumerable<CosplayItemDTO> GetCosplayItems()
+        public IEnumerable<CosplayItemBaseDTO> GetCosplayItems()
         {
             var cosplayItems = _cosplayItemRepository.GetCosplayItems();
-            var cosplayItemDTOs = _mapper.Map<IEnumerable<CosplayItemDTO>>(cosplayItems);
+            var cosplayItemDTOs = _mapper.Map<IEnumerable<CosplayItemBaseDTO>>(cosplayItems);
             return cosplayItemDTOs;
         }
 
-        public CosplayItemDTO GetCosplayItem(Guid cosplayItemId)
+        public CosplayItemBaseDTO GetCosplayItem(Guid cosplayItemId)
         {
             var cosplayItem = _cosplayItemRepository.GetCosplayItem(cosplayItemId);
 
@@ -37,20 +37,20 @@ namespace CosNet.API.Services
                 throw new NotFoundException();
             }
 
-            var cosplayItemDTO = _mapper.Map<CosplayItemDTO>(cosplayItem);
+            var cosplayItemDTO = _mapper.Map<CosplayItemBaseDTO>(cosplayItem);
             return cosplayItemDTO;
         }
 
         public void CreateCosplayBoughtItem(CosplayBoughtItemForCreationDTO cosplayBoughtItem)
         {
-            var cosplayBoughtEntity = _mapper.Map<CosplayItem>(cosplayBoughtItem);
+            var cosplayBoughtEntity = _mapper.Map<CosplayItemBase>(cosplayBoughtItem);
             _cosplayItemRepository.AddCosplayItem(cosplayBoughtEntity);
             _cosplayItemRepository.SaveChanges();
         }
 
         public void CreateCosplayMadeItem(CosplayMadeItemForCreationDTO cosplayMadeItem)
         {
-            var cosplayMadeEntity = _mapper.Map<CosplayItem>(cosplayMadeItem);
+            var cosplayMadeEntity = _mapper.Map<CosplayItemBase>(cosplayMadeItem);
             _cosplayItemRepository.AddCosplayItem(cosplayMadeEntity);
             _cosplayItemRepository.SaveChanges();
         }

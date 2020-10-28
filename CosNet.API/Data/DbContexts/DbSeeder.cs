@@ -68,7 +68,7 @@ namespace CosNet.API.Data.DBContexts
                 context.Cosplays.AddRange(cosplays);
                 context.SaveChanges();
 
-                var cosplayItems = new List<CosplayItem>
+                var cosplayItems = new List<CosplayItemBase>
                 {
                     new CosplayBoughtItem
                     {

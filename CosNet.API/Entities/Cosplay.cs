@@ -30,6 +30,6 @@ namespace CosNet.API.Entities
         [MaxLength(25)]
         public string Status { get; set; }
 
-        public IEnumerable<CosplayItem> Items { get; set; }
+        public IEnumerable<CosplayItemBase> Items { get; set; }
     }
 }

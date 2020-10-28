@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CosNet.Shared.DTOs.CosplayItem
 {
-    public class CosplayMadeItemDTO : CosplayItemDTO
+    public class CosplayMadeItemDTO : CosplayItemBaseDTO
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

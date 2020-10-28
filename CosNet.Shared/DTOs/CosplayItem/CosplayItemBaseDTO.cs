@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CosNet.Shared.DTOs.CosplayItem
 {
-    public class CosplayItemDTO
+    public abstract class CosplayItemBaseDTO
     {
         public Guid CosplayItemId { get; set; }
         public Guid CosplayId { get; set; }
