@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Item {
+public class CosplayItem {
   @PrimaryKey(autoGenerate = true)
   public int id;
 
@@ -43,5 +43,5 @@ public class Item {
 
   @Nullable public String buylink;
 
-  public Item() { this.itemId = UUID.randomUUID().toString(); }
+  public CosplayItem() { this.itemId = UUID.randomUUID().toString(); }
 }

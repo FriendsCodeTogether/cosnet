@@ -1,12 +1,8 @@
 package cosnet.android;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,7 +17,10 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.List;
 
 import cosnet.android.DAOs.CosplayDAO;
+import cosnet.android.DAOs.CosplayItemDAO;
 import cosnet.android.Entities.Cosplay;
+import cosnet.android.Entities.CosplayItem;
+import cosnet.android.Entities.CosplayWithItems;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +33,80 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = CosnetDb.getInstance(this);
+
+      new Thread(new Runnable() {
+        @Override
+        public void run() {
+
+          //import DAO's
+          CosplayDAO cosplayDAO = db.getCosplayDAO();
+          CosplayItemDAO CosplayItemDAO = db.getCosplayItemDAO();
+
+          Cosplay cosplay = new Cosplay();
+          cosplay.cosplayName = "testname";
+          cosplay.cosplaySeries = "testSeries";
+          cosplay.startDate = "19/10/2020";
+          cosplay.dueDate = "20/10/2020";
+          cosplay.budget = 25.00;
+          cosplay.status = "In progress";
+          cosplayDAO.insertCosplay(cosplay);
+
+          CosplayItem cosplayItem = new CosplayItem();
+          cosplayItem.cosplayId = cosplayDAO.getCosplayById(2).cosplayId;
+          cosplayItem.buylink = "www.something.com";
+          cosplayItem.description = "Epic sword of doom";
+          cosplayItem.dueDate = "10/15/2020";
+          cosplayItem.price  =150.69;
+          cosplayItem.status = "Being Delivered";
+          cosplayItem.itemName = "Magic wand";
+          CosplayItemDAO.insertItem(cosplayItem);
+          Log.d("Add Item", "added item: "+ cosplayItem);
+
+          CosplayItem cosplayItem2 = new CosplayItem();
+          cosplayItem2.cosplayId = cosplayDAO.getCosplayById(1).cosplayId;
+          cosplayItem2.buylink = "www.something.com";
+          cosplayItem2.description = "Epic sword of doom";
+          cosplayItem2.dueDate = "10/15/2020";
+          cosplayItem2.price  =150.69;
+          cosplayItem2.status = "Being Delivered";
+          cosplayItem2.itemName = "Okarina of time";
+          CosplayItemDAO.insertItem(cosplayItem2);
+          Log.d("Add Item", "added item: "+ cosplayItem2);
+          /*
+          cosplayItem = CosplayItemDAO.getCosplayItemById(1);
+          Log.d("Add Item", "added item: "+ cosplayItem.itemName);*/
+
+          List<CosplayWithItems> list = CosplayItemDAO.getCosplayWithItems();
+          for (CosplayWithItems c:list){
+            Log.d("COSPLAY", "run: "+ c.cosplayItems);
+          }
+
+
+
+
+
+          //////////////////////////////////
+/*          Cosplay cosplay = dao.getCosplayById(1);
+          Log.d("COSPLAY", "run: "+ cosplay.cosplay_name);
+          cosplay.cosplay_name = "nieuwename";
+          dao.updateCosplay(cosplay);
+          Cosplay uc = dao.getCosplayById(1);
+          Log.d("COSPLAY", "run: "+ uc.cosplay_name);
+
+          List<Cosplay> list = dao.getAllCosplays();
+          for (Cosplay c:list){
+            Log.d("COSPLAY", "run: "+ c.cosplay_name);
+          }
+          Cosplay cosplay = dao.getCosplayById(1);
+          dao.deleteCosplay(cosplay);
+          Log.d("COSPLAY", "run:Cosplay deleted");
+          list = dao.getAllCosplays();
+          for (Cosplay c:list){
+            Log.d("COSPLAY", "run: "+ c.cosplay_name);
+          }*/
+        }
+      }).start();
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

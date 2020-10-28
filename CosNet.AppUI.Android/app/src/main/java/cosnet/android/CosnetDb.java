@@ -6,16 +6,17 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import cosnet.android.DAOs.CosplayDAO;
-import cosnet.android.Entities.Cosplay;
+import cosnet.android.DAOs.*;
+import cosnet.android.Entities.*;
 
-@Database(entities = {Cosplay.class}, version = 1)
-public abstract class CosnetDb extends RoomDatabase {
+@Database(entities = {Cosplay.class, CosplayItem.class}, version = 2)
+public abstract  class CosnetDb extends RoomDatabase {
 
    private static CosnetDb minstance;
    private static final String DB_NAME = "cosnet.db";
 
    public abstract CosplayDAO getCosplayDAO();
+   public abstract CosplayItemDAO getCosplayItemDAO();
 
    public static synchronized CosnetDb getInstance(Context ctx){
       if (minstance == null){
@@ -23,7 +24,6 @@ public abstract class CosnetDb extends RoomDatabase {
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build();
-
       }
       return minstance;
    }
