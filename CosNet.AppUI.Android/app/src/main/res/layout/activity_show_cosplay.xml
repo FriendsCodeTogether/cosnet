@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  tools:context=".ShowCosplay">
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@drawable/gradient"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+      android:id="@+id/toolbarTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:fontFamily="@font/kalam_bold"
+      android:text="@string/CosNet"
+      android:textColor="@android:color/white"
+      android:textSize="40sp" />
+  </androidx.appcompat.widget.Toolbar>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    <TextView
+      android:id="@+id/DueDateLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/Due_Date"
+      android:textColor="@android:color/tertiary_text_light"
+      android:textSize="12sp"
+      app:layout_constraintEnd_toStartOf="@+id/DueDate"
+      app:layout_constraintTop_toTopOf="@+id/Status" />
+
+    <TextView
+      android:id="@+id/Series"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/SeriesHint"
+      android:textColor="@android:color/background_light"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/Character"
+      app:layout_constraintTop_toBottomOf="@+id/Character" />
+
+    <TextView
+      android:id="@+id/Character"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CharacterHint"
+      android:textColor="@android:color/background_light"
+      android:textSize="18sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/CosplayPic"
+      app:layout_constraintTop_toTopOf="@+id/CosplayPic" />
+
+    <TextView
+      android:id="@+id/DueDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/DueDateHint"
+      android:textColor="@android:color/background_light"
+      android:textSize="12sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/DueDateLbl" />
+
+    <TextView
+      android:id="@+id/StatusLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/Status"
+      android:textColor="@android:color/tertiary_text_light"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="@+id/CosplayPic"
+      app:layout_constraintStart_toStartOf="@+id/Character"
+      app:layout_constraintTop_toBottomOf="@+id/Series" />
+
+    <ImageView
+      android:id="@+id/CosplayPic"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:contentDescription="@string/CosplayPic"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+      android:id="@+id/Status"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/Planned"
+      android:textColor="@android:color/background_light"
+      android:textSize="12sp"
+      app:layout_constraintStart_toEndOf="@+id/StatusLbl"
+      app:layout_constraintTop_toTopOf="@+id/StatusLbl" />
+
+    <View
+      android:id="@+id/view"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:background="@color/colorFiller"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/CosplayPic" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
