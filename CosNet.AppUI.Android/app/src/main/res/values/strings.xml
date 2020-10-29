@@ -43,4 +43,9 @@
   <string name="In_Progess">In Progress</string>
   <string name="Planned">Planned</string>
 
+  <!--MENUITEMS-->
+  <string name="EditMenuItem">Edit</string>
+  <string name="FinishMenuItem">Finish</string>
+  <string name="DeleteMenuItem">Delete</string>
+
 </resources>

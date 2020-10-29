@@ -69,6 +69,9 @@ public class ShowCosplay extends AppCompatActivity {
       case R.id.showCosplayEditMenu:
         Toast.makeText(this, "edit selected", Toast.LENGTH_SHORT).show();
         return true;
+      case R.id.showCosplayFinishMenu:
+        Toast.makeText(this, "finish selected", Toast.LENGTH_SHORT).show();
+        return true;
       case R.id.showCosplayDeleteMenu:
         Toast.makeText(this, "delete selected", Toast.LENGTH_SHORT).show();
         return true;
