@@ -1,5 +1,5 @@
 ﻿@page "/cosplay/{CosplayId:guid}"
-@inject HttpClient Http
+@inject ICosplayService CosplayService
 
 @if (cosplay == null)
 {
@@ -41,6 +41,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        cosplay = await Http.GetFromJsonAsync<CosplayDTO>($"/cosplay/{CosplayId}");
+        cosplay = await CosplayService.GetCosplayAsync(CosplayId);
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page "/cosplay"
-@inject HttpClient Http
+@inject ICosplayService CosplayService
 @inject NavigationManager NavigationManager
 @attribute [Authorize]
 
@@ -38,11 +38,11 @@
 </div>
 
 @code {
-    private List<CosplayDTO> cosplays;
+    private IEnumerable<CosplayDTO> cosplays;
 
     protected override async Task OnInitializedAsync()
     {
-        cosplays = await Http.GetFromJsonAsync<List<CosplayDTO>>("/cosplay");
+        cosplays = await CosplayService.GetCosplaysAsync();
     }
 
     public void ClickedToId(Guid cosplayId)
