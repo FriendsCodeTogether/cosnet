@@ -36,7 +36,7 @@
   </Target>
 
   <Target Name="CompileGlobalSass" BeforeTargets="Compile">
-    <Message Text="Compiling wwwroot SCSS files" Importance="high" />
+    <Message Text="Compiling global SCSS file" Importance="high" />
     <Exec Command="npm run sass -- --style=compressed Styles:wwwroot/css" />
   </Target>
 </Project>
