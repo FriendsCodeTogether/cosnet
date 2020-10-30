@@ -34,10 +34,10 @@
   padding: 0.4rem 4rem;
   font-size: 1.1em;
   background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
-}
 
-.cosplay-form-group-button-save:hover {
-  filter: brightness(50%);
+  &:hover {
+    filter: brightness(50%);
+  }
 }
 
 .cosplay-form-group-button-cancel {
@@ -45,10 +45,10 @@
   padding: 0.4rem 4rem;
   font-size: 1.1em;
   background-color: #808080;
-}
 
-.cosplay-form-group-button-cancel:hover {
-  background-color: #80808077;
+  &:hover {
+    background-color: #80808077;
+  }
 }
 
 .form-input {
@@ -70,18 +70,18 @@
 
 .currencyinput {
   position: relative;
-}
 
-.currencyinput:before {
-  position: absolute;
-  top: -3px;
-  content: '€';
-  left: 7px;
-}
+  &:before {
+    position: absolute;
+    top: -3px;
+    content: '€';
+    left: 7px;
+  }
 
-.currencyinput .form-input {
-  padding-left: 18px;
-  width: calc(350px - 9px);
+  .form-input {
+    padding-left: 18px;
+    width: calc(350px - 9px);
+  }
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -106,8 +106,8 @@
   margin-top: 1rem;
   font-size: 1.1em;
   background-color: #be1616;
-}
 
-.cosplay-form-group-button-delete:hover {
-  background-color: #be161680;
+  &:hover {
+    background-color: #be161680;
+  }
 }

@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 
-@import url('base.css');
-@import url('navbar.css');
-@import url('home.css');
-@import url('cosplay-list.css');
-@import url('cosplay-form.css');
-@import url('cosplay-show.css');
+@import 'base';
+@import 'navbar';
+@import 'home';
+@import 'cosplay-list';
+@import 'cosplay-form';
+@import 'cosplay-show';
