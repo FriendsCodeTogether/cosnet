@@ -43,10 +43,9 @@ jobs:
         with:
           dotnet-version: '3.1.102'
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: '12'
-          check-latest: true
       - run: cd ./CosNet.WebUI && npm install
 
       - name: Build with dotnet
