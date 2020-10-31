@@ -40,10 +40,14 @@
 @code {
     private IEnumerable<CosplayDTO> cosplays;
 
+    [Parameter]
+    public Guid CosplayId { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         cosplays = await CosplayService.GetCosplaysAsync();
     }
+
 
     public void ClickedToId(Guid cosplayId)
     {

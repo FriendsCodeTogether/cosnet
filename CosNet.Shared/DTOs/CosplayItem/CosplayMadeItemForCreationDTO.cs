@@ -7,6 +7,9 @@ namespace CosNet.Shared.DTOs.CosplayItem
 {
     public class CosplayMadeItemForCreationDTO
     {
+        public Guid CosplayItemId { get; set; }
+        public Guid CosplayId { get; set; }
+
         [Required]
         public string Name { get; set; }
         public string Status { get; set; }

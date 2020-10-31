@@ -26,6 +26,7 @@ namespace CosNet.API.Entities
         [MaxLength(150)]
         public string Description { get; set; }
 
+        public bool IsMade { get; set; }
 
         public Guid CosplayId { get; set; }
         public Cosplay Cosplay { get; set; }

@@ -1,0 +1,76 @@
+﻿@page "/cosplay/{CosplayId:guid}/cosplayitem"
+@inject ICosplayItemService CosplayItemService
+@inject NavigationManager NavigationManager
+@attribute [Authorize]
+
+<div class="cosplayitem-list-container">
+    <div class="cosplayitem-list-top-row">
+        <h1 class="title">Cosplay items</h1>
+        <span class="flex-spacer"></span>
+        <a class="cosplayitem-list-btn btn btn-primary rounded-pill" href="cosplay/@cosplayId.ToString()/cosplayitem/create">Add</a>
+    </div>
+
+    @if (cosplayMadeItems == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <div class="cosplaymadeitem-list-title">
+            Made items
+        </div>
+        @foreach (var item in cosplayMadeItems)
+        {
+            <div class="cosplaymadeitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplaymadeitem-list-item-image" />
+                <div class="cosplaymadeitem-list-item-text">
+                    <h4>@item.Name</h4>
+                    <p>Price: &#9;Time: @item.WorkTime</p>
+                    <div class="cosplaymadeitem-list-item-progressbar">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="cosplaymadeitem-list-item-icon">
+                    Icon
+                </div>
+            </div>
+        }
+        <span class="flex-spacer"/>
+        
+        <div class="cosplayboughtitem-list-title">
+            Bought items
+        </div>
+        @foreach (var item in cosplayBoughtItems)
+        {
+            <div class="cosplayboughtitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayboughtitem-list-item-image" />
+                <div class="cosplayboughtitem-list-item-text">
+                    <h4>@item.Name</h4>
+                    <p>Price:</p>
+                </div>
+                <div class="cosplayboughtitem-list-item-icon">
+                    Icon
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private IEnumerable<CosplayBoughtItemDTO> cosplayBoughtItems;
+    private IEnumerable<CosplayMadeItemDTO> cosplayMadeItems;
+
+    [Parameter]
+    public Guid cosplayId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        cosplayBoughtItems = await CosplayItemService.GetCosplayBoughtItemsAsync();
+        cosplayMadeItems = await CosplayItemService.GetCosplayMadeItemsAsync();
+    }
+
+    public void ClickedToId(Guid cosplayItemId)
+    {
+        NavigationManager.NavigateTo($"cosplay/{cosplayId.ToString()}/cosplayitem/{cosplayItemId.ToString()}");
+    }
+}

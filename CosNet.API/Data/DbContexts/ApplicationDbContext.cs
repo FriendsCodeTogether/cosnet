@@ -14,8 +14,8 @@ namespace CosNet.API.Data.DBContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CosplayBoughtItem>(); //.ToTable("CosplayBoughtItem");
-            modelBuilder.Entity<CosplayMadeItem>(); //.ToTable("CosplayMadeItem");
+            modelBuilder.Entity<CosplayBoughtItem>();
+            modelBuilder.Entity<CosplayMadeItem>();
         }
     }
 }
