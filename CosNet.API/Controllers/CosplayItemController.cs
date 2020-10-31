@@ -29,7 +29,7 @@ namespace CosNet.API.Controllers
         /// <returns>A list of cosplay items</returns>
         [HttpGet]
         [Description("Get all cosplay items")]
-        [ProducesResponseType(typeof(List<CosplayItemBaseDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<CosplayItemDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult GetCosplayItems()
@@ -44,7 +44,7 @@ namespace CosNet.API.Controllers
         /// <returns>a cosplay</returns>
         [HttpGet("{cosplayItemId}")]
         [Description("Get a cosplay item by id")]
-        [ProducesResponseType(typeof(CosplayItemBaseDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CosplayItemDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult GetCosplayItem([FromRoute] Guid cosplayItemId)
@@ -53,60 +53,31 @@ namespace CosNet.API.Controllers
         }
 
         /// <summary>
-        /// Create cosplay bought item
+        /// Create cosplay item
         /// </summary>
-        [HttpPost("bought")]
-        [Description("Create cosplay bought item")]
+        [HttpPost]
+        [Description("Create cosplay item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult CreateCosplayBoughtItem([FromBody] CosplayBoughtItemForCreationDTO cosplayBoughtItem)
+        public IActionResult CreateCosplayItem([FromBody] CosplayItemForCreationDTO cosplayItem)
         {
-            _cosplayItemService.CreateCosplayBoughtItem(cosplayBoughtItem);
+            _cosplayItemService.CreateCosplayItem(cosplayItem);
             return NoContent();
         }
 
         /// <summary>
-        /// Create cosplay made item
+        /// Update a cosplay item
         /// </summary>
-        [HttpPost("made")]
-        [Description("Create cosplay made item")]
+        /// <param name="cosplayItemId">The id of the desired cosplay item</param>
+        [HttpPut("{cosplayItemId}")]
+        [Description("Update a cosplay item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult CreateCosplayMadeItem([FromBody] CosplayMadeItemForCreationDTO cosplayMadeItem)
+        public IActionResult UpdateCosplayItem([FromRoute] Guid cosplayItemId, [FromBody] CosplayItemForUpdateDTO cosplayItem)
         {
-            _cosplayItemService.CreateCosplayMadeItem(cosplayMadeItem);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Update a cosplay bought item
-        /// </summary>
-        /// <param name="cosplayItemId">The id of the desired cosplay bought item</param>
-        [HttpPut("bought/{cosplayItemId}")]
-        [Description("Update a cosplay bought item")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult UpdateCosplayBoughtItem([FromRoute] Guid cosplayItemId, [FromBody] CosplayBoughtItemForUpdateDTO cosplayBoughtItem)
-        {
-            _cosplayItemService.UpdateCosplayBoughtItem(cosplayItemId, cosplayBoughtItem);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Update a cosplay made item
-        /// </summary>
-        /// <param name="cosplayItemId">The id of the desired cosplay made item</param>
-        [HttpPut("made/{cosplayItemId}")]
-        [Description("Update a cosplay made item")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult UpdateCosplayMadeItem([FromRoute] Guid cosplayItemId, [FromBody] CosplayMadeItemForUpdateDTO cosplayMadeItem)
-        {
-            _cosplayItemService.UpdateCosplayMadeItem(cosplayItemId, cosplayMadeItem);
+            _cosplayItemService.UpdateCosplayItem(cosplayItemId, cosplayItem);
             return NoContent();
         }
 

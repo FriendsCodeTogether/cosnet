@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CosNet.API.Entities
 {
-    public abstract class CosplayItemBase
+    public class CosplayItem
     {
         [Key]
         public int Id { get; set; }
@@ -27,6 +27,8 @@ namespace CosNet.API.Entities
         public string Description { get; set; }
 
         public bool IsMade { get; set; }
+        public CosplayItemBoughtInfo BoughtInfo { get; set; }
+        public CosplayItemMadeInfo MadeInfo { get; set; }
 
         public Guid CosplayId { get; set; }
         public Cosplay Cosplay { get; set; }

@@ -6,12 +6,10 @@ namespace CosNet.API.Services
 {
     public interface ICosplayItemService
     {
-        void CreateCosplayBoughtItem(CosplayBoughtItemForCreationDTO cosplayBoughtItem);
-        void CreateCosplayMadeItem(CosplayMadeItemForCreationDTO cosplayMadeItem);
+        void CreateCosplayItem(CosplayItemForCreationDTO cosplayItem);
         void DeleteCosplayItem(Guid cosplayItemId);
-        CosplayItemBaseDTO GetCosplayItem(Guid cosplayItemId);
-        IEnumerable<CosplayItemBaseDTO> GetCosplayItems();
-        void UpdateCosplayBoughtItem(Guid cosplayItemId, CosplayBoughtItemForUpdateDTO cosplayBoughtItem);
-        void UpdateCosplayMadeItem(Guid cosplayItemId, CosplayMadeItemForUpdateDTO cosplayMadeItem);
+        CosplayItemDTO GetCosplayItem(Guid cosplayItemId);
+        IEnumerable<CosplayItemDTO> GetCosplayItems();
+        void UpdateCosplayItem(Guid cosplayItemId, CosplayItemForUpdateDTO cosplayItem);
     }
 }

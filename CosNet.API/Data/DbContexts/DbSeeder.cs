@@ -68,77 +68,101 @@ namespace CosNet.API.Data.DBContexts
                 context.Cosplays.AddRange(cosplays);
                 context.SaveChanges();
 
-                var cosplayItems = new List<CosplayItemBase>
+                var cosplayItems = new List<CosplayItem>
                 {
-                    new CosplayBoughtItem
+                    new CosplayItem
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Shirt",
                         Status = "Bought",
-                        BuyLink = "https://www.kittyconnection.net/",
-                        Price = 25.0m,
                         Description = "It's a black shirt! What else?",
+                        IsMade = false,
+                        BoughtInfo = new CosplayItemBoughtInfo
+                        {
+                            BuyLink = "https://www.kittyconnection.net/",
+                            Price = 25.0m
+                        },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
-                    new CosplayBoughtItem
+                    new CosplayItem
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Trouser",
                         Status = "Bought",
-                        BuyLink = "https://www.kittyconnection.net/",
-                        Price = 30.0m,
                         Description = "It's a black trouser! What else?",
+                        IsMade = false,
+                        BoughtInfo = new CosplayItemBoughtInfo
+                        {
+                            BuyLink = "https://www.kittyconnection.net/",
+                            Price = 30.0m
+                        },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
-                    new CosplayBoughtItem
+                    new CosplayItem
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Gloves",
                         Status = "Ordered",
-                        BuyLink = "https://www.kittyconnection.net/",
-                        Price = 15.0m,
                         Description = "It's a black gloves! What else?",
+                        IsMade = false,
+                        BoughtInfo = new CosplayItemBoughtInfo
+                        {
+                            BuyLink = "https://www.kittyconnection.net/",
+                            Price = 15.0m
+                        },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
-                    new CosplayMadeItem
+                    new CosplayItem
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Katana",
                         Status = "On Hold",
                         Description = "It's a black katana! Forged by the underdark dwarves",
-                        StartDate = DateTime.Now,
-                        EndDate = DateTime.Now.AddMonths(5),
-                        Progress = 10,
-                        WorkTime = new TimeSpan(5, 10, 00),
+                        IsMade = true,
+                        MadeInfo = new CosplayItemMadeInfo
+                        {
+                            StartDate = DateTime.Now,
+                            EndDate = DateTime.Now.AddMonths(5),
+                            Progress = 10,
+                            WorkTime = new TimeSpan(5, 10, 00)
+                        },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
-                    new CosplayMadeItem
+                    new CosplayItem
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Boots",
                         Status = "In Progress",
                         Description = "Their black boots! Made from demon-cow leather",
-                        StartDate = DateTime.Now,
-                        EndDate = DateTime.Now.AddMonths(1),
-                        Progress = 50,
-                        WorkTime = new TimeSpan(4, 25, 00),
+                        IsMade = true,
+                        MadeInfo = new CosplayItemMadeInfo
+                        {
+                            StartDate = DateTime.Now,
+                            EndDate = DateTime.Now.AddMonths(1),
+                            Progress = 50,
+                            WorkTime = new TimeSpan(4, 25, 00)
+                        },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
-                    new CosplayMadeItem
+                    new CosplayItem
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Cap",
                         Status = "In Progress",
                         Description = "It's a black cap! To hide from nosy people or Corona",
-                        StartDate = DateTime.Now,
-                        EndDate = DateTime.Now.AddMonths(3),
-                        Progress = 30,
-                        WorkTime = new TimeSpan(1, 30, 00),
+                        IsMade = true,
+                        MadeInfo = new CosplayItemMadeInfo
+                        {
+                            StartDate = DateTime.Now,
+                            EndDate = DateTime.Now.AddMonths(3),
+                            Progress = 30,
+                            WorkTime = new TimeSpan(1, 30, 00)
+                        },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     }

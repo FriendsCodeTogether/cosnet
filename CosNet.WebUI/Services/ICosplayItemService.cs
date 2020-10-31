@@ -6,7 +6,6 @@ namespace CosNet.WebUI.Services
 {
     public interface ICosplayItemService
     {
-        Task<IEnumerable<CosplayBoughtItemDTO>> GetCosplayBoughtItemsAsync();
-        Task<IEnumerable<CosplayMadeItemDTO>> GetCosplayMadeItemsAsync();
+        Task<IEnumerable<CosplayItemDTO>> GetCosplayItemsAsync();
     }
 }

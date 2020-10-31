@@ -10,12 +10,6 @@ namespace CosNet.API.Data.DBContexts
         }
 
         public DbSet<Cosplay> Cosplays { get; set; }
-        public DbSet<CosplayItemBase> CosplayItems { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CosplayBoughtItem>();
-            modelBuilder.Entity<CosplayMadeItem>();
-        }
+        public DbSet<CosplayItem> CosplayItems { get; set; }
     }
 }

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace CosNet.API.Entities
 {
-    public class CosplayMadeItem
+    public class CosplayItemMadeInfo
     {
-        public Guid CosplayItemId { get; set; }
-
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Progress { get; set; }

@@ -12,15 +12,9 @@ namespace CosNet.API.Profiles
     {
         public CosplayItemProfile()
         {
-            CreateMap<CosplayItemBase, CosplayItemBaseDTO>().ReverseMap();
-
-            CreateMap<CosplayBoughtItem, CosplayBoughtItemDTO>().ReverseMap();
-            CreateMap<CosplayBoughtItem, CosplayBoughtItemForCreationDTO>().ReverseMap();
-            CreateMap<CosplayBoughtItem, CosplayBoughtItemForUpdateDTO>().ReverseMap();
-
-            CreateMap<CosplayMadeItem, CosplayMadeItemDTO>().ReverseMap();
-            CreateMap<CosplayMadeItem, CosplayMadeItemForCreationDTO>().ReverseMap();
-            CreateMap<CosplayMadeItem, CosplayMadeItemForUpdateDTO>().ReverseMap();
+            CreateMap<CosplayItem, CosplayItemDTO>().ReverseMap();
+            CreateMap<CosplayItemBoughtInfo, CosplayItemBoughtInfoDTO>().ReverseMap();
+            CreateMap<CosplayItemMadeInfo, CosplayItemMadeInfoDTO>().ReverseMap();
         }
     }
 }

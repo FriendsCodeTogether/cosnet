@@ -17,13 +17,9 @@ namespace CosNet.WebUI.Services
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<CosplayMadeItemDTO>> GetCosplayMadeItemsAsync()
+        public async Task<IEnumerable<CosplayItemDTO>> GetCosplayItemsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<CosplayMadeItemDTO>>("/cosplayItem");
-        }
-        public async Task<IEnumerable<CosplayBoughtItemDTO>> GetCosplayBoughtItemsAsync()
-        {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<CosplayBoughtItemDTO>>("/cosplayItem");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<CosplayItemDTO>>("/cosplayItem");
         }
 
     }

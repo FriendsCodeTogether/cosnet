@@ -6,11 +6,11 @@ namespace CosNet.API.Data.Repositories
 {
     public interface ICosplayItemRepository
     {
-        void AddCosplayItem(CosplayItemBase cosplayItem);
+        void AddCosplayItem(CosplayItem cosplayItem);
         void DeleteCosplayItem(Guid cosplayItemId);
-        CosplayItemBase GetCosplayItem(Guid cosplayItemId);
-        IEnumerable<CosplayItemBase> GetCosplayItems();
+        CosplayItem GetCosplayItem(Guid cosplayItemId);
+        IEnumerable<CosplayItem> GetCosplayItems();
         bool SaveChanges();
-        void UpdateCosplayItem(CosplayItemBase cosplayItem);
+        void UpdateCosplayItem(CosplayItem cosplayItem);
     }
 }
