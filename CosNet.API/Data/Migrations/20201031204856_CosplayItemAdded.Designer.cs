@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosNet.API.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201027181754_cosplayItemsAdded")]
-    partial class cosplayItemsAdded
+    [Migration("20201031204856_CosplayItemAdded")]
+    partial class CosplayItemAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,9 @@ namespace CosNet.API.Data.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
+                    b.Property<bool>("IsMade")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(150)")
@@ -101,9 +104,58 @@ namespace CosNet.API.Data.Migrations
 
             modelBuilder.Entity("CosNet.API.Entities.CosplayItem", b =>
                 {
-                    b.HasOne("CosNet.API.Entities.Cosplay", null)
+                    b.HasOne("CosNet.API.Entities.Cosplay", "Cosplay")
                         .WithMany("Items")
                         .HasForeignKey("CosplayId1");
+
+                    b.OwnsOne("CosNet.API.Entities.CosplayItemBoughtInfo", "BoughtInfo", b1 =>
+                        {
+                            b1.Property<int>("CosplayItemId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("BuyLink")
+                                .HasColumnType("nvarchar(150)")
+                                .HasMaxLength(150);
+
+                            b1.Property<decimal>("Price")
+                                .HasColumnType("decimal(9,2)");
+
+                            b1.HasKey("CosplayItemId");
+
+                            b1.ToTable("CosplayItems");
+
+                            b1.WithOwner()
+                                .HasForeignKey("CosplayItemId");
+                        });
+
+                    b.OwnsOne("CosNet.API.Entities.CosplayItemMadeInfo", "MadeInfo", b1 =>
+                        {
+                            b1.Property<int>("CosplayItemId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<DateTime>("EndDate")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<int>("Progress")
+                                .HasColumnType("int");
+
+                            b1.Property<DateTime>("StartDate")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<TimeSpan>("WorkTime")
+                                .HasColumnType("time");
+
+                            b1.HasKey("CosplayItemId");
+
+                            b1.ToTable("CosplayItems");
+
+                            b1.WithOwner()
+                                .HasForeignKey("CosplayItemId");
+                        });
                 });
 #pragma warning restore 612, 618
         }
