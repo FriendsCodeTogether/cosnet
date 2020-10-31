@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import cosnet.android.AddCosplay;
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.R;
+import cosnet.android.ShowCosplay;
 import cosnet.android.adapters.CosplayListAdapter;
 
 public class HomeFragment extends Fragment {
@@ -51,7 +53,12 @@ public class HomeFragment extends Fragment {
 
     //Set event listeners
     cosplayList.setOnItemClickListener((parent, view, position, id) -> {
+      Cosplay cosplay = cosplays.get(position);
+      Intent intent = new Intent(getActivity(), ShowCosplay.class);
+      intent.putExtra("cosplay",(Serializable) cosplay);
+      startActivity(intent);
     });
+
     addNewCosplayBTN.setOnClickListener(v -> {
       Intent intent = new Intent(getActivity(), AddCosplay.class);
       startActivity(intent);

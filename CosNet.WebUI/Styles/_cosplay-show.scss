@@ -12,10 +12,10 @@
   border: none;
   padding: 0.2rem 1.3rem;
   background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
-}
 
-.cosplay-show-edit-btn:hover {
-  filter: brightness(50%);
+  &:hover {
+    filter: brightness(50%);
+  }
 }
 
 .cosplay-show-container {

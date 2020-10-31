@@ -1,0 +1,5 @@
+# Ignore CSS files (these will be generated)
+app.css
+app.css.map
+*.razor.css
+*.razor.css.map
