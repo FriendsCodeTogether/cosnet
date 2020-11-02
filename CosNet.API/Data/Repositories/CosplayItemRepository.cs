@@ -16,9 +16,9 @@ namespace CosNet.API.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<CosplayItem> GetCosplayItems()
+        public IEnumerable<CosplayItem> GetCosplayItems(Guid cosplayId)
         {
-            return _dbContext.CosplayItems;
+            return _dbContext.CosplayItems.Where(c => c.CosplayId == cosplayId);
         }
 
         public CosplayItem GetCosplayItem(Guid cosplayItemId)

@@ -9,7 +9,7 @@ namespace CosNet.API.Data.Repositories
         void AddCosplayItem(CosplayItem cosplayItem);
         void DeleteCosplayItem(Guid cosplayItemId);
         CosplayItem GetCosplayItem(Guid cosplayItemId);
-        IEnumerable<CosplayItem> GetCosplayItems();
+        IEnumerable<CosplayItem> GetCosplayItems(Guid cosplayId);
         bool SaveChanges();
         void UpdateCosplayItem(CosplayItem cosplayItem);
     }

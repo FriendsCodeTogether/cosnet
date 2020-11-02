@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CosNet.Shared.DTOs.CosplayItem;
 
 namespace CosNet.Shared.DTOs.Cosplay
 {
@@ -16,5 +18,7 @@ namespace CosNet.Shared.DTOs.Cosplay
         public DateTime DueDate { get; set; }
         public decimal Budget { get; set; }
         public string Status { get; set; }
+        public IEnumerable<CosplayItemDTO> Items { get; set; }
+
     }
 }

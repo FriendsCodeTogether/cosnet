@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CosNet.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("cosplay/{cosplayId}/[controller]")]
     [ApiController]
     public class CosplayItemController : ControllerBase
     {
@@ -32,9 +32,9 @@ namespace CosNet.API.Controllers
         [ProducesResponseType(typeof(List<CosplayItemDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult GetCosplayItems()
+        public IActionResult GetCosplayItems([FromRoute] Guid cosplayId)
         {
-            return Ok(_cosplayItemService.GetCosplayItems());
+            return Ok(_cosplayItemService.GetCosplayItems(cosplayId));
         }
 
         /// <summary>

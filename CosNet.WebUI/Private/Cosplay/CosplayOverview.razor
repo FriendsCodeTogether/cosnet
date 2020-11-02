@@ -1,5 +1,7 @@
 ﻿@page "/cosplay/{CosplayId:guid}"
 @inject ICosplayService CosplayService
+@inject NavigationManager NavigationManager
+@attribute [Authorize]
 
 @if (cosplay == null)
 {
@@ -8,7 +10,7 @@
 else
 {
     <div class="cosplay-show-item">
-        <img class="cosplay-list-item-image" src="https://placekitten.com/300/300" alt="Picture of the cosplay"/>
+        <img class="cosplay-list-item-image" src="https://placekitten.com/300/300" alt="Picture of the cosplay" />
         <div class="cosplay-list-item-text">
             <p>Character: @cosplay.Name</p>
             <p>Series: @cosplay.Serie</p>
@@ -22,7 +24,7 @@ else
     </div>
 
     <div class="cosplay-show-container">
-        <div class="cosplay-show-card">Items</div>
+        <div class="cosplay-show-card" @onclick="() => ClickedToItem()">Items</div>
         <div class="cosplay-show-card">Tasks</div>
         <div class="cosplay-show-card">Notes</div>
         <div class="cosplay-show-card">Statistics</div>
@@ -42,5 +44,10 @@ else
     protected override async Task OnInitializedAsync()
     {
         cosplay = await CosplayService.GetCosplayAsync(CosplayId);
+    }
+
+    public void ClickedToItem()
+    {
+        NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem");
     }
 }

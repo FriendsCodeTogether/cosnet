@@ -41,6 +41,9 @@ body {
   position: fixed;
   width: 100%;
   z-index: 1000;
+  @include desktop() {
+
+  }
 }
 
 #blazor-error-ui .dismiss {
