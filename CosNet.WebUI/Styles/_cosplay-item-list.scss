@@ -22,6 +22,26 @@
   }
 }
 
+.cosplayitem-list-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cosplayitem-list-collumn {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.cosplayitem-list-title {
+  background-color: #808080;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .cosplayitem-list-item {
   background-color: #808080;
   margin-bottom: 0.5rem;
@@ -36,24 +56,24 @@
   }
 }
 
-.cosplayitem-list-item-image {
-  max-width: 6rem;
-  max-height: 6rem;
-  height: 100%;
-}
-
-.cosplayitem-list-item-text {
-  margin-left: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  p {
-    margin: 0;
+  .cosplayitem-list-item-image {
+    max-width: 6rem;
+    max-height: 6rem;
+    height: 100%;
   }
-}
 
-.cosplayitem-list-item-icon {
-  margin-right: 2rem;
-}
+  .cosplayitem-list-item-text {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .cosplayitem-list-item-icon {
+    margin-right: 2rem;
+  }

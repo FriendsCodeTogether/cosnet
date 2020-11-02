@@ -16,58 +16,62 @@
     }
     else
     {
-        <div class="cosplayitem-list-title">
-            Made items
-        </div>
-        @foreach (var item in cosplayItems.Where(c => c.IsMade))
-        {
-            <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
-                <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplaymadeitem-list-item-image" />
-                <div class="cosplayitem-list-item-text">
-                    <h4>@item.Name</h4>
-                    <p>Price: (calc) &#9;Time: @item.MadeInfo.WorkTime</p>
-                    <div class="cosplayitem-list-item-progressbar">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="cosplayitem-list-row">
+            <div class="cosplayitem-list-collumn">
+            <div class="cosplayitem-list-title">
+                Made items
+            </div>
+            @foreach (var item in cosplayItems.Where(c => c.IsMade))
+            {
+                <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                    <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image" />
+                    <div class="cosplayitem-list-item-text">
+                        <h4>@item.Name</h4>
+                        <p>Price: (calc) &#9;Time: @item.MadeInfo.WorkTime</p>
+                        <div class="cosplayitem-list-item-progressbar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="cosplayitem-list-item-icon">
+                        Icon
                     </div>
                 </div>
-                <div class="cosplayitem-list-item-icon">
-                    Icon
-                </div>
-            </div>
-        }
-
-        <span class="flex-spacer"/>
-        <div class="cosplayitem-list-title">
-            Bought items
+            }
         </div>
-        @foreach (var item in cosplayItems.Where(c => !c.IsMade))
-        {
-           <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
-                <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplaymadeitem-list-item-image" />
-                <div class="cosplayitem-list-item-text">
-                   <h4>@item.Name</h4>
-                   <p>Price: @item.BoughtInfo.Price</p>
-                </div>
-            <div class="cosplayitem-list-item-icon">
-             Icon
+        <div class="cosplayitem-list-collumn">
+            <div class="cosplayitem-list-title">
+                Bought items
             </div>
-            </div>      
-        }
+            @foreach (var item in cosplayItems.Where(c => !c.IsMade))
+            {
+                <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                    <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image " />
+                    <div class="cosplayitem-list-item-text">
+                        <h4>@item.Name</h4>
+                        <p>Price: @item.BoughtInfo.Price</p>
+                    </div>
+                    <div class="cosplayitem-list-item-icon">
+                        Icon
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
     }
 </div>
-@code {
+        @code {
     private IEnumerable<CosplayItemDTO> cosplayItems;
 
-    [Parameter]
-    public Guid CosplayId { get; set; }
+        [Parameter]
+        public Guid CosplayId { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        cosplayItems = await CosplayItemService.GetCosplayItemsAsync(CosplayId);
-    }
+        protected override async Task OnInitializedAsync()
+        {
+            cosplayItems = await CosplayItemService.GetCosplayItemsAsync(CosplayId);
+        }
 
-    public void ClickedToId(Guid cosplayItemId)
-    {
-        NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem/{cosplayItemId.ToString()}");
-    }
-}
+        public void ClickedToId(Guid cosplayItemId)
+        {
+            NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem/{cosplayItemId.ToString()}");
+        }
+        }
