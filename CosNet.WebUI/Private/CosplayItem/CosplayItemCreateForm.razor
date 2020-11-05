@@ -81,7 +81,11 @@
     private CosplayItemForCreationDTO cosplayItem = new CosplayItemForCreationDTO
     {
         IsMade = false,
-        MadeInfo = new CosplayItemMadeInfoDTO(),
+        MadeInfo = new CosplayItemMadeInfoDTO
+        {
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(5),
+        },
         BoughtInfo = new CosplayItemBoughtInfoDTO()
     };
 
