@@ -46,7 +46,7 @@
                     </p>
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
-                        <InputDate class="form-input" id="startDate" @bind-Value="cosplayItem.MadeInfo.StartDate" />
+                        <InputNumber class="form-input" id="workTime" @bind-Value="cosplayItem.MadeInfo.WorkTime" />h
                     </p>
                 }
                 else
@@ -81,10 +81,7 @@
     private CosplayItemForCreationDTO cosplayItem = new CosplayItemForCreationDTO
     {
         IsMade = false,
-        MadeInfo = new CosplayItemMadeInfoDTO
-        {
-            WorkTime = new TimeSpan(0, 00, 00)
-        },
+        MadeInfo = new CosplayItemMadeInfoDTO(),
         BoughtInfo = new CosplayItemBoughtInfoDTO()
     };
 
