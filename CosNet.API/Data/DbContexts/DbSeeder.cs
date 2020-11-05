@@ -127,7 +127,7 @@ namespace CosNet.API.Data.DBContexts
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddMonths(5),
                             Progress = 10,
-                            WorkTime = new TimeSpan(5, 10, 00)
+                            WorkTime = 5
                         },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
@@ -144,7 +144,7 @@ namespace CosNet.API.Data.DBContexts
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddMonths(1),
                             Progress = 50,
-                            WorkTime = new TimeSpan(4, 25, 00)
+                            WorkTime = 3
                         },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
@@ -161,7 +161,7 @@ namespace CosNet.API.Data.DBContexts
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddMonths(3),
                             Progress = 30,
-                            WorkTime = new TimeSpan(1, 30, 00)
+                            WorkTime = 1
                         },
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]

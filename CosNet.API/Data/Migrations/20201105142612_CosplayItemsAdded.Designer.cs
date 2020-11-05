@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosNet.API.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201031204856_CosplayItemAdded")]
-    partial class CosplayItemAdded
+    [Migration("20201105142612_CosplayItemsAdded")]
+    partial class CosplayItemsAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,8 +146,8 @@ namespace CosNet.API.Data.Migrations
                             b1.Property<DateTime>("StartDate")
                                 .HasColumnType("datetime2");
 
-                            b1.Property<TimeSpan>("WorkTime")
-                                .HasColumnType("time");
+                            b1.Property<int>("WorkTime")
+                                .HasColumnType("int");
 
                             b1.HasKey("CosplayItemId");
 
