@@ -9,6 +9,6 @@ namespace CosNet.Shared.DTOs.CosplayItem
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Progress { get; set; }
-        public TimeSpan WorkTime { get; set; }
+        public int WorkTime { get; set; }
     }
 }
