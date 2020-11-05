@@ -91,7 +91,16 @@
     protected override async Task OnInitializedAsync()
     {
         CosplayItemDTO CosplayItemUpdate = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
-        cosplayItem = (CosplayItemForUpdateDTO)CosplayItemUpdate;
+
+        cosplayItem = new CosplayItemForUpdateDTO
+        {
+            Name = CosplayItemUpdate.Name,
+            Status = CosplayItemUpdate.Status,
+            Description = CosplayItemUpdate.Description,
+            IsMade = CosplayItemUpdate.IsMade,
+            BoughtInfo = CosplayItemUpdate.BoughtInfo,
+            MadeInfo = CosplayItemUpdate.MadeInfo
+        };
     }
 
     private async Task HandleValidSubmit()
