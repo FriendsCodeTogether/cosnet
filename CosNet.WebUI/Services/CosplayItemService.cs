@@ -27,17 +27,17 @@ namespace CosNet.WebUI.Services
             return await _httpClient.GetFromJsonAsync<CosplayItemDTO>($"/cosplay/{cosplayId}/cosplayItem/{cosplayItemId}");
         }
 
-        public async Task CreateCosplayAsync(Guid cosplayId, CosplayItemDTO cosplayItem)
+        public async Task CreateCosplayItemAsync(Guid cosplayId, CosplayItemDTO cosplayItem)
         {
             await _httpClient.PostAsJsonAsync<CosplayItemDTO>($"/cosplay/{cosplayId}/cosplayItem", cosplayItem);
         }
 
-        public async Task UpdateCosplayAsync(Guid cosplayId, Guid cosplayItemId, CosplayItemDTO cosplayItem)
+        public async Task UpdateCosplayItemAsync(Guid cosplayId, Guid cosplayItemId, CosplayItemDTO cosplayItem)
         {
             await _httpClient.PutAsJsonAsync<CosplayItemDTO>($"/cosplay/{cosplayId}/cosplayItem/{cosplayItemId}", cosplayItem);
         }
 
-        public async Task DeleteCosplayAsync(Guid cosplayId, Guid cosplayItemId)
+        public async Task DeleteCosplayItemAsync(Guid cosplayId, Guid cosplayItemId)
         {
             await _httpClient.DeleteAsync($"/cosplay/{cosplayId}/cosplayItem/{cosplayItemId}");
         }
