@@ -60,8 +60,9 @@ namespace CosNet.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult CreateCosplayItem([FromBody] CosplayItemForCreationDTO cosplayItem)
+        public IActionResult CreateCosplayItem([FromRoute] Guid cosplayId, [FromBody] CosplayItemForCreationDTO cosplayItem)
         {
+            cosplayItem.CosplayId = cosplayId;
             _cosplayItemService.CreateCosplayItem(cosplayItem);
             return NoContent();
         }
