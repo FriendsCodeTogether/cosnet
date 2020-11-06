@@ -6,10 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import cosnet.android.DAOs.*;
+import cosnet.android.Data.DAOs.*;
 import cosnet.android.Entities.*;
 
-@Database(entities = {Cosplay.class, CosplayItem.class}, version = 2)
+@Database(entities = {Cosplay.class, CosplayItem.class}, version = 3)
 public abstract  class CosnetDb extends RoomDatabase {
 
    private static CosnetDb minstance;

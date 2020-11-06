@@ -25,17 +25,19 @@ public class CosplayItem {
   @ColumnInfo(name = "item_name")
   @NonNull  public String itemName;
 
-  @Nullable public String status;
-
   @Nullable public String description;
 
-  @Nullable public Double price;
-
-  @ColumnInfo(name = "start_date")
-  @Nullable public String startDate;
+  @Nullable public double price;
 
   @ColumnInfo(name = "due_date")
   @Nullable public String dueDate;
+
+  @ColumnInfo(name = "is_made")
+  @NonNull public int isMade ;
+
+  //itemType specific things
+
+  @Nullable public String status;
 
   @Nullable public double progress;
 

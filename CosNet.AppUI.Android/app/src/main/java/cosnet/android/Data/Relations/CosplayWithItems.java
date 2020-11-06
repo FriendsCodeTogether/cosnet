@@ -1,8 +1,11 @@
-package cosnet.android.Entities;
+package cosnet.android.Data.Relations;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
 import java.util.List;
+
+import cosnet.android.Entities.Cosplay;
+import cosnet.android.Entities.CosplayItem;
 
 public class CosplayWithItems{
   @Embedded

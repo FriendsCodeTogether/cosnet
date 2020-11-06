@@ -1,4 +1,4 @@
-package cosnet.android.DAOs;
+package cosnet.android.Data.DAOs;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

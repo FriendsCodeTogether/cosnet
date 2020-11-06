@@ -1,4 +1,4 @@
-package cosnet.android.DAOs;
+package cosnet.android.Data.DAOs;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -9,8 +9,8 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import cosnet.android.Data.Relations.CosplayWithItems;
 import cosnet.android.Entities.CosplayItem;
-import cosnet.android.Entities.CosplayWithItems;
 
 @Dao
 public interface CosplayItemDAO {
