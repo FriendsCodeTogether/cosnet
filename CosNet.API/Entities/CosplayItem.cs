@@ -23,7 +23,7 @@ namespace CosNet.API.Entities
         [MaxLength(25)]
         public string Status { get; set; }
 
-        [MaxLength(150)]
+        [MaxLength(500)]
         public string Description { get; set; }
 
         [Column(TypeName = "decimal(9,2)")]
@@ -34,7 +34,7 @@ namespace CosNet.API.Entities
         public bool IsMade { get; set; }
 
         //Bought Info
-        [MaxLength(150)]
+        [MaxLength(200)]
         public string BuyLink { get; set; }
 
         //Made Info

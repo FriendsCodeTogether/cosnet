@@ -11,12 +11,13 @@ namespace CosNet.Shared.DTOs.CosplayItem
         public Guid CosplayId { get; set; }
 
         [Required]
+        [MaxLength(150)]
         public string Name { get; set; }
 
         [MaxLength(25)]
         public string Status { get; set; }
 
-        [MaxLength(150)]
+        [MaxLength(500)]
         public string Description { get; set; }
 
         [Column(TypeName = "decimal(9,2)")]
@@ -27,7 +28,7 @@ namespace CosNet.Shared.DTOs.CosplayItem
         public bool IsMade { get; set; }
 
         //Bought Info
-        [MaxLength(150)]
+        [MaxLength(200)]
         public string BuyLink { get; set; }
 
         //Made Info
