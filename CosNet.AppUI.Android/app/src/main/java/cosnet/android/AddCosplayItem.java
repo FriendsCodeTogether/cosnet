@@ -3,9 +3,13 @@ package cosnet.android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Switch;
+
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import java.util.List;
 
@@ -25,13 +29,22 @@ public class AddCosplayItem extends AppCompatActivity {
   private ImageButton cancelButton;
   private ImageButton addCosplayButton;
   private List<String> statusses;
+  private Switch mySwitch;
   private int year;
   private int month;
   private int day;
+
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_cosplay_item);
+
+    mySwitch= (Switch) findViewById(R.id.switch1);
+    mySwitch.setChecked(true);
+    mySwitch.setOnCheckedChangeListener((buttonView,isChecked) -> {
+
+    });
   }
 }

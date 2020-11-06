@@ -195,10 +195,11 @@
     style="@style/CustomText"
     android:layout_width="63dp"
     android:layout_height="30dp"
+    android:layout_marginStart="4dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Status"
-    app:layout_constraintStart_toStartOf="@+id/switch1"
-    app:layout_constraintTop_toBottomOf="@+id/switch1" />
+    app:layout_constraintStart_toStartOf="@+id/toggleButton3"
+    app:layout_constraintTop_toBottomOf="@+id/toggleButton3" />
 
   <Spinner
     android:id="@+id/statusSpinner"
@@ -221,17 +222,15 @@
     app:layout_constraintStart_toStartOf="@+id/statusSpinner"
     app:layout_constraintTop_toBottomOf="@+id/statusSpinner" />
 
-  <Switch
-    android:id="@+id/switch1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:allowUndo="false"
-    android:autoText="false"
-    android:showText="true"
-    android:splitTrack="false"
+  <ToggleButton
+    android:id="@+id/toggleButton3"
+    android:layout_width="99dp"
+    android:layout_height="39dp"
+    android:layout_marginStart="4dp"
+    android:text="ToggleButton"
     android:textOff="Bought"
     android:textOn="Made"
-    app:layout_constraintTop_toBottomOf="@+id/textView7"
-    tools:layout_editor_absoluteX="17dp" />
+    app:layout_constraintStart_toStartOf="@+id/textView7"
+    app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
