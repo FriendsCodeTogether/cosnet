@@ -23,6 +23,7 @@
   <string name="Due_Date">Due Date:</string>
   <string name="Budget">Budget:</string>
   <string name="Status">Status:</string>
+  <string name="add_button_plus">+</string>
 
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
@@ -49,5 +50,7 @@
   <string name="ItemName">Item Name</string>
   <string name="ItemNameHint">Item Name</string>
   <string name="CreateCosplayItem">Create Item</string>
+    <string name="ItemDescription">Description:</string>
+  <string name="DescriptionHint">Description</string>
 
 </resources>

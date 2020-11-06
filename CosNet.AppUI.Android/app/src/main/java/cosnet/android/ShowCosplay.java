@@ -12,8 +12,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 import cosnet.android.Entities.Cosplay;
 
@@ -32,6 +35,13 @@ public class ShowCosplay extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+    ImageButton createCosplayItemBTN = (ImageButton) findViewById(R.id.createCosplayItemBTN);
+
+    createCosplayItemBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this,AddCosplayItem.class);
+      startActivity(intent);
+    });
 
     //get cosplay from intent
     Intent incomingIntent = getIntent();
