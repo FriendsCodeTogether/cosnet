@@ -84,6 +84,22 @@
   }
 }
 
+.hourlyinput {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    top: -3px;
+    content: 'h';
+    right: 7px;
+  }
+
+  .form-input {
+    padding-left: 18px;
+    width: calc(350px - 9px);
+  }
+}
+
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
