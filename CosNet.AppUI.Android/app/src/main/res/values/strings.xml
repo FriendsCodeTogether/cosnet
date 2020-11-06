@@ -24,6 +24,7 @@
   <string name="Budget">Budget:</string>
   <string name="Status">Status:</string>
   <string name="add_button_plus">+</string>
+  <string name="save">Save</string>
 
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
