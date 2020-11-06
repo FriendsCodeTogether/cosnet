@@ -16,7 +16,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.102'
+          dotnet-version: '3.1.403'
       - name: Build with dotnet
         run: dotnet build ./CosNet.API/CosNet.API.csproj --configuration Release
 
@@ -28,7 +28,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.102'
+          dotnet-version: '3.1.403'
       - name: Build with dotnet
         run: dotnet build ./CosNet.IDP/CosNet.IDP.csproj --configuration Release
 
@@ -41,7 +41,12 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.102'
+          dotnet-version: '3.1.403'
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: cd ./CosNet.WebUI && npm install
 
       - name: Build with dotnet
         run: dotnet build ./CosNet.WebUI/CosNet.WebUI.csproj --configuration Release
@@ -56,7 +61,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.102'
+          dotnet-version: '3.1.403'
 
       - name: dotnet publish
         run: dotnet publish ./CosNet.API/CosNet.API.csproj -c Release -o ./cosnet-api
@@ -79,7 +84,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.102'
+          dotnet-version: '3.1.403'
 
       - name: dotnet publish
         run: dotnet publish ./CosNet.IDP/CosNet.IDP.csproj -c Release -o ./cosnet-idp
@@ -102,7 +107,12 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.102'
+          dotnet-version: '3.1.403'
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: cd ./CosNet.WebUI && npm install
 
       - name: dotnet publish
         run: dotnet publish ./CosNet.WebUI/CosNet.WebUI.csproj -c Release -o ./cosnet
