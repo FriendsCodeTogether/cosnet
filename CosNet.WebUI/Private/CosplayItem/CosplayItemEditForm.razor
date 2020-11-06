@@ -16,15 +16,22 @@
                 <ValidationSummary />
                 <p>
                     <label class="form-label" for="name">Name:</label><br />
-                    <InputText class="form-input" id="name" placeholder="Item name" @bind-Value="cosplayItem.Name" />
+                    <input type="text" maxlength="150" class="form-input" id="name" placeholder="Item name" @bind-Value="cosplayItem.Name" @bind-Value:event="oninput" />
+                    <label>@cosplayItem.Name.Count()/@maxName</label>
                 </p>
                 <p>
                     <label class="form-label" for="serie">Description:</label><br />
-                    <InputTextArea class="form-input" id="serie" placeholder="Description" @bind-Value="cosplayItem.Description" />
+                    <textarea class="form-input" id="serie" placeholder="Description" @bind="cosplayItem.Description" @bind:event="oninput" />
+                    <label class="form-error-description">*Max 500 Characters</label><label>@cosplayItem.Description.Count()/@maxDescription</label>
                 </p>
                 <p>
                     <label class="form-label" for="price">Price:</label><br />
-                    <span class="currencyinput"><InputNumber class="form-input" id="price" @bind-Value="cosplayItem.Price" /></span>
+                    <input type="number" min="0" class="form-input currencyinput" id="price" @bind-Value="cosplayItem.Price" @bind-Value:event="oninput" />
+                    <label class="form-error-price">*Max 9 Characters</label><label>@cosplayItem.Price.ToString().Count()/@maxPrice</label>
+                </p>
+                <p>
+                    <label class="form-label" for="dueDate">Due Date:</label><br />
+                    <InputDate class="form-input" id="dueDate" @bind-Value="cosplayItem.DueDate" />
                 </p>
                 <p>
                     <label class="form-label" for="isMade">Item Type (Is Made?):</label><br />
@@ -50,25 +57,27 @@
                 {
                     <p>
                         <label class="form-label" for="progress">Progress:</label><br />
-                        <InputNumber class="form-input" id="progress" @bind-Value="cosplayItem.Progress" />
+                        <InputNumber min="0" max="100" class="form-input" id="progress" @bind-Value="cosplayItem.Progress" />
                     </p>
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
-                        <InputNumber class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTime" />h
+                        <input type="number" min="0" class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTime" @bind-Value:event="oninput" />h
+                        <label class="form-error-work-time">*Max 5 Characters</label><label>@cosplayItem.WorkTime.ToString().Count()/@maxPrice</label>
                     </p>
                 }
                 else
                 {
                     <p>
                         <label class="form-label" for="buyLink">Buy Link:</label><br />
-                        <InputText class="form-input" id="buyLink" placeholder="https://cosnet.azurewebsites.net/" @bind-Value="cosplayItem.BuyLink" />
+                        <input type="text" class="form-input" id="buyLink" placeholder="https://cosnet.azurewebsites.net/" @bind-Value="cosplayItem.BuyLink" @bind-Value:event="oninput" />
+                        <label class="form-error-buy-link">*Max 200 Characters</label><label>@cosplayItem.BuyLink.Count()/@maxBuyLink</label>
                     </p>
                 }
 
                 <div class="cosplay-form-group-button-row">
                     <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
                     <span class="flex-spacer"></span>
-                    <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay">Cancel</a>
+                    <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem">Cancel</a>
                 </div>
             </EditForm>
         </div>
@@ -90,6 +99,12 @@
 
     [Parameter]
     public Guid CosplayItemId { get; set; }
+
+    private const int maxName = 150;
+    private const int maxDescription = 500;
+    private const int maxPrice = 9;
+    private const int maxWorkTime = 5;
+    private const int maxBuyLink = 200;
 
     protected override async Task OnInitializedAsync()
     {
