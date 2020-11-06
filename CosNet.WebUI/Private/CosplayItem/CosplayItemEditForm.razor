@@ -23,42 +23,45 @@
                     <InputTextArea class="form-input" id="serie" placeholder="Description" @bind-Value="cosplayItem.Description" />
                 </p>
                 <p>
-                    <label class="form-label" for="status">Status:</label><br />
-                    <InputText class="form-input" id="status" placeholder="Status" @bind-Value="cosplayItem.Status" />
+                    <label class="form-label" for="price">Price:</label><br />
+                    <span class="currencyinput"><InputNumber class="form-input" id="price" @bind-Value="cosplayItem.Price" /></span>
                 </p>
                 <p>
-                    <label class="form-label" for="madeOrBought">Made?:</label><br />
-                    <InputCheckbox class="form-input" id="madeOrBought" @bind-Value="cosplayItem.IsMade" />
+                    <label class="form-label" for="isMade">Item Type (Is Made?):</label><br />
+                    <InputCheckbox class="form-input" id="isMade" @bind-Value="cosplayItem.IsMade" />
+                </p>
+                <p>
+                    <label class="form-label" for="status">Status:</label><br />
+                    <InputSelect class="form-input" id="status" @bind-Value="cosplayItem.Status">
+                        @if (cosplayItem.IsMade)
+                        {
+                            <option value="In Progress">In Progress</option>
+                        }
+                        else
+                        {
+                            <option value="In Progress">Ordered</option>
+                            <option value="In Progress">To Buy</option>
+                        }
+                        <option value="In Progress">Completed</option>
+                    </InputSelect>
                 </p>
 
                 @if (cosplayItem.IsMade)
                 {
                     <p>
-                        <label class="form-label" for="startDate">Start Date:</label><br />
-                        <InputDate class="form-input" id="startDate" @bind-Value="cosplayItem.MadeInfo.StartDate" />
-                    </p>
-                    <p>
-                        <label class="form-label" for="endDate">End Date:</label><br />
-                        <InputDate class="form-input" id="endDate" @bind-Value="cosplayItem.MadeInfo.EndDate" />
-                    </p>
-                    <p>
                         <label class="form-label" for="progress">Progress:</label><br />
-                        <InputNumber class="form-input" id="progress" @bind-Value="cosplayItem.MadeInfo.Progress" />
+                        <InputNumber class="form-input" id="progress" @bind-Value="cosplayItem.Progress" />
                     </p>
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
-                        <InputNumber class="form-input" id="workTime" @bind-Value="cosplayItem.MadeInfo.WorkTime" />h
+                        <InputNumber class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTime" />h
                     </p>
                 }
                 else
                 {
                     <p>
                         <label class="form-label" for="buyLink">Buy Link:</label><br />
-                        <InputText class="form-input" id="buyLink" placeholder="https://cosnet.azurewebsites.net/" @bind-Value="cosplayItem.BoughtInfo.BuyLink" />
-                    </p>
-                    <p>
-                        <label class="form-label" for="price">Price:</label><br />
-                        <span class="currencyinput"><InputNumber class="form-input" id="price" @bind-Value="cosplayItem.BoughtInfo.Price" /></span>
+                        <InputText class="form-input" id="buyLink" placeholder="https://cosnet.azurewebsites.net/" @bind-Value="cosplayItem.BuyLink" />
                     </p>
                 }
 
@@ -80,12 +83,8 @@
 
 
 @code {
-    public CosplayItemForUpdateDTO cosplayItem = new CosplayItemForUpdateDTO
-    {
-        MadeInfo = new CosplayItemMadeInfoDTO(),
-        BoughtInfo = new CosplayItemBoughtInfoDTO()
-    };
-    
+    public CosplayItemForUpdateDTO cosplayItem = new CosplayItemForUpdateDTO();
+
     [Parameter]
     public Guid CosplayId { get; set; }
 
@@ -94,14 +93,17 @@
 
     protected override async Task OnInitializedAsync()
     {
-        CosplayItemDTO CosplayItemUpdate = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
+        CosplayItemDTO cosplayItemUpdate = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
 
-        cosplayItem.Name = CosplayItemUpdate.Name;
-        cosplayItem.Status = CosplayItemUpdate.Status;
-        cosplayItem.Description = CosplayItemUpdate.Description;
-        cosplayItem.IsMade = CosplayItemUpdate.IsMade;
-        cosplayItem.BoughtInfo = CosplayItemUpdate.BoughtInfo;
-        cosplayItem.MadeInfo = CosplayItemUpdate.MadeInfo;
+        cosplayItem.Name = cosplayItemUpdate.Name;
+        cosplayItem.Status = cosplayItemUpdate.Status;
+        cosplayItem.Description = cosplayItemUpdate.Description;
+        cosplayItem.Price = cosplayItemUpdate.Price;
+        cosplayItem.DueDate = cosplayItemUpdate.DueDate;
+        cosplayItem.IsMade = cosplayItemUpdate.IsMade;
+        cosplayItem.Progress = cosplayItemUpdate.Progress;
+        cosplayItem.WorkTime = cosplayItemUpdate.WorkTime;
+        cosplayItem.BuyLink = cosplayItemUpdate.BuyLink;
     }
 
     private async Task HandleValidSubmit()

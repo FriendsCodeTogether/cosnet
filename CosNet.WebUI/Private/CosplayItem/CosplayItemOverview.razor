@@ -5,11 +5,7 @@
 <a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
 
 @code {
-    public CosplayItemDTO cosplayItem = new CosplayItemDTO
-    {
-        MadeInfo = new CosplayItemMadeInfoDTO(),
-        BoughtInfo = new CosplayItemBoughtInfoDTO()
-    };
+    public CosplayItemDTO cosplayItem = new CosplayItemDTO();
 
     [Parameter]
     public Guid CosplayId { get; set; }
