@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CosNet.API.Data.Migrations
 {
-    public partial class CosplayItemsAdded : Migration
+    public partial class CospayItemAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,13 +17,12 @@ namespace CosNet.API.Data.Migrations
                     Name = table.Column<string>(maxLength: 150, nullable: false),
                     Status = table.Column<string>(maxLength: 25, nullable: true),
                     Description = table.Column<string>(maxLength: 150, nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(9,2)", nullable: false),
+                    DueDate = table.Column<DateTime>(nullable: false),
                     IsMade = table.Column<bool>(nullable: false),
-                    BoughtInfo_BuyLink = table.Column<string>(maxLength: 150, nullable: true),
-                    BoughtInfo_Price = table.Column<decimal>(type: "decimal(9,2)", nullable: true),
-                    MadeInfo_StartDate = table.Column<DateTime>(nullable: true),
-                    MadeInfo_EndDate = table.Column<DateTime>(nullable: true),
-                    MadeInfo_Progress = table.Column<int>(nullable: true),
-                    MadeInfo_WorkTime = table.Column<int>(nullable: true),
+                    BuyLink = table.Column<string>(maxLength: 150, nullable: true),
+                    Progress = table.Column<int>(nullable: false),
+                    WorkTime = table.Column<int>(nullable: false),
                     CosplayId = table.Column<Guid>(nullable: false),
                     CosplayId1 = table.Column<int>(nullable: true)
                 },

@@ -26,10 +26,22 @@ namespace CosNet.API.Entities
         [MaxLength(150)]
         public string Description { get; set; }
 
-        public bool IsMade { get; set; }
-        public CosplayItemBoughtInfo BoughtInfo { get; set; }
-        public CosplayItemMadeInfo MadeInfo { get; set; }
+        [Column(TypeName = "decimal(9,2)")]
+        public decimal Price { get; set; }
 
+        public DateTime DueDate { get; set; }
+
+        public bool IsMade { get; set; }
+
+        //Bought Info
+        [MaxLength(150)]
+        public string BuyLink { get; set; }
+
+        //Made Info
+        public int Progress { get; set; }
+        public int WorkTime { get; set; }
+
+        //Relations Cosplay
         public Guid CosplayId { get; set; }
         public Cosplay Cosplay { get; set; }
     }

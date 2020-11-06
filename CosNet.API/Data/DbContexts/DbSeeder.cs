@@ -74,14 +74,12 @@ namespace CosNet.API.Data.DBContexts
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Shirt",
-                        Status = "Bought",
+                        Status = "To Buy",
                         Description = "It's a black shirt! What else?",
+                        Price = 25.0m,
+                        DueDate = DateTime.Now.AddMonths(1),
                         IsMade = false,
-                        BoughtInfo = new CosplayItemBoughtInfo
-                        {
-                            BuyLink = "https://www.kittyconnection.net/",
-                            Price = 25.0m
-                        },
+                        BuyLink = "https://www.kittyconnection.net/",
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -89,14 +87,12 @@ namespace CosNet.API.Data.DBContexts
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Trouser",
-                        Status = "Bought",
+                        Status = "Completed",
                         Description = "It's a black trouser! What else?",
+                        Price = 30.0m,
+                        DueDate = DateTime.Now.AddMonths(2),
                         IsMade = false,
-                        BoughtInfo = new CosplayItemBoughtInfo
-                        {
-                            BuyLink = "https://www.kittyconnection.net/",
-                            Price = 30.0m
-                        },
+                        BuyLink = "https://www.kittyconnection.net/",
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -106,12 +102,10 @@ namespace CosNet.API.Data.DBContexts
                         Name = "Black Gloves",
                         Status = "Ordered",
                         Description = "It's a black gloves! What else?",
+                        Price = 15.0m,
+                        DueDate = DateTime.Now.AddMonths(1),
                         IsMade = false,
-                        BoughtInfo = new CosplayItemBoughtInfo
-                        {
-                            BuyLink = "https://www.kittyconnection.net/",
-                            Price = 15.0m
-                        },
+                        BuyLink = "https://www.kittyconnection.net/",
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -119,16 +113,13 @@ namespace CosNet.API.Data.DBContexts
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Katana",
-                        Status = "On Hold",
+                        Status = "In Progress",
                         Description = "It's a black katana! Forged by the underdark dwarves",
+                        Price = 150.0m,
+                        DueDate = DateTime.Now.AddMonths(5),
                         IsMade = true,
-                        MadeInfo = new CosplayItemMadeInfo
-                        {
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddMonths(5),
-                            Progress = 10,
-                            WorkTime = 5
-                        },
+                        Progress = 10,
+                        WorkTime = 5,
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -138,14 +129,11 @@ namespace CosNet.API.Data.DBContexts
                         Name = "Black Boots",
                         Status = "In Progress",
                         Description = "Their black boots! Made from demon-cow leather",
+                        Price = 20.0m,
+                        DueDate = DateTime.Now.AddMonths(1),
                         IsMade = true,
-                        MadeInfo = new CosplayItemMadeInfo
-                        {
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddMonths(1),
-                            Progress = 50,
-                            WorkTime = 3
-                        },
+                        Progress = 50,
+                        WorkTime = 3,
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -153,16 +141,13 @@ namespace CosNet.API.Data.DBContexts
                     {
                         CosplayItemId = Guid.NewGuid(),
                         Name = "Black Cap",
-                        Status = "In Progress",
+                        Status = "Completed",
                         Description = "It's a black cap! To hide from nosy people or Corona",
+                        Price = 15.0m,
+                        DueDate = DateTime.Now.AddMonths(3),
                         IsMade = true,
-                        MadeInfo = new CosplayItemMadeInfo
-                        {
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddMonths(3),
-                            Progress = 30,
-                            WorkTime = 1
-                        },
+                        Progress = 30,
+                        WorkTime = 1,
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     }
