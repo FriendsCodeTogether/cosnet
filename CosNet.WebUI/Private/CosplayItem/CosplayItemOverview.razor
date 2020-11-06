@@ -1,0 +1,25 @@
+﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}"
+@inject ICosplayItemService CosplayItemService
+
+<h3>@cosplayItem.Name</h3>
+<a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+
+@code {
+    public CosplayItemDTO cosplayItem = new CosplayItemDTO
+    {
+        MadeInfo = new CosplayItemMadeInfoDTO(),
+        BoughtInfo = new CosplayItemBoughtInfoDTO()
+    };
+
+    [Parameter]
+    public Guid CosplayId { get; set; }
+
+    [Parameter]
+    public Guid CosplayItemId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        cosplayItem = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
+    }
+
+}

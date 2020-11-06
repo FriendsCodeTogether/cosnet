@@ -85,7 +85,7 @@
         MadeInfo = new CosplayItemMadeInfoDTO(),
         BoughtInfo = new CosplayItemBoughtInfoDTO()
     };
-
+    
     [Parameter]
     public Guid CosplayId { get; set; }
 
@@ -108,6 +108,6 @@
     {
         await CosplayItemService.UpdateCosplayItemAsync(CosplayId, CosplayItemId, cosplayItem);
 
-        NavigationManager.NavigateTo($"cosplay/{CosplayId}");
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}");
     }
 }

@@ -59,7 +59,7 @@
     </div>
     }
 </div>
-        @code {
+@code {
     private IEnumerable<CosplayItemDTO> cosplayItems;
 
         [Parameter]
@@ -74,4 +74,4 @@
         {
             NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem/{cosplayItemId.ToString()}");
         }
-        }
+}
