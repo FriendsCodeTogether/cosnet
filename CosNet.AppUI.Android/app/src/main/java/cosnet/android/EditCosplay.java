@@ -1,6 +1,7 @@
 package cosnet.android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -33,7 +34,6 @@ public class EditCosplay extends AppCompatActivity {
   private EditText dueDateEditText;
   private CurrencyEditText budgetEditText;
   private Spinner statusSpinner;
-  private ImageButton backButton;
   private Button saveButton;
   private List<String> statusses;
   private int year;
@@ -45,6 +45,11 @@ public class EditCosplay extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_edit_cosplay);
+
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     //get cosplay from intent
     Intent incomingIntent = getIntent();
@@ -58,7 +63,6 @@ public class EditCosplay extends AppCompatActivity {
     dueDateEditText = findViewById(R.id.dueDateEditText);
     budgetEditText = findViewById(R.id.budgetEditText);
     statusSpinner = findViewById(R.id.statusSpinner);
-    backButton = findViewById(R.id.backBtn);
     saveButton = findViewById(R.id.SaveBtn);
     Calendar calendar = Calendar.getInstance();
     year = calendar.get(Calendar.YEAR);
@@ -82,7 +86,7 @@ public class EditCosplay extends AppCompatActivity {
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
     statusSpinner.setAdapter(adapterSpinnerStatus);
 
-    backButton.setOnClickListener(v -> onClickCancelButton());
+
     startDateEditText.setOnClickListener(v -> onClickStartDate());
     dueDateEditText.setOnClickListener(v -> onClickdueDate());
     saveButton.setOnClickListener(v -> onClickSaveButton());
@@ -131,9 +135,4 @@ public class EditCosplay extends AppCompatActivity {
     datePickerDialog.show();
   }
 
-  private void onClickCancelButton() {
-    Intent intent = new Intent(this, ShowCosplay.class);
-    intent.putExtra("cosplay",(Serializable) cosplay);
-    startActivity(intent);
-  }
 }

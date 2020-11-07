@@ -31,11 +31,6 @@
         android:textColor="@android:color/white"
         android:textSize="40sp" />
 
-      <ImageButton
-        android:id="@+id/backBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/abc_vector_test" />
 
     </androidx.appcompat.widget.Toolbar>
 
