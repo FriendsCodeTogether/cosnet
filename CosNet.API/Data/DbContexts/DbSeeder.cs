@@ -8,6 +8,7 @@ namespace CosNet.API.Data.DBContexts
 {
     public static class DbSeeder
     {
+        //Try keeping this file organized
         public static void Seed(ApplicationDbContext context)
         {
             if (!context.Cosplays.Any() && !context.CosplayItems.Any())
