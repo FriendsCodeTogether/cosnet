@@ -129,7 +129,6 @@ public class EditCosplay extends AppCompatActivity {
     startDateEditText.setOnClickListener(v -> onClickStartDate());
     dueDateEditText.setOnClickListener(v -> onClickdueDate());
     saveButton.setOnClickListener(v -> onClickSaveButton());
-
   }
 
   private void addToolbar() {
