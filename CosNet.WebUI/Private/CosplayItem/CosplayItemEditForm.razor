@@ -63,7 +63,7 @@
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
                         <span class="hourlyinput"><input type="number" min="0" class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTime" @bind-Value:event="oninput" /></span>
-                        <label class="form-error-work-time">*Max 5 Characters</label><label>@cosplayItem.WorkTime.ToString().Count()/@maxPrice</label>
+                        <label class="form-error-work-time">*Max 5 Characters</label><label>@cosplayItem.WorkTime.ToString().Count()/@maxWorkTime</label>
                     </p>
                 }
                 else
