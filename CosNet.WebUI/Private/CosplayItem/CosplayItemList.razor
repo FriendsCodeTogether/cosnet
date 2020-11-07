@@ -1,0 +1,79 @@
+﻿@page "/cosplay/{CosplayId:guid}/cosplayitem"
+@inject ICosplayItemService CosplayItemService
+@inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.CosplayItem
+@attribute [Authorize]
+
+<div class="cosplayitem-list-container">
+    <div class="cosplayitem-list-top-row">
+        <h1 class="title">Cosplay items</h1>
+        <span class="flex-spacer"></span>
+        <a class="cosplayitem-list-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId.ToString()/cosplayitem/create">Add</a>
+    </div>
+
+    @if (cosplayItems == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <div class="cosplayitem-list-row">
+            <div class="cosplayitem-list-collumn">
+                <div class="cosplayitem-list-title">
+                    Made items
+                </div>
+                @foreach (var item in cosplayItems.Where(c => c.IsMade))
+                {
+                    <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                        <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image" />
+                        <div class="cosplayitem-list-item-text">
+                            <h4>@item.Name</h4>
+                            <p>Price: @item.Price&#9;Time: @item.WorkTime</p>
+                            <div class="cosplayitem-list-item-progressbar">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="cosplayitem-list-item-icon">
+                            Icon
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="cosplayitem-list-collumn">
+                <div class="cosplayitem-list-title">
+                    Bought items
+                </div>
+                @foreach (var item in cosplayItems.Where(c => !c.IsMade))
+                {
+                    <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                        <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image " />
+                        <div class="cosplayitem-list-item-text">
+                            <h4>@item.Name</h4>
+                            <p>Price: @item.Price</p>
+                        </div>
+                        <div class="cosplayitem-list-item-icon">
+                            Icon
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private IEnumerable<CosplayItemDTO> cosplayItems;
+
+    [Parameter]
+    public Guid CosplayId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        cosplayItems = await CosplayItemService.GetCosplayItemsAsync(CosplayId);
+    }
+
+    public void ClickedToId(Guid cosplayItemId)
+    {
+        NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem/{cosplayItemId.ToString()}");
+    }
+}

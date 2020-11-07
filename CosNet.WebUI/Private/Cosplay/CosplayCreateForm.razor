@@ -1,6 +1,7 @@
 ﻿@page "/cosplay/create"
 @inject ICosplayService CosplayService
 @inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.Cosplay
 
 <div class="cosplay-form-container">
 
@@ -46,7 +47,7 @@
                     <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay">Cancel</a>
                 </div>
             </EditForm>
-            </div>
+        </div>
 
         <span class="flex-spacer"></span>
 

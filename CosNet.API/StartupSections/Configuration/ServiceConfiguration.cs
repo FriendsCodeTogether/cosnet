@@ -11,7 +11,10 @@ namespace CosNet.API.StartupSections.Configuration
     {
         public static IServiceCollection AddCosNetServices(this IServiceCollection services)
         {
-            return services.AddTransient<ICosplayService, CosplayService>();
+            services.AddTransient<ICosplayService, CosplayService>();
+            services.AddTransient<ICosplayItemService, CosplayItemService>();
+
+            return services;
         }
     }
 }

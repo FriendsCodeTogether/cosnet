@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/WebUI/bin/Debug/netcoreapp3.1/WebUI.dll",
+            "program": "${workspaceFolder}/CosNet.WebUI/bin/Debug/netstandard2.1/CosNet.WebUI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/WebUI",
+            "cwd": "${workspaceFolder}/CosNet.WebUI",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
