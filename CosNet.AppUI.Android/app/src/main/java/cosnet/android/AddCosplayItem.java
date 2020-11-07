@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 
 import java.util.Calendar;
@@ -22,16 +21,9 @@ public class AddCosplayItem extends AppCompatActivity {
 
   private static final String TAG = "AddCosplayItem";
 
-  private CosnetDb db;
-
-  private EditText itemNameEditText;
-  private EditText itemDescriptionEditText;
   private CurrencyEditText itemPriceEditText;
   private EditText CosplayItemDueDateEditText;
-  private Spinner itemStatusSpinner;
-  private ImageButton cancelButton;
-  private ImageButton addCosplayButton;
-  private List<String> statusses;
+
   private int year;
   private int month;
   private int day;
