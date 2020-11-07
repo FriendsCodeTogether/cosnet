@@ -64,7 +64,8 @@ public class EditCosplay extends AppCompatActivity {
       AlertDialog alertDialog = new AlertDialog.Builder(EditCosplay.this).create();
       alertDialog.setTitle("Oh No");
       alertDialog.setMessage("Character name is required to be filled in");
-      alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> { });
+      alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> {
+      });
       alertDialog.show();
       return;
     }
@@ -78,18 +79,19 @@ public class EditCosplay extends AppCompatActivity {
 
     db.getCosplayDAO().updateCosplay(cosplay);
     Intent intent = new Intent(this, ShowCosplay.class);
-    intent.putExtra("cosplay",(Serializable) cosplay);
+    intent.putExtra("cosplay", (Serializable) cosplay);
     startActivity(intent);
   }
 
-  private  void addDatabase(){
-      //get cosplay from intent
-      Intent incomingIntent = getIntent();
-      cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
+  private void addDatabase() {
+    //get cosplay from intent
+    Intent incomingIntent = getIntent();
+    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
-      db = CosnetDb.getInstance(this);
-    }
-  private  void addStatuses(){
+    db = CosnetDb.getInstance(this);
+  }
+
+  private void addStatuses() {
     statusses = new ArrayList<>();
     statusses.add(getApplicationContext().getString(R.string.In_Progess));
     statusses.add(getApplicationContext().getString(R.string.Planned));
@@ -102,7 +104,8 @@ public class EditCosplay extends AppCompatActivity {
     statusSpinner.setAdapter(adapterSpinnerStatus);
     statusSpinner.setSelection(statusses.indexOf(cosplay.status));
   }
-  private void addItems(){
+
+  private void addItems() {
     characterEditText = findViewById(R.id.characterEditText);
     seriesEditText = findViewById(R.id.seriesEditText);
     startDateEditText = findViewById(R.id.startDateEditText);
@@ -121,19 +124,21 @@ public class EditCosplay extends AppCompatActivity {
     dueDateEditText.setText(cosplay.dueDate);
     budgetEditText.setCurrency("€");
     budgetEditText.setSpacing(true);
-    budgetEditText.setText(cosplay.budget != null ? cosplay.budget.toString():null);
+    budgetEditText.setText(cosplay.budget != null ? cosplay.budget.toString() : null);
 
     startDateEditText.setOnClickListener(v -> onClickStartDate());
     dueDateEditText.setOnClickListener(v -> onClickdueDate());
     saveButton.setOnClickListener(v -> onClickSaveButton());
 
   }
-  private void addToolbar(){
+
+  private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
+
   private void onClickdueDate() {
     DatePickerDialog datePickerDialog = new DatePickerDialog(EditCosplay.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
