@@ -24,6 +24,7 @@
   <string name="Budget">Budget:</string>
   <string name="Status">Status:</string>
   <string name="add_button_plus">+</string>
+  <string name="save">Save</string>
 
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
@@ -47,5 +48,8 @@
   <string name="EditMenuItem">Edit</string>
   <string name="FinishMenuItem">Finish</string>
   <string name="DeleteMenuItem">Delete</string>
+    <string name="OnHold">On Hold</string>
+  <string name="Cancelled">Cancelled</string>
+  <string name="Done">Done</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package cosnet.android;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -15,6 +16,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 import cosnet.android.Entities.Cosplay;
 
 public class ShowCosplay extends AppCompatActivity {
@@ -23,6 +26,7 @@ public class ShowCosplay extends AppCompatActivity {
   private TextView series;
   private TextView status;
   private TextView dueDate;
+  private Cosplay cosplay;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,11 @@ public class ShowCosplay extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     //get cosplay from intent
     Intent incomingIntent = getIntent();
-    Cosplay cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
+    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
     if (cosplay != null) {
       //get fields from view
@@ -67,7 +72,9 @@ public class ShowCosplay extends AppCompatActivity {
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.showCosplayEditMenu:
-        Toast.makeText(this, "edit selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EditCosplay.class);
+        intent.putExtra("cosplay",(Serializable) cosplay);
+        startActivity(intent);
         return true;
       case R.id.showCosplayFinishMenu:
         Toast.makeText(this, "finish selected", Toast.LENGTH_SHORT).show();
