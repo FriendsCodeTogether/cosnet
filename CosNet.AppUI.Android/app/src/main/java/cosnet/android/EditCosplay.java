@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,20 +75,17 @@ public class EditCosplay extends AppCompatActivity {
     seriesEditText.setText(cosplay.cosplaySeries);
     startDateEditText.setText(cosplay.startDate);
     dueDateEditText.setText(cosplay.dueDate);
-    budgetEditText.setText(cosplay.budget != null ? cosplay.budget.toString() : null);
-    //statusSpinner.setSelection();
-
     budgetEditText.setCurrency("€");
     budgetEditText.setSpacing(true);
-
+    budgetEditText.setText(cosplay.budget != null ? cosplay.budget.toString():null);
+    
     statusses = new ArrayList<>();
     statusses.add(getApplicationContext().getString(R.string.In_Progess));
     statusses.add(getApplicationContext().getString(R.string.Planned));
 
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
     statusSpinner.setAdapter(adapterSpinnerStatus);
-
-
+    statusSpinner.setSelection(statusses.indexOf(cosplay.status));
     startDateEditText.setOnClickListener(v -> onClickStartDate());
     dueDateEditText.setOnClickListener(v -> onClickdueDate());
     saveButton.setOnClickListener(v -> onClickSaveButton());
