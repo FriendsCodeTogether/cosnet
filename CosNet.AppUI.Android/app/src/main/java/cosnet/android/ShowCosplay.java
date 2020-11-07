@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,8 @@ public class ShowCosplay extends AppCompatActivity {
   private TextView dueDate;
   private Cosplay cosplay;
 
+  private CosnetDb db;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class ShowCosplay extends AppCompatActivity {
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    db = CosnetDb.getInstance(this);
 
     //get cosplay from intent
     Intent incomingIntent = getIntent();
@@ -80,7 +85,17 @@ public class ShowCosplay extends AppCompatActivity {
         Toast.makeText(this, "finish selected", Toast.LENGTH_SHORT).show();
         return true;
       case R.id.showCosplayDeleteMenu:
-        Toast.makeText(this, "delete selected", Toast.LENGTH_SHORT).show();
+          AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplay.this).create();
+          alertDialog.setTitle("Oh No");
+          alertDialog.setMessage("Are you sure you want to delete your " + cosplay.cosplayName+" cosplay?");
+          alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {  });
+          alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
+            db.getCosplayDAO().deleteCosplay(cosplay);
+            Intent intentDelete = new Intent(this, MainActivity.class);
+            startActivity(intentDelete);
+            Toast.makeText(this, "deleted " + cosplay.cosplayName, Toast.LENGTH_SHORT).show();
+          });
+          alertDialog.show();
         return true;
       default:
         return super.onOptionsItemSelected(item);
