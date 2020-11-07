@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/WebUI/WebUI.csproj",
+                "${workspaceFolder}/CosNet.WebUI/CosNet.WebUI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/WebUI/WebUI.csproj",
+                "${workspaceFolder}/CosNet.WebUI/CosNet.WebUI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/WebUI/WebUI.csproj",
+                "${workspaceFolder}/CosNet.WebUI/CosNet.WebUI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

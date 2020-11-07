@@ -16,6 +16,8 @@ namespace CosNet.API.Data.Repositories
 
         void DeleteCosplay(Guid cosplayId);
 
+        bool CosplayExists(Guid cosplayId);
+
         bool SaveChanges();
     }
 }

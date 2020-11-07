@@ -1,6 +1,7 @@
 ﻿@page "/cosplay"
 @inject ICosplayService CosplayService
 @inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.Cosplay
 @attribute [Authorize]
 
 <div class="cosplay-list-container">
@@ -19,7 +20,7 @@
         @foreach (var cosplay in cosplays)
         {
             <div class="cosplay-list-item" @onclick="() => ClickedToId(cosplay.CosplayId)">
-                <img class="cosplay-list-item-image" src="https://placekitten.com/300/300" alt="Picture of the cosplay"/>
+                <img class="cosplay-list-item-image" src="https://placekitten.com/300/300" alt="Picture of the cosplay" />
                 <div class="cosplay-list-item-text">
                     <p>Character: @cosplay.Name</p>
                     <p>Series: @cosplay.Serie</p>
