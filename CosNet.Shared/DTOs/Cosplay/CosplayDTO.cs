@@ -16,6 +16,5 @@ namespace CosNet.Shared.DTOs.Cosplay
         public DateTime DueDate { get; set; }
         public decimal Budget { get; set; }
         public string Status { get; set; }
-
     }
 }

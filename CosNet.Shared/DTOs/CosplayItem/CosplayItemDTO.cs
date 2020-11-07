@@ -38,6 +38,5 @@ namespace CosNet.Shared.DTOs.CosplayItem
 
         //Relations Cosplay
         public Guid CosplayId { get; set; }
-
     }
 }
