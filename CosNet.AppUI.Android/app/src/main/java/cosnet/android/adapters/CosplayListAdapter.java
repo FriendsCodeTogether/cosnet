@@ -51,6 +51,12 @@ public class CosplayListAdapter extends ArrayAdapter<Cosplay> {
       status.setImageResource(R.drawable.ic_construction_white_10dp);
     } else if (cosplay.status.equals(context.getString(R.string.Planned))) {
       status.setImageResource(R.drawable.ic_emoji_objects_white_18dp);
+    }else if (cosplay.status.equals(context.getString(R.string.Done))) {
+      status.setImageResource(R.drawable.ic_baseline_check_18);
+    }else if (cosplay.status.equals(context.getString(R.string.OnHold))) {
+      status.setImageResource(R.drawable.ic_baseline_pause_18);
+    }else if (cosplay.status.equals(context.getString(R.string.Cancelled))) {
+      status.setImageResource(R.drawable.ic_baseline_highlight_off_18);
     }
 
     return convertView;
