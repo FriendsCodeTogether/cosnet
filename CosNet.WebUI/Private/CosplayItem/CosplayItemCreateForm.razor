@@ -17,17 +17,17 @@
                 <p>
                     <label class="form-label" for="name">Name:</label><br />
                     <input type="text" maxlength="150" class="form-input" id="name" placeholder="Item name" @bind-Value="cosplayItem.Name" @bind-Value:event="oninput" />
-                    <label>@cosplayItem.Name.Count()/@maxName</label>
+                    <label class="max-input">@cosplayItem.Name.Count()/@maxName</label>
                 </p>
                 <p>
                     <label class="form-label" for="serie">Description:</label><br />
                     <textarea class="form-input" id="serie" placeholder="Description" @bind="cosplayItem.Description" @bind:event="oninput" />
-                    <label class="form-error-description">*Max 500 Characters</label><label>@cosplayItem.Description.Count()/@maxDescription</label>
+                    <label class="form-error-description">*Max 500 Characters</label><label class="max-input">@cosplayItem.Description.Count()/@maxDescription</label>
                 </p>
                 <p>
                     <label class="form-label" for="price">Price:</label><br />
                     <span class="currencyinput"><input type="number" min="0" class="form-input" id="price" @bind-Value="cosplayItem.Price" @bind-Value:event="oninput" /></span>
-                    <label class="form-error-price">*Max 9 Characters</label><label>@cosplayItem.Price.ToString().Count()/@maxPrice</label>
+                    <label class="form-error-price">*Max 9 Characters</label><label class="max-input">@cosplayItem.Price.ToString().Count()/@maxPrice</label>
                 </p>
                 <p>
                     <label class="form-label" for="dueDate">Due Date:</label><br />
@@ -62,7 +62,7 @@
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
                         <span class="hourlyinput"><input type="number" min="0" class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTime" @bind-Value:event="oninput" /></span>
-                        <label class="form-error-work-time">*Max 5 Characters</label><label>@cosplayItem.WorkTime.ToString().Count()/@maxPrice</label>
+                        <label class="form-error-work-time">*Max 5 Characters</label><label class="max-input">@cosplayItem.WorkTime.ToString().Count()/@maxWorkTime</label>
                     </p>
                 }
                 else
@@ -70,7 +70,7 @@
                     <p>
                         <label class="form-label" for="buyLink">Buy Link:</label><br />
                         <input type="text" class="form-input" id="buyLink" placeholder="https://cosnet.azurewebsites.net/" @bind-Value="cosplayItem.BuyLink" @bind-Value:event="oninput" />
-                        <label class="form-error-buy-link">*Max 200 Characters</label><label>@cosplayItem.BuyLink.Count()/@maxBuyLink</label>
+                        <label class="form-error-buy-link">*Max 200 Characters</label><label class="max-input">@cosplayItem.BuyLink.Count()/@maxBuyLink</label>
                     </p>
                 }
 
