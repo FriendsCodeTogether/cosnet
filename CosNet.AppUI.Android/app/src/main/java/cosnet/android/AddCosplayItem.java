@@ -1,16 +1,15 @@
 package cosnet.android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
-import android.widget.CompoundButton;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Switch;
 
-import android.widget.CompoundButton.OnCheckedChangeListener;
-
+import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import java.util.List;
 
 import me.abhinay.input.CurrencyEditText;
@@ -32,12 +31,18 @@ public class AddCosplayItem extends AppCompatActivity {
   private int year;
   private int month;
   private int day;
+  private ToggleSwitch CosplayItemTypeSwitch;
 
-
+  private ConstraintLayout madeLayout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_add_cosplay_item);
+    setContentView(R.layout.add_cosplay_item_main);
+    CosplayItemTypeSwitch = (ToggleSwitch) findViewById(R.id.CosplayItemTypeSwitch);
+    CosplayItemTypeSwitch.setCheckedPosition(0);
+
+    madeLayout = (ConstraintLayout) findViewById(R.id.CosplayItemMadeItemLayout);
+    madeLayout.setVisibility(View.GONE);
   }
 }

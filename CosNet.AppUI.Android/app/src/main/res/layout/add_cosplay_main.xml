@@ -153,17 +153,17 @@
       app:layout_constraintStart_toStartOf="@+id/characterEditText"
       app:layout_constraintTop_toBottomOf="@+id/characterEditText" />
 
-   <TextView
-      android:id="@+id/textView2"
-      style="@style/CustomText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
-      android:layout_marginTop="12dp"
-      android:fontFamily="@font/lato_bold"
-      android:text="@string/Character"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+  <TextView
+    android:id="@+id/textView2"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Character"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
   <EditText
     android:id="@+id/characterEditText"
@@ -210,16 +210,16 @@
       app:layout_constraintStart_toStartOf="@+id/dueDateEditText"
       app:layout_constraintTop_toBottomOf="@+id/dueDateEditText" />
 
-   <TextView
-      style="@style/CustomText"
-      android:id="@+id/textView7"
-      android:fontFamily="@font/lato_bold"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="@string/Status"
-      app:layout_constraintStart_toStartOf="@+id/budgetEditText"
-      app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
+  <TextView
+    android:id="@+id/textView7"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Status"
+    app:layout_constraintStart_toStartOf="@+id/budgetEditText"
+    app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
 
   <Spinner
     android:id="@+id/statusSpinner"

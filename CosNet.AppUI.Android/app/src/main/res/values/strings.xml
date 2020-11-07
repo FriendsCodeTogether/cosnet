@@ -24,6 +24,14 @@
   <string name="Budget">Budget:</string>
   <string name="Status">Status:</string>
   <string name="add_button_plus">+</string>
+  <!--CosplayItem-->
+  <string name="CosplayItemBoughtStatus">Status:</string>
+  <string name="CosplayItemMadeItemStatus">Status:</string>
+  <string name="CosplayItemName">Item Name*</string>
+  <string name="CreateCosplayItem">Create Item</string>
+  <string name="CosplayItemDescription">Description:</string>
+  <string name="CosplayItemProgress">Progress:</string>
+  <string name="CosplayItemWorkTime">Work Time:</string>
 
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
@@ -31,6 +39,12 @@
   <string name="BudgetHint">Budget</string>
   <string name="DueDateHint">15/09/2025</string>
   <string name="StartDateHint">20/10/2020</string>
+  <!--CosplayItem-->
+  <string name="CosplayItemNameHint">Item Name</string>
+  <string name="CosplayItemDescriptionHint">Description</string>
+  <string name="CosplayItemProgressHint">Progress</string>
+  <string name="CosplayItemWorkTimeHint">Total Work Time</string>
+  <string name="CosplayItemDueDateHint">15/09/2025</string>
 
   <!--CONTENTDESCRIPTIONS-->
   <string name="CosplayPic">Cosplay Picture</string>
@@ -47,10 +61,17 @@
   <string name="EditMenuItem">Edit</string>
   <string name="FinishMenuItem">Finish</string>
   <string name="DeleteMenuItem">Delete</string>
-  <string name="ItemName">Item Name</string>
-  <string name="ItemNameHint">Item Name</string>
-  <string name="CreateCosplayItem">Create Item</string>
-    <string name="ItemDescription">Description:</string>
-  <string name="DescriptionHint">Description</string>
+
+  <!--UNSORTED-->
+  <string name="CosplayItemPrice">Price:</string>
+  <string name="CosplayItemPriceHint">Price</string>
+  <string name="CosplayItemDueDate">Due Date:</string>
+  <string name="CosplayItemType">Item Type:</string>
+  <string name="CosplayItemTypeBought">Bought</string>
+  <string name="CosplayItemTypeMade">Made</string>
+  <string name="CosplayItemNameInput" />
+  <string name="CosplayItemDescriptionInput" />
+  <string name="CosplayItemProgressInput" />
+
 
 </resources>
