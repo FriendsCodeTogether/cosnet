@@ -24,6 +24,12 @@ namespace CosNet.API.Services
         public IEnumerable<CosplayItemDTO> GetCosplayItems(Guid cosplayId)
         {
             var cosplayItems = _cosplayItemRepository.GetCosplayItems(cosplayId);
+
+            if (cosplayItems == null)
+            {
+                throw new NotFoundException();
+            }
+
             var cosplayItemDTOs = _mapper.Map<IEnumerable<CosplayItemDTO>>(cosplayItems);
             return cosplayItemDTOs;
         }

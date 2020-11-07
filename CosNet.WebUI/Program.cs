@@ -37,10 +37,10 @@ namespace CosNet.WebUI
          builder.Services.AddScoped<ICosplayService, CosplayService>();
          builder.Services.AddScoped<ICosplayItemService, CosplayItemService>();
 
-            builder.Services.AddOidcAuthentication(options =>
-            {
-               builder.Configuration.Bind("oidc", options.ProviderOptions);
-            });
+         builder.Services.AddOidcAuthentication(options =>
+         {
+            builder.Configuration.Bind("oidc", options.ProviderOptions);
+         });
 
          await builder.Build().RunAsync();
       }

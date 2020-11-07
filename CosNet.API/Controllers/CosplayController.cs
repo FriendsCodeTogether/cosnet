@@ -9,8 +9,6 @@ using System.ComponentModel;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace CosNet.API.Controllers
 {
     [ApiController]
@@ -71,6 +69,7 @@ namespace CosNet.API.Controllers
         /// Update a cosplay
         /// </summary>
         /// <param name="cosplayId">The id of the desired cosplay</param>
+        /// <param name="cosplay">The desired cosplay</param>
         [HttpPut("{cosplayId}")]
         [Description("Update a cosplay")]
         [ProducesResponseType(StatusCodes.Status200OK)]

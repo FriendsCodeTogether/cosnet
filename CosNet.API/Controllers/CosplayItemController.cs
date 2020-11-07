@@ -8,8 +8,6 @@ using CosNet.Shared.DTOs.CosplayItem;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace CosNet.API.Controllers
 {
     [Route("cosplay/{cosplayId}/[controller]")]
@@ -26,6 +24,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Get all cosplays items
         /// </summary>
+        /// <param name="cosplayId">The id of the desired cosplay item</param>
         /// <returns>A list of cosplay items</returns>
         [HttpGet]
         [Description("Get all cosplay items")]
@@ -55,6 +54,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Create cosplay item
         /// </summary>
+        /// <param name="cosplayItem">The id of the desired cosplay item</param>
         [HttpPost]
         [Description("Create cosplay item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -70,6 +70,7 @@ namespace CosNet.API.Controllers
         /// Update a cosplay item
         /// </summary>
         /// <param name="cosplayItemId">The id of the desired cosplay item</param>
+        /// <param name="cosplayItemId">The desired cosplay item</param>
         [HttpPut("{cosplayItemId}")]
         [Description("Update a cosplay item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -84,7 +85,7 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Delete a cosplay
         /// </summary>
-        /// <param name="cosplayItemId">The id of the desired cosplay</param>
+        /// <param name="cosplayItemId">The id of the desired cosplay item</param>
         [HttpDelete("{cosplayItemId}")]
         [Description("Delete a cosplay item")]
         [ProducesResponseType(StatusCodes.Status200OK)]

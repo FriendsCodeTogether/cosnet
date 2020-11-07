@@ -1,6 +1,7 @@
 ﻿@page "/cosplay/{CosplayId:guid}"
 @inject ICosplayService CosplayService
 @inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.Cosplay
 @attribute [Authorize]
 
 @if (cosplay == null)

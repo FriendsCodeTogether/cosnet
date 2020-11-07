@@ -1,6 +1,7 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplayitem"
 @inject ICosplayItemService CosplayItemService
 @inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.CosplayItem
 @attribute [Authorize]
 
 <div class="cosplayitem-list-container">
@@ -18,47 +19,48 @@
     {
         <div class="cosplayitem-list-row">
             <div class="cosplayitem-list-collumn">
-            <div class="cosplayitem-list-title">
-                Made items
-            </div>
-            @foreach (var item in cosplayItems.Where(c => c.IsMade))
-            {
-                <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
-                    <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image" />
-                    <div class="cosplayitem-list-item-text">
-                        <h4>@item.Name</h4>
-                        <p>Price: @item.Price&#9;Time: @item.WorkTime</p>
-                        <div class="cosplayitem-list-item-progressbar">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="cosplayitem-list-title">
+                    Made items
+                </div>
+                @foreach (var item in cosplayItems.Where(c => c.IsMade))
+                {
+                    <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                        <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image" />
+                        <div class="cosplayitem-list-item-text">
+                            <h4>@item.Name</h4>
+                            <p>Price: @item.Price&#9;Time: @item.WorkTime</p>
+                            <div class="cosplayitem-list-item-progressbar">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="cosplayitem-list-item-icon">
+                            Icon
                         </div>
                     </div>
-                    <div class="cosplayitem-list-item-icon">
-                        Icon
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="cosplayitem-list-collumn">
-            <div class="cosplayitem-list-title">
-                Bought items
+                }
             </div>
-            @foreach (var item in cosplayItems.Where(c => !c.IsMade))
-            {
-                <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
-                    <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image " />
-                    <div class="cosplayitem-list-item-text">
-                        <h4>@item.Name</h4>
-                        <p>Price: @item.Price</p>
-                    </div>
-                    <div class="cosplayitem-list-item-icon">
-                        Icon
-                    </div>
+            <div class="cosplayitem-list-collumn">
+                <div class="cosplayitem-list-title">
+                    Bought items
                 </div>
-            }
+                @foreach (var item in cosplayItems.Where(c => !c.IsMade))
+                {
+                    <div class="cosplayitem-list-item" @onclick="() => ClickedToId(item.CosplayItemId)">
+                        <img src="https://placekitten.com/600/600" alt="Picture of the cosplay item" class="cosplayitem-list-item-image " />
+                        <div class="cosplayitem-list-item-text">
+                            <h4>@item.Name</h4>
+                            <p>Price: @item.Price</p>
+                        </div>
+                        <div class="cosplayitem-list-item-icon">
+                            Icon
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
     }
 </div>
+
 @code {
     private IEnumerable<CosplayItemDTO> cosplayItems;
 
