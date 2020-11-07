@@ -46,15 +46,9 @@ public class AddCosplayItem extends AppCompatActivity {
     setContentView(R.layout.add_cosplay_item_main);
 
     getItemsBoundToViewId();
-    initializeSwitchButton();
-    Calendar calendar = Calendar.getInstance();
-    year = calendar.get(Calendar.YEAR);
-    month = calendar.get(Calendar.MONTH);
-    day = calendar.get(Calendar.DAY_OF_MONTH);
+    initializeItems();
 
     CosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
-    itemPriceEditText.setCurrency("€");
-    itemPriceEditText.setSpacing(true);
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
   }
 
@@ -67,10 +61,19 @@ public class AddCosplayItem extends AppCompatActivity {
     datePickerDialog.show();
   }
 
-  private void initializeSwitchButton() {
+  private void initializeItems() {
+    //Switch Button
     cosplayItemTypeSwitch.setCheckedPosition(0);
     madeItemLayout.setVisibility(View.GONE);
     boughtItemLayout.setVisibility(View.VISIBLE);
+    //Calendar
+    Calendar calendar = Calendar.getInstance();
+    year = calendar.get(Calendar.YEAR);
+    month = calendar.get(Calendar.MONTH);
+    day = calendar.get(Calendar.DAY_OF_MONTH);
+    //Currency
+    itemPriceEditText.setCurrency("€");
+    itemPriceEditText.setSpacing(true);
   }
 
   private void OnItemTypeSwitchChange(int i) {
