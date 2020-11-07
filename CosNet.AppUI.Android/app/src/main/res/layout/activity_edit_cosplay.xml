@@ -31,12 +31,8 @@
         android:textColor="@android:color/white"
         android:textSize="40sp" />
 
-
     </androidx.appcompat.widget.Toolbar>
-
-
-
-
+    
   </com.google.android.material.appbar.AppBarLayout>
 
   <TextView
