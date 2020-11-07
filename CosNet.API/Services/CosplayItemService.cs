@@ -25,7 +25,7 @@ namespace CosNet.API.Services
 
         public IEnumerable<CosplayItemDTO> GetCosplayItems(Guid cosplayId)
         {
-            if (!_cosplayRepository.CheckExisting(cosplayId))
+            if (!_cosplayRepository.CosplayExisting(cosplayId))
             {
                 throw new NotFoundException();
             }
