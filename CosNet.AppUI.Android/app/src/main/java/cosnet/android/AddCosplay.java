@@ -70,6 +70,7 @@ public class AddCosplay extends Activity {
     statusses.add(getApplicationContext().getString(R.string.Planned));
 
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
+    adapterSpinnerStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     statusSpinner.setAdapter(adapterSpinnerStatus);
 
     cancelButton.setOnClickListener(v -> onClickCancelButton());

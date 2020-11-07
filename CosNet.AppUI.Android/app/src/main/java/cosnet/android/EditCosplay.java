@@ -78,12 +78,16 @@ public class EditCosplay extends AppCompatActivity {
     budgetEditText.setCurrency("€");
     budgetEditText.setSpacing(true);
     budgetEditText.setText(cosplay.budget != null ? cosplay.budget.toString():null);
-    
+
     statusses = new ArrayList<>();
     statusses.add(getApplicationContext().getString(R.string.In_Progess));
     statusses.add(getApplicationContext().getString(R.string.Planned));
+    statusses.add(getApplicationContext().getString(R.string.Done));
+    statusses.add(getApplicationContext().getString(R.string.Cancelled));
+    statusses.add(getApplicationContext().getString(R.string.OnHold));
 
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
+    adapterSpinnerStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     statusSpinner.setAdapter(adapterSpinnerStatus);
     statusSpinner.setSelection(statusses.indexOf(cosplay.status));
     startDateEditText.setOnClickListener(v -> onClickStartDate());

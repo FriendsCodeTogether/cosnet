@@ -48,5 +48,8 @@
   <string name="EditMenuItem">Edit</string>
   <string name="FinishMenuItem">Finish</string>
   <string name="DeleteMenuItem">Delete</string>
+    <string name="OnHold">On Hold</string>
+  <string name="Cancelled">Cancelled</string>
+  <string name="Done">Done</string>
 
 </resources>
