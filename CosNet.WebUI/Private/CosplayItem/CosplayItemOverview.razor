@@ -1,5 +1,6 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}"
 @inject ICosplayItemService CosplayItemService
+@using CosNet.Shared.DTOs.CosplayItem
 
 <h3>@cosplayItem.Name</h3>
 <a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
