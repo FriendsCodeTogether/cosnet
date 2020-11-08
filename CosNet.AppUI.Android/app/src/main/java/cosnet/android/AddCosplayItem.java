@@ -17,6 +17,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.*;
+
+import cosnet.android.Entities.Cosplay;
 import me.abhinay.input.CurrencyEditText;
 
 import java.util.ArrayList;
@@ -47,6 +49,7 @@ public class AddCosplayItem extends AppCompatActivity {
   private Button addBoughtItemButton;
   private List<String> boughtStatusses;
   private List<String> madeStatusses;
+  private Cosplay cosplay;
   private int year;
   private int month;
   private int day;
@@ -63,6 +66,9 @@ public class AddCosplayItem extends AppCompatActivity {
     addToolbar();
     getItemsBound();
     initializeItems();
+
+    Intent incomingIntent = getIntent();
+    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
@@ -135,6 +141,7 @@ public class AddCosplayItem extends AppCompatActivity {
     }
 
     CosplayItem newItem = new CosplayItem();
+    newItem.cosplayId = cosplay.cosplayId;
     newItem.itemName = cosplayItemNameEditText.getText().toString();
     newItem.description = cosplayItemDescriptionEditText.getText().toString();
     newItem.dueDate = cosplayItemDueDateEditText.getText().toString();

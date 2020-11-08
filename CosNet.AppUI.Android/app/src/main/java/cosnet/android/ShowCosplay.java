@@ -48,6 +48,7 @@ public class ShowCosplay extends AppCompatActivity {
 
     createCosplayItemBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this,AddCosplayItem.class);
+      intent.putExtra("cosplay", (Serializable) cosplay);
       startActivity(intent);
     });
 

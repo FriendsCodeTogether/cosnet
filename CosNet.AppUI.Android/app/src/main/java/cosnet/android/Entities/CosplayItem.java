@@ -39,7 +39,7 @@ public class CosplayItem {
 
   @Nullable public String status;
 
-  @Nullable public double progress;
+  @Nullable public int progress;
 
   @ColumnInfo(name = "worktime_hours")
   @Nullable public int worktimeHours;

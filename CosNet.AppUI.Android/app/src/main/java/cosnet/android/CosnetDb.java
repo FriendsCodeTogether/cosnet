@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import cosnet.android.Data.DAOs.*;
 import cosnet.android.Entities.*;
 
-@Database(entities = {Cosplay.class, CosplayItem.class}, version = 4)
+@Database(entities = {Cosplay.class, CosplayItem.class}, version = 5)
 public abstract  class CosnetDb extends RoomDatabase {
 
    private static CosnetDb minstance;
