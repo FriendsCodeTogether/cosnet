@@ -42,5 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'me.abhinay.input:currency-edittext:1.1'
     implementation "com.llollox:androidtoggleswitch:2.0.1"
+    implementation 'com.shawnlin:number-picker:2.4.11'
 
 }

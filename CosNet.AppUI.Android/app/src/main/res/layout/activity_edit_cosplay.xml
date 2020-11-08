@@ -188,10 +188,10 @@
 
   <Spinner
     android:id="@+id/statusSpinner"
+    style="@style/Spinner"
     android:layout_width="0dp"
     android:layout_height="24dp"
     android:layout_marginTop="8dp"
-    android:background="@android:color/white"
     app:layout_constraintEnd_toEndOf="@+id/characterEditText"
     app:layout_constraintStart_toStartOf="@+id/budgetEditText"
     app:layout_constraintTop_toBottomOf="@+id/statusLabel" />
