@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -76,10 +77,10 @@ public class AddCosplayItem extends AppCompatActivity {
   private void setListeners() {
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
-    addMadeItemButton.setOnClickListener(i->onClickAddButton());
-    addBoughtItemButton.setOnClickListener(i->onClickAddButton());
-    cosplayItemWorkTimeEditText.setOnClickListener(v->onClickWorkTimeButton());
-    cosplayItemProgressEditText.setOnClickListener(v->onClickProgressButton());
+    addMadeItemButton.setOnClickListener(i -> onClickAddButton());
+    addBoughtItemButton.setOnClickListener(i -> onClickAddButton());
+    cosplayItemWorkTimeEditText.setOnClickListener(v -> onClickWorkTimeButton());
+    cosplayItemProgressEditText.setOnClickListener(v -> onClickProgressButton());
   }
 
   private void onClickWorkTimeButton() {
@@ -105,8 +106,8 @@ public class AddCosplayItem extends AppCompatActivity {
     builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener((View.OnClickListener) view -> {
       cosplayItemWorkTimeHours = cosplayItemWorkTimeHourNumberPicker.getValue();
       int pickedTime = cosplayItemWorkTimeMinuteNumberPicker.getValue();
-      cosplayItemWorkTimeMinutes = Integer.parseInt(data[pickedTime-1]);
-      cosplayItemWorkTimeEditText.setText("H "+cosplayItemWorkTimeHours + " : " + data[pickedTime-1]);
+      cosplayItemWorkTimeMinutes = Integer.parseInt(data[pickedTime - 1]);
+      cosplayItemWorkTimeEditText.setText("H " + cosplayItemWorkTimeHours + " : " + data[pickedTime - 1]);
       builder.dismiss();
     });
   }
@@ -162,7 +163,7 @@ public class AddCosplayItem extends AppCompatActivity {
     startActivity(intent);
   }
 
-  private void onClickItemdueDate(){
+  private void onClickItemdueDate() {
     DatePickerDialog datePickerDialog = new DatePickerDialog(AddCosplayItem.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
       String date = dayOfMonth + "/" + month + "/" + year;
@@ -171,7 +172,7 @@ public class AddCosplayItem extends AppCompatActivity {
     datePickerDialog.show();
   }
 
-  private void initializeItems(){
+  private void initializeItems() {
     //Switch Button
     cosplayItemTypeSwitch.setCheckedPosition(0);
     madeItemLayout.setVisibility(View.GONE);
@@ -203,20 +204,19 @@ public class AddCosplayItem extends AppCompatActivity {
     madeStatusSpinner.setAdapter(adapterSpinnerStatus);
   }
 
-  private void OnItemTypeSwitchChange(int i){
+  private void OnItemTypeSwitchChange(int i) {
     boughtItemLayout.setVisibility(View.GONE);
     madeItemLayout.setVisibility(View.GONE);
     if (i == 0) {
       boughtItemLayout.setVisibility(View.VISIBLE);
       isMade = 0;
-    }
-    else {
+    } else {
       madeItemLayout.setVisibility(View.VISIBLE);
       isMade = 1;
     }
   }
 
-  private void getItemsBound(){
+  private void getItemsBound() {
     boughtItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemBoughtItemLayout);
     madeItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemMadeItemLayout);
 
@@ -239,7 +239,7 @@ public class AddCosplayItem extends AppCompatActivity {
     addMadeItemButton = (Button) findViewById(R.id.CosplayBoughtItemAddButton);
   }
 
-  private void addToolbar(){
+  private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
