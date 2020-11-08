@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,14 @@ public class ShowCosplay extends AppCompatActivity {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     db = CosnetDb.getInstance(this);
+
+    ImageButton createCosplayItemBTN = (ImageButton) findViewById(R.id.createCosplayItemBTN);
+
+    createCosplayItemBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this,AddCosplayItem.class);
+      intent.putExtra("cosplay", (Serializable) cosplay);
+      startActivity(intent);
+    });
 
     //get cosplay from intent
     Intent incomingIntent = getIntent();

@@ -11,6 +11,7 @@
     android:theme="@style/AppTheme">
     <activity android:name=".EditCosplay" android:parentActivityName=".ShowCosplay"></activity>
     <activity android:name=".ShowCosplay"  android:parentActivityName=".MainActivity"/>
+    <activity android:name=".AddCosplayItem" android:parentActivityName=".ShowCosplay"></activity>
     <activity
       android:name=".MainActivity"
       android:label="@string/app_name"

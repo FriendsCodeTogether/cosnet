@@ -11,10 +11,13 @@
   <string name="menu_gallery">Gallery</string>
   <string name="menu_slideshow">Slideshow</string>
   <string name="cancelButtonDesc">Cancel</string>
-  <string name="CosNet">CosNet</string>
   <string name="message">Not all field have been filled in</string>
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="my_cosplays">My Cosplays</string>
+
+  <!--TITLES-->
+  <string name="CosNet">CosNet</string>
+  <string name="AddCosplayItemTitle">Add Item</string>
 
   <!--LABELS-->
   <string name="Character">Character*:</string>
@@ -26,12 +29,37 @@
   <string name="add_button_plus">+</string>
   <string name="save">Save</string>
 
+  <!--CosplayItem Labels-->
+  <string name="CosplayItemBoughtStatus">Status:</string>
+  <string name="CosplayItemMadeItemStatus">Status:</string>
+  <string name="CosplayItemName">Name:*</string>
+  <string name="CosplayItemDescription">Description:</string>
+  <string name="CosplayItemProgress">Progress:</string>
+  <string name="CosplayItemWorkTime">Work Time:</string>
+  <string name="CosplayItemPrice">Price:</string>
+  <string name="CosplayItemDueDate">Due Date:</string>
+  <string name="CosplayItemType">Type:</string>
+  <string name="CosplayItemTypeBought">Bought</string>
+  <string name="CosplayItemTypeMade">Made</string>
+  <string name="CosplayItemBuyLink">Buy Link:</string>
+  <string name="NumberPickerTime">:</string>
+  <string name="NumberPickerTimeH">H</string>
+
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
   <string name="SeriesHint">Serie name</string>
   <string name="BudgetHint">Budget</string>
   <string name="DueDateHint">15/09/2025</string>
   <string name="StartDateHint">20/10/2020</string>
+
+  <!--CosplayItem Hints-->
+  <string name="CosplayItemNameHint">Name</string>
+  <string name="CosplayItemDescriptionHint">Description</string>
+  <string name="CosplayItemProgressHint">Progress</string>
+  <string name="CosplayItemWorkTimeHint">Total Work Time</string>
+  <string name="CosplayItemDueDateHint">15/09/2025</string>
+  <string name="CosplayItemPriceHint">Price</string>
+  <string name="CosplayItemBuyLinkHint">buy Link</string>
 
   <!--CONTENTDESCRIPTIONS-->
   <string name="CosplayPic">Cosplay Picture</string>
@@ -40,16 +68,31 @@
   <string name="CharacterInput" />
   <string name="SeriesInput" />
 
+  <!--COSPLAY ITEM INPUTS-->
+  <string name="CosplayItemNameInput" />
+  <string name="CosplayItemDescriptionInput" />
+  <string name="CosplayItemProgressInput" />
+  <string name="CosplayItemBuyLinkInput" />
+  <string name="CosplayItemWorkTimeInput" />
+
   <!--STATUSSEN-->
   <string name="In_Progess">In Progress</string>
   <string name="Planned">Planned</string>
+  <!--COSPLAY ITEM STATUSSES-->
+  <string name="Completed">Completed</string>
+  <string name="Ordered">Ordered</string>
+  <string name="ToBuy">To Buy</string>
+  <string name="InProgress">In Progress</string>
 
   <!--MENUITEMS-->
   <string name="EditMenuItem">Edit</string>
   <string name="FinishMenuItem">Finish</string>
   <string name="DeleteMenuItem">Delete</string>
-    <string name="OnHold">On Hold</string>
+  <string name="OnHold">On Hold</string>
   <string name="Cancelled">Cancelled</string>
   <string name="Done">Done</string>
+  <!--UNSORTED-->
+
+
 
 </resources>

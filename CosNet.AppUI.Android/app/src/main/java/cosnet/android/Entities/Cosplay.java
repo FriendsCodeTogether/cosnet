@@ -15,7 +15,7 @@ public class Cosplay implements Serializable {
    public int id;
 
    @ColumnInfo(name = "cosplay_id")
-   public String cosplayId;
+   @NonNull public String cosplayId;
 
    @ColumnInfo(name = "cosplay_name")
    @NonNull public String cosplayName;
