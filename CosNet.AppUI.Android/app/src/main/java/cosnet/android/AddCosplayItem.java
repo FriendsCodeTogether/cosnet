@@ -91,7 +91,6 @@ public class AddCosplayItem extends AppCompatActivity {
       alertDialog.setMessage("Name is required to be filled in");
       alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> { });
       alertDialog.show();
-      return;
     }
 
 /*
@@ -189,15 +188,14 @@ public class AddCosplayItem extends AppCompatActivity {
 
   private void openTimeDialog() {
     final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
-    NumberPicker numberPicker = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
-    NumberPicker numberPicker1 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker2);
-
-    numberPicker.setMinValue(0);
-    numberPicker.setMaxValue(24);
-    numberPicker.setValue(0);
+    NumberPicker numberPicker1 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
+    NumberPicker numberPicker2 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker2);
     numberPicker1.setMinValue(0);
-    numberPicker1.setMaxValue(59);
+    numberPicker1.setMaxValue(100);
     numberPicker1.setValue(0);
+    numberPicker2.setMinValue(0);
+    numberPicker2.setMaxValue(59);
+    numberPicker2.setValue(0);
     final AlertDialog builder = new AlertDialog.Builder(this)
       .setPositiveButton("Submit", null)
       .setNegativeButton("Cancel", null)
@@ -205,11 +203,18 @@ public class AddCosplayItem extends AppCompatActivity {
       .setCancelable(false)
       .create();
     builder.show();
-    builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        // Code on submit
+    builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener((View.OnClickListener) view -> {
+      NumberPicker numberPicker11 = (NumberPicker) findViewById(R.id.numberPicker1);
+      NumberPicker numberPicker21 = (NumberPicker) findViewById(R.id.numberPicker2);
+      int value1 = numberPicker11.getValue();
+      int value2 = numberPicker21.getValue();
+      String value2String = "";
+      if (value2 <= 9){
+          value2String = "0" + value2;
+      } else {
+          value2String = String.valueOf(value2);
       }
+      CosplayItemWorkTimeTextView.setText(value1 + ":" + value2String);
     });
   }
 }
