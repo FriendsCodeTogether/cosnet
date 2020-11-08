@@ -24,6 +24,7 @@
   <string name="Budget">Budget:</string>
   <string name="Status">Status:</string>
   <string name="add_button_plus">+</string>
+  <string name="save">Save</string>
   <!--CosplayItem Labels-->
   <string name="CosplayItemBoughtStatus">Status:</string>
   <string name="CosplayItemMadeItemStatus">Status:</string>
@@ -61,6 +62,9 @@
   <string name="EditMenuItem">Edit</string>
   <string name="FinishMenuItem">Finish</string>
   <string name="DeleteMenuItem">Delete</string>
+    <string name="OnHold">On Hold</string>
+  <string name="Cancelled">Cancelled</string>
+  <string name="Done">Done</string>
 
   <!--UNSORTED-->
   <string name="CosplayItemPrice">Price:</string>

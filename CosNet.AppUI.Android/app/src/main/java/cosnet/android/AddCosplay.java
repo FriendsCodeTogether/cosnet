@@ -1,6 +1,9 @@
 package cosnet.android;
 
 import android.app.Activity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -13,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import androidx.appcompat.widget.Toolbar;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +28,7 @@ import java.util.Locale;
 import cosnet.android.Entities.Cosplay;
 import me.abhinay.input.CurrencyEditText;
 
-public class AddCosplay extends Activity {
+public class AddCosplay extends AppCompatActivity {
 
   private static final String TAG = "AddCosplay";
 
@@ -35,8 +40,7 @@ public class AddCosplay extends Activity {
   private EditText dueDateEditText;
   private CurrencyEditText budgetEditText;
   private Spinner statusSpinner;
-  private ImageButton cancelButton;
-  private ImageButton addCosplayButton;
+  private Button addCosplayButton;
   private List<String> statusses;
   private int year;
   private int month;
@@ -47,6 +51,7 @@ public class AddCosplay extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.add_cosplay_main);
 
+    addToolbar();
     db = CosnetDb.getInstance(this);
 
     characterEditText = (EditText) findViewById(R.id.characterEditText);
@@ -55,8 +60,7 @@ public class AddCosplay extends Activity {
     dueDateEditText = (EditText) findViewById(R.id.dueDateEditText);
     budgetEditText = (CurrencyEditText) findViewById(R.id.budgetEditText);
     statusSpinner = (Spinner) findViewById(R.id.statusSpinner);
-    cancelButton = (ImageButton) findViewById(R.id.cancelNewCosplayBTN);
-    addCosplayButton = (ImageButton) findViewById(R.id.addCosplayBTN);
+    addCosplayButton = (Button) findViewById(R.id.addCosBTN);
     Calendar calendar = Calendar.getInstance();
     year = calendar.get(Calendar.YEAR);
     month = calendar.get(Calendar.MONTH);
@@ -70,12 +74,18 @@ public class AddCosplay extends Activity {
     statusses.add(getApplicationContext().getString(R.string.Planned));
 
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
+    adapterSpinnerStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     statusSpinner.setAdapter(adapterSpinnerStatus);
 
-    cancelButton.setOnClickListener(v -> onClickCancelButton());
     startDateEditText.setOnClickListener(v -> onClickStartDate());
     dueDateEditText.setOnClickListener(v -> onClickdueDate());
     addCosplayButton.setOnClickListener(v -> onClickAddButton());
+  }
+  private void addToolbar() {
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
 
   private void onClickAddButton() {
@@ -118,10 +128,5 @@ public class AddCosplay extends Activity {
       startDateEditText.setText(date);
     }, year, month, day);
     datePickerDialog.show();
-  }
-
-  private void onClickCancelButton() {
-    Intent intent = new Intent(AddCosplay.this, MainActivity.class);
-    startActivity(intent);
   }
 }

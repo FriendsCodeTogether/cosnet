@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,5 +29,7 @@ namespace CosNet.API.Entities
         public decimal Budget { get; set; }
         [MaxLength(25)]
         public string Status { get; set; }
+
+        public IEnumerable<CosplayItem> Items { get; set; }
     }
 }

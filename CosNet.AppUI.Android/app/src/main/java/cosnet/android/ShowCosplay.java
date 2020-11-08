@@ -1,9 +1,11 @@
 package cosnet.android;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +18,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 
+=======
+import java.io.Serializable;
+>>>>>>> develop
 
 import cosnet.android.Entities.Cosplay;
 
@@ -26,6 +32,9 @@ public class ShowCosplay extends AppCompatActivity {
   private TextView series;
   private TextView status;
   private TextView dueDate;
+  private Cosplay cosplay;
+
+  private CosnetDb db;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,9 @@ public class ShowCosplay extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    db = CosnetDb.getInstance(this);
 
     ImageButton createCosplayItemBTN = (ImageButton) findViewById(R.id.createCosplayItemBTN);
 
@@ -45,7 +57,7 @@ public class ShowCosplay extends AppCompatActivity {
 
     //get cosplay from intent
     Intent incomingIntent = getIntent();
-    Cosplay cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
+    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
     if (cosplay != null) {
       //get fields from view
@@ -77,13 +89,25 @@ public class ShowCosplay extends AppCompatActivity {
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.showCosplayEditMenu:
-        Toast.makeText(this, "edit selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EditCosplay.class);
+        intent.putExtra("cosplay",(Serializable) cosplay);
+        startActivity(intent);
         return true;
       case R.id.showCosplayFinishMenu:
         Toast.makeText(this, "finish selected", Toast.LENGTH_SHORT).show();
         return true;
       case R.id.showCosplayDeleteMenu:
-        Toast.makeText(this, "delete selected", Toast.LENGTH_SHORT).show();
+          AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplay.this).create();
+          alertDialog.setTitle("Oh No");
+          alertDialog.setMessage("Are you sure you want to delete your " + cosplay.cosplayName+" cosplay?");
+          alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {  });
+          alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
+            db.getCosplayDAO().deleteCosplay(cosplay);
+            Intent intentDelete = new Intent(this, MainActivity.class);
+            startActivity(intentDelete);
+            Toast.makeText(this, "deleted " + cosplay.cosplayName, Toast.LENGTH_SHORT).show();
+          });
+          alertDialog.show();
         return true;
       default:
         return super.onOptionsItemSelected(item);
