@@ -52,6 +52,7 @@ public class AddCosplayItem extends AppCompatActivity {
   private int day;
   private int cosplayItemWorkTimeHours;
   private int cosplayItemWorkTimeMinutes;
+  private int cosplayItemProgressNumber;
   private int isMade;
 
   @Override
@@ -68,10 +69,11 @@ public class AddCosplayItem extends AppCompatActivity {
     addMadeItemButton.setOnClickListener(i->onClickAddButton());
     addBoughtItemButton.setOnClickListener(i->onClickAddButton());
     cosplayItemWorkTimeEditText.setOnClickListener(v->onClickWorkTimeButton());
+    cosplayItemProgressEditText.setOnClickListener(v->onClickProgressButton());
   }
 
   private void onClickWorkTimeButton() {
-    final ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
+    final ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.view_time_dialog, null);
     NumberPicker cosplayItemWorkTimeHourNumberPicker = (NumberPicker) constraintLayout.findViewById(R.id.CosplayItemWorkTimeHourNumberPicker);
     NumberPicker cosplayItemWorkTimeMinuteNumberPicker = (NumberPicker) constraintLayout.findViewById(R.id.CosplayItemWorkTimeMinuteNumberPicker);
 
@@ -95,6 +97,28 @@ public class AddCosplayItem extends AppCompatActivity {
       int pickedTime = cosplayItemWorkTimeMinuteNumberPicker.getValue();
       cosplayItemWorkTimeMinutes = Integer.parseInt(data[pickedTime-1]);
       cosplayItemWorkTimeEditText.setText("H "+cosplayItemWorkTimeHours + " : " + data[pickedTime-1]);
+      builder.dismiss();
+    });
+  }
+
+  private void onClickProgressButton() {
+    final ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.view_single_number_dialog, null);
+    NumberPicker cosplayItemProgressNumberPicker = (NumberPicker) constraintLayout.findViewById(R.id.CosplayItemProgressNumberPicker);
+
+    cosplayItemProgressNumberPicker.setValue(0);
+
+    final AlertDialog builder = new AlertDialog.Builder(this)
+      .setTitle("Total Progress made")
+      .setPositiveButton("Submit", null)
+      .setNegativeButton("Cancel", null)
+      .setView(constraintLayout)
+      .setCancelable(false)
+      .create();
+    builder.show();
+
+    builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener((View.OnClickListener) view -> {
+      cosplayItemProgressNumber = cosplayItemProgressNumberPicker.getValue();
+      cosplayItemProgressEditText.setText(cosplayItemProgressNumber + "%");
       builder.dismiss();
     });
   }
