@@ -118,19 +118,6 @@
       app:layout_constraintStart_toStartOf="@+id/characterEditText"
       app:layout_constraintTop_toBottomOf="@+id/characterEditText" />
 
-<<<<<<< HEAD
-  <TextView
-    android:id="@+id/textView2"
-    style="@style/CustomText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:fontFamily="@font/lato_bold"
-    android:text="@string/Character"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-=======
    <TextView
       android:id="@+id/characterLabel"
       style="@style/CustomText"
@@ -142,7 +129,6 @@
       android:text="@string/Character"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
->>>>>>> develop
 
   <EditText
     android:id="@+id/characterEditText"
@@ -189,18 +175,6 @@
       app:layout_constraintStart_toStartOf="@+id/dueDateEditText"
       app:layout_constraintTop_toBottomOf="@+id/dueDateEditText" />
 
-<<<<<<< HEAD
-  <TextView
-    android:id="@+id/textView7"
-    style="@style/CustomText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:fontFamily="@font/lato_bold"
-    android:text="@string/Status"
-    app:layout_constraintStart_toStartOf="@+id/budgetEditText"
-    app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
-=======
    <TextView
       style="@style/CustomText"
       android:id="@+id/statusLabel"
@@ -211,7 +185,6 @@
       android:text="@string/Status"
       app:layout_constraintStart_toStartOf="@+id/budgetEditText"
       app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
->>>>>>> develop
 
   <Spinner
     android:id="@+id/statusSpinner"

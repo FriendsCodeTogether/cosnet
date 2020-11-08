@@ -18,11 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-
-=======
 import java.io.Serializable;
->>>>>>> develop
 
 import cosnet.android.Entities.Cosplay;
 
