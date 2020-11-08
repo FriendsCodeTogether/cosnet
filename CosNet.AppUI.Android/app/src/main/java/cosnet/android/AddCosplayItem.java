@@ -138,15 +138,16 @@ public class AddCosplayItem extends AppCompatActivity {
     newItem.itemName = cosplayItemNameEditText.getText().toString();
     newItem.description = cosplayItemDescriptionEditText.getText().toString();
     newItem.dueDate = cosplayItemDueDateEditText.getText().toString();
+    newItem.price = cosplayItemPriceEditText.getText().toString().isEmpty() ? null : cosplayItemPriceEditText.getCleanDoubleValue();
     newItem.isMade = isMade;
     if (isMade == 0) newItem.status = boughtStatusSpinner.getSelectedItem().toString();
     else newItem.status = madeStatusSpinner.getSelectedItem().toString();
     newItem.buylink = cosplayItemBuyLinkEditText.getText().toString();
-    newItem.progress = cosplayItemProgressEditText.getText().toString().isEmpty() ? null : Double.parseDouble(cosplayItemProgressEditText.getText().toString());
+    newItem.progress = cosplayItemProgressNumber;
     newItem.worktimeHours = cosplayItemWorkTimeHours;
     newItem.worktimeMinutes = cosplayItemWorkTimeMinutes;
-    Log.d("Add Cosplay Item: ", newItem.itemName + " " + newItem.description+ " " +newItem.dueDate+ " " + newItem.isMade + " " + newItem.status + " " +newItem.buylink +" "+newItem.progress+" "+newItem.worktimeHours+" "+ newItem.worktimeMinutes);
-    //db.getCosplayItemDAO().insertItem(newItem);
+    Log.d("Add Cosplay Item: ","item name: " + newItem.itemName + " descrition: " + newItem.description+ " price: "+newItem.price+" due date: " +newItem.dueDate+ " isMade: " + newItem.isMade + " status: " + newItem.status + " link: " +newItem.buylink +" progress: "+newItem.progress+" hours: "+newItem.worktimeHours+" minutes: "+ newItem.worktimeMinutes);
+    db.getCosplayItemDAO().insertItem(newItem);
     Intent intent = new Intent(AddCosplayItem.this, ShowCosplay.class);
     startActivity(intent);
   }
