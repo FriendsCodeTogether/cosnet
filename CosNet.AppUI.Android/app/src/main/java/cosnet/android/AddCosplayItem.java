@@ -1,32 +1,26 @@
 package cosnet.android;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import me.abhinay.input.CurrencyEditText;
 
@@ -62,6 +56,9 @@ public class AddCosplayItem extends AppCompatActivity {
   private int year;
   private int month;
   private int day;
+
+  private NumberPicker numberPicker1;
+  private NumberPicker numberPicker2;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +174,8 @@ public class AddCosplayItem extends AppCompatActivity {
     addBoughtItemButton = (Button) findViewById(R.id.CosplayMadeItemAddButton);
     addMadeItemButton = (Button) findViewById(R.id.CosplayBoughtItemAddButton);
 
+    numberPicker1 = (NumberPicker) findViewById(R.id.numberPicker1);
+    numberPicker2 = (NumberPicker) findViewById(R.id.numberPicker2);
   }
 
   private void addToolbar() {
@@ -188,14 +187,15 @@ public class AddCosplayItem extends AppCompatActivity {
 
   private void openTimeDialog() {
     final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
-    NumberPicker numberPicker1 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
-    NumberPicker numberPicker2 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker2);
+
     numberPicker1.setMinValue(0);
     numberPicker1.setMaxValue(100);
     numberPicker1.setValue(0);
-    numberPicker2.setMinValue(0);
-    numberPicker2.setMaxValue(59);
-    numberPicker2.setValue(0);
+
+    String[] data = {"00", "15", "30", "45"};
+    numberPicker2.setMinValue(1);
+    numberPicker2.setMaxValue(data.length);
+    numberPicker2.setDisplayedValues(data);
     final AlertDialog builder = new AlertDialog.Builder(this)
       .setPositiveButton("Submit", null)
       .setNegativeButton("Cancel", null)
@@ -204,17 +204,9 @@ public class AddCosplayItem extends AppCompatActivity {
       .create();
     builder.show();
     builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener((View.OnClickListener) view -> {
-      NumberPicker numberPicker11 = (NumberPicker) findViewById(R.id.numberPicker1);
-      NumberPicker numberPicker21 = (NumberPicker) findViewById(R.id.numberPicker2);
-      int value1 = numberPicker11.getValue();
-      int value2 = numberPicker21.getValue();
-      String value2String = "";
-      if (value2 <= 9){
-          value2String = "0" + value2;
-      } else {
-          value2String = String.valueOf(value2);
-      }
-      CosplayItemWorkTimeTextView.setText(value1 + ":" + value2String);
+      int value1 = numberPicker1.getValue();
+      int value2 = numberPicker2.getValue();
+      cosplayItemWorkTimeEditText.setText(value1 + ":" + value2);
     });
   }
 }
