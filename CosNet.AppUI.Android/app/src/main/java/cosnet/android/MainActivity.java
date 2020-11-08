@@ -35,14 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     db = CosnetDb.getInstance(this);
 
-    new Thread(new Runnable() {
-      @Override
-      public void run() {
-
-      }
-    }).start();
-
-
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);

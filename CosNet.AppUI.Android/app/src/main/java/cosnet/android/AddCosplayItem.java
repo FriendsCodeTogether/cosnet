@@ -71,8 +71,6 @@ public class AddCosplayItem extends AppCompatActivity {
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
-
-
   }
 
   private void setListeners() {
