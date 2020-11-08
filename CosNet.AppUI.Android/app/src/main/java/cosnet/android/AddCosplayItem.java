@@ -66,10 +66,16 @@ public class AddCosplayItem extends AppCompatActivity {
     addToolbar();
     getItemsBound();
     initializeItems();
+    setListeners();
 
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
+
+
+  }
+
+  private void setListeners() {
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
     addMadeItemButton.setOnClickListener(i->onClickAddButton());
@@ -153,7 +159,6 @@ public class AddCosplayItem extends AppCompatActivity {
     newItem.progress = cosplayItemProgressNumber;
     newItem.worktimeHours = cosplayItemWorkTimeHours;
     newItem.worktimeMinutes = cosplayItemWorkTimeMinutes;
-    Log.d("Add Cosplay Item: ","item name: " + newItem.itemName + " descrition: " + newItem.description+ " price: "+newItem.price+" due date: " +newItem.dueDate+ " isMade: " + newItem.isMade + " status: " + newItem.status + " link: " +newItem.buylink +" progress: "+newItem.progress+" hours: "+newItem.worktimeHours+" minutes: "+ newItem.worktimeMinutes);
     db.getCosplayItemDAO().insertItem(newItem);
     Intent intent = new Intent(AddCosplayItem.this, ShowCosplay.class);
     startActivity(intent);

@@ -42,6 +42,8 @@
   <string name="CosplayItemTypeBought">Bought</string>
   <string name="CosplayItemTypeMade">Made</string>
   <string name="CosplayItemBuyLink">Buy Link:</string>
+  <string name="NumberPickerTime">:</string>
+  <string name="NumberPickerTimeH">H</string>
 
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
@@ -86,14 +88,11 @@
   <string name="EditMenuItem">Edit</string>
   <string name="FinishMenuItem">Finish</string>
   <string name="DeleteMenuItem">Delete</string>
-    <string name="OnHold">On Hold</string>
+  <string name="OnHold">On Hold</string>
   <string name="Cancelled">Cancelled</string>
   <string name="Done">Done</string>
-
-
   <!--UNSORTED-->
-  <string name="NumberPickerTime">:</string>
-  <string name="NumberPickerTimeH">H</string>
+
 
 
 </resources>
