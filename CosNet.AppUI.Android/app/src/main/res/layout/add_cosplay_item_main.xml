@@ -122,10 +122,12 @@
       android:layout_width="0dp"
       android:layout_height="24dp"
       android:layout_marginTop="8dp"
+      android:importantForAutofill="no"
       android:fontFamily="@font/lato_bold"
       android:hint="@string/CosplayItemPriceHint"
-      android:importantForAutofill="no"
       android:inputType="number"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
       app:layout_constraintEnd_toEndOf="@+id/CosplayItemDescriptionEditText"
       app:layout_constraintStart_toStartOf="@+id/CosplayItemPriceTextView"
       app:layout_constraintTop_toBottomOf="@+id/CosplayItemPriceTextView" />

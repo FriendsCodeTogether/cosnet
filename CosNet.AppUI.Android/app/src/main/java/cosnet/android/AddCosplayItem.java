@@ -3,26 +3,27 @@ package cosnet.android;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
+import com.shawnlin.numberpicker.*;
+import me.abhinay.input.CurrencyEditText;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import cosnet.android.Entities.CosplayItem;
-import me.abhinay.input.CurrencyEditText;
 
 public class AddCosplayItem extends AppCompatActivity {
 
@@ -30,35 +31,28 @@ public class AddCosplayItem extends AppCompatActivity {
 
   private CosnetDb db;
   private CosplayItem cosplayItem;
-
   private ConstraintLayout madeItemLayout;
   private ConstraintLayout boughtItemLayout;
-
   private EditText cosplayItemNameEditText;
   private EditText cosplayItemDescriptionEditText;
   private CurrencyEditText cosplayItemPriceEditText;
   private EditText cosplayItemDueDateEditText;
   private ToggleSwitch cosplayItemTypeSwitch;
-
   private Spinner boughtStatusSpinner;
   private EditText cosplayItemBuyLinkEditText;
-
   private Spinner madeStatusSpinner;
   private EditText cosplayItemProgressEditText;
   private EditText cosplayItemWorkTimeEditText;
-
   private Button addMadeItemButton;
   private Button addBoughtItemButton;
-
   private List<String> boughtStatusses;
   private List<String> madeStatusses;
-
   private int year;
   private int month;
   private int day;
-
-  private NumberPicker numberPicker1;
-  private NumberPicker numberPicker2;
+  private int cosplayItemWorkTimeHours;
+  private int cosplayItemWorkTimeMinutes;
+  private int isMade;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +71,32 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void onClickWorkTimeButton() {
-    openTimeDialog();
+    final ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
+    NumberPicker cosplayItemWorkTimeHourNumberPicker = (NumberPicker) constraintLayout.findViewById(R.id.CosplayItemWorkTimeHourNumberPicker);
+    NumberPicker cosplayItemWorkTimeMinuteNumberPicker = (NumberPicker) constraintLayout.findViewById(R.id.CosplayItemWorkTimeMinuteNumberPicker);
+
+    cosplayItemWorkTimeHourNumberPicker.setValue(0);
+    String[] data = {"00", "15", "30", "45"};
+    cosplayItemWorkTimeMinuteNumberPicker.setMinValue(1);
+    cosplayItemWorkTimeMinuteNumberPicker.setMaxValue(data.length);
+    cosplayItemWorkTimeMinuteNumberPicker.setDisplayedValues(data);
+
+    final AlertDialog builder = new AlertDialog.Builder(this)
+      .setTitle("Total Hours Worked")
+      .setPositiveButton("Submit", null)
+      .setNegativeButton("Cancel", null)
+      .setView(constraintLayout)
+      .setCancelable(false)
+      .create();
+    builder.show();
+
+    builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener((View.OnClickListener) view -> {
+      cosplayItemWorkTimeHours = cosplayItemWorkTimeHourNumberPicker.getValue();
+      int pickedTime = cosplayItemWorkTimeMinuteNumberPicker.getValue();
+      cosplayItemWorkTimeMinutes = Integer.parseInt(data[pickedTime-1]);
+      cosplayItemWorkTimeEditText.setText("H "+cosplayItemWorkTimeHours + " : " + data[pickedTime-1]);
+      builder.dismiss();
+    });
   }
 
   private void onClickAddButton() {
@@ -86,25 +105,29 @@ public class AddCosplayItem extends AppCompatActivity {
       AlertDialog alertDialog = new AlertDialog.Builder(AddCosplayItem.this).create();
       alertDialog.setTitle("Oh No");
       alertDialog.setMessage("Name is required to be filled in");
-      alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> { });
+      alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> {
+      });
       alertDialog.show();
     }
 
-/*
-    Cosplay newCosplay = new Cosplay();
-    newCosplay.cosplayName = characterEditText.getText().toString();
-    newCosplay.cosplaySeries = seriesEditText.getText().toString();
-    newCosplay.startDate = startDateEditText.getText().toString();
-    newCosplay.dueDate = dueDateEditText.getText().toString();
-    newCosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
-    newCosplay.status = statusSpinner.getSelectedItem().toString();
-
-    db.getCosplayDAO().insertCosplay(newCosplay);
-    Intent intent = new Intent(AddCosplay.this, MainActivity.class);
-    startActivity(intent);*/
+    CosplayItem newItem = new CosplayItem();
+    newItem.itemName = cosplayItemNameEditText.getText().toString();
+    newItem.description = cosplayItemDescriptionEditText.getText().toString();
+    newItem.dueDate = cosplayItemDueDateEditText.getText().toString();
+    newItem.isMade = isMade;
+    if (isMade == 0) newItem.status = boughtStatusSpinner.getSelectedItem().toString();
+    else newItem.status = madeStatusSpinner.getSelectedItem().toString();
+    newItem.buylink = cosplayItemBuyLinkEditText.getText().toString();
+    newItem.progress = cosplayItemProgressEditText.getText().toString().isEmpty() ? null : Double.parseDouble(cosplayItemProgressEditText.getText().toString());
+    newItem.worktimeHours = cosplayItemWorkTimeHours;
+    newItem.worktimeMinutes = cosplayItemWorkTimeMinutes;
+    Log.d("Add Cosplay Item: ", newItem.itemName + " " + newItem.description+ " " +newItem.dueDate+ " " + newItem.isMade + " " + newItem.status + " " +newItem.buylink +" "+newItem.progress+" "+newItem.worktimeHours+" "+ newItem.worktimeMinutes);
+    //db.getCosplayItemDAO().insertItem(newItem);
+    Intent intent = new Intent(AddCosplayItem.this, ShowCosplay.class);
+    startActivity(intent);
   }
 
-  private void onClickItemdueDate() {
+  private void onClickItemdueDate(){
     DatePickerDialog datePickerDialog = new DatePickerDialog(AddCosplayItem.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
       String date = dayOfMonth + "/" + month + "/" + year;
@@ -113,7 +136,7 @@ public class AddCosplayItem extends AppCompatActivity {
     datePickerDialog.show();
   }
 
-  private void initializeItems() {
+  private void initializeItems(){
     //Switch Button
     cosplayItemTypeSwitch.setCheckedPosition(0);
     madeItemLayout.setVisibility(View.GONE);
@@ -145,14 +168,20 @@ public class AddCosplayItem extends AppCompatActivity {
     madeStatusSpinner.setAdapter(adapterSpinnerStatus);
   }
 
-  private void OnItemTypeSwitchChange(int i) {
+  private void OnItemTypeSwitchChange(int i){
     boughtItemLayout.setVisibility(View.GONE);
     madeItemLayout.setVisibility(View.GONE);
-    if (i == 0) boughtItemLayout.setVisibility(View.VISIBLE);
-    else madeItemLayout.setVisibility(View.VISIBLE);
+    if (i == 0) {
+      boughtItemLayout.setVisibility(View.VISIBLE);
+      isMade = 0;
+    }
+    else {
+      madeItemLayout.setVisibility(View.VISIBLE);
+      isMade = 1;
+    }
   }
 
-  private void getItemsBound() {
+  private void getItemsBound(){
     boughtItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemBoughtItemLayout);
     madeItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemMadeItemLayout);
 
@@ -173,40 +202,12 @@ public class AddCosplayItem extends AppCompatActivity {
 
     addBoughtItemButton = (Button) findViewById(R.id.CosplayMadeItemAddButton);
     addMadeItemButton = (Button) findViewById(R.id.CosplayBoughtItemAddButton);
-
-    numberPicker1 = (NumberPicker) findViewById(R.id.numberPicker1);
-    numberPicker2 = (NumberPicker) findViewById(R.id.numberPicker2);
   }
 
-  private void addToolbar() {
+  private void addToolbar(){
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-  }
-
-  private void openTimeDialog() {
-    final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
-
-    numberPicker1.setMinValue(0);
-    numberPicker1.setMaxValue(100);
-    numberPicker1.setValue(0);
-
-    String[] data = {"00", "15", "30", "45"};
-    numberPicker2.setMinValue(1);
-    numberPicker2.setMaxValue(data.length);
-    numberPicker2.setDisplayedValues(data);
-    final AlertDialog builder = new AlertDialog.Builder(this)
-      .setPositiveButton("Submit", null)
-      .setNegativeButton("Cancel", null)
-      .setView(linearLayout)
-      .setCancelable(false)
-      .create();
-    builder.show();
-    builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener((View.OnClickListener) view -> {
-      int value1 = numberPicker1.getValue();
-      int value2 = numberPicker2.getValue();
-      cosplayItemWorkTimeEditText.setText(value1 + ":" + value2);
-    });
   }
 }

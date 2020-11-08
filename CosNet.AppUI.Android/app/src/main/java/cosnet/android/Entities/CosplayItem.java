@@ -41,7 +41,11 @@ public class CosplayItem {
 
   @Nullable public double progress;
 
-  @Nullable public String worktime;
+  @ColumnInfo(name = "worktime_hours")
+  @Nullable public int worktimeHours;
+
+  @ColumnInfo(name = "worktime_minutes")
+  @Nullable public int worktimeMinutes;
 
   @Nullable public String buylink;
 

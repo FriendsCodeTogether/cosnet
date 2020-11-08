@@ -90,14 +90,10 @@
   <string name="Cancelled">Cancelled</string>
   <string name="Done">Done</string>
 
+
   <!--UNSORTED-->
-
-
-
-
-
-
-
+  <string name="NumberPickerTime">:</string>
+  <string name="NumberPickerTimeH">H</string>
 
 
 </resources>
