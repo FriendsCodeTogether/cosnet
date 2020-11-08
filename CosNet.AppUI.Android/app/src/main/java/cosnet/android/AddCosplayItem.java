@@ -6,12 +6,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -77,11 +80,7 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void onClickWorkTimeButton() {
-    AlertDialog alertDialog = new AlertDialog.Builder(AddCosplayItem.this).create();
-    alertDialog.setTitle("Work Time");
-    alertDialog.setMessage("Hi");
-    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "OK", (dialog, which) -> { });
-    alertDialog.show();
+    openTimeDialog();
   }
 
   private void onClickAddButton() {
@@ -186,5 +185,31 @@ public class AddCosplayItem extends AppCompatActivity {
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  }
+
+  private void openTimeDialog() {
+    final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
+    NumberPicker numberPicker = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
+    NumberPicker numberPicker1 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker2);
+
+    numberPicker.setMinValue(0);
+    numberPicker.setMaxValue(24);
+    numberPicker.setValue(0);
+    numberPicker1.setMinValue(0);
+    numberPicker1.setMaxValue(59);
+    numberPicker1.setValue(0);
+    final AlertDialog builder = new AlertDialog.Builder(this)
+      .setPositiveButton("Submit", null)
+      .setNegativeButton("Cancel", null)
+      .setView(linearLayout)
+      .setCancelable(false)
+      .create();
+    builder.show();
+    builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        // Code on submit
+      }
+    });
   }
 }
