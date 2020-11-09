@@ -143,6 +143,7 @@ public class AddCosplayItem extends AppCompatActivity {
       alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> {
       });
       alertDialog.show();
+      return;
     }
 
     CosplayItem newItem = new CosplayItem();
