@@ -77,11 +77,9 @@ public class AddCosplayItem extends AppCompatActivity {
 
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
-
   }
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-
       case android.R.id.home:
         onBackPressed();
         return true;
