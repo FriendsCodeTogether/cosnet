@@ -70,6 +70,7 @@ public class AddCosplayItem extends AppCompatActivity {
     setContentView(R.layout.add_cosplay_item_main);
 
     addToolbar();
+    addDatabase();
     getItemsBound();
     initializeItems();
     setListeners();
@@ -78,16 +79,15 @@ public class AddCosplayItem extends AppCompatActivity {
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
   }
-
-  @Override
-  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+  public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
+
       case android.R.id.home:
-        NavUtils.navigateUpFromSameTask(this);
+        onBackPressed();
         return true;
-      default:
-        return super.onOptionsItemSelected(item);
     }
+
+    return super.onOptionsItemSelected(item);
   }
   private void setListeners() {
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
@@ -232,11 +232,13 @@ public class AddCosplayItem extends AppCompatActivity {
     }
   }
 
+  private void addDatabase(){
+
+    db = CosnetDb.getInstance(this);
+  }
   private void getItemsBound() {
     boughtItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemBoughtItemLayout);
     madeItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemMadeItemLayout);
-
-    db = CosnetDb.getInstance(this);
 
     cosplayItemNameEditText = (EditText) findViewById(R.id.CosplayItemNameEditText);
     cosplayItemDescriptionEditText = (EditText) findViewById(R.id.CosplayItemDescriptionEditText);
