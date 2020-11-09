@@ -6,15 +6,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NavUtils;
 
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.*;
@@ -22,6 +26,7 @@ import com.shawnlin.numberpicker.*;
 import cosnet.android.Entities.Cosplay;
 import me.abhinay.input.CurrencyEditText;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -74,6 +79,16 @@ public class AddCosplayItem extends AppCompatActivity {
 
   }
 
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        NavUtils.navigateUpFromSameTask(this);
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
   private void setListeners() {
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
@@ -246,4 +261,5 @@ public class AddCosplayItem extends AppCompatActivity {
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
+
 }
