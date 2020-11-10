@@ -23,7 +23,7 @@
   <!-- Add SCSS files to dotnet watch -->
   <ItemGroup>
     <Watch Include="**\*.scss" />
-    <None Remove="**\*.css" />
+    <None Update="**\*.css" watch="false" />
   </ItemGroup>
 
   <!-- Compile SCSS files into CSS -->
