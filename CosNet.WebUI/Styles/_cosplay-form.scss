@@ -64,6 +64,24 @@
   border: 0px;
 }
 
+.form-work-time {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-work-time-input {
+  width: 50%;
+  height: 2rem;
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  background-color: #808080;
+  color: white;
+  padding-left: 10px;
+  border: 0px;
+}
+
 .form-label {
   font-size: 1.3em;
 }
@@ -89,9 +107,9 @@
 
   &:before {
     position: absolute;
-    top: -3px;
+    top: 3px;
     content: 'h';
-    right: 25px;
+    right: 60px;
   }
 
   .form-input {

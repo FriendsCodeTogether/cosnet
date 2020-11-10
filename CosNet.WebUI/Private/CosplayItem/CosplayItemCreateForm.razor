@@ -61,13 +61,15 @@
                     </p>
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
-                        <span class="hourlyinput"><input type="number" min="0" class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTimeHours" @bind-Value:event="oninput" /></span>
-                        <InputSelectNumber class="form-input" id="worktime" @bind-Value="@cosplayItem.WorkTimeMinutes">
-                            <option value="0">0 min</option>
-                            <option value="15">15 min</option>
-                            <option value="30">30 min</option>
-                            <option value="45">45 min</option>
-                        </InputSelectNumber>
+                        <div class="form-work-time">
+                            <span class="hourlyinput"><input type="number" min="0" class="form-work-time-input" id="workTime" @bind-Value="cosplayItem.WorkTimeHours" @bind-Value:event="oninput" /></span>
+                            <InputSelectNumber class="form-work-time-input" id="worktime" @bind-Value="@cosplayItem.WorkTimeMinutes">
+                                <option value="0">0 min</option>
+                                <option value="15">15 min</option>
+                                <option value="30">30 min</option>
+                                <option value="45">45 min</option>
+                            </InputSelectNumber>
+                        </div>
                         <label class="form-error-work-time">*Max 5 Characters</label><label class="max-input">@cosplayItem.WorkTimeHours.ToString().Count()/@maxWorkTime</label>
                     </p>
                 }
@@ -83,7 +85,7 @@
                 <div class="cosplay-form-group-button-row">
                     <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
                     <span class="flex-spacer"></span>
-                    <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem">Cancel</a>
+                    <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId">Cancel</a>
                 </div>
             </EditForm>
         </div>
