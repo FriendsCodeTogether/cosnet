@@ -62,6 +62,12 @@
                     <p>
                         <label class="form-label" for="workTime">Work Time:</label><br />
                         <span class="hourlyinput"><input type="number" min="0" class="form-input" id="workTime" @bind-Value="cosplayItem.WorkTimeHours" @bind-Value:event="oninput" /></span>
+                        <InputSelectNumber class="form-input" id="worktime" @bind-Value="@cosplayItem.WorkTimeMinutes">
+                            <option value="0">0 min</option>
+                            <option value="15">15 min</option>
+                            <option value="30">30 min</option>
+                            <option value="45">45 min</option>
+                        </InputSelectNumber>
                         <label class="form-error-work-time">*Max 5 Characters</label><label class="max-input">@cosplayItem.WorkTimeHours.ToString().Count()/@maxWorkTime</label>
                     </p>
                 }
