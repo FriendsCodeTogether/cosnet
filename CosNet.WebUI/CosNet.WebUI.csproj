@@ -20,6 +20,12 @@
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
+  <!-- Add SCSS files to dotnet watch -->
+  <ItemGroup>
+    <Watch Include="**\*.scss" />
+    <None Remove="**\*.css" />
+  </ItemGroup>
+
   <!-- Compile SCSS files into CSS -->
   <ItemGroup>
     <ComponentScssFiles Include="**/*/*.scss" Exclude="node_modules/**;wwwroot/**;Styles/**" />
