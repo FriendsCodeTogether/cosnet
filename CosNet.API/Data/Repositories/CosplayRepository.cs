@@ -27,7 +27,7 @@ namespace CosNet.API.Data.Repositories
 
         public void AddCosplay(Cosplay cosplay)
         {
-            if (cosplay.CosplayId == Guid.Empty || cosplay.CosplayId == null)
+            if (cosplay.CosplayId == Guid.Empty)
             {
                 cosplay.CosplayId = Guid.NewGuid();
             }
