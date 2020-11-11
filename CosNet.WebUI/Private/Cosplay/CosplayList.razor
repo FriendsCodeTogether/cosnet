@@ -31,7 +31,24 @@
                     @cosplay.DueDate
                 </div>
                 <div class="cosplay-list-item-icon">
-                    Icon
+                    @switch (cosplay.Status)
+                    {
+                        case "In Progress":
+                            <img class="cosplay-list-icon" src="assets/icons/statusses/shared/inProgress.svg" alt="In Progress" />
+                            break;
+                        case "On Hold":
+                            <img class="cosplay-list-icon" src="assets/icons/statusses/cosplay/onHold.svg" alt="On Hold" />
+                            break;
+                        case "Planned":
+                            <img class="cosplay-list-icon" src="assets/icons/statusses/cosplay/planned.svg" alt="Planned" />
+                            break;
+                        case "Finished":
+                            <img class="cosplay-list-icon" src="assets/icons/statusses/shared/completed.svg" alt="Finished" />
+                            break;
+                        case "Cancelled":
+                            <img class="cosplay-list-icon" src="assets/icons/statusses/cosplay/cancelled.svg" alt="Cancelled" />
+                            break;
+                    }
                 </div>
             </div>
         }
@@ -41,13 +58,13 @@
 @code {
     private IEnumerable<CosplayDTO> cosplays;
 
-    protected override async Task OnInitializedAsync()
-    {
-        cosplays = await CosplayService.GetCosplaysAsync();
-    }
+                        protected override async Task OnInitializedAsync()
+                        {
+                            cosplays = await CosplayService.GetCosplaysAsync();
+                        }
 
-    public void ClickedToId(Guid cosplayId)
-    {
-        NavigationManager.NavigateTo($"cosplay/{cosplayId.ToString()}");
-    }
-}
+                        public void ClickedToId(Guid cosplayId)
+                        {
+                            NavigationManager.NavigateTo($"cosplay/{cosplayId.ToString()}");
+                        }
+                    }

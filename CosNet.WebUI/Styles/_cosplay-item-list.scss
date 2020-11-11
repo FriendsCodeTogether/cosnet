@@ -77,3 +77,10 @@
   .cosplayitem-list-item-icon {
     margin-right: 2rem;
   }
+
+.cosplay-item-icon {
+  width: 2rem;
+  height: 2rem;
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}

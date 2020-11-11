@@ -39,3 +39,10 @@
     cursor: pointer;
   }
 }
+
+.cosplay-show-icon {
+  width: 6rem;
+  height: 6rem;
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+}
