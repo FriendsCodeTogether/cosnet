@@ -233,7 +233,6 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void addDatabase() {
-
     db = CosnetDb.getInstance(this);
   }
 
