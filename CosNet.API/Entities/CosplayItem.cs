@@ -39,7 +39,8 @@ namespace CosNet.API.Entities
 
         //Made Info
         public int Progress { get; set; }
-        public int WorkTime { get; set; }
+        public int WorkTimeHours { get; set; }
+        public int WorkTimeMinutes { get; set; }
 
         //Relations Cosplay
         public Guid CosplayId { get; set; }
