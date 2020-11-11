@@ -78,6 +78,7 @@ public class AddCosplayItem extends AppCompatActivity {
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
   }
+
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
@@ -87,6 +88,7 @@ public class AddCosplayItem extends AppCompatActivity {
 
     return super.onOptionsItemSelected(item);
   }
+
   private void setListeners() {
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
@@ -230,10 +232,11 @@ public class AddCosplayItem extends AppCompatActivity {
     }
   }
 
-  private void addDatabase(){
+  private void addDatabase() {
 
     db = CosnetDb.getInstance(this);
   }
+
   private void getItemsBound() {
     boughtItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemBoughtItemLayout);
     madeItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemMadeItemLayout);
@@ -261,5 +264,4 @@ public class AddCosplayItem extends AppCompatActivity {
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
-
 }
