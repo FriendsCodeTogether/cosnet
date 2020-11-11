@@ -120,7 +120,8 @@ namespace CosNet.API.Data.DBContexts
                         DueDate = DateTime.Now.AddMonths(5),
                         IsMade = true,
                         Progress = 10,
-                        WorkTime = 5,
+                        WorkTimeHours = 5,
+                        WorkTimeMinutes = 15,
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -134,7 +135,8 @@ namespace CosNet.API.Data.DBContexts
                         DueDate = DateTime.Now.AddMonths(1),
                         IsMade = true,
                         Progress = 50,
-                        WorkTime = 3,
+                        WorkTimeHours = 3,
+                        WorkTimeMinutes = 30,
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     },
@@ -148,7 +150,8 @@ namespace CosNet.API.Data.DBContexts
                         DueDate = DateTime.Now.AddMonths(3),
                         IsMade = true,
                         Progress = 30,
-                        WorkTime = 1,
+                        WorkTimeHours = 1,
+                        WorkTimeMinutes = 45,
                         CosplayId = cosplays[0].CosplayId,
                         Cosplay = cosplays[0]
                     }
