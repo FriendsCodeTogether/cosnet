@@ -1,14 +1,14 @@
 {
-   "profiles": {
-      "SelfHost": {
-         "commandName": "Project",
-         "launchBrowser": false,
-         "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development",
-            "COSNET_WEBUI_URL": "https://localhost:5001",
-            "COSNET_API_SECRET": "apisecret"
-         },
-         "applicationUrl": "https://localhost:7001"
-      }
-   }
+  "profiles": {
+    "SelfHost": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "COSNET_WEBUI_URL": "https://localhost:5001",
+        "COSNET_API_SECRET": "apisecret"
+      },
+      "applicationUrl": "https://localhost:7001"
+    }
+  }
 }
