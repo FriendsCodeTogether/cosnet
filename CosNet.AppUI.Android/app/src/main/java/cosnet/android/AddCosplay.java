@@ -70,6 +70,7 @@ public class AddCosplay extends AppCompatActivity {
     dueDateEditText.setOnClickListener(v -> onClickdueDate());
     addCosplayButton.setOnClickListener(v -> onClickAddButton());
   }
+
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);

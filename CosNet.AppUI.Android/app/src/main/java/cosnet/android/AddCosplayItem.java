@@ -6,15 +6,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NavUtils;
 
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.*;
@@ -22,6 +26,7 @@ import com.shawnlin.numberpicker.*;
 import cosnet.android.Entities.Cosplay;
 import me.abhinay.input.CurrencyEditText;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -65,13 +70,23 @@ public class AddCosplayItem extends AppCompatActivity {
     setContentView(R.layout.add_cosplay_item_main);
 
     addToolbar();
+    addDatabase();
     getItemsBound();
     initializeItems();
     setListeners();
 
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
+  }
 
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+
+    return super.onOptionsItemSelected(item);
   }
 
   private void setListeners() {
@@ -143,6 +158,7 @@ public class AddCosplayItem extends AppCompatActivity {
       alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> {
       });
       alertDialog.show();
+      return;
     }
 
     CosplayItem newItem = new CosplayItem();
@@ -216,11 +232,13 @@ public class AddCosplayItem extends AppCompatActivity {
     }
   }
 
+  private void addDatabase() {
+    db = CosnetDb.getInstance(this);
+  }
+
   private void getItemsBound() {
     boughtItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemBoughtItemLayout);
     madeItemLayout = (ConstraintLayout) findViewById(R.id.CosplayItemMadeItemLayout);
-
-    db = CosnetDb.getInstance(this);
 
     cosplayItemNameEditText = (EditText) findViewById(R.id.CosplayItemNameEditText);
     cosplayItemDescriptionEditText = (EditText) findViewById(R.id.CosplayItemDescriptionEditText);
