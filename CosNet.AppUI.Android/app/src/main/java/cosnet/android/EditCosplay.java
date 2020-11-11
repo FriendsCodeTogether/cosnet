@@ -54,7 +54,6 @@ public class EditCosplay extends AppCompatActivity {
     addStatuses();
   }
 
-
   private void onClickSaveButton() {
 
     if (characterEditText.getText().toString().isEmpty()) {

@@ -18,7 +18,7 @@ public abstract  class CosnetDb extends RoomDatabase {
    public abstract CosplayDAO getCosplayDAO();
    public abstract CosplayItemDAO getCosplayItemDAO();
 
-   public static synchronized CosnetDb getInstance(Context ctx){
+   public static synchronized CosnetDb getInstance(Context ctx) {
       if (minstance == null){
          minstance = Room.databaseBuilder(ctx.getApplicationContext(), CosnetDb.class, DB_NAME)
             .allowMainThreadQueries()
