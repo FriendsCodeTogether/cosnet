@@ -64,6 +64,7 @@
 
   .cosplayitem-list-item-text {
     margin-left: 2rem;
+    margin-right: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -74,6 +75,19 @@
     }
   }
 
-  .cosplayitem-list-item-icon {
-    margin-right: 2rem;
-  }
+.cosplayitem-list-item-icon {
+  margin-right: 2rem;
+  background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+.cosplay-item-icon {
+  width: 2rem;
+  height: 2rem;
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+  margin-left: .5rem;
+  margin-top: .5rem;
+}

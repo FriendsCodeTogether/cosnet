@@ -21,18 +21,43 @@ else
         <div class="cosplay-list-item-date">
             @cosplay.DueDate
         </div>
-        <a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@cosplay.CosplayId/edit">Edit</a>
+        <a class="cosplay-show-edit-btn" href="cosplay/@cosplay.CosplayId/edit">
+            <img class="cosplay-show-edit-btn-icon" src="assets/icons/edit.svg" alt="Edit" />
+        </a>
     </div>
 
     <div class="cosplay-show-container">
-        <div class="cosplay-show-card" @onclick="() => ClickedToItem()">Items</div>
-        <div class="cosplay-show-card">Tasks</div>
-        <div class="cosplay-show-card">Notes</div>
-        <div class="cosplay-show-card">Statistics</div>
-        <div class="cosplay-show-card">Reference Pics</div>
-        <div class="cosplay-show-card">Process Pics</div>
-        <div class="cosplay-show-card">After Pics</div>
-        <div class="cosplay-show-card">???</div>
+        <div class="cosplay-show-card" @onclick="() => ClickedToItem()">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/items.svg" alt="Items" />
+            Items
+        </div>
+        <div class="cosplay-show-card">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/toDos.svg" alt="Tasks" />
+            Tasks
+        </div>
+        <div class="cosplay-show-card">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/notes.svg" alt="Notes" />
+            Notes
+        </div>
+        <div class="cosplay-show-card">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/statistics.svg" alt="Statistics" />
+            Statistics
+        </div>
+        <div class="cosplay-show-card">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/referencePics.svg" alt="Reference Pics" />
+            Reference Pics
+        </div>
+        <div class="cosplay-show-card">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/processPics.svg" alt="Process Pics" />
+            Process Pics
+        </div>
+        <div class="cosplay-show-card">
+            <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/afterPics.svg" alt="After Pics" />
+            After Pics
+        </div>
+        <div class="cosplay-show-card">
+            ???
+        </div>
     </div>
 }
 

@@ -34,7 +34,15 @@
                             </div>
                         </div>
                         <div class="cosplayitem-list-item-icon">
-                            Icon
+                            @switch (item.Status)
+                            {
+                                case "In Progress":
+                                    <img class="cosplay-item-icon" src="assets/icons/statusses/shared/inProgress.svg" alt="In Progress" />
+                                    break;
+                                case "Completed":
+                                    <img class="cosplay-item-icon" src="assets/icons/statusses/shared/completed.svg" alt="Completed" />
+                                    break;
+                            }
                         </div>
                     </div>
                 }
@@ -52,7 +60,18 @@
                             <p>Price: @item.Price</p>
                         </div>
                         <div class="cosplayitem-list-item-icon">
-                            Icon
+                            @switch (item.Status)
+                            {
+                                case "Ordered":
+                                    <img class="cosplay-item-icon" src="assets/icons/statusses/cosplay_item/ordered.svg" alt="Ordered" />
+                                    break;
+                                case "To Buy":
+                                    <img class="cosplay-item-icon" src="assets/icons/statusses/cosplay_item/toBuy.svg" alt="To Buy" />
+                                    break;
+                                case "Completed":
+                                    <img class="cosplay-item-icon" src="assets/icons/statusses/shared/completed.svg" alt="Completed" />
+                                    break;
+                            }
                         </div>
                     </div>
                 }
