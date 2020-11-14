@@ -94,6 +94,9 @@
     <string name="create">Create</string>
   <string name="characterNameErrorEmpty">*Field is required</string>
   <string name="max150Characters">*Max 150 characters</string>
+    <string name="max9Numbers">*Max 9 numbers</string>
+  <string name="dueBeforeStart">*Due Date can\'t be before Start Date</string>
+  <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
   <!--UNSORTED-->
 
 

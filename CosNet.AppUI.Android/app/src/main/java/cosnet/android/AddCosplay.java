@@ -13,11 +13,15 @@ import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import cosnet.android.Entities.Cosplay;
+import cosnet.android.adapters.NumberTextWatcher;
 import me.abhinay.input.CurrencyEditText;
 
 public class AddCosplay extends AppCompatActivity {
@@ -28,11 +32,6 @@ public class AddCosplay extends AppCompatActivity {
 
   private TextInputLayout characterLayout, seriesLayout, startDateLayout, dueDateLayout, budgetLayout;
 
-  private EditText characterEditText;
-  private EditText seriesEditText;
-  private EditText startDateEditText;
-  private EditText dueDateEditText;
-  private CurrencyEditText budgetEditText;
   private Spinner statusSpinner;
   private Button addCosplayButton;
   private List<String> statusses;
@@ -54,11 +53,6 @@ public class AddCosplay extends AppCompatActivity {
     dueDateLayout=findViewById(R.id.dueDatetextInput);
     budgetLayout=findViewById(R.id.budgettextInput);
 
-    characterEditText = (EditText) findViewById(R.id.characterEditText);
-    seriesEditText = (EditText) findViewById(R.id.seriesEditText);
-    startDateEditText = (EditText) findViewById(R.id.startDateEditText);
-    dueDateEditText = (EditText) findViewById(R.id.dueDateEditText);
-    budgetEditText = (CurrencyEditText) findViewById(R.id.budgetEditText);
     statusSpinner = (Spinner) findViewById(R.id.statusSpinner);
     addCosplayButton = (Button) findViewById(R.id.createCosBTN);
     Calendar calendar = Calendar.getInstance();
@@ -66,8 +60,6 @@ public class AddCosplay extends AppCompatActivity {
     month = calendar.get(Calendar.MONTH);
     day = calendar.get(Calendar.DAY_OF_MONTH);
 
-    budgetEditText.setCurrency("€");
-    budgetEditText.setSpacing(true);
 
     statusses = new ArrayList<>();
     statusses.add(getApplicationContext().getString(R.string.In_Progess));
@@ -77,13 +69,14 @@ public class AddCosplay extends AppCompatActivity {
     adapterSpinnerStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     statusSpinner.setAdapter(adapterSpinnerStatus);
 
-    startDateEditText.setOnClickListener(v -> onClickStartDate());
-    dueDateEditText.setOnClickListener(v -> onClickdueDate());
+    budgetLayout.getEditText().addTextChangedListener(new NumberTextWatcher(budgetLayout.getEditText(),"#,###"));
+    startDateLayout.getEditText().setOnClickListener(v -> onClickStartDate());
+    dueDateLayout.getEditText().setOnClickListener(v -> onClickdueDate());
     addCosplayButton.setOnClickListener(v -> onClickAddButton());
   }
 
   private boolean validateCharacterName(){
-    String characterName = characterLayout.getEditText().getText().toString().trim();
+    String characterName = characterLayout.getEditText().getText().toString();
 
     if (characterName.isEmpty()){
       characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
@@ -96,6 +89,52 @@ public class AddCosplay extends AppCompatActivity {
       return true;
     }
   }
+
+  private boolean validateSeries(){
+    String series = seriesLayout.getEditText().getText().toString();
+
+    if(series.length()>150) {
+      seriesLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    }else {
+      seriesLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateBudget(){
+    String budget = characterLayout.getEditText().getText().toString();
+
+    if(budget.length()>12) {
+      characterLayout.setError(getApplicationContext().getString(R.string.max9Numbers));
+      return false;
+    }else {
+      characterLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateDate(){
+    String startdate = startDateLayout.getEditText().getText().toString();
+    String duedate= dueDateLayout.getEditText().getText().toString();
+
+    try {
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+      Date date1 = sdf.parse(startdate);
+      Date date2 = sdf.parse(duedate);
+      if(date1.after(date2)){
+        dueDateLayout.setError(getApplicationContext().getString(R.string.dueBeforeStart));
+        startDateLayout.setError(getApplicationContext().getString(R.string.startAfterDue));
+        return false;
+      } return true;
+    } catch (Exception e) {
+      dueDateLayout.setError(null);
+      startDateLayout.setError(null);
+      return true;
+    }
+
+  }
+
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -104,14 +143,16 @@ public class AddCosplay extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-
+    if(!validateBudget() | !validateCharacterName() | !validateSeries() |!validateDate()){
+      return;
+    }
 
     Cosplay newCosplay = new Cosplay();
     newCosplay.cosplayName = characterLayout.getEditText().getText().toString();
     newCosplay.cosplaySeries = seriesLayout.getEditText().getText().toString();
     newCosplay.startDate = startDateLayout.getEditText().getText().toString();
     newCosplay.dueDate = dueDateLayout.getEditText().getText().toString();
-    newCosplay.budget = budgetLayout.getEditText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
+    newCosplay.budget = Double.parseDouble(budgetLayout.getEditText().toString());
     newCosplay.status = statusSpinner.getSelectedItem().toString();
 
     db.getCosplayDAO().insertCosplay(newCosplay);
@@ -123,7 +164,7 @@ public class AddCosplay extends AppCompatActivity {
     DatePickerDialog datePickerDialog = new DatePickerDialog(AddCosplay.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
       String date = dayOfMonth + "/" + month + "/" + year;
-      dueDateEditText.setText(date);
+      dueDateLayout.getEditText().setText(date);
     }, year, month, day);
     datePickerDialog.show();
   }
@@ -132,7 +173,7 @@ public class AddCosplay extends AppCompatActivity {
     DatePickerDialog datePickerDialog = new DatePickerDialog(AddCosplay.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
       String date = dayOfMonth + "/" + month + "/" + year;
-      startDateEditText.setText(date);
+      startDateLayout.getEditText().setText(date);
     }, year, month, day);
     datePickerDialog.show();
   }
