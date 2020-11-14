@@ -5,7 +5,9 @@
 
 <div class="@NavMenuCssClass sidenav-container">
     <NavLink class="sidenav-link" href="" Match="NavLinkMatch.All">Home</NavLink>
-    <NavLink class="sidenav-link" href="cosplay">My Cosplays</NavLink>
+    <AuthorizeView>
+        <NavLink class="sidenav-link" href="cosplay">My Cosplays</NavLink>
+    </AuthorizeView>
 </div>
 
 @code {
