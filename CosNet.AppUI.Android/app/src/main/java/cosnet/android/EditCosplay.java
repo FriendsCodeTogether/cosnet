@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +54,15 @@ public class EditCosplay extends AppCompatActivity {
 
     addStatuses();
   }
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
 
+    return super.onOptionsItemSelected(item);
+  }
   private void onClickSaveButton() {
 
     if (characterEditText.getText().toString().isEmpty()) {
