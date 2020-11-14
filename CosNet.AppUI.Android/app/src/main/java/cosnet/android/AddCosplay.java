@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +25,8 @@ public class AddCosplay extends AppCompatActivity {
   private static final String TAG = "AddCosplay";
 
   private CosnetDb db;
+
+  private TextInputLayout characterLayout, seriesLayout, startDateLayout, dueDateLayout, budgetLayout;
 
   private EditText characterEditText;
   private EditText seriesEditText;
@@ -43,13 +48,19 @@ public class AddCosplay extends AppCompatActivity {
     addToolbar();
     db = CosnetDb.getInstance(this);
 
+    characterLayout=findViewById(R.id.characterNametextInput);
+    seriesLayout=findViewById(R.id.seriestextInput);
+    startDateLayout=findViewById(R.id.startDatetextInput);
+    dueDateLayout=findViewById(R.id.dueDatetextInput);
+    budgetLayout=findViewById(R.id.budgettextInput);
+
     characterEditText = (EditText) findViewById(R.id.characterEditText);
     seriesEditText = (EditText) findViewById(R.id.seriesEditText);
     startDateEditText = (EditText) findViewById(R.id.startDateEditText);
     dueDateEditText = (EditText) findViewById(R.id.dueDateEditText);
     budgetEditText = (CurrencyEditText) findViewById(R.id.budgetEditText);
     statusSpinner = (Spinner) findViewById(R.id.statusSpinner);
-    addCosplayButton = (Button) findViewById(R.id.addCosBTN);
+    addCosplayButton = (Button) findViewById(R.id.createCosBTN);
     Calendar calendar = Calendar.getInstance();
     year = calendar.get(Calendar.YEAR);
     month = calendar.get(Calendar.MONTH);
@@ -71,6 +82,20 @@ public class AddCosplay extends AppCompatActivity {
     addCosplayButton.setOnClickListener(v -> onClickAddButton());
   }
 
+  private boolean validateCharacterName(){
+    String characterName = characterLayout.getEditText().getText().toString().trim();
+
+    if (characterName.isEmpty()){
+      characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      return false;
+    } else if(characterName.length()>150) {
+      characterLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    }else {
+      characterLayout.setError(null);
+      return true;
+    }
+  }
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -80,21 +105,13 @@ public class AddCosplay extends AppCompatActivity {
 
   private void onClickAddButton() {
 
-    if (characterEditText.getText().toString().isEmpty()) {
-      AlertDialog alertDialog = new AlertDialog.Builder(AddCosplay.this).create();
-      alertDialog.setTitle("Oh No");
-      alertDialog.setMessage("Character name is required to be filled in");
-      alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> { });
-      alertDialog.show();
-      return;
-    }
 
     Cosplay newCosplay = new Cosplay();
-    newCosplay.cosplayName = characterEditText.getText().toString();
-    newCosplay.cosplaySeries = seriesEditText.getText().toString();
-    newCosplay.startDate = startDateEditText.getText().toString();
-    newCosplay.dueDate = dueDateEditText.getText().toString();
-    newCosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
+    newCosplay.cosplayName = characterLayout.getEditText().getText().toString();
+    newCosplay.cosplaySeries = seriesLayout.getEditText().getText().toString();
+    newCosplay.startDate = startDateLayout.getEditText().getText().toString();
+    newCosplay.dueDate = dueDateLayout.getEditText().getText().toString();
+    newCosplay.budget = budgetLayout.getEditText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     newCosplay.status = statusSpinner.getSelectedItem().toString();
 
     db.getCosplayDAO().insertCosplay(newCosplay);

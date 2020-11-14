@@ -91,6 +91,9 @@
   <string name="OnHold">On Hold</string>
   <string name="Cancelled">Cancelled</string>
   <string name="Done">Done</string>
+    <string name="create">Create</string>
+  <string name="characterNameErrorEmpty">*Field is required</string>
+  <string name="max150Characters">*Max 150 characters</string>
   <!--UNSORTED-->
 
 
