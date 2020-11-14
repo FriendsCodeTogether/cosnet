@@ -45,6 +45,13 @@ public class ShowCosplay extends AppCompatActivity {
     db = CosnetDb.getInstance(this);
 
     ImageButton createCosplayItemBTN = (ImageButton) findViewById(R.id.createCosplayItemBTN);
+    ImageButton EditCosplayItemBTN = (ImageButton) findViewById(R.id.editCosplayItemBTN);
+
+    EditCosplayItemBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this,EditCosplayItem.class);
+      intent.putExtra("cosplay", (Serializable) cosplay);
+      startActivity(intent);
+    });
 
     createCosplayItemBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this,AddCosplayItem.class);

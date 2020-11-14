@@ -27,7 +27,7 @@ public class CosplayItem {
 
   @Nullable public String description;
 
-  @Nullable public double price;
+  @Nullable public Double price;
 
   @ColumnInfo(name = "due_date")
   @Nullable public String dueDate;
