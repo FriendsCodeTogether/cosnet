@@ -29,7 +29,11 @@ public interface CosplayItemDAO {
   @Query("SELECT * FROM CosplayItem WHERE id = :id")
   CosplayItem getCosplayItemById(int id);
 
-  @Transaction
+  /*@Transaction
   @Query("SELECT * FROM Cosplay")
-  public List<CosplayWithItems> getCosplayWithItems();
+  public List<CosplayWithItems> getCosplayWithItems();*/
+
+  @Transaction
+  @Query("SELECT * FROM Cosplay WHERE cosplay_id = :id")
+  CosplayWithItems getCosplayWithItems(String id);
 }

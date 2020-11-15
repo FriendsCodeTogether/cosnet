@@ -175,7 +175,8 @@ public class AddCosplayItem extends AppCompatActivity {
     newItem.worktimeHours = cosplayItemWorkTimeHours;
     newItem.worktimeMinutes = cosplayItemWorkTimeMinutes;
     db.getCosplayItemDAO().insertItem(newItem);
-    Intent intent = new Intent(AddCosplayItem.this, ShowCosplay.class);
+    Intent intent = new Intent(AddCosplayItem.this, CosplayItemsList.class);
+    intent.putExtra("cosplay",cosplay);
     startActivity(intent);
   }
 

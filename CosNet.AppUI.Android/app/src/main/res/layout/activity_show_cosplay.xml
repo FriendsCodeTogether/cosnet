@@ -41,7 +41,7 @@
     app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
     <TextView
-      android:id="@+id/DueDateLbl"
+      android:id="@+id/ShowCosplayDueDateLbl"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginEnd="8dp"
@@ -49,11 +49,11 @@
       android:text="@string/Due_Date"
       android:textColor="@android:color/tertiary_text_light"
       android:textSize="12sp"
-      app:layout_constraintEnd_toStartOf="@+id/DueDate"
-      app:layout_constraintTop_toTopOf="@+id/Status" />
+      app:layout_constraintEnd_toStartOf="@+id/ShowCosplayDueDate"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayStatus" />
 
     <TextView
-      android:id="@+id/Series"
+      android:id="@+id/ShowCosplaySeries"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
@@ -62,11 +62,11 @@
       android:text="@string/SeriesHint"
       android:textColor="@android:color/background_light"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="@+id/Character"
-      app:layout_constraintTop_toBottomOf="@+id/Character" />
+      app:layout_constraintStart_toStartOf="@+id/ShowCosplayCharacterName"
+      app:layout_constraintTop_toBottomOf="@+id/ShowCosplayCharacterName" />
 
     <TextView
-      android:id="@+id/Character"
+      android:id="@+id/ShowCosplayCharacterName"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="8dp"
@@ -78,11 +78,11 @@
       android:textSize="18sp"
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/CosplayPic"
-      app:layout_constraintTop_toTopOf="@+id/CosplayPic" />
+      app:layout_constraintStart_toEndOf="@+id/ShowCosplayPic"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayPic" />
 
     <TextView
-      android:id="@+id/DueDate"
+      android:id="@+id/ShowCosplayDueDate"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginEnd="8dp"
@@ -91,22 +91,22 @@
       android:textColor="@android:color/background_light"
       android:textSize="12sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/DueDateLbl" />
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayDueDateLbl" />
 
     <TextView
-      android:id="@+id/StatusLbl"
+      android:id="@+id/ShowCosplayStatusLbl"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:fontFamily="@font/lato_bold"
       android:text="@string/Status"
       android:textColor="@android:color/tertiary_text_light"
       android:textSize="12sp"
-      app:layout_constraintBottom_toBottomOf="@+id/CosplayPic"
-      app:layout_constraintStart_toStartOf="@+id/Character"
-      app:layout_constraintTop_toBottomOf="@+id/Series" />
+      app:layout_constraintBottom_toBottomOf="@+id/ShowCosplayPic"
+      app:layout_constraintStart_toStartOf="@+id/ShowCosplayCharacterName"
+      app:layout_constraintTop_toBottomOf="@+id/ShowCosplaySeries" />
 
     <ImageView
-      android:id="@+id/CosplayPic"
+      android:id="@+id/ShowCosplayPic"
       android:layout_width="100dp"
       android:layout_height="100dp"
       android:contentDescription="@string/CosplayPic"
@@ -116,7 +116,7 @@
       app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-      android:id="@+id/Status"
+      android:id="@+id/ShowCosplayStatus"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="8dp"
@@ -124,8 +124,8 @@
       android:text="@string/Planned"
       android:textColor="@android:color/background_light"
       android:textSize="12sp"
-      app:layout_constraintStart_toEndOf="@+id/StatusLbl"
-      app:layout_constraintTop_toTopOf="@+id/StatusLbl" />
+      app:layout_constraintStart_toEndOf="@+id/ShowCosplayStatusLbl"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayStatusLbl" />
 
     <View
       android:id="@+id/view"
@@ -134,23 +134,44 @@
       android:background="@color/colorFiller"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/CosplayPic" />
+      app:layout_constraintStart_toEndOf="@+id/ShowCosplayPic" />
 
-    <ImageButton
-      android:id="@+id/createCosplayItemBTN"
-      android:layout_width="40dp"
-      android:layout_height="40dp"
-      android:layout_marginTop="16dp"
-      android:layout_marginEnd="16dp"
-      android:background="@drawable/roundbutton"
-      android:contentDescription="@string/add_button_plus"
-      android:src="@drawable/ic_baseline_add_24"
-      android:text="@string/add_button_plus"
-      android:textAlignment="center"
-      android:textColor="@color/cardview_light_background"
-      android:textSize="40sp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ImageButton
+    android:id="@+id/CosplayItemListBtn"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginTop="16dp"
+    android:adjustViewBounds="true"
+    android:background="@color/colorPrimaryDark"
+    android:contentDescription="@string/ItemList"
+    android:cropToPadding="false"
+    android:elevation="10dp"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="40dp"
+    android:scaleType="fitCenter"
+    android:tint="@android:color/background_light"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+    app:srcCompat="@drawable/ic_items" />
+
+  <TextView
+    android:id="@+id/ShowCosplayItemsLbl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:clickable="false"
+    android:elevation="20dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Items"
+    android:textColor="@android:color/background_light"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="@+id/CosplayItemListBtn"
+    app:layout_constraintEnd_toEndOf="@+id/CosplayItemListBtn"
+    app:layout_constraintStart_toStartOf="@+id/CosplayItemListBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
