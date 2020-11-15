@@ -16,12 +16,7 @@
 
   <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-  <style name="TitleText">
-    <item name="android:textSize">20sp</item>
-    <item name="android:textColor">@android:color/white</item>
-  </style>
-
-  <style name="CustomText">
+    <style name="CustomText">
     <item name="android:textSize">20sp</item>
     <item name="android:textColor">@android:color/white</item>
   </style>

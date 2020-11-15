@@ -204,33 +204,22 @@
     app:layout_constraintStart_toStartOf="@+id/dueDatetextInput"
     app:layout_constraintTop_toBottomOf="@+id/dueDatetextInput" />
 
-  <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/budgettextInput"
+  <me.abhinay.input.CurrencyEditText
+    android:id="@+id/budgetEditText"
+    style="@style/EditText"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_height="24dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    app:counterEnabled="true"
-    app:counterMaxLength="13"
-    app:errorEnabled="true"
-    app:layout_constraintEnd_toEndOf="parent"
+    android:importantForAutofill="no"
+    android:fontFamily="@font/lato_bold"
+    android:hint="@string/BudgetHint"
+    android:inputType="number"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    app:layout_constraintEnd_toEndOf="@+id/characterNametextInput"
     app:layout_constraintStart_toStartOf="@+id/budgetLabel"
-    app:layout_constraintTop_toBottomOf="@+id/budgetLabel"
-    app:hintEnabled="false">
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/budgetEditText"
-      style="@style/EditText"
-      android:layout_width="match_parent"
-      android:layout_height="27dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:fontFamily="@font/lato_bold"
-      android:hint="@string/BudgetHint"
-      android:importantForAutofill="no"
-      android:inputType="numberDecimal"
-      android:paddingStart="8dp"
-      android:paddingEnd="8dp" />
-
-  </com.google.android.material.textfield.TextInputLayout>
+    app:layout_constraintTop_toBottomOf="@+id/budgetLabel" />
 
   <TextView
     android:id="@+id/statusLabel"
@@ -240,8 +229,8 @@
     android:layout_marginTop="8dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Status"
-    app:layout_constraintStart_toStartOf="@+id/budgettextInput"
-    app:layout_constraintTop_toBottomOf="@+id/budgettextInput" />
+    app:layout_constraintStart_toStartOf="@+id/budgetEditText"
+    app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
 
   <Spinner
     android:id="@+id/statusSpinner"
@@ -251,7 +240,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     app:layout_constraintEnd_toEndOf="@+id/seriestextInput"
-    app:layout_constraintStart_toStartOf="@+id/budgettextInput"
+    app:layout_constraintStart_toStartOf="@+id/budgetEditText"
     app:layout_constraintTop_toBottomOf="@+id/statusLabel" />
 
   <Button

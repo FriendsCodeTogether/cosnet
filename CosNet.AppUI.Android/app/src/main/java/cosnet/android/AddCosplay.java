@@ -2,13 +2,12 @@ package cosnet.android;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.app.AlertDialog;
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -21,7 +20,6 @@ import java.util.List;
 import java.util.Locale;
 
 import cosnet.android.Entities.Cosplay;
-import cosnet.android.adapters.NumberTextWatcher;
 import me.abhinay.input.CurrencyEditText;
 
 public class AddCosplay extends AppCompatActivity {
@@ -30,8 +28,8 @@ public class AddCosplay extends AppCompatActivity {
 
   private CosnetDb db;
 
-  private TextInputLayout characterLayout, seriesLayout, startDateLayout, dueDateLayout, budgetLayout;
-
+  private TextInputLayout characterLayout, seriesLayout, startDateLayout, dueDateLayout;
+  private CurrencyEditText budgetEditText;
   private Spinner statusSpinner;
   private Button addCosplayButton;
   private List<String> statusses;
@@ -47,11 +45,11 @@ public class AddCosplay extends AppCompatActivity {
     addToolbar();
     db = CosnetDb.getInstance(this);
 
-    characterLayout=findViewById(R.id.characterNametextInput);
-    seriesLayout=findViewById(R.id.seriestextInput);
-    startDateLayout=findViewById(R.id.startDatetextInput);
-    dueDateLayout=findViewById(R.id.dueDatetextInput);
-    budgetLayout=findViewById(R.id.budgettextInput);
+    characterLayout = findViewById(R.id.characterNametextInput);
+    seriesLayout = findViewById(R.id.seriestextInput);
+    startDateLayout = findViewById(R.id.startDatetextInput);
+    dueDateLayout = findViewById(R.id.dueDatetextInput);
+    budgetEditText = findViewById(R.id.budgetEditText);
 
     statusSpinner = (Spinner) findViewById(R.id.statusSpinner);
     addCosplayButton = (Button) findViewById(R.id.createCosBTN);
@@ -60,6 +58,8 @@ public class AddCosplay extends AppCompatActivity {
     month = calendar.get(Calendar.MONTH);
     day = calendar.get(Calendar.DAY_OF_MONTH);
 
+    budgetEditText.setCurrency("€");
+    budgetEditText.setSpacing(true);
 
     statusses = new ArrayList<>();
     statusses.add(getApplicationContext().getString(R.string.In_Progess));
@@ -69,70 +69,58 @@ public class AddCosplay extends AppCompatActivity {
     adapterSpinnerStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     statusSpinner.setAdapter(adapterSpinnerStatus);
 
-    budgetLayout.getEditText().addTextChangedListener(new NumberTextWatcher(budgetLayout.getEditText(),"#,###"));
+
     startDateLayout.getEditText().setOnClickListener(v -> onClickStartDate());
     dueDateLayout.getEditText().setOnClickListener(v -> onClickdueDate());
     addCosplayButton.setOnClickListener(v -> onClickAddButton());
   }
 
-  private boolean validateCharacterName(){
+  private boolean validateCharacterName() {
     String characterName = characterLayout.getEditText().getText().toString();
 
-    if (characterName.isEmpty()){
+    if (characterName.isEmpty()) {
       characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
       return false;
-    } else if(characterName.length()>150) {
+    } else if (characterName.length() > 150) {
       characterLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
-    }else {
+    } else {
       characterLayout.setError(null);
       return true;
     }
   }
 
-  private boolean validateSeries(){
+  private boolean validateSeries() {
     String series = seriesLayout.getEditText().getText().toString();
 
-    if(series.length()>150) {
+    if (series.length() > 150) {
       seriesLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
-    }else {
+    } else {
       seriesLayout.setError(null);
       return true;
     }
   }
 
-  private boolean validateBudget(){
-    String budget = characterLayout.getEditText().getText().toString();
-
-    if(budget.length()>12) {
-      characterLayout.setError(getApplicationContext().getString(R.string.max9Numbers));
-      return false;
-    }else {
-      characterLayout.setError(null);
-      return true;
-    }
-  }
-
-  private boolean validateDate(){
+  private boolean validateDate() {
     String startdate = startDateLayout.getEditText().getText().toString();
-    String duedate= dueDateLayout.getEditText().getText().toString();
+    String duedate = dueDateLayout.getEditText().getText().toString();
 
     try {
       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
       Date date1 = sdf.parse(startdate);
       Date date2 = sdf.parse(duedate);
-      if(date1.after(date2)){
+      if (date1.after(date2)) {
         dueDateLayout.setError(getApplicationContext().getString(R.string.dueBeforeStart));
         startDateLayout.setError(getApplicationContext().getString(R.string.startAfterDue));
         return false;
-      } return true;
+      }
+      return true;
     } catch (Exception e) {
       dueDateLayout.setError(null);
       startDateLayout.setError(null);
       return true;
     }
-
   }
 
   private void addToolbar() {
@@ -143,7 +131,7 @@ public class AddCosplay extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-    if(!validateBudget() | !validateCharacterName() | !validateSeries() |!validateDate()){
+    if (!validateCharacterName() | !validateSeries() | !validateDate()) {
       return;
     }
 
@@ -152,8 +140,9 @@ public class AddCosplay extends AppCompatActivity {
     newCosplay.cosplaySeries = seriesLayout.getEditText().getText().toString();
     newCosplay.startDate = startDateLayout.getEditText().getText().toString();
     newCosplay.dueDate = dueDateLayout.getEditText().getText().toString();
-    newCosplay.budget = Double.parseDouble(budgetLayout.getEditText().toString());
+    newCosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     newCosplay.status = statusSpinner.getSelectedItem().toString();
+
 
     db.getCosplayDAO().insertCosplay(newCosplay);
     Intent intent = new Intent(AddCosplay.this, MainActivity.class);
