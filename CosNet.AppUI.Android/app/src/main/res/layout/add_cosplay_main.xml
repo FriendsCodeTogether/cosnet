@@ -232,7 +232,7 @@
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="24dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Status"
     app:layout_constraintStart_toStartOf="@+id/budgetEditText"
