@@ -58,7 +58,9 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="@+id/characterLabel"
     app:layout_constraintTop_toBottomOf="@+id/characterLabel"
-    app:hintEnabled="false">
+    app:hintEnabled="false"
+    app:counterTextAppearance="@style/Counter"
+    app:errorTextAppearance="@style/Error">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/characterEditText"
@@ -98,7 +100,9 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="@+id/seriesLabel"
     app:layout_constraintTop_toBottomOf="@+id/seriesLabel"
-    app:hintEnabled="false">
+    app:hintEnabled="false"
+    app:counterTextAppearance="@style/Counter"
+    app:errorTextAppearance="@style/Error">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/seriesEditText"
@@ -136,7 +140,8 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="@+id/startDateLabel"
     app:layout_constraintTop_toBottomOf="@+id/startDateLabel"
-    app:hintEnabled="false">
+    app:hintEnabled="false"
+    app:errorTextAppearance="@style/Error">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/startDateEditText"
@@ -175,7 +180,8 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="@+id/dueDateLabel"
     app:layout_constraintTop_toBottomOf="@+id/dueDateLabel"
-    app:hintEnabled="false">
+    app:hintEnabled="false"
+    app:errorTextAppearance="@style/Error">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/dueDateEditText"
@@ -226,7 +232,7 @@
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="16dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Status"
     app:layout_constraintStart_toStartOf="@+id/budgetEditText"

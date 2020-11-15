@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -80,6 +81,7 @@ public class AddCosplay extends AppCompatActivity {
 
     if (characterName.isEmpty()) {
       characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+
       return false;
     } else if (characterName.length() > 150) {
       characterLayout.setError(getApplicationContext().getString(R.string.max150Characters));

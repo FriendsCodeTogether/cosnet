@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
   <!-- Base application theme. -->
   <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
@@ -22,12 +22,13 @@
   </style>
 
   <style name="EditText">
-    <item name="android:background">#808080</item>
+    <item name="android:background">@color/backgroundEditText</item>
     <item name="android:textColor">@android:color/white</item>
+
   </style>
 
   <style name="Spinner">
-    <item name="android:background">#808080</item>
+    <item name="android:background">@color/backgroundEditText</item>
     <!--<item name="android:textColor">@android:color/white</item>-->
   </style>
 
@@ -38,5 +39,15 @@
     <item name="android:src">@drawable/ic_baseline_more_vert_24</item>
     <item name="android:background">?android:attr/actionBarItemBackground</item>
     <item name="android:contentDescription">"Lala"</item>
+  </style>
+
+  <style name="Counter" parent="TextAppearance.AppCompat">
+    <item name="android:textColor">@color/backgroundEditText</item>
+  </style>
+
+  <style name="Error" >
+    <item name="android:textColor">@color/red</item>
+    <item name="android:background">@drawable/errorbackground</item>
+    <item name="android:textSize">16sp</item>
   </style>
 </resources>
