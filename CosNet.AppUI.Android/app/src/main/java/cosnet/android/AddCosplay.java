@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,8 +43,16 @@ public class AddCosplay extends AppCompatActivity {
     setContentView(R.layout.add_cosplay_main);
 
     addToolbar();
+
+    addItems();
+
+    addStatuses();
+
     db = CosnetDb.getInstance(this);
 
+  }
+
+  private void addItems() {
     characterLayout = findViewById(R.id.characterNametextInput);
     seriesLayout = findViewById(R.id.seriestextInput);
     startDateLayout = findViewById(R.id.startDatetextInput);
@@ -62,6 +69,12 @@ public class AddCosplay extends AppCompatActivity {
     budgetEditText.setCurrency("€");
     budgetEditText.setSpacing(true);
 
+    startDateLayout.getEditText().setOnClickListener(v -> onClickStartDate());
+    dueDateLayout.getEditText().setOnClickListener(v -> onClickdueDate());
+    addCosplayButton.setOnClickListener(v -> onClickAddButton());
+  }
+
+  private void addStatuses() {
     statusses = new ArrayList<>();
     statusses.add(getApplicationContext().getString(R.string.In_Progess));
     statusses.add(getApplicationContext().getString(R.string.Planned));
@@ -69,11 +82,6 @@ public class AddCosplay extends AppCompatActivity {
     ArrayAdapter<String> adapterSpinnerStatus = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusses);
     adapterSpinnerStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     statusSpinner.setAdapter(adapterSpinnerStatus);
-
-
-    startDateLayout.getEditText().setOnClickListener(v -> onClickStartDate());
-    dueDateLayout.getEditText().setOnClickListener(v -> onClickdueDate());
-    addCosplayButton.setOnClickListener(v -> onClickAddButton());
   }
 
   private boolean validateCharacterName() {
