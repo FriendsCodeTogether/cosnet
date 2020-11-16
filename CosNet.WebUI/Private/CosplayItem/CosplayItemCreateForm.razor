@@ -26,8 +26,7 @@
                 </p>
                 <p>
                     <label class="form-label" for="price">Price:</label><br />
-                    <span class="currencyinput"><input type="number" min="0" class="form-input" id="price" @bind-Value="cosplayItem.Price" @bind-Value:event="oninput" /></span>
-                    <label class="form-error-price">*Max 9 Characters</label><label class="max-input">@cosplayItem.Price.ToString().Count()/@maxPrice</label>
+                    <span class="currencyinput"><input type="number" min="0" maxlength="11" class="form-input" id="price" @bind-Value="cosplayItem.Price" @bind-Value:event="oninput" /></span>
                 </p>
                 <p>
                     <label class="form-label" for="dueDate">Due Date:</label><br />
@@ -116,7 +115,6 @@
 
     private const int maxName = 150;
     private const int maxDescription = 500;
-    private const int maxPrice = 9;
     private const int maxWorkTime = 5;
     private const int maxBuyLink = 200;
 

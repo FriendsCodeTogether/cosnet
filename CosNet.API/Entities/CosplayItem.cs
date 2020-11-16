@@ -26,7 +26,7 @@ namespace CosNet.API.Entities
         [MaxLength(500)]
         public string Description { get; set; }
 
-        [Column(TypeName = "decimal(9,2)")]
+        [Column(TypeName = "decimal(11,2)")]
         public decimal Price { get; set; }
 
         public DateTime DueDate { get; set; }
