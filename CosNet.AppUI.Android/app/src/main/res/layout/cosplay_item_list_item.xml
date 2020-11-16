@@ -4,7 +4,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:background="@color/colorPrimaryDark">
+  android:background="@drawable/borders_light_grey"
+  android:backgroundTint="@color/colorPrimaryDark">
 
   <ImageView
     android:id="@+id/CosplayItemListItemPic"
@@ -14,7 +15,8 @@
     android:src="@mipmap/ic_launcher"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/ic_launcher_background" />
 
   <ImageView
     android:id="@+id/CosplayItemListStatusPic"
@@ -23,12 +25,13 @@
     android:layout_marginEnd="8dp"
     android:background="@drawable/roundbutton"
     android:contentDescription="@string/CosplayItemStatusPicContentDecription"
-    android:foregroundTint="@android:color/background_light"
-    android:padding="5dp"
+    android:cropToPadding="true"
+    android:padding="6dp"
     android:scaleType="fitCenter"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    app:tint="#FFFFFF" />
 
   <TextView
     android:id="@+id/CosplayItemListItemName"
@@ -50,9 +53,10 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
+    android:fontFamily="@font/lato_bold"
     android:text="@string/CosplayItemPrice"
     android:textColor="#FFFFFF"
-    android:textSize="15sp"
+    android:textSize="12sp"
     android:textStyle="bold"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemListItemName"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemListItemName" />
@@ -65,7 +69,7 @@
     android:layout_marginEnd="8dp"
     android:fontFamily="@font/lato_bold"
     android:textColor="@android:color/background_light"
-    android:textSize="15sp"
+    android:textSize="12sp"
     app:layout_constraintEnd_toStartOf="@+id/CosplayItemListTimeLbl"
     app:layout_constraintStart_toEndOf="@+id/CosplayItemListPriceLbl"
     app:layout_constraintTop_toTopOf="@+id/CosplayItemListPriceLbl" />
@@ -77,7 +81,7 @@
     android:fontFamily="@font/lato_bold"
     android:text="@string/TimeLbl"
     android:textColor="@android:color/background_light"
-    android:textSize="15sp"
+    android:textSize="12sp"
     app:layout_constraintEnd_toStartOf="@+id/CosplayItemListStatusPic"
     app:layout_constraintStart_toEndOf="@+id/CosplayItemListPriceLbl"
     app:layout_constraintTop_toTopOf="@+id/CosplayItemListPriceLbl" />
@@ -88,18 +92,24 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
+    android:fontFamily="@font/lato_bold"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
     app:layout_constraintEnd_toStartOf="@+id/CosplayItemListStatusPic"
     app:layout_constraintStart_toEndOf="@+id/CosplayItemListTimeLbl"
     app:layout_constraintTop_toTopOf="@+id/CosplayItemListTimeLbl" />
 
   <ProgressBar
     android:id="@+id/CosplayItemListProgressBar"
-    style="?android:attr/progressBarStyleHorizontal"
+    style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp"
+    android:indeterminate="false"
+    android:progressTint="@android:color/holo_blue_dark"
+    android:scaleY="3"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/CosplayItemListStatusPic"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemListPriceLbl"

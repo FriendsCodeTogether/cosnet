@@ -155,6 +155,88 @@
       app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout2"
+    android:layout_width="0dp"
+    android:layout_height="40dp"
+    android:background="@drawable/borders_light_grey"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+    <TextView
+      android:id="@+id/MadeItemsLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/MadeItem"
+      android:textColor="@android:color/background_light"
+      android:textSize="15sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+      android:id="@+id/MadeItemsListCollapseBtn"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginEnd="16dp"
+      android:background="@color/colorPrimaryDark"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/arrow_down_float" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ListView
+    android:id="@+id/CosplayMadeItemsListView"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+  </ListView>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout3"
+    android:layout_width="0dp"
+    android:layout_height="40dp"
+    android:background="@drawable/borders_light_grey"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/CosplayMadeItemsListView">
+
+    <TextView
+      android:id="@+id/BoughtItemsLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/BoughtItems"
+      android:textColor="@android:color/background_light"
+      android:textSize="15sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+      android:id="@+id/BoughtItemsListCollapseBtn"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginEnd="16dp"
+      android:background="@color/colorPrimaryDark"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/arrow_down_float" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
   <ListView
     android:id="@+id/CosplayBoughtItemsListView"
     android:layout_width="0dp"
@@ -162,15 +244,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent" />
-
-  <ListView
-    android:id="@+id/CosplayMadeItemsListView"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/CosplayBoughtItemsListView"
-    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

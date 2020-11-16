@@ -28,6 +28,8 @@ public class CosplayItemsList extends AppCompatActivity {
   private static final String TAG = "CosplayItemList";
 
   private ImageButton createCosplayItemBTN;
+  private ImageButton madeItemsListCollapseBtn;
+  private ImageButton boughtItemsListCollapseBtn;
   private TextView character;
   private TextView series;
   private TextView status;
@@ -97,10 +99,24 @@ public class CosplayItemsList extends AppCompatActivity {
     cosplayMadeItemList.setOnItemClickListener((parent, view, position, id) -> {
 
     });
+
+    madeItemsListCollapseBtn.setOnClickListener(v -> toggleListView(cosplayMadeItemList));
+
+    boughtItemsListCollapseBtn.setOnClickListener(v -> toggleListView(cosplayBoughtItemList) );
+  }
+
+  private void toggleListView(ListView listView){
+    if (listView.getVisibility() == View.VISIBLE){
+      listView.setVisibility(View.GONE);
+    } else {
+      listView.setVisibility(View.VISIBLE);
+    }
   }
 
   private void initialiseWidgets() {
     createCosplayItemBTN = (ImageButton) findViewById(R.id.createCosplayItemBTN);
+    madeItemsListCollapseBtn = (ImageButton) findViewById(R.id.MadeItemsListCollapseBtn);
+    boughtItemsListCollapseBtn = (ImageButton) findViewById(R.id.BoughtItemsListCollapseBtn);
     cosplayMadeItemList = (ListView) findViewById(R.id.CosplayMadeItemsListView);
     cosplayBoughtItemList = (ListView) findViewById(R.id.CosplayBoughtItemsListView);
     boughtCosplays = new ArrayList<>();

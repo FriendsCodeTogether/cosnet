@@ -97,6 +97,8 @@
   <string name="CosplayItemPicContentDescription">Picture of cosplay item</string>
   <string name="CosplayItemStatusPicContentDecription" />
   <string name="TimeLbl">Time:</string>
+  <string name="MadeItem">Made Items</string>
+  <string name="BoughtItems">Bought Items</string>
   <!--UNSORTED-->
 
 

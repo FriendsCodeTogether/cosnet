@@ -60,17 +60,18 @@ public class CosplayItemsListAdapter extends ArrayAdapter<CosplayItem> {
         status.setImageResource(R.drawable.ic_ordered);
       } else if (item.status.equals(context.getString(R.string.Completed))) {
         status.setImageResource(R.drawable.ic_baseline_check_18);
-      } else {
-        time.setText(item.worktimeHours + "H " + item.worktimeMinutes + "Min");
-        progressBar.setProgress(item.progress);
+      }
+    } else {
+      time.setText(item.worktimeHours + "H " + item.worktimeMinutes + "Min");
+      progressBar.setProgress(item.progress);
 
-        if (item.status.equals(context.getString(R.string.In_Progess))) {
-          status.setImageResource(R.drawable.ic_construction_white_10dp);
-        } else if (item.status.equals(context.getString(R.string.Planned))) {
-          status.setImageResource(R.drawable.ic_baseline_check_18);
-        }
+      if (item.status.equals(context.getString(R.string.In_Progess))) {
+        status.setImageResource(R.drawable.ic_construction_white_10dp);
+      } else if (item.status.equals(context.getString(R.string.Completed))) {
+        status.setImageResource(R.drawable.ic_baseline_check_18);
       }
     }
+
     return convertView;
   }
 }
