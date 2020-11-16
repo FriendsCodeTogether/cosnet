@@ -1,4 +1,4 @@
-package cosnet.android;
+package cosnet.android.ui.cosplay;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
+import cosnet.android.MainActivity;
+import cosnet.android.R;
 import me.abhinay.input.CurrencyEditText;
 
 public class AddCosplay extends AppCompatActivity {

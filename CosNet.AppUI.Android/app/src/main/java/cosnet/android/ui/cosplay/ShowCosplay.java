@@ -1,4 +1,4 @@
-package cosnet.android;
+package cosnet.android.ui.cosplay;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +16,10 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 
+import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
+import cosnet.android.MainActivity;
+import cosnet.android.R;
 import cosnet.android.ui.cosplayItem.AddCosplayItem;
 
 public class ShowCosplay extends AppCompatActivity {
