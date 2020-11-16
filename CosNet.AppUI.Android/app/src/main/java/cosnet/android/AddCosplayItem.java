@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ButtonBarLayout;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -22,6 +23,7 @@ import com.shawnlin.numberpicker.*;
 import cosnet.android.Entities.Cosplay;
 import me.abhinay.input.CurrencyEditText;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -41,7 +43,7 @@ public class AddCosplayItem extends AppCompatActivity {
   private TextInputLayout cosplayItemDueDateLayout;
   private TextInputLayout cosplayItemBuyLinkLayout;
   private TextInputLayout cosplayItemProgressLayout;
-  private TextInputLayout cisplayItemWorkTimeLayout;
+  private TextInputLayout cosplayItemWorkTimeLayout;
   private CurrencyEditText cosplayItemPriceEditText;
   private ToggleSwitch cosplayItemTypeSwitch;
   private Spinner boughtStatusSpinner;
@@ -89,7 +91,7 @@ public class AddCosplayItem extends AppCompatActivity {
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
     addMadeItemButton.setOnClickListener(i -> onClickAddButton());
     addBoughtItemButton.setOnClickListener(i -> onClickAddButton());
-    cisplayItemWorkTimeLayout.getEditText().setOnClickListener(v -> onClickWorkTimeButton());
+    cosplayItemWorkTimeLayout.getEditText().setOnClickListener(v -> onClickWorkTimeButton());
     cosplayItemProgressLayout.getEditText().setOnClickListener(v -> onClickProgressButton());
   }
 
@@ -117,7 +119,7 @@ public class AddCosplayItem extends AppCompatActivity {
       cosplayItemWorkTimeHours = cosplayItemWorkTimeHourNumberPicker.getValue();
       int pickedTime = cosplayItemWorkTimeMinuteNumberPicker.getValue();
       cosplayItemWorkTimeMinutes = Integer.parseInt(data[pickedTime - 1]);
-      cisplayItemWorkTimeLayout.getEditText().setText("H " + cosplayItemWorkTimeHours + " : " + data[pickedTime - 1]);
+      cosplayItemWorkTimeLayout.getEditText().setText("H " + cosplayItemWorkTimeHours + " : " + data[pickedTime - 1]);
       builder.dismiss();
     });
   }
@@ -145,7 +147,9 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-
+    if (!validateItemName() | !validateItemDescrition() | !validateDate()| !validateItemBuyLink() | ! validateProgress() | !validateWorkTime()) {
+      return;
+    }
     if (cosplayItemNameLayout.getEditText().getText().toString().isEmpty()) {
       AlertDialog alertDialog = new AlertDialog.Builder(AddCosplayItem.this).create();
       alertDialog.setTitle("Oh No");
@@ -171,7 +175,71 @@ public class AddCosplayItem extends AppCompatActivity {
     newItem.worktimeMinutes = cosplayItemWorkTimeMinutes;
     db.getCosplayItemDAO().insertItem(newItem);
     Intent intent = new Intent(AddCosplayItem.this, ShowCosplay.class);
+    intent.putExtra("cosplay", (Serializable) cosplay);
     startActivity(intent);
+  }
+
+  private boolean validateWorkTime() {
+    String workTime = cosplayItemWorkTimeLayout.getEditText().getText().toString();
+    if (workTime.length() > 15) {
+      cosplayItemWorkTimeLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else {
+      cosplayItemWorkTimeLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateProgress() {
+    String progress = cosplayItemProgressLayout.getEditText().getText().toString();
+    if (progress.length() > 150) {
+      cosplayItemProgressLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else {
+      cosplayItemProgressLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateItemBuyLink() {
+    String buyLink = cosplayItemBuyLinkLayout.getEditText().getText().toString();
+    if (buyLink.length() > 250) {
+      cosplayItemBuyLinkLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else {
+      cosplayItemBuyLinkLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateDate() {
+    return true;
+  }
+
+  private boolean validateItemDescrition() {
+    String description = cosplayItemDescriptionLayout.getEditText().getText().toString();
+    if (description.length() > 650) {
+      cosplayItemDescriptionLayout.setError(getApplicationContext().getString(R.string.max650Characters));
+      return false;
+    } else {
+      cosplayItemDescriptionLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateItemName() {
+    String itemName = cosplayItemNameLayout.getEditText().getText().toString();
+    if (itemName.length() > 150) {
+      cosplayItemNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else if(itemName.isEmpty()){
+      cosplayItemNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      return false;
+    }
+    else {
+      cosplayItemNameLayout.setError(null);
+      return true;
+    }
   }
 
   private void onClickItemdueDate() {
@@ -246,7 +314,7 @@ public class AddCosplayItem extends AppCompatActivity {
 
     madeStatusSpinner = (Spinner) findViewById(R.id.madeStatusSpinner);
     cosplayItemProgressLayout = (TextInputLayout) findViewById(R.id.cosplayItemProgressTextInput);
-    cisplayItemWorkTimeLayout = (TextInputLayout) findViewById(R.id.cosplayItemWorkTimeTextInput);
+    cosplayItemWorkTimeLayout = (TextInputLayout) findViewById(R.id.cosplayItemWorkTimeTextInput);
 
     addBoughtItemButton = (Button) findViewById(R.id.cosplayMadeItemAddButton);
     addMadeItemButton = (Button) findViewById(R.id.cosplayBoughtItemAddButton);
@@ -258,4 +326,5 @@ public class AddCosplayItem extends AppCompatActivity {
     getSupportActionBar().setDisplayShowTitleEnabled(false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
+
 }
