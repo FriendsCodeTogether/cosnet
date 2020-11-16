@@ -1,4 +1,4 @@
-package cosnet.android;
+package cosnet.android.ui.cosplayItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,10 +16,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import cosnet.android.CosnetDb;
 import cosnet.android.Data.DAOs.CosplayItemDAO;
 import cosnet.android.Data.Relations.CosplayWithItems;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
+import cosnet.android.R;
 import cosnet.android.adapters.CosplayItemsListAdapter;
 import cosnet.android.adapters.CosplayListAdapter;
 

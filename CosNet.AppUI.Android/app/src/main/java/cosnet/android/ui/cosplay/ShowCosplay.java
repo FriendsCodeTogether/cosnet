@@ -20,7 +20,7 @@ import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.MainActivity;
 import cosnet.android.R;
-import cosnet.android.ui.cosplayItem.AddCosplayItem;
+import cosnet.android.ui.cosplayItem.CosplayItemsList;
 
 public class ShowCosplay extends AppCompatActivity {
 
