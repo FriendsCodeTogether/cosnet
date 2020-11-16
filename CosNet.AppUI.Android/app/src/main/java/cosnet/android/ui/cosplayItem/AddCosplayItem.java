@@ -1,32 +1,30 @@
-package cosnet.android;
+package cosnet.android.ui.cosplayItem;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.NavUtils;
 
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.*;
 
+import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
+import cosnet.android.R;
+import cosnet.android.ui.cosplay.ShowCosplay;
 import me.abhinay.input.CurrencyEditText;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

@@ -1,33 +1,25 @@
 package cosnet.android.ui.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import cosnet.android.AddCosplay;
+import cosnet.android.ui.cosplay.AddCosplay;
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.R;
-import cosnet.android.ShowCosplay;
+import cosnet.android.ui.cosplay.ShowCosplay;
 import cosnet.android.adapters.CosplayListAdapter;
 
 public class HomeFragment extends Fragment {
