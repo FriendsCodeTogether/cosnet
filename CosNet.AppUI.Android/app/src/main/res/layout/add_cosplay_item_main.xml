@@ -153,9 +153,9 @@
       android:layout_marginEnd="8dp"
       android:fontFamily="@font/lato_bold"
       android:hint="@string/CosplayItemPriceHint"
-      android:maxLength="16"
       android:importantForAutofill="no"
       android:inputType="number"
+      android:maxLength="16"
       android:paddingStart="8dp"
       android:paddingEnd="8dp"
       app:layout_constraintEnd_toEndOf="@+id/cosplayItemDescriptionTextInput"
@@ -299,7 +299,6 @@
           android:text="@string/CosplayItemBuyLinkInput" />
       </com.google.android.material.textfield.TextInputLayout>
 
-
       <Button
         android:id="@+id/cosplayBoughtItemAddButton"
         android:layout_width="165dp"
@@ -360,36 +359,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/madeStatusSpinner" />
 
-      <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/cosplayItemProgressTextInput"
+      <EditText
+        android:id="@+id/cosplayItemProgressEditText"
+        style="@style/EditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="150"
-        app:counterTextAppearance="@style/Counter"
-        app:errorEnabled="true"
-        app:errorTextAppearance="@style/Error"
-        app:hintEnabled="false"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints="@string/CosplayItemProgress"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/lato_bold"
+        android:hint="@string/CosplayItemProgressHint"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/CosplayItemProgressInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cosplayItemProgressTextView">
-
-        <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/CosplayItemProgressEditText"
-          style="@style/EditText"
-          android:layout_width="match_parent"
-          android:layout_height="27dp"
-          android:layout_marginTop="8dp"
-          android:autofillHints="@string/CosplayItemProgress"
-          android:focusableInTouchMode="false"
-          android:fontFamily="@font/lato_bold"
-          android:hint="@string/CosplayItemProgressHint"
-          android:paddingStart="8dp"
-          android:paddingEnd="8dp"
-          android:text="@string/CosplayItemProgressInput" />
-      </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/cosplayItemProgressTextView" />
 
       <TextView
         android:id="@+id/cosplayItemWorkTimeTextView"
@@ -400,39 +385,25 @@
         android:fontFamily="@font/lato_bold"
         android:text="@string/CosplayItemWorkTime"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cosplayItemProgressTextInput" />
+        app:layout_constraintTop_toBottomOf="@+id/cosplayItemProgressEditText" />
 
-      <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/cosplayItemWorkTimeTextInput"
+      <EditText
+        android:id="@+id/cosplayItemWorkTimeEditText"
+        style="@style/EditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="15"
-        app:counterTextAppearance="@style/Counter"
-        app:errorEnabled="true"
-        app:errorTextAppearance="@style/Error"
-        app:hintEnabled="false"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints="@string/CosplayItemWorkTime"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/lato_bold"
+        android:hint="@string/CosplayItemWorkTimeHint"
+        android:inputType="numberDecimal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/CosplayItemWorkTimeInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cosplayItemWorkTimeTextView">
-
-        <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/CosplayItemWorkTimeEditText"
-          style="@style/EditText"
-          android:layout_width="match_parent"
-          android:layout_height="27dp"
-          android:layout_marginTop="8dp"
-          android:autofillHints="@string/CosplayItemWorkTime"
-          android:focusableInTouchMode="false"
-          android:fontFamily="@font/lato_bold"
-          android:hint="@string/CosplayItemWorkTimeHint"
-          android:inputType="numberDecimal"
-          android:paddingStart="8dp"
-          android:paddingEnd="8dp"
-          android:text="@string/CosplayItemWorkTimeInput" />
-      </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/cosplayItemWorkTimeTextView" />
 
       <Button
         android:id="@+id/cosplayMadeItemAddButton"
@@ -449,7 +420,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cosplayItemWorkTimeTextInput" />
+        app:layout_constraintTop_toBottomOf="@+id/CosplayItemWorkTimeEditText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.constraintlayout.widget.ConstraintLayout>
 
