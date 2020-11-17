@@ -1,4 +1,4 @@
-package cosnet.android;
+package cosnet.android.ui.cosplayItem;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -20,7 +20,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.*;
 
+import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
+import cosnet.android.R;
+import cosnet.android.ui.cosplay.ShowCosplay;
 import me.abhinay.input.CurrencyEditText;
 
 import java.text.SimpleDateFormat;
