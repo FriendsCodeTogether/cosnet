@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -24,9 +23,11 @@ import com.shawnlin.numberpicker.*;
 import cosnet.android.Entities.Cosplay;
 import me.abhinay.input.CurrencyEditText;
 
+import java.text.SimpleDateFormat;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cosnet.android.Entities.CosplayItem;
@@ -41,7 +42,7 @@ public class AddCosplayItem extends AppCompatActivity {
   private ConstraintLayout boughtItemLayout;
   private TextInputLayout cosplayItemNameLayout;
   private TextInputLayout cosplayItemDescriptionLayout;
-  private TextInputLayout cosplayItemDueDateLayout;
+  private EditText cosplayItemDueDateEditText;
   private TextInputLayout cosplayItemBuyLinkLayout;
   private EditText cosplayItemProgressEditText;
   private EditText cosplayItemWorkTimeEditText;
@@ -88,12 +89,21 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void setListeners() {
-    cosplayItemDueDateLayout.getEditText().setOnClickListener(v -> onClickItemdueDate());
+    cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
     addMadeItemButton.setOnClickListener(i -> onClickAddButton());
     addBoughtItemButton.setOnClickListener(i -> onClickAddButton());
     cosplayItemWorkTimeEditText.setOnClickListener(v -> onClickWorkTimeButton());
     cosplayItemProgressEditText.setOnClickListener(v -> onClickProgressButton());
+  }
+
+  private void onClickItemdueDate() {
+    DatePickerDialog datePickerDialog = new DatePickerDialog(AddCosplayItem.this, (view, year, month, dayOfMonth) -> {
+      month = month + 1;
+      String date = dayOfMonth + "/" + month + "/" + year;
+      cosplayItemDueDateEditText.setText(date);
+    }, year, month, day);
+    datePickerDialog.show();
   }
 
   private void onClickWorkTimeButton() {
@@ -148,7 +158,7 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-    if (!validateItemName() | !validateItemDescrition() | !validateDate()| !validateItemBuyLink()) {
+    if (!validateItemName() | !validateItemDescrition() | !validateItemBuyLink()) {
       return;
     }
 
@@ -156,7 +166,7 @@ public class AddCosplayItem extends AppCompatActivity {
     newItem.cosplayId = cosplay.cosplayId;
     newItem.itemName = cosplayItemNameLayout.getEditText().getText().toString();
     newItem.description = cosplayItemDescriptionLayout.getEditText().getText().toString();
-    newItem.dueDate = cosplayItemDueDateLayout.getEditText().getText().toString();
+    newItem.dueDate = cosplayItemDueDateEditText.getText().toString();
     newItem.price = cosplayItemPriceEditText.getText().toString().isEmpty() ? null : cosplayItemPriceEditText.getCleanDoubleValue();
     newItem.isMade = isMade;
     if (isMade == 0) newItem.status = boughtStatusSpinner.getSelectedItem().toString();
@@ -180,10 +190,6 @@ public class AddCosplayItem extends AppCompatActivity {
       cosplayItemBuyLinkLayout.setError(null);
       return true;
     }
-  }
-
-  private boolean validateDate() {
-    return true;
   }
 
   private boolean validateItemDescrition() {
@@ -210,15 +216,6 @@ public class AddCosplayItem extends AppCompatActivity {
       cosplayItemNameLayout.setError(null);
       return true;
     }
-  }
-
-  private void onClickItemdueDate() {
-    DatePickerDialog datePickerDialog = new DatePickerDialog(AddCosplayItem.this, (view, year, month, dayOfMonth) -> {
-      month = month + 1;
-      String date = dayOfMonth + "/" + month + "/" + year;
-      cosplayItemDueDateLayout.getEditText().setText(date);
-    }, year, month, day);
-    datePickerDialog.show();
   }
 
   private void initializeItems() {
@@ -276,7 +273,7 @@ public class AddCosplayItem extends AppCompatActivity {
     cosplayItemNameLayout = (TextInputLayout) findViewById(R.id.cosplayItemNameTextInput);
     cosplayItemDescriptionLayout = (TextInputLayout) findViewById(R.id.cosplayItemDescriptionTextInput);
     cosplayItemPriceEditText = (CurrencyEditText) findViewById(R.id.cosplayItemPriceEditText);
-    cosplayItemDueDateLayout = (TextInputLayout) findViewById(R.id.cosplayItemDescriptionTextInput);
+    cosplayItemDueDateEditText = (EditText) findViewById(R.id.dueDateEditText);
     cosplayItemTypeSwitch = (ToggleSwitch) findViewById(R.id.cosplayItemTypeSwitch);
 
     boughtStatusSpinner = (Spinner) findViewById(R.id.boughtStatusSpinner);

@@ -156,8 +156,7 @@
       android:importantForAutofill="no"
       android:inputType="date"
       android:paddingStart="8dp"
-      android:paddingEnd="8dp"
-      android:text="@string/SeriesInput" />
+      android:paddingEnd="8dp" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <TextView

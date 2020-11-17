@@ -173,33 +173,22 @@
       app:layout_constraintStart_toStartOf="@+id/cosplayItemPriceEditText"
       app:layout_constraintTop_toBottomOf="@+id/cosplayItemPriceEditText" />
 
-    <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/dueDatetextInput"
+    <EditText
+      android:id="@+id/dueDateEditText"
+      style="@style/EditText"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="8dp"
-      app:errorEnabled="true"
-      app:errorTextAppearance="@style/Error"
-      app:hintEnabled="false"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_height="27dp"
+      android:layout_marginTop="8dp"
+      android:focusableInTouchMode="false"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/DueDateHint"
+      android:importantForAutofill="no"
+      android:inputType="date"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      app:layout_constraintEnd_toEndOf="@id/cosplayItemPriceEditText"
       app:layout_constraintStart_toStartOf="@+id/dueDateLabel"
-      app:layout_constraintTop_toBottomOf="@+id/dueDateLabel">
-
-      <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/dueDateEditText"
-        style="@style/EditText"
-        android:layout_width="match_parent"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:focusableInTouchMode="false"
-        android:fontFamily="@font/lato_bold"
-        android:hint="@string/DueDateHint"
-        android:importantForAutofill="no"
-        android:inputType="date"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+      app:layout_constraintTop_toBottomOf="@+id/dueDateLabel" />
 
     <TextView
       android:id="@+id/cosplayItemTypeTextView"
@@ -209,17 +198,20 @@
       android:layout_marginTop="8dp"
       android:fontFamily="@font/lato_bold"
       android:text="@string/CosplayItemType"
-      app:layout_constraintStart_toStartOf="@+id/dueDatetextInput"
-      app:layout_constraintTop_toBottomOf="@+id/dueDatetextInput" />
+      app:layout_constraintStart_toStartOf="@+id/dueDateEditText"
+      app:layout_constraintTop_toBottomOf="@+id/dueDateEditText" />
+
+    <!-- Bought Item-->
 
     <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
       android:id="@+id/cosplayItemTypeSwitch"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="47dp"
       android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
+      android:layout_marginEnd="0dp"
       app:checkedBackgroundColor="#52C4FF"
-      app:layout_constraintEnd_toEndOf="@+id/dueDatetextInput"
+      app:layout_constraintEnd_toEndOf="@+id/dueDateEditText"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="@+id/cosplayItemTypeTextView"
       app:layout_constraintTop_toBottomOf="@+id/cosplayItemTypeTextView"
       app:textToggleLeft="@string/CosplayItemTypeBought"
@@ -227,7 +219,6 @@
       app:uncheckedBackgroundColor="#808080"
       app:uncheckedTextColor="#CCCCCC" />
 
-    <!-- Bought Item-->
     <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/cosplayItemBoughtItemLayout"
       android:layout_width="0dp"
@@ -295,7 +286,7 @@
           android:hint="@string/CosplayItemBuyLinkHint"
           android:inputType="text"
           android:paddingStart="8dp"
-          android:paddingEnd="8dp"
+          android:paddingEnd="0dp"
           android:text="@string/CosplayItemBuyLinkInput" />
       </com.google.android.material.textfield.TextInputLayout>
 
