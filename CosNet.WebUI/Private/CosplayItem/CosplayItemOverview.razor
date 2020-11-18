@@ -2,27 +2,35 @@
 @inject ICosplayItemService CosplayItemService
 @using CosNet.Shared.DTOs.CosplayItem
 
-<h1>@cosplayItem.Name</h1>
-<p>@cosplayItem.Description</p>
-<h2>Info</h2>
-<div class="cosplay-item-info">
-    <p>Status: @cosplayItem.Status</p>
-    <p>Price: @cosplayItem.Price</p>
-    <p>Due Date: @cosplayItem.DueDate</p>
-    @if (cosplayItem.IsMade)
-    {
-        <p>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</p>
-        <p>Progress: @cosplayItem.Progress %</p>
-    }
-    else
-    {
-        <p>Buy Link: @cosplayItem.BuyLink</p>
-    }
-</div>
-<img class="cosplay-form-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
-<a class="cosplay-show-edit-btn" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">
-    <img class="cosplay-show-edit-btn-icon" src="assets/icons/edit.svg" alt="Edit" />
-</a>
+@if (cosplayItem==null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h1>@cosplayItem.Name</h1>
+    <p>@cosplayItem.Description</p>
+    <h2>Info</h2>
+    <div class="cosplay-item-info">
+        <p>Status: @cosplayItem.Status</p>
+        <p>Price: @cosplayItem.Price</p>
+        <p>Due Date: @cosplayItem.DueDate</p>
+        @if (cosplayItem.IsMade)
+        {
+            <p>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</p>
+            <p>Progress: @cosplayItem.Progress %</p>
+        }
+        else
+        {
+            <p>Buy Link: @cosplayItem.BuyLink</p>
+        }
+    </div>
+    <img class="cosplay-form-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+    <a class="cosplay-show-edit-btn" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">
+        <img class="cosplay-show-edit-btn-icon" src="assets/icons/edit.svg" alt="Edit" />
+    </a>
+}
+
 
 @code {
     public CosplayItemDTO cosplayItem = new CosplayItemDTO();
