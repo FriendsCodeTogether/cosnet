@@ -1,9 +1,30 @@
+.cosplay-item-show-container {
+  margin: 3rem 6.5rem;
+}
+
+.cosplay-item-show {
+  width:100%;
+  display: flex;
+  flex-direction: row;
+}
+
 .cosplay-item-show-info {
-  margin-bottom: 0.5rem;
+  margin-right: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.cosplay-item-show-image-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.cosplay-show-item-image {
+  width: 15em;
+  height: 15em;
+  margin-bottom: 0.5rem;
 }
 
 .cosplay-item-show-edit-btn {
@@ -12,18 +33,4 @@
   &:hover {
     filter: brightness(50%);
   }
-}
-
-.cosplay-item-show-image-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.cosplay-item-show {
-  display: flex;
-  flex-direction: row;
-  margin: 3rem 6.5rem;
 }

@@ -8,29 +8,33 @@
 }
 else
 {
-    <h1>@cosplayItem.Name</h1>
-    <div class="cosplay-item-show">
-        <div class="cosplay-item-show-info">
-            <p>@cosplayItem.Description</p>
-            <h2>Info</h2>
-            <p>Status: @cosplayItem.Status</p>
-            <p>Price: @cosplayItem.Price</p>
-            <p>Due Date: @cosplayItem.DueDate</p>
-            @if (cosplayItem.IsMade)
-            {
-                <p>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</p>
-                <p>Progress: @cosplayItem.Progress %</p>
-            }
-            else
-            {
-                <p>Buy Link: @cosplayItem.BuyLink</p>
-            }
-        </div>
-        <div class="cosplay-item-show-image-group">
-            <img class="cosplay-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
-            <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+    <div class="cosplay-item-show-container">
+        <h1>@cosplayItem.Name</h1>
+        <div class="cosplay-item-show">
+            <div class="cosplay-item-show-info">
+                <p>@cosplayItem.Description</p>
+
+                <h2>Info</h2>
+                <div>Status: @cosplayItem.Status</div>
+                <div>Price: @cosplayItem.Price</div>
+                <div>Due Date: @cosplayItem.DueDate</div>
+                @if (cosplayItem.IsMade)
+                {
+                    <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
+                    <div>Progress: @cosplayItem.Progress %</div>
+                }
+                else
+                {
+                    <div>Buy Link: @cosplayItem.BuyLink</div>
+                }
+            </div>
+            <div class="cosplay-item-show-image-group">
+                <img class="cosplay-show-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+                <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+            </div>
         </div>
     </div>
+    
 
 }
 
