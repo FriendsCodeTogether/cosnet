@@ -1,8 +1,6 @@
 <resources>
   <string name="app_name">CosNet.AppUI.Android</string>
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
-  <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Android Studio</string>
   <string name="nav_header_subtitle">android.studio@android.com</string>
   <string name="nav_header_desc">Navigation header</string>
   <string name="action_settings">Settings</string>
@@ -10,10 +8,7 @@
   <string name="menu_home">Home</string>
   <string name="menu_gallery">Gallery</string>
   <string name="menu_slideshow">Slideshow</string>
-  <string name="cancelButtonDesc">Cancel</string>
-  <string name="message">Not all field have been filled in</string>
-  <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="my_cosplays">My Cosplays</string>
+    <string name="my_cosplays">My Cosplays</string>
 
   <!--TITLES-->
   <string name="CosNet">CosNet</string>
@@ -30,9 +25,7 @@
   <string name="save">Save</string>
 
   <!--CosplayItem Labels-->
-  <string name="CosplayItemBoughtStatus">Status:</string>
-  <string name="CosplayItemMadeItemStatus">Status:</string>
-  <string name="CosplayItemName">Name:*</string>
+    <string name="CosplayItemName">Name:*</string>
   <string name="CosplayItemDescription">Description:</string>
   <string name="CosplayItemProgress">Progress:</string>
   <string name="CosplayItemWorkTime">Work Time:</string>
@@ -99,6 +92,13 @@
   <string name="TimeLbl">Time:</string>
   <string name="MadeItem">Made Items</string>
   <string name="BoughtItems">Bought Items</string>
+    <string name="create">Create</string>
+  <string name="characterNameErrorEmpty">*Field is required</string>
+  <string name="max150Characters">*Max 150 characters</string>
+    <string name="max9Numbers">*Max 9 numbers</string>
+  <string name="dueBeforeStart">*Due Date can\'t be before Start Date</string>
+  <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
+  <string name="max650Characters">*Max 650 characters</string>
   <!--UNSORTED-->
 
 
