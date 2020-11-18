@@ -2,8 +2,27 @@
 @inject ICosplayItemService CosplayItemService
 @using CosNet.Shared.DTOs.CosplayItem
 
-<h3>@cosplayItem.Name</h3>
-<a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+<h1>@cosplayItem.Name</h1>
+<p>@cosplayItem.Description</p>
+<h2>Info</h2>
+<div>
+    Status: @cosplayItem.Status
+    Price: @cosplayItem.Price
+    Due Date: @cosplayItem.DueDate
+    @if (cosplayItem.IsMade)
+    {
+        <label>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</label>
+        <label>Progress: @cosplayItem.Progress %</label>
+    }
+    else
+    {
+        <label>Buy Link: @cosplayItem.BuyLink</label>
+    }
+</div>
+<img class="cosplay-form-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+<a class="cosplay-show-edit-btn" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">
+    <img class="cosplay-show-edit-btn-icon" src="assets/icons/edit.svg" alt="Edit" />
+</a>
 
 @code {
     public CosplayItemDTO cosplayItem = new CosplayItemDTO();
