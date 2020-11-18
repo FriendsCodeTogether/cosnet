@@ -2,31 +2,36 @@
 @inject ICosplayItemService CosplayItemService
 @using CosNet.Shared.DTOs.CosplayItem
 
-@if (cosplayItem==null)
+@if (cosplayItem == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <h1>@cosplayItem.Name</h1>
-    <p>@cosplayItem.Description</p>
-    <h2>Info</h2>
-    <div class="cosplay-item-info">
-        <p>Status: @cosplayItem.Status</p>
-        <p>Price: @cosplayItem.Price</p>
-        <p>Due Date: @cosplayItem.DueDate</p>
-        @if (cosplayItem.IsMade)
-        {
-            <p>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</p>
-            <p>Progress: @cosplayItem.Progress %</p>
-        }
-        else
-        {
-            <p>Buy Link: @cosplayItem.BuyLink</p>
-        }
+    <div class="cosplay-item-show">
+        <div class="cosplay-item-show-info">
+            <p>@cosplayItem.Description</p>
+            <h2>Info</h2>
+            <p>Status: @cosplayItem.Status</p>
+            <p>Price: @cosplayItem.Price</p>
+            <p>Due Date: @cosplayItem.DueDate</p>
+            @if (cosplayItem.IsMade)
+            {
+                <p>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</p>
+                <p>Progress: @cosplayItem.Progress %</p>
+            }
+            else
+            {
+                <p>Buy Link: @cosplayItem.BuyLink</p>
+            }
+        </div>
+        <div class="cosplay-item-show-image-group">
+            <img class="cosplay-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+            <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+        </div>
     </div>
-    <img class="cosplay-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
-    <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+
 }
 
 
