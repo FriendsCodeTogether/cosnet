@@ -6,17 +6,17 @@
 <p>@cosplayItem.Description</p>
 <h2>Info</h2>
 <div>
-    Status: @cosplayItem.Status
-    Price: @cosplayItem.Price
-    Due Date: @cosplayItem.DueDate
+    <div>Status: @cosplayItem.Status</div>
+    <div>Price: @cosplayItem.Price</div>
+    <div>Due Date: @cosplayItem.DueDate</div>
     @if (cosplayItem.IsMade)
     {
-        <label>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</label>
-        <label>Progress: @cosplayItem.Progress %</label>
+        <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
+        <div>Progress: @cosplayItem.Progress %</div>
     }
     else
     {
-        <label>Buy Link: @cosplayItem.BuyLink</label>
+        <div>Buy Link: @cosplayItem.BuyLink</div>
     }
 </div>
 <img class="cosplay-form-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
