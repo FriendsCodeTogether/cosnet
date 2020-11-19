@@ -1,10 +1,12 @@
 package cosnet.android.ui.cosplayItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,12 +36,30 @@ public class ShowCosplayItem extends AppCompatActivity {
     Intent incomingIntent = getIntent();
     item = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
 
+    addToolbar();
     initialiseWidgets();
     setWidgets();
   }
 
+  private void addToolbar() {
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  }
+
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
   private void setWidgets() {
     cosplayItemName.setText(item.itemName);
+
     cosplayItemDescription.setText(item.description);
     cosplayItemStatus.setText(item.status);
     cosplayItemBudget.setText("€" + item.price);

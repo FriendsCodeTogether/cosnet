@@ -36,6 +36,7 @@ public class CosplayItemsList extends AppCompatActivity {
   private ExpandableListView cosplayItemsListView;
   private List<CosplayItem> madeCosplays;
   private List<CosplayItem> boughtCosplays;
+  private CosplayItemsExpandableListAdapter adapter;
   private Cosplay cosplay;
   private CosnetDb db;
   private CosplayItemDAO cosplayItemDAO;
@@ -77,7 +78,7 @@ public class CosplayItemsList extends AppCompatActivity {
     items.put(itemTypes.get(0),madeCosplays);
     items.put(itemTypes.get(1),boughtCosplays);
 
-    CosplayItemsExpandableListAdapter adapter = new CosplayItemsExpandableListAdapter(this,itemTypes,items);
+    adapter = new CosplayItemsExpandableListAdapter(this,itemTypes,items);
     cosplayItemsListView.setAdapter(adapter);
   }
 
@@ -113,8 +114,11 @@ public class CosplayItemsList extends AppCompatActivity {
 
 
     cosplayItemsListView.setOnChildClickListener((ExpandableListView parent, View v, int groupPosition, int childPosition, long id) -> {
-      Toast.makeText(this, "clicked on item" + id, Toast.LENGTH_SHORT).show();
-      return false;
+      CosplayItem item = (CosplayItem) adapter.getChild(groupPosition,childPosition);
+      Intent intent = new Intent(this, ShowCosplayItem.class);
+      intent.putExtra("cosplayItem", item);
+      startActivity(intent);
+      return true;
     });
 
   }

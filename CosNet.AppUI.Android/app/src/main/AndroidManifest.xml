@@ -9,11 +9,15 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".ui.cosplayItem.ShowCosplayItem"></activity>
+    <activity android:name=".ui.cosplayItem.ShowCosplayItem">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.cosplayItem.CosplayItemsList" />
+    </activity>
     <activity android:name=".ui.cosplayItem.CosplayItemsList">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ShowCosplay" />
+        android:value=".ui.cosplay.ShowCosplay" />
     </activity>
     <activity
       android:name=".ui.cosplay.EditCosplay"
