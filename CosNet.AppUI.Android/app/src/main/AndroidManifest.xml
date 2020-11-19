@@ -9,16 +9,27 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".ui.cosplayItem.ShowCosplayItem">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.cosplayItem.CosplayItemsList" />
+    </activity>
     <activity android:name=".ui.cosplayItem.CosplayItemsList">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ShowCosplay" />
+        android:value=".ui.cosplay.ShowCosplay" />
     </activity>
-    <activity android:name=".ui.cosplay.EditCosplay" android:parentActivityName=".ui.cosplay.ShowCosplay"></activity>
-    <activity android:name=".ui.cosplay.ShowCosplay"  android:parentActivityName=".MainActivity"/>
-    <activity android:name=".ui.cosplayItem.AddCosplayItem" ><meta-data
-      android:name="android.support.PARENT_ACTIVITY"
-      android:value=".ui.cosplay.ShowCosplay" /></activity>
+    <activity
+      android:name=".ui.cosplay.EditCosplay"
+      android:parentActivityName=".ui.cosplay.ShowCosplay" />
+    <activity
+      android:name=".ui.cosplay.ShowCosplay"
+      android:parentActivityName=".MainActivity" />
+    <activity android:name=".ui.cosplayItem.AddCosplayItem">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.cosplay.ShowCosplay" />
+    </activity>
     <activity
       android:name=".MainActivity"
       android:label="@string/app_name"
@@ -29,7 +40,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".ui.cosplay.AddCosplay" android:parentActivityName=".MainActivity"/>
+    <activity
+      android:name=".ui.cosplay.AddCosplay"
+      android:parentActivityName=".MainActivity" />
 
     <meta-data
       android:name="preloaded_fonts"
