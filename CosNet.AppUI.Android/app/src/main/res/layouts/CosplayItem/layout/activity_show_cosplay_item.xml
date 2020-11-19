@@ -6,6 +6,19 @@
   android:layout_height="match_parent"
   android:background="@color/colorPrimaryDark"
   tools:context=".ui.cosplay.ShowCosplay">
+
+  <TextView
+    android:id="@+id/cosplayItemShowStatus"
+    android:layout_width="61dp"
+    android:layout_height="18dp"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Planned"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowStatusLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowStatusLabel" />
+
   <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
@@ -25,7 +38,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:fontFamily="@font/kalam_bold"
-      android:text="Cosplay Item"
+      android:text="@string/CosplayItemShowTitle"
       android:textColor="@android:color/white"
       android:textSize="40sp" />
   </androidx.appcompat.widget.Toolbar>
@@ -78,6 +91,31 @@
   </androidx.constraintlayout.widget.ConstraintLayout>
 
   <TextView
+    android:id="@+id/CosplayItemShowDescriptionLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="12dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CosplayItemDescription"
+    android:textSize="25dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowDescription"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CosplayItemDescriptionHint"
+    android:textSize="12dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowDescriptionLabel" />
+
+  <TextView
     android:id="@+id/CosplayItemShowInfoLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
@@ -85,69 +123,155 @@
     android:layout_marginStart="16dp"
     android:layout_marginTop="120dp"
     android:fontFamily="@font/lato_bold"
-    android:text="Info:"
+    android:text="@string/CosplayItemShowInfo"
+    android:textSize="25dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
 
   <TextView
     android:id="@+id/CosplayItemShowStatusLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Status"
+    android:textSize="12sp"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemShowInfoLabel"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowInfoLabel" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowStatus"
+    android:layout_width="61dp"
+    android:layout_height="18dp"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Planned"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowStatusLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowStatusLabel" />
 
   <TextView
     android:id="@+id/CosplayItemShowBudgetLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Budget"
+    android:textSize="12sp"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemShowStatusLabel"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowStatusLabel" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowBudget"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/BudgetHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowBudgetLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowBudgetLabel" />
 
   <TextView
     android:id="@+id/CosplayItemShowDueDateLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/Due_Date"
+    android:textSize="12sp"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemShowBudgetLabel"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowBudgetLabel" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowDueDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/DueDateHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowDueDateLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowDueDateLabel" />
 
   <TextView
     android:id="@+id/CosplayItemShowBuyLinkLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/CosplayItemBuyLink"
+    android:textSize="12sp"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemShowDueDateLabel"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowDueDateLabel" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowBuyLink"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CosplayItemBuyLinkHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowBuyLinkLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowBuyLinkLabel" />
 
   <TextView
     android:id="@+id/CosplayItemShowWorkTimeLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/CosplayItemWorkTime"
+    android:textSize="12sp"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemShowBuyLinkLabel"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowBuyLinkLabel" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowWorkTime"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CosplayItemWorkTimeHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowWorkTimeLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowWorkTimeLabel" />
 
   <TextView
     android:id="@+id/CosplayItemShowProgressLabel"
     style="@style/CustomText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:fontFamily="@font/lato_bold"
     android:text="@string/CosplayItemProgress"
+    android:textSize="12sp"
     app:layout_constraintStart_toStartOf="@+id/CosplayItemShowWorkTimeLabel"
     app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowWorkTimeLabel" />
+
+  <TextView
+    android:id="@+id/CosplayItemShowProgress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CosplayItemProgressHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="12sp"
+    app:layout_constraintStart_toEndOf="@+id/CosplayItemShowProgressLabel"
+    app:layout_constraintTop_toTopOf="@+id/CosplayItemShowProgressLabel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

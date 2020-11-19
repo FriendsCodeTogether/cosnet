@@ -13,6 +13,7 @@
   <!--TITLES-->
   <string name="CosNet">CosNet</string>
   <string name="AddCosplayItemTitle">Add Item</string>
+  <string name="CosplayItemShowTitle">Cosplay Item</string>
 
   <!--LABELS-->
   <string name="Character">Character*:</string>
@@ -25,7 +26,7 @@
   <string name="save">Save</string>
 
   <!--CosplayItem Labels-->
-    <string name="CosplayItemName">Name:*</string>
+  <string name="CosplayItemName">Name:*</string>
   <string name="CosplayItemDescription">Description:</string>
   <string name="CosplayItemProgress">Progress:</string>
   <string name="CosplayItemWorkTime">Work Time:</string>
@@ -37,7 +38,7 @@
   <string name="CosplayItemBuyLink">Buy Link:</string>
   <string name="NumberPickerTime">:</string>
   <string name="NumberPickerTimeH">H</string>
-
+  <string name="CosplayItemShowInfo">Info:</string>
   <!--HINTS-->
   <string name="CharacterHint">Character name</string>
   <string name="SeriesHint">Serie name</string>
