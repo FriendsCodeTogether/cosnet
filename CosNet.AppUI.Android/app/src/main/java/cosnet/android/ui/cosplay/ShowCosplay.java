@@ -20,10 +20,11 @@ import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.MainActivity;
 import cosnet.android.R;
-import cosnet.android.ui.cosplayItem.AddCosplayItem;
+import cosnet.android.ui.cosplayItem.CosplayItemsList;
 
 public class ShowCosplay extends AppCompatActivity {
 
+  private ImageButton cosplayItemListBTN;
   private TextView character;
   private TextView series;
   private TextView status;
@@ -37,43 +38,57 @@ public class ShowCosplay extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_show_cosplay);
 
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setDisplayShowTitleEnabled(false);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    db = CosnetDb.getInstance(this);
-
-    ImageButton createCosplayItemBTN = (ImageButton) findViewById(R.id.createCosplayItemBTN);
-
-    createCosplayItemBTN.setOnClickListener(v -> {
-      Intent intent = new Intent(this, AddCosplayItem.class);
-      intent.putExtra("cosplay", (Serializable) cosplay);
-      startActivity(intent);
-    });
-
     //get cosplay from intent
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
 
+    addToolbar();
+    addDatabase();
+    initialiseWidgets();
+    setListeners();
+
+  }
+
+  private void setListeners() {
+    cosplayItemListBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this, CosplayItemsList.class);
+      intent.putExtra("cosplay", (Serializable) cosplay);
+      startActivity(intent);
+    });
+  }
+
+  private void initialiseWidgets() {
+    cosplayItemListBTN = findViewById(R.id.CosplayItemListBtn);
+
     if (cosplay != null) {
       //get fields from view
-      character = (TextView) findViewById(R.id.Character);
-      series = (TextView) findViewById(R.id.Series);
-      status = (TextView) findViewById(R.id.Status);
-      dueDate = (TextView) findViewById(R.id.DueDate);
+      character = (TextView) findViewById(R.id.ShowCosplayCharacterName);
+      series = (TextView) findViewById(R.id.ShowCosplaySeries);
+      status = (TextView) findViewById(R.id.ShowCosplayStatus);
+      dueDate = (TextView) findViewById(R.id.ShowCosplayDueDate);
 
       //Set fields according to value
       character.setText(cosplay.cosplayName);
       series.setText(cosplay.cosplaySeries);
       status.setText(cosplay.status);
       if (cosplay.dueDate == null || cosplay.dueDate.isEmpty()) {
-        findViewById(R.id.DueDateLbl).setVisibility(View.INVISIBLE);
+        findViewById(R.id.ShowCosplayDueDateLbl).setVisibility(View.INVISIBLE);
         dueDate.setVisibility(View.INVISIBLE);
       } else {
         dueDate.setText(cosplay.dueDate);
       }
     }
+  }
+
+  private void addDatabase() {
+    db = CosnetDb.getInstance(this);
+  }
+
+  private void addToolbar() {
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
 
   @Override

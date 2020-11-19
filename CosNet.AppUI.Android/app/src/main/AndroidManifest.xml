@@ -9,6 +9,11 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".ui.cosplayItem.CosplayItemsList">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ShowCosplay" />
+    </activity>
     <activity android:name=".ui.cosplay.EditCosplay" android:parentActivityName=".ui.cosplay.ShowCosplay"></activity>
     <activity android:name=".ui.cosplay.ShowCosplay"  android:parentActivityName=".MainActivity"/>
     <activity android:name=".ui.cosplayItem.AddCosplayItem" ><meta-data
@@ -29,7 +34,6 @@
     <meta-data
       android:name="preloaded_fonts"
       android:resource="@array/preloaded_fonts" />
-
   </application>
 
 </manifest>

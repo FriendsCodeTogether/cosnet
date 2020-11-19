@@ -84,6 +84,14 @@
   <string name="OnHold">On Hold</string>
   <string name="Cancelled">Cancelled</string>
   <string name="Done">Done</string>
+  <string name="Items">Items</string>
+  <string name="ItemList">List of Cosplay items</string>
+  <string name="CosplayItems">Cosplay Items</string>
+  <string name="CosplayItemPicContentDescription">Picture of cosplay item</string>
+  <string name="CosplayItemStatusPicContentDecription" />
+  <string name="TimeLbl">Time:</string>
+  <string name="MadeItem">Made Items</string>
+  <string name="BoughtItems">Bought Items</string>
     <string name="create">Create</string>
   <string name="characterNameErrorEmpty">*Field is required</string>
   <string name="max150Characters">*Max 150 characters</string>
@@ -92,7 +100,6 @@
   <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
   <string name="max650Characters">*Max 650 characters</string>
   <!--UNSORTED-->
-
 
 
 </resources>
