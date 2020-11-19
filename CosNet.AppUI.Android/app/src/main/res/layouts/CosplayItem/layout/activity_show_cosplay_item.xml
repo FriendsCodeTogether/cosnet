@@ -50,6 +50,7 @@
       android:layout_marginEnd="16dp"
       android:layout_marginBottom="8dp"
       android:fontFamily="@font/lato_bold"
+      android:gravity="center_vertical"
       android:text="@string/CosplayItemNameHint"
       android:textColor="@android:color/background_light"
       android:textSize="30sp"
@@ -113,7 +114,7 @@
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemPriceHint"
           android:textColor="@android:color/background_light"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowPriceLabel"
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowPriceLabel" />
 
@@ -125,7 +126,7 @@
           android:fontFamily="@font/lato_bold"
           android:text="@string/DueDateHint"
           android:textColor="@android:color/background_light"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowDueDateLabel"
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowDueDateLabel" />
 
@@ -137,7 +138,7 @@
           android:layout_marginTop="16dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemPrice"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toStartOf="@+id/CosplayItemShowStatusLabel"
           app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowStatusLabel" />
 
@@ -161,7 +162,7 @@
           android:layout_marginTop="16dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/Due_Date"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toStartOf="@+id/CosplayItemShowPriceLabel"
           app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowPriceLabel" />
 
@@ -173,7 +174,7 @@
           android:fontFamily="@font/lato_bold"
           android:text="@string/Planned"
           android:textColor="@android:color/background_light"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowStatusLabel"
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowStatusLabel" />
 
@@ -202,7 +203,7 @@
           android:layout_marginTop="16dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/Status"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toStartOf="@+id/CosplayItemShowInfoLabel"
           app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowInfoLabel" />
 
@@ -224,9 +225,11 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="16dp"
+          android:layout_marginBottom="32dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemProgress"
-          android:textSize="12sp"
+          android:textSize="15sp"
+          app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintStart_toStartOf="@+id/CosplayItemShowWorkTimeLabel"
           app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowWorkTimeLabel" />
 
@@ -238,7 +241,7 @@
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemProgressHint"
           android:textColor="@android:color/background_light"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowProgressLabel"
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowProgressLabel" />
 
@@ -251,7 +254,7 @@
           android:layout_marginTop="16dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemWorkTime"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
@@ -263,7 +266,7 @@
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemWorkTimeHint"
           android:textColor="@android:color/background_light"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowWorkTimeLabel"
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowWorkTimeLabel" />
 
@@ -272,7 +275,7 @@
       <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/BoughtItemAttributesLayout"
         android:layout_width="match_parent"
-        android:layout_height="126dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -284,10 +287,12 @@
           android:layout_height="wrap_content"
           android:layout_marginStart="8dp"
           android:layout_marginEnd="16dp"
+          android:layout_marginBottom="32dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemBuyLinkHint"
           android:textColor="@android:color/background_light"
-          android:textSize="12sp"
+          android:textSize="15sp"
+          app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowBuyLinkLabel"
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowBuyLinkLabel" />
@@ -301,7 +306,7 @@
           android:layout_marginTop="16dp"
           android:fontFamily="@font/lato_bold"
           android:text="@string/CosplayItemBuyLink"
-          android:textSize="12sp"
+          android:textSize="15sp"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
