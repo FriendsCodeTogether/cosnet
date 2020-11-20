@@ -52,7 +52,7 @@ public class ShowCosplay extends AppCompatActivity {
   private void setListeners() {
     cosplayItemListBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this, CosplayItemsList.class);
-      intent.putExtra("cosplay", (Serializable) cosplay);
+      intent.putExtra("cosplay", cosplay);
       startActivity(intent);
     });
   }
@@ -62,10 +62,10 @@ public class ShowCosplay extends AppCompatActivity {
 
     if (cosplay != null) {
       //get fields from view
-      character = (TextView) findViewById(R.id.ShowCosplayCharacterName);
-      series = (TextView) findViewById(R.id.ShowCosplaySeries);
-      status = (TextView) findViewById(R.id.ShowCosplayStatus);
-      dueDate = (TextView) findViewById(R.id.ShowCosplayDueDate);
+      character = findViewById(R.id.ShowCosplayCharacterName);
+      series = findViewById(R.id.ShowCosplaySeries);
+      status = findViewById(R.id.ShowCosplayStatus);
+      dueDate = findViewById(R.id.ShowCosplayDueDate);
 
       //Set fields according to value
       character.setText(cosplay.cosplayName);
@@ -100,9 +100,13 @@ public class ShowCosplay extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
+      /*case android.R.id.home:
+        setResult(RESULT_CANCELED);
+        finish();
+        return true;*/
       case R.id.showCosplayEditMenu:
         Intent intent = new Intent(this, EditCosplay.class);
-        intent.putExtra("cosplay",(Serializable) cosplay);
+        intent.putExtra("cosplay", cosplay);
         startActivity(intent);
         return true;
       case R.id.showCosplayFinishMenu:
@@ -115,9 +119,11 @@ public class ShowCosplay extends AppCompatActivity {
           alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {  });
           alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
             db.getCosplayDAO().deleteCosplay(cosplay);
-            Intent intentDelete = new Intent(this, MainActivity.class);
-            startActivity(intentDelete);
-            Toast.makeText(this, "deleted " + cosplay.cosplayName, Toast.LENGTH_SHORT).show();
+            //Intent intentDelete = new Intent(this, MainActivity.class);
+            //startActivity(intentDelete);
+            setResult(RESULT_OK);
+            finish();
+            //Toast.makeText(this, "deleted " + cosplay.cosplayName, Toast.LENGTH_SHORT).show();
           });
           alertDialog.show();
         return true;

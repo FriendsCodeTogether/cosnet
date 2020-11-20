@@ -30,6 +30,9 @@ import static android.app.Activity.RESULT_OK;
 
 public class HomeFragment extends Fragment {
 
+  private static final int REQUEST_ADD_COSPLAY = 1;
+  private static final int REQUEST_DELETE_COSPLAY = 2;
+
   ListView cosplayList;
   ImageButton addNewCosplayBTN;
   ArrayList<Cosplay> cosplays;
@@ -70,16 +73,18 @@ public class HomeFragment extends Fragment {
   }
 
   private void setListeners() {
+    //show selected cosplay from list
     cosplayList.setOnItemClickListener((parent, view, position, id) -> {
       Cosplay cosplay = cosplays.get(position);
       Intent intent = new Intent(getActivity(), ShowCosplay.class);
       intent.putExtra("cosplay", cosplay);
-      startActivity(intent);
+      startActivityForResult(intent, REQUEST_DELETE_COSPLAY);
     });
 
+    //add new cosplay
     addNewCosplayBTN.setOnClickListener(v -> {
       Intent intent = new Intent(getActivity(), AddCosplay.class);
-      startActivityForResult(intent, 1);
+      startActivityForResult(intent, REQUEST_ADD_COSPLAY);
     });
   }
 
@@ -87,14 +92,30 @@ public class HomeFragment extends Fragment {
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
-    if (requestCode == 1) {
-      if (resultCode == RESULT_OK) {
-        Toast.makeText(getContext(), "Cosplay Added", Toast.LENGTH_SHORT).show();
-        setList();
-      }
-      if (resultCode == RESULT_CANCELED) {
-        Toast.makeText(getContext(), "Cosplay Canceled", Toast.LENGTH_SHORT).show();
-      }
+    //switch for the requests
+    switch (requestCode) {
+      case REQUEST_ADD_COSPLAY:
+        //switch for the results from add cosplay
+        switch (resultCode) {
+          case RESULT_OK:
+            Toast.makeText(getContext(), "Cosplay Added", Toast.LENGTH_SHORT).show();
+            setList();
+            break;
+          case RESULT_CANCELED:
+            Toast.makeText(getContext(), "Cosplay Canceled", Toast.LENGTH_SHORT).show();
+            break;
+        }
+        break;
+      case REQUEST_DELETE_COSPLAY:
+        //switch for the results from delete/show cosplay
+        switch (resultCode) {
+          case RESULT_OK:
+            //if the result is ok than the cosplay is deleted
+            Toast.makeText(getContext(), "Cosplay Deleted", Toast.LENGTH_SHORT).show();
+            setList();
+            break;
+        }
+        break;
     }
   }
 }
