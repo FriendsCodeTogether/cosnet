@@ -7,15 +7,20 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
@@ -28,11 +33,8 @@ public class EditCosplay extends AppCompatActivity {
 
   private CosnetDb db;
 
+  private TextInputLayout characterLayout, seriesLayout, startDateLayout, dueDateLayout;
   private Cosplay cosplay;
-  private EditText characterEditText;
-  private EditText seriesEditText;
-  private EditText startDateEditText;
-  private EditText dueDateEditText;
   private CurrencyEditText budgetEditText;
   private Spinner statusSpinner;
   private Button saveButton;
@@ -56,9 +58,21 @@ public class EditCosplay extends AppCompatActivity {
     addStatuses();
   }
 
-  private void onClickSaveButton() {
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
 
-    if (characterEditText.getText().toString().isEmpty()) {
+    return super.onOptionsItemSelected(item);
+  }
+
+  private void onClickSaveButton() {
+    if (!validateCharacterName() | !validateSeries() | !validateDate()) {
+      return;
+    }
+    if (characterLayout.getEditText().getText().toString().isEmpty()) {
       AlertDialog alertDialog = new AlertDialog.Builder(EditCosplay.this).create();
       alertDialog.setTitle("Oh No");
       alertDialog.setMessage("Character name is required to be filled in");
@@ -68,10 +82,10 @@ public class EditCosplay extends AppCompatActivity {
       return;
     }
 
-    cosplay.cosplayName = characterEditText.getText().toString();
-    cosplay.cosplaySeries = seriesEditText.getText().toString();
-    cosplay.startDate = startDateEditText.getText().toString();
-    cosplay.dueDate = dueDateEditText.getText().toString();
+    cosplay.cosplayName = characterLayout.getEditText().getText().toString();
+    cosplay.cosplaySeries = seriesLayout.getEditText().getText().toString();
+    cosplay.startDate = startDateLayout.getEditText().getText().toString();
+    cosplay.dueDate = dueDateLayout.getEditText().getText().toString();
     cosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     cosplay.status = statusSpinner.getSelectedItem().toString();
 
@@ -104,10 +118,10 @@ public class EditCosplay extends AppCompatActivity {
   }
 
   private void addItems() {
-    characterEditText = findViewById(R.id.characterEditText);
-    seriesEditText = findViewById(R.id.seriesEditText);
-    startDateEditText = findViewById(R.id.startDateEditText);
-    dueDateEditText = findViewById(R.id.dueDateEditText);
+    characterLayout = findViewById(R.id.characterNametextInput);
+    seriesLayout = findViewById(R.id.seriestextInput);
+    startDateLayout = findViewById(R.id.startDatetextInput);
+    dueDateLayout = findViewById(R.id.dueDatetextInput);
     budgetEditText = findViewById(R.id.budgetEditText);
     statusSpinner = findViewById(R.id.statusSpinner);
     saveButton = findViewById(R.id.SaveBtn);
@@ -116,16 +130,16 @@ public class EditCosplay extends AppCompatActivity {
     month = calendar.get(Calendar.MONTH);
     day = calendar.get(Calendar.DAY_OF_MONTH);
 
-    characterEditText.setText(cosplay.cosplayName);
-    seriesEditText.setText(cosplay.cosplaySeries);
-    startDateEditText.setText(cosplay.startDate);
-    dueDateEditText.setText(cosplay.dueDate);
+    characterLayout.getEditText().setText(cosplay.cosplayName);
+    seriesLayout.getEditText().setText(cosplay.cosplaySeries);
+    startDateLayout.getEditText().setText(cosplay.startDate);
+    dueDateLayout.getEditText().setText(cosplay.dueDate);
     budgetEditText.setCurrency("€");
     budgetEditText.setSpacing(true);
     budgetEditText.setText(cosplay.budget != null ? cosplay.budget.toString() : null);
 
-    startDateEditText.setOnClickListener(v -> onClickStartDate());
-    dueDateEditText.setOnClickListener(v -> onClickdueDate());
+    startDateLayout.getEditText().setOnClickListener(v -> onClickStartDate());
+    dueDateLayout.getEditText().setOnClickListener(v -> onClickdueDate());
     saveButton.setOnClickListener(v -> onClickSaveButton());
   }
 
@@ -136,11 +150,60 @@ public class EditCosplay extends AppCompatActivity {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
 
+  private boolean validateCharacterName() {
+    String characterName = characterLayout.getEditText().getText().toString();
+
+    if (characterName.isEmpty()) {
+      characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+
+      return false;
+    } else if (characterName.length() > 150) {
+      characterLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else {
+      characterLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateSeries() {
+    String series = seriesLayout.getEditText().getText().toString();
+
+    if (series.length() > 150) {
+      seriesLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else {
+      seriesLayout.setError(null);
+      return true;
+    }
+  }
+
+  private boolean validateDate() {
+    String startdate = startDateLayout.getEditText().getText().toString();
+    String duedate = dueDateLayout.getEditText().getText().toString();
+
+    try {
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+      Date date1 = sdf.parse(startdate);
+      Date date2 = sdf.parse(duedate);
+      if (date1.after(date2)) {
+        dueDateLayout.setError(getApplicationContext().getString(R.string.dueBeforeStart));
+        startDateLayout.setError(getApplicationContext().getString(R.string.startAfterDue));
+        return false;
+      }
+      return true;
+    } catch (Exception e) {
+      dueDateLayout.setError(null);
+      startDateLayout.setError(null);
+      return true;
+    }
+  }
+
   private void onClickdueDate() {
     DatePickerDialog datePickerDialog = new DatePickerDialog(EditCosplay.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
       String date = dayOfMonth + "/" + month + "/" + year;
-      dueDateEditText.setText(date);
+      dueDateLayout.getEditText().setText(date);
     }, year, month, day);
     datePickerDialog.show();
   }
@@ -149,7 +212,7 @@ public class EditCosplay extends AppCompatActivity {
     DatePickerDialog datePickerDialog = new DatePickerDialog(EditCosplay.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
       String date = dayOfMonth + "/" + month + "/" + year;
-      startDateEditText.setText(date);
+      startDateLayout.getEditText().setText(date);
     }, year, month, day);
     datePickerDialog.show();
   }
