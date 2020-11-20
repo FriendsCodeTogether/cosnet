@@ -156,10 +156,9 @@ public class AddCosplay extends AppCompatActivity {
     newCosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     newCosplay.status = statusSpinner.getSelectedItem().toString();
 
-
     db.getCosplayDAO().insertCosplay(newCosplay);
-    Intent intent = new Intent(AddCosplay.this, MainActivity.class);
-    startActivity(intent);
+    setResult(RESULT_OK);
+    finish();
   }
 
   private void onClickdueDate() {
