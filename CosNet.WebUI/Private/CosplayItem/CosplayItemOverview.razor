@@ -2,8 +2,42 @@
 @inject ICosplayItemService CosplayItemService
 @using CosNet.Shared.DTOs.CosplayItem
 
-<h3>@cosplayItem.Name</h3>
-<a class="cosplay-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+@if (cosplayItem == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="cosplay-item-show-container">
+        <h1>@cosplayItem.Name</h1>
+        <div class="cosplay-item-show">
+            <div class="cosplay-item-show-info">
+                <p>@cosplayItem.Description</p>
+
+                <h2>Info</h2>
+                <div>Status: @cosplayItem.Status</div>
+                <div>Price: @cosplayItem.Price</div>
+                <div>Due Date: @cosplayItem.DueDate</div>
+                @if (cosplayItem.IsMade)
+                {
+                    <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
+                    <div>Progress: @cosplayItem.Progress %</div>
+                }
+                else
+                {
+                    <div>Buy Link: @cosplayItem.BuyLink</div>
+                }
+            </div>
+            <div class="cosplay-item-show-image-group">
+                <img class="cosplay-show-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+                <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+            </div>
+        </div>
+    </div>
+    
+
+}
+
 
 @code {
     public CosplayItemDTO cosplayItem = new CosplayItemDTO();
