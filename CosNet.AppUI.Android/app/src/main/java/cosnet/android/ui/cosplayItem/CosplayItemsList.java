@@ -1,10 +1,12 @@
 package cosnet.android.ui.cosplayItem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -22,10 +24,12 @@ import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.R;
 import cosnet.android.adapters.CosplayItemsExpandableListAdapter;
+import cosnet.android.ui.cosplay.AddCosplay;
 
 public class CosplayItemsList extends AppCompatActivity {
 
   private static final String TAG = "CosplayItemList";
+  private static final int REQUEST_ADD_COSPLAY_ITEM = 1;
 
   private ImageButton createCosplayItemBTN;
   private TextView character;
@@ -49,7 +53,6 @@ public class CosplayItemsList extends AppCompatActivity {
     addDatabase();
     Intent incomingIntent = getIntent();
     cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
-    itemsList = cosplayItemDAO.getCosplayWithItems(cosplay.cosplayId).cosplayItems;
 
     addToolbar();
     initialiseWidgets();
@@ -61,6 +64,7 @@ public class CosplayItemsList extends AppCompatActivity {
   private void createList() {
     boughtCosplays = new ArrayList<>();
     madeCosplays = new ArrayList<>();
+    itemsList = cosplayItemDAO.getCosplayWithItems(cosplay.cosplayId).cosplayItems;
 
     for(CosplayItem cosplayItem : itemsList){
       if (cosplayItem.isMade == 0){
@@ -109,9 +113,8 @@ public class CosplayItemsList extends AppCompatActivity {
     createCosplayItemBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this, AddCosplayItem.class);
       intent.putExtra("cosplay", cosplay);
-      startActivity(intent);
+      startActivityForResult(intent, REQUEST_ADD_COSPLAY_ITEM);
     });
-
 
     cosplayItemsListView.setOnChildClickListener((ExpandableListView parent, View v, int groupPosition, int childPosition, long id) -> {
       CosplayItem item = (CosplayItem) adapter.getChild(groupPosition,childPosition);
@@ -122,7 +125,6 @@ public class CosplayItemsList extends AppCompatActivity {
     });
 
   }
-
 
   private void initialiseWidgets() {
     createCosplayItemBTN = findViewById(R.id.createCosplayItemBTN);
@@ -145,6 +147,28 @@ public class CosplayItemsList extends AppCompatActivity {
       } else {
         dueDate.setText(cosplay.dueDate);
       }
+    }
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    //switch for the requests
+    switch (requestCode) {
+      case REQUEST_ADD_COSPLAY_ITEM:
+        //switch for the results from add cosplay item
+        switch (resultCode) {
+          case RESULT_OK:
+            String addedCosplayItemName = data.getStringExtra("addedItemName");
+            Toast.makeText(this, addedCosplayItemName + " Added", Toast.LENGTH_SHORT).show();
+            createList();
+            break;
+          case RESULT_CANCELED:
+            Toast.makeText(this, "Cosplay Item Canceled", Toast.LENGTH_SHORT).show();
+            break;
+        }
+        break;
     }
   }
 }
