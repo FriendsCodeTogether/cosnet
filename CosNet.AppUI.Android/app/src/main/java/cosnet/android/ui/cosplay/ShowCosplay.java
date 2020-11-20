@@ -117,8 +117,7 @@ public class ShowCosplay extends AppCompatActivity {
         AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplay.this).create();
         alertDialog.setTitle("Oh No");
         alertDialog.setMessage("Are you sure you want to delete your " + cosplay.cosplayName + " cosplay?");
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {
-        });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> { });
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
           db.getCosplayDAO().deleteCosplay(cosplay);
           Intent intentDelete = new Intent(this, MainActivity.class);
