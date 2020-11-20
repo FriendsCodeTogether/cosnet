@@ -1,6 +1,7 @@
 package cosnet.android.ui.cosplay;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -24,6 +25,8 @@ import cosnet.android.ui.cosplayItem.CosplayItemsList;
 
 public class ShowCosplay extends AppCompatActivity {
 
+  private static final int REQUEST_EDIT_COSPLAY = 1;
+
   private ImageButton cosplayItemListBTN;
   private TextView character;
   private TextView series;
@@ -45,28 +48,33 @@ public class ShowCosplay extends AppCompatActivity {
     addToolbar();
     addDatabase();
     initialiseWidgets();
+    setWidgets();
     setListeners();
 
   }
 
-  private void setListeners() {
-    cosplayItemListBTN.setOnClickListener(v -> {
-      Intent intent = new Intent(this, CosplayItemsList.class);
-      intent.putExtra("cosplay", cosplay);
-      startActivity(intent);
-    });
+  private void addToolbar() {
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  }
+
+  private void addDatabase() {
+    db = CosnetDb.getInstance(this);
   }
 
   private void initialiseWidgets() {
     cosplayItemListBTN = findViewById(R.id.CosplayItemListBtn);
+    character = findViewById(R.id.ShowCosplayCharacterName);
+    series = findViewById(R.id.ShowCosplaySeries);
+    status = findViewById(R.id.ShowCosplayStatus);
+    dueDate = findViewById(R.id.ShowCosplayDueDate);
 
+  }
+
+  private void setWidgets() {
     if (cosplay != null) {
-      //get fields from view
-      character = findViewById(R.id.ShowCosplayCharacterName);
-      series = findViewById(R.id.ShowCosplaySeries);
-      status = findViewById(R.id.ShowCosplayStatus);
-      dueDate = findViewById(R.id.ShowCosplayDueDate);
-
       //Set fields according to value
       character.setText(cosplay.cosplayName);
       series.setText(cosplay.cosplaySeries);
@@ -80,15 +88,12 @@ public class ShowCosplay extends AppCompatActivity {
     }
   }
 
-  private void addDatabase() {
-    db = CosnetDb.getInstance(this);
-  }
-
-  private void addToolbar() {
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setDisplayShowTitleEnabled(false);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  private void setListeners() {
+    cosplayItemListBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this, CosplayItemsList.class);
+      intent.putExtra("cosplay", cosplay);
+      startActivity(intent);
+    });
   }
 
   @Override
@@ -100,35 +105,44 @@ public class ShowCosplay extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
-      /*case android.R.id.home:
-        setResult(RESULT_CANCELED);
-        finish();
-        return true;*/
       case R.id.showCosplayEditMenu:
         Intent intent = new Intent(this, EditCosplay.class);
         intent.putExtra("cosplay", cosplay);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_EDIT_COSPLAY);
         return true;
       case R.id.showCosplayFinishMenu:
         Toast.makeText(this, "finish selected", Toast.LENGTH_SHORT).show();
         return true;
       case R.id.showCosplayDeleteMenu:
-          AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplay.this).create();
-          alertDialog.setTitle("Oh No");
-          alertDialog.setMessage("Are you sure you want to delete your " + cosplay.cosplayName+" cosplay?");
-          alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {  });
-          alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
-            db.getCosplayDAO().deleteCosplay(cosplay);
-            Intent intentDelete = new Intent(this, MainActivity.class);
-            intentDelete.putExtra("deletedCosplayName", cosplay.cosplayName);
-            setResult(RESULT_OK, intentDelete);
-            finish();
-            //Toast.makeText(this, "deleted " + cosplay.cosplayName, Toast.LENGTH_SHORT).show();
-          });
-          alertDialog.show();
+        AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplay.this).create();
+        alertDialog.setTitle("Oh No");
+        alertDialog.setMessage("Are you sure you want to delete your " + cosplay.cosplayName + " cosplay?");
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {
+        });
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
+          db.getCosplayDAO().deleteCosplay(cosplay);
+          Intent intentDelete = new Intent(this, MainActivity.class);
+          intentDelete.putExtra("deletedCosplayName", cosplay.cosplayName);
+          setResult(RESULT_OK, intentDelete);
+          finish();
+        });
+        alertDialog.show();
         return true;
       default:
         return super.onOptionsItemSelected(item);
+    }
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == REQUEST_EDIT_COSPLAY) {
+      if (resultCode == RESULT_OK) {
+        cosplay = (Cosplay) data.getSerializableExtra("editedCosplay");
+        Toast.makeText(this, cosplay.cosplayName + " Edited", Toast.LENGTH_SHORT).show();
+        setWidgets();
+      }
     }
   }
 }
