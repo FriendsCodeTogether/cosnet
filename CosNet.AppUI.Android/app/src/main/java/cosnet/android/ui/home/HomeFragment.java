@@ -98,7 +98,8 @@ public class HomeFragment extends Fragment {
         //switch for the results from add cosplay
         switch (resultCode) {
           case RESULT_OK:
-            Toast.makeText(getContext(), "Cosplay Added", Toast.LENGTH_SHORT).show();
+            String addedCosplayName = data.getStringExtra("addedCosplayName");
+            Toast.makeText(getContext(), addedCosplayName + " Added", Toast.LENGTH_SHORT).show();
             setList();
             break;
           case RESULT_CANCELED:
@@ -111,7 +112,8 @@ public class HomeFragment extends Fragment {
         switch (resultCode) {
           case RESULT_OK:
             //if the result is ok than the cosplay is deleted
-            Toast.makeText(getContext(), "Cosplay Deleted", Toast.LENGTH_SHORT).show();
+            String deletedCosplayName = data.getStringExtra("deletedCosplayName");
+            Toast.makeText(getContext(), deletedCosplayName + " Deleted", Toast.LENGTH_SHORT).show();
             setList();
             break;
         }

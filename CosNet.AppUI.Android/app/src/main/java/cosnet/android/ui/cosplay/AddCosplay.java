@@ -157,7 +157,9 @@ public class AddCosplay extends AppCompatActivity {
     newCosplay.status = statusSpinner.getSelectedItem().toString();
 
     db.getCosplayDAO().insertCosplay(newCosplay);
-    setResult(RESULT_OK);
+    Intent intent = new Intent();
+    intent.putExtra("addedCosplayName",newCosplay.cosplayName);
+    setResult(RESULT_OK, intent);
     finish();
   }
 
