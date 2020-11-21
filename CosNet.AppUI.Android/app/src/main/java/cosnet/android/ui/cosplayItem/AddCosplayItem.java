@@ -179,9 +179,11 @@ public class AddCosplayItem extends AppCompatActivity {
     newItem.worktimeHours = cosplayItemWorkTimeHours;
     newItem.worktimeMinutes = cosplayItemWorkTimeMinutes;
     db.getCosplayItemDAO().insertItem(newItem);
-    Intent intent = new Intent(AddCosplayItem.this, CosplayItemsList.class);
-    intent.putExtra("cosplay",cosplay);
-    startActivity(intent);
+
+    Intent intent = new Intent();
+    intent.putExtra("addedItemName",newItem.itemName);
+    setResult(RESULT_OK,intent);
+    finish();
   }
 
   private boolean validateItemBuyLink() {
@@ -270,24 +272,24 @@ public class AddCosplayItem extends AppCompatActivity {
   }
 
   private void getItemsBound() {
-    boughtItemLayout = (ConstraintLayout) findViewById(R.id.cosplayItemBoughtItemLayout);
-    madeItemLayout = (ConstraintLayout) findViewById(R.id.cosplayItemMadeItemLayout);
+    boughtItemLayout = findViewById(R.id.cosplayItemBoughtItemLayout);
+    madeItemLayout = findViewById(R.id.cosplayItemMadeItemLayout);
 
-    cosplayItemNameLayout = (TextInputLayout) findViewById(R.id.cosplayItemNameTextInput);
-    cosplayItemDescriptionLayout = (TextInputLayout) findViewById(R.id.cosplayItemDescriptionTextInput);
-    cosplayItemPriceEditText = (CurrencyEditText) findViewById(R.id.cosplayItemPriceEditText);
-    cosplayItemDueDateEditText = (EditText) findViewById(R.id.dueDateEditText);
-    cosplayItemTypeSwitch = (ToggleSwitch) findViewById(R.id.cosplayItemTypeSwitch);
+    cosplayItemNameLayout = findViewById(R.id.cosplayItemNameTextInput);
+    cosplayItemDescriptionLayout = findViewById(R.id.cosplayItemDescriptionTextInput);
+    cosplayItemPriceEditText = findViewById(R.id.cosplayItemPriceEditText);
+    cosplayItemDueDateEditText = findViewById(R.id.dueDateEditText);
+    cosplayItemTypeSwitch = findViewById(R.id.cosplayItemTypeSwitch);
 
-    boughtStatusSpinner = (Spinner) findViewById(R.id.boughtStatusSpinner);
-    cosplayItemBuyLinkLayout = (TextInputLayout) findViewById(R.id.cosplayItemBuyLinkTextInput);
+    boughtStatusSpinner = findViewById(R.id.boughtStatusSpinner);
+    cosplayItemBuyLinkLayout = findViewById(R.id.cosplayItemBuyLinkTextInput);
 
-    madeStatusSpinner = (Spinner) findViewById(R.id.madeStatusSpinner);
-    cosplayItemProgressEditText = (EditText) findViewById(R.id.cosplayItemProgressEditText);
-    cosplayItemWorkTimeEditText= (EditText) findViewById(R.id.cosplayItemWorkTimeEditText);
+    madeStatusSpinner = findViewById(R.id.madeStatusSpinner);
+    cosplayItemProgressEditText = findViewById(R.id.cosplayItemProgressEditText);
+    cosplayItemWorkTimeEditText= findViewById(R.id.cosplayItemWorkTimeEditText);
 
-    addBoughtItemButton = (Button) findViewById(R.id.cosplayMadeItemAddButton);
-    addMadeItemButton = (Button) findViewById(R.id.cosplayBoughtItemAddButton);
+    addBoughtItemButton = findViewById(R.id.cosplayMadeItemAddButton);
+    addMadeItemButton = findViewById(R.id.cosplayBoughtItemAddButton);
   }
 
   private void addToolbar() {

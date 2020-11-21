@@ -50,11 +50,8 @@ public class EditCosplay extends AppCompatActivity {
     setContentView(R.layout.activity_edit_cosplay);
 
     addToolbar();
-
     addDatabase();
-
     addItems();
-
     addStatuses();
   }
 
@@ -63,9 +60,9 @@ public class EditCosplay extends AppCompatActivity {
       case android.R.id.home:
         onBackPressed();
         return true;
+      default:
+        return super.onOptionsItemSelected(item);
     }
-
-    return super.onOptionsItemSelected(item);
   }
 
   private void onClickSaveButton() {
@@ -88,11 +85,12 @@ public class EditCosplay extends AppCompatActivity {
     cosplay.dueDate = dueDateLayout.getEditText().getText().toString();
     cosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     cosplay.status = statusSpinner.getSelectedItem().toString();
-
     db.getCosplayDAO().updateCosplay(cosplay);
-    Intent intent = new Intent(this, ShowCosplay.class);
-    intent.putExtra("cosplay", (Serializable) cosplay);
-    startActivity(intent);
+
+    Intent intentResult = new Intent();
+    intentResult.putExtra("editedCosplay", cosplay);
+    setResult(RESULT_OK, intentResult);
+    finish();
   }
 
   private void addDatabase() {
@@ -155,7 +153,6 @@ public class EditCosplay extends AppCompatActivity {
 
     if (characterName.isEmpty()) {
       characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
-
       return false;
     } else if (characterName.length() > 150) {
       characterLayout.setError(getApplicationContext().getString(R.string.max150Characters));
