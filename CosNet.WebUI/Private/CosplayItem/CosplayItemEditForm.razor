@@ -95,6 +95,7 @@
 
         <div class="cosplay-form-image-group">
             <img class="cosplay-form-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+            <button class="cosplay-form-group-button-delete btn btn-primary rounded-pill" @onclick="() => Delete(cosplayItem)">Delete</button>
         </div>
     </div>
 </div>
@@ -129,6 +130,15 @@
         cosplayItem.WorkTimeHours = cosplayItemUpdate.WorkTimeHours;
         cosplayItem.WorkTimeMinutes = cosplayItemUpdate.WorkTimeMinutes;
         cosplayItem.BuyLink = cosplayItemUpdate.BuyLink;
+    }
+
+    async Task Delete(CosplayItemForUpdateDTO cosplayItem)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay item '{cosplayItem.Name}'?"))
+            return;
+
+        await CosplayItemService.DeleteCosplayItemAsync(CosplayId, CosplayItemId);
+        NavigationManager.NavigateTo("cosplay");
     }
 
     private async Task HandleValidSubmit()
