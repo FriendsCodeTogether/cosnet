@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -156,10 +157,11 @@ public class AddCosplay extends AppCompatActivity {
     newCosplay.budget = budgetEditText.getText().toString().isEmpty() ? null : budgetEditText.getCleanDoubleValue();
     newCosplay.status = statusSpinner.getSelectedItem().toString();
 
-
     db.getCosplayDAO().insertCosplay(newCosplay);
-    Intent intent = new Intent(AddCosplay.this, MainActivity.class);
-    startActivity(intent);
+    Intent intent = new Intent();
+    intent.putExtra("addedCosplayName",newCosplay.cosplayName);
+    setResult(RESULT_OK, intent);
+    finish();
   }
 
   private void onClickdueDate() {
@@ -178,5 +180,15 @@ public class AddCosplay extends AppCompatActivity {
       startDateLayout.getEditText().setText(date);
     }, year, month, day);
     datePickerDialog.show();
+  }
+
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 }
