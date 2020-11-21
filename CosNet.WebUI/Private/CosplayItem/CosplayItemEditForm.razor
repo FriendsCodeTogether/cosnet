@@ -138,7 +138,7 @@
             return;
 
         await CosplayItemService.DeleteCosplayItemAsync(CosplayId, CosplayItemId);
-        NavigationManager.NavigateTo("cosplay");
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem");
     }
 
     private async Task HandleValidSubmit()
