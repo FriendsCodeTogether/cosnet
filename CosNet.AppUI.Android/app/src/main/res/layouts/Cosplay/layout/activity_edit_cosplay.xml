@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  tools:context=".ui.cosplay.EditCosplay">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    tools:ignore="MissingConstraints">
+
+    <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="@drawable/gradient"
+      app:popupTheme="@style/AppTheme.PopupOverlay">
+
+      <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/kalam_bold"
+        android:text="@string/CosNet"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <TextView
+    android:id="@+id/characterLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="12dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Character"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/characterNametextInput"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:counterEnabled="true"
+    app:counterMaxLength="150"
+    app:errorEnabled="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/characterLabel"
+    app:layout_constraintTop_toBottomOf="@+id/characterLabel"
+    app:hintEnabled="false"
+    app:counterTextAppearance="@style/Counter"
+    app:errorTextAppearance="@style/Error">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/characterEditText"
+      style="@style/EditText"
+      android:layout_width="match_parent"
+      android:layout_height="27dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:autofillHints="@string/Character"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/CharacterHint"
+      android:inputType="text"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      android:text="@string/CharacterInput" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <TextView
+    android:id="@+id/seriesLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Series"
+    app:layout_constraintStart_toStartOf="@+id/characterNametextInput"
+    app:layout_constraintTop_toBottomOf="@+id/characterNametextInput" />
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/seriestextInput"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:counterEnabled="true"
+    app:counterMaxLength="150"
+    app:errorEnabled="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/seriesLabel"
+    app:layout_constraintTop_toBottomOf="@+id/seriesLabel"
+    app:hintEnabled="false"
+    app:counterTextAppearance="@style/Counter"
+    app:errorTextAppearance="@style/Error">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/seriesEditText"
+      style="@style/EditText"
+      android:layout_width="match_parent"
+      android:layout_height="27dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:autofillHints="@string/Series"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/SeriesHint"
+      android:inputType="text"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      android:text="@string/SeriesInput" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <TextView
+    android:id="@+id/startDateLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Start_Date"
+    app:layout_constraintStart_toStartOf="@+id/seriestextInput"
+    app:layout_constraintTop_toBottomOf="@+id/seriestextInput" />
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/startDatetextInput"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:errorEnabled="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/startDateLabel"
+    app:layout_constraintTop_toBottomOf="@+id/startDateLabel"
+    app:hintEnabled="false"
+    app:errorTextAppearance="@style/Error">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/startDateEditText"
+      style="@style/EditText"
+      android:layout_width="match_parent"
+      android:layout_height="27dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:focusableInTouchMode="false"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/StartDateHint"
+      android:importantForAutofill="no"
+      android:inputType="date"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      android:text="@string/SeriesInput" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <TextView
+    android:id="@+id/dueDateLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Due_Date"
+    app:layout_constraintStart_toStartOf="@+id/startDatetextInput"
+    app:layout_constraintTop_toBottomOf="@+id/startDatetextInput" />
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/dueDatetextInput"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:errorEnabled="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/dueDateLabel"
+    app:layout_constraintTop_toBottomOf="@+id/dueDateLabel"
+    app:hintEnabled="false"
+    app:errorTextAppearance="@style/Error">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/dueDateEditText"
+      style="@style/EditText"
+      android:layout_width="match_parent"
+      android:layout_height="27dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:focusableInTouchMode="false"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/DueDateHint"
+      android:importantForAutofill="no"
+      android:inputType="date"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <TextView
+    android:id="@+id/budgetLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Budget"
+    app:layout_constraintStart_toStartOf="@+id/dueDatetextInput"
+    app:layout_constraintTop_toBottomOf="@+id/dueDatetextInput" />
+
+  <me.abhinay.input.CurrencyEditText
+    android:id="@+id/budgetEditText"
+    style="@style/EditText"
+    android:layout_width="0dp"
+    android:layout_height="24dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:importantForAutofill="no"
+    android:maxLength="16"
+    android:fontFamily="@font/lato_bold"
+    android:hint="@string/BudgetHint"
+    android:inputType="number"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    app:layout_constraintEnd_toEndOf="@+id/characterNametextInput"
+    app:layout_constraintStart_toStartOf="@+id/budgetLabel"
+    app:layout_constraintTop_toBottomOf="@+id/budgetLabel" />
+
+  <TextView
+    android:id="@+id/statusLabel"
+    style="@style/CustomText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Status"
+    app:layout_constraintStart_toStartOf="@+id/budgetEditText"
+    app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
+
+  <Spinner
+    android:id="@+id/statusSpinner"
+    style="@style/Spinner"
+    android:layout_width="0dp"
+    android:layout_height="24dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    app:layout_constraintEnd_toEndOf="@+id/seriestextInput"
+    app:layout_constraintStart_toStartOf="@+id/budgetEditText"
+    app:layout_constraintTop_toBottomOf="@+id/statusLabel" />
+
+  <Button
+    android:id="@+id/SaveBtn"
+    android:layout_width="160dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="32dp"
+    android:background="@drawable/roundbutton"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/save"
+    android:textAllCaps="false"
+    android:textColor="@android:color/background_light"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/statusSpinner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

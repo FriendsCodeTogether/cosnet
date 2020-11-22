@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  tools:context=".ui.cosplay.ShowCosplay">
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    tools:ignore="MissingConstraints">
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@drawable/gradient"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+      android:id="@+id/toolbarTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:fontFamily="@font/kalam_bold"
+      android:text="@string/CosNet"
+      android:textColor="@android:color/white"
+      android:textSize="40sp" />
+  </androidx.appcompat.widget.Toolbar>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+    <TextView
+      android:id="@+id/ShowCosplayDueDateLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/Due_Date"
+      android:textColor="@android:color/tertiary_text_light"
+      android:textSize="12sp"
+      app:layout_constraintEnd_toStartOf="@+id/ShowCosplayDueDate"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayStatus" />
+
+    <TextView
+      android:id="@+id/ShowCosplaySeries"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/SeriesHint"
+      android:textColor="@android:color/background_light"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/ShowCosplayCharacterName"
+      app:layout_constraintTop_toBottomOf="@+id/ShowCosplayCharacterName" />
+
+    <TextView
+      android:id="@+id/ShowCosplayCharacterName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CharacterHint"
+      android:textColor="@android:color/background_light"
+      android:textSize="18sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/ShowCosplayPic"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayPic" />
+
+    <TextView
+      android:id="@+id/ShowCosplayDueDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/DueDateHint"
+      android:textColor="@android:color/background_light"
+      android:textSize="12sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayDueDateLbl" />
+
+    <TextView
+      android:id="@+id/ShowCosplayStatusLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/Status"
+      android:textColor="@android:color/tertiary_text_light"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="@+id/ShowCosplayPic"
+      app:layout_constraintStart_toStartOf="@+id/ShowCosplayCharacterName"
+      app:layout_constraintTop_toBottomOf="@+id/ShowCosplaySeries" />
+
+    <ImageView
+      android:id="@+id/ShowCosplayPic"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:contentDescription="@string/CosplayPic"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+      android:id="@+id/ShowCosplayStatus"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/Planned"
+      android:textColor="@android:color/background_light"
+      android:textSize="12sp"
+      app:layout_constraintStart_toEndOf="@+id/ShowCosplayStatusLbl"
+      app:layout_constraintTop_toTopOf="@+id/ShowCosplayStatusLbl" />
+
+    <View
+      android:id="@+id/view"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:background="@color/colorFiller"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/ShowCosplayPic" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ImageButton
+    android:id="@+id/CosplayItemListBtn"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginTop="16dp"
+    android:adjustViewBounds="true"
+    android:background="@color/colorPrimaryDark"
+    android:contentDescription="@string/ItemList"
+    android:cropToPadding="false"
+    android:elevation="10dp"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="40dp"
+    android:scaleType="fitCenter"
+    android:tint="@android:color/background_light"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+    app:srcCompat="@drawable/ic_items" />
+
+  <TextView
+    android:id="@+id/ShowCosplayItemsLbl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:clickable="false"
+    android:elevation="20dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/Items"
+    android:textColor="@android:color/background_light"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="@+id/CosplayItemListBtn"
+    app:layout_constraintEnd_toEndOf="@+id/CosplayItemListBtn"
+    app:layout_constraintStart_toStartOf="@+id/CosplayItemListBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
