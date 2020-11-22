@@ -69,13 +69,6 @@
     <string name="CosplayItemBuyLinkInput" />
     <string name="CosplayItemWorkTimeInput" />
 
-  <!--COSPLAY ITEM INPUTS-->
-  <string name="CosplayItemNameInput" />
-  <string name="CosplayItemDescriptionInput" />
-  <string name="CosplayItemProgressInput" />
-  <string name="CosplayItemBuyLinkInput" />
-  <string name="CosplayItemWorkTimeInput" />
-
   <!--STATUSSEN-->
   <string name="In_Progess">In Progress</string>
   <string name="Planned">Planned</string>

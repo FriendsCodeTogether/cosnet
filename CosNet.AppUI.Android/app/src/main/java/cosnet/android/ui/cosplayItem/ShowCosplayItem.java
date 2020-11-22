@@ -4,18 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import cosnet.android.Entities.CosplayItem;
+import cosnet.android.MainActivity;
 import cosnet.android.R;
+import cosnet.android.CosnetDb;
 
 public class ShowCosplayItem extends AppCompatActivity {
 
+  private static final int REQUEST_EDIT_COSPLAYITEM = 1;
   private CosplayItem item;
 
   private ImageView cosplayItemPic;
@@ -28,6 +33,9 @@ public class ShowCosplayItem extends AppCompatActivity {
   private TextView cosplayItemWorkTime;
   private TextView cosplayItemProgress;
 
+  private CosnetDb db;
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -37,6 +45,7 @@ public class ShowCosplayItem extends AppCompatActivity {
     item = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
 
     addToolbar();
+    addDatabase();
     initialiseWidgets();
     setWidgets();
   }
@@ -48,13 +57,42 @@ public class ShowCosplayItem extends AppCompatActivity {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.show_cosplayitem_menu, menu);
+    return true;
+  }
+
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
         onBackPressed();
         return true;
+      case R.id.showCosplayItemEditMenu:
+        Intent intent = new Intent(this, EditCosplayItem.class);
+        intent.putExtra("cosplayItem", this.item);
+        startActivityForResult(intent, REQUEST_EDIT_COSPLAYITEM);
+        return true;
+      case R.id.showCosplayItemDeleteMenu:
+        AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplayItem.this).create();
+        alertDialog.setTitle("Oh No");
+        alertDialog.setMessage("Are you sure you want to delete this item: " + this.item.itemName + "?");
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> { });
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
+          db.getCosplayItemDAO().deleteItem(this.item);
+          Intent intentDelete = new Intent(this, MainActivity.class);
+          intentDelete.putExtra("deletedCosplayItemName", this.item.itemName);
+          setResult(RESULT_OK, intentDelete);
+          finish();
+        });
+        alertDialog.show();
+        return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  private void addDatabase() {
+   db = CosnetDb.getInstance(this);
   }
 
   private void setWidgets() {

@@ -36,13 +36,10 @@
           android:text="@string/EditCosplayTitle"
           android:textColor="@android:color/white"
           android:textSize="40sp" />
-
       </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
-
     <TextView
-      android:id="@+id/EditCosplayItemNameTextView"
+      android:id="@+id/EditcosplayItemNameTextView"
       style="@style/CustomText"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -53,148 +50,181 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/EditcosplayItemNameTextInput"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      app:counterEnabled="true"
+      app:counterMaxLength="150"
+      app:counterTextAppearance="@style/Counter"
+      app:errorEnabled="true"
+      app:errorTextAppearance="@style/Error"
+      app:hintEnabled="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemNameTextView"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemNameTextView">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditcosplayItemNameEditText"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="@string/CosplayItemName"
+        android:fontFamily="@font/lato_bold"
+        android:hint="@string/CosplayItemNameHint"
+        android:inputType="text"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/CosplayItemNameInput"
+        app:layout_constraintEnd_toEndOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+      android:id="@+id/EditcosplayItemDescriptionTextView"
+      style="@style/CustomText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemDescription"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemNameTextInput"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemNameTextInput" />
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/EditcosplayItemDescriptionTextInput"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      app:counterEnabled="true"
+      app:counterMaxLength="650"
+      app:counterTextAppearance="@style/Counter"
+      app:errorEnabled="true"
+      app:errorTextAppearance="@style/Error"
+      app:hintEnabled="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemDescriptionTextView"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemDescriptionTextView">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditcosplayItemDescriptionEditText"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="@string/CosplayItemDescription"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="start"
+        android:hint="@string/CosplayItemDescriptionHint"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:minLines="5"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:scrollbars="vertical"
+        android:text="@string/CosplayItemDescriptionInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+      android:id="@+id/EditcosplayItemPriceTextView"
+      style="@style/CustomText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemPrice"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemDescriptionTextInput"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemDescriptionTextInput" />
+
+    <me.abhinay.input.CurrencyEditText
+      android:id="@+id/EditcosplayItemPriceEditText"
+      style="@style/EditText"
+      android:layout_width="0dp"
+      android:layout_height="24dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/CosplayItemPriceHint"
+      android:importantForAutofill="no"
+      android:inputType="number"
+      android:maxLength="16"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      app:layout_constraintEnd_toEndOf="@+id/EditcosplayItemDescriptionTextInput"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemPriceTextView"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemPriceTextView" />
+
+    <TextView
+      android:id="@+id/EditdueDateLabel"
+      style="@style/CustomText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemDueDate"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemPriceEditText"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemPriceEditText" />
+
     <EditText
-      android:id="@+id/EditCosplayItemNameEditText"
+      android:id="@+id/EditdueDateEditText"
       style="@style/EditText"
       android:layout_width="0dp"
       android:layout_height="27dp"
       android:layout_marginTop="8dp"
-      android:layout_marginEnd="16dp"
-      android:autofillHints="@string/CosplayItemName"
-      android:fontFamily="@font/lato_bold"
-      android:hint="@string/CosplayItemNameHint"
-      android:inputType="text"
-      android:paddingStart="8dp"
-      android:paddingEnd="8dp"
-      android:text="@string/CosplayItemNameInput"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemNameTextView"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemNameTextView" />
-
-    <TextView
-      android:id="@+id/EditCosplayItemDescriptionTextView"
-      style="@style/CustomText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:fontFamily="@font/lato_bold"
-      android:text="@string/CosplayItemDescription"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemNameEditText"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemNameEditText" />
-
-    <EditText
-      android:id="@+id/EditCosplayItemDescriptionEditText"
-      style="@style/EditText"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="16dp"
-      android:autofillHints="@string/CosplayItemDescription"
-      android:fontFamily="@font/lato_bold"
-      android:gravity="start"
-      android:hint="@string/CosplayItemDescriptionHint"
-      android:inputType="textMultiLine"
-      android:lines="5"
-      android:minLines="5"
-      android:paddingStart="8dp"
-      android:paddingEnd="8dp"
-      android:scrollbars="vertical"
-      android:text="@string/CosplayItemDescriptionInput"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemDescriptionTextView"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemDescriptionTextView" />
-
-    <TextView
-      android:id="@+id/EditCosplayItemPriceTextView"
-      style="@style/CustomText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:fontFamily="@font/lato_bold"
-      android:text="@string/CosplayItemPrice"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemDescriptionEditText"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemDescriptionEditText" />
-
-    <me.abhinay.input.CurrencyEditText
-      android:id="@+id/EditCosplayItemPriceEditText"
-      style="@style/EditText"
-      android:layout_width="0dp"
-      android:layout_height="24dp"
-      android:layout_marginTop="8dp"
-      android:importantForAutofill="no"
-      android:fontFamily="@font/lato_bold"
-      android:hint="@string/CosplayItemPriceHint"
-      android:inputType="number"
-      android:paddingStart="8dp"
-      android:paddingEnd="8dp"
-      app:layout_constraintEnd_toEndOf="@+id/EditCosplayItemDescriptionEditText"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemPriceTextView"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemPriceTextView" />
-
-    <TextView
-      android:id="@+id/EditCosplayItemDueDateTextView"
-      style="@style/CustomText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:fontFamily="@font/lato_bold"
-      android:text="@string/CosplayItemDueDate"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemPriceEditText"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemPriceEditText" />
-
-    <EditText
-      android:id="@+id/EditCosplayItemDueDateEditText"
-      style="@style/EditText"
-      android:layout_width="0dp"
-      android:layout_height="24dp"
-      android:layout_marginTop="8dp"
       android:focusableInTouchMode="false"
       android:fontFamily="@font/lato_bold"
-      android:hint="@string/CosplayItemDueDateHint"
+      android:hint="@string/DueDateHint"
       android:importantForAutofill="no"
       android:inputType="date"
       android:paddingStart="8dp"
       android:paddingEnd="8dp"
-      app:layout_constraintEnd_toEndOf="@+id/EditCosplayItemPriceEditText"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemDueDateTextView"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemDueDateTextView" />
+      app:layout_constraintEnd_toEndOf="@id/EditcosplayItemPriceEditText"
+      app:layout_constraintStart_toStartOf="@+id/EditdueDateLabel"
+      app:layout_constraintTop_toBottomOf="@+id/EditdueDateLabel" />
 
     <TextView
-      android:id="@+id/EditCosplayItemTypeTextView"
+      android:id="@+id/EditcosplayItemTypeTextView"
       style="@style/CustomText"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="8dp"
       android:fontFamily="@font/lato_bold"
       android:text="@string/CosplayItemType"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemDueDateEditText"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemDueDateEditText" />
+      app:layout_constraintStart_toStartOf="@+id/EditdueDateEditText"
+      app:layout_constraintTop_toBottomOf="@+id/EditdueDateEditText" />
+
+    <!-- Bought Item-->
 
     <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
-      android:id="@+id/EditCosplayItemTypeSwitch"
+      android:id="@+id/EditcosplayItemTypeSwitch"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="47dp"
       android:layout_marginTop="8dp"
+      android:layout_marginEnd="0dp"
       app:checkedBackgroundColor="#52C4FF"
-      app:layout_constraintEnd_toEndOf="@+id/EditCosplayItemDueDateEditText"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemTypeTextView"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemTypeTextView"
+      app:layout_constraintEnd_toEndOf="@+id/EditdueDateEditText"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemTypeTextView"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemTypeTextView"
       app:textToggleLeft="@string/CosplayItemTypeBought"
       app:textToggleRight="@string/CosplayItemTypeMade"
       app:uncheckedBackgroundColor="#808080"
       app:uncheckedTextColor="#CCCCCC" />
 
-    <!-- Bought Item-->
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/EditCosplayItemBoughtItemLayout"
+      android:id="@+id/EditcosplayItemBoughtItemLayout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:orientation="vertical"
-      app:layout_constraintEnd_toEndOf="@+id/EditCosplayItemTypeSwitch"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemTypeSwitch"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemTypeSwitch">
+      app:layout_constraintEnd_toEndOf="@+id/EditcosplayItemTypeSwitch"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemTypeSwitch"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemTypeSwitch">
 
       <TextView
         android:id="@+id/EditboughtStatusLabel"
@@ -217,7 +247,7 @@
         app:layout_constraintTop_toBottomOf="@+id/EditboughtStatusLabel" />
 
       <TextView
-        android:id="@+id/EditCosplayItemBuyLinkTextView"
+        android:id="@+id/EditcosplayItemBuyLinkTextView"
         style="@style/CustomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -227,25 +257,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditboughtStatusSpinner" />
 
-      <EditText
-        android:id="@+id/EditCosplayItemBuyLinkEditText"
-        style="@style/EditText"
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/EditcosplayItemBuyLinkTextInput"
         android:layout_width="0dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:autofillHints="@string/CosplayItemBuyLink"
-        android:fontFamily="@font/lato_bold"
-        android:hint="@string/CosplayItemBuyLinkHint"
-        android:inputType="text"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:text="@string/CosplayItemBuyLinkInput"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="250"
+        app:counterTextAppearance="@style/Counter"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/Error"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemBuyLinkTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemBuyLinkTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/EditcosplayItemBuyLinkEditText"
+          style="@style/EditText"
+          android:layout_width="match_parent"
+          android:layout_height="27dp"
+          android:layout_marginTop="8dp"
+          android:autofillHints="@string/CosplayItemBuyLink"
+          android:fontFamily="@font/lato_bold"
+          android:hint="@string/CosplayItemBuyLinkHint"
+          android:inputType="text"
+          android:paddingStart="8dp"
+          android:paddingEnd="0dp"
+          android:text="@string/CosplayItemBuyLinkInput" />
+      </com.google.android.material.textfield.TextInputLayout>
 
       <Button
-        android:id="@+id/EditCosplayBoughtItemAddButton"
+        android:id="@+id/EditcosplayBoughtItemAddButton"
         android:layout_width="165dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
@@ -259,19 +302,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/EditboughtStatusSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemBuyLinkEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemBuyLinkTextInput" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--Made Item -->
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/EditCosplayItemMadeItemLayout"
+      android:id="@+id/EditcosplayItemMadeItemLayout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:orientation="vertical"
-      app:layout_constraintEnd_toEndOf="@+id/EditCosplayItemTypeSwitch"
-      app:layout_constraintStart_toStartOf="@+id/EditCosplayItemTypeSwitch"
-      app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemTypeSwitch">
+      app:layout_constraintEnd_toEndOf="@+id/EditcosplayItemTypeSwitch"
+      app:layout_constraintStart_toStartOf="@+id/EditcosplayItemTypeSwitch"
+      app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemTypeSwitch">
 
       <TextView
         android:id="@+id/EditmadeStatusLabel"
@@ -294,7 +337,7 @@
         app:layout_constraintTop_toBottomOf="@+id/EditmadeStatusLabel" />
 
       <TextView
-        android:id="@+id/EditCosplayItemProgressTextView"
+        android:id="@+id/EditcosplayItemProgressTextView"
         style="@style/CustomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -305,24 +348,24 @@
         app:layout_constraintTop_toBottomOf="@+id/EditmadeStatusSpinner" />
 
       <EditText
-        android:id="@+id/EditCosplayItemProgressEditText"
+        android:id="@+id/EditcosplayItemProgressEditText"
         style="@style/EditText"
         android:layout_width="0dp"
         android:layout_height="27dp"
         android:layout_marginTop="8dp"
         android:autofillHints="@string/CosplayItemProgress"
+        android:focusableInTouchMode="false"
         android:fontFamily="@font/lato_bold"
         android:hint="@string/CosplayItemProgressHint"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="@string/CosplayItemProgressInput"
-        android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemProgressTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemProgressTextView" />
 
       <TextView
-        android:id="@+id/EditCosplayItemWorkTimeTextView"
+        android:id="@+id/EditcosplayItemWorkTimeTextView"
         style="@style/CustomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -330,17 +373,17 @@
         android:fontFamily="@font/lato_bold"
         android:text="@string/CosplayItemWorkTime"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemProgressEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemProgressEditText" />
 
       <EditText
-        android:id="@+id/EditCosplayItemWorkTimeEditText"
+        android:id="@+id/EditcosplayItemWorkTimeEditText"
         style="@style/EditText"
         android:layout_width="0dp"
         android:layout_height="27dp"
         android:layout_marginTop="8dp"
         android:autofillHints="@string/CosplayItemWorkTime"
-        android:fontFamily="@font/lato_bold"
         android:focusableInTouchMode="false"
+        android:fontFamily="@font/lato_bold"
         android:hint="@string/CosplayItemWorkTimeHint"
         android:inputType="numberDecimal"
         android:paddingStart="8dp"
@@ -348,10 +391,10 @@
         android:text="@string/CosplayItemWorkTimeInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemWorkTimeTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemWorkTimeTextView" />
 
       <Button
-        android:id="@+id/EditCosplayMadeItemAddButton"
+        android:id="@+id/EditcosplayMadeItemAddButton"
         android:layout_width="165dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
@@ -365,7 +408,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditCosplayItemWorkTimeEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/EditcosplayItemWorkTimeEditText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.constraintlayout.widget.ConstraintLayout>
 

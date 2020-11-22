@@ -1,4 +1,4 @@
-package cosnet.android;
+package cosnet.android.ui.cosplayItem;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.NumberPicker;
 
@@ -25,9 +26,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import cosnet.android.Data.DAOs.CosplayItemDAO;
+import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
+import cosnet.android.R;
+import cosnet.android.ui.cosplay.ShowCosplay;
 import me.abhinay.input.CurrencyEditText;
 
 public class EditCosplayItem extends AppCompatActivity {
@@ -53,6 +56,10 @@ public class EditCosplayItem extends AppCompatActivity {
   private List<String> boughtStatusses;
   private List<String> madeStatusses;
   private Cosplay cosplay;
+  private TextInputLayout EditcosplayItemBuyLinkLayout;
+  private TextInputLayout EditcosplayItemDescriptionLayout;
+  private TextInputLayout EditcosplayItemNameLayout;
+
   private int year;
   private int month;
   private int day;
@@ -72,14 +79,6 @@ public class EditCosplayItem extends AppCompatActivity {
     initializeItems();
     setListeners();
     fillInFields();
-
-    List<CosplayItem> itemList = db.getCosplayItemDAO().getAllCosplayItems();
-    for (CosplayItem c : itemList) {
-      Log.d("CosplayItem", "get Item " + c.itemName + " " + c.cosplayId + " " + c.description);
-    }
-
-    Intent incomingIntent = getIntent();
-    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
   }
 
   public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,15 +87,14 @@ public class EditCosplayItem extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
     return super.onOptionsItemSelected(item);
   }
 
   private void setListeners() {
     cosplayItemDueDateEditText.setOnClickListener(v -> onClickItemdueDate());
     cosplayItemTypeSwitch.setOnChangeListener(i -> OnItemTypeSwitchChange(i));
-    addMadeItemButton.setOnClickListener(i -> onClickAddButton());
-    addBoughtItemButton.setOnClickListener(i -> onClickAddButton());
+    addMadeItemButton.setOnClickListener(i -> onClickSaveButton());
+    addBoughtItemButton.setOnClickListener(i -> onClickSaveButton());
     cosplayItemWorkTimeEditText.setOnClickListener(v -> onClickWorkTimeButton());
     cosplayItemProgressEditText.setOnClickListener(v -> onClickProgressButton());
   }
@@ -152,18 +150,11 @@ public class EditCosplayItem extends AppCompatActivity {
     });
   }
 
-  private void onClickAddButton() {
+  private void onClickSaveButton() {
 
-    if (cosplayItemNameEditText.getText().toString().isEmpty()) {
-      AlertDialog alertDialog = new AlertDialog.Builder(EditCosplayItem.this).create();
-      alertDialog.setTitle("Oh No");
-      alertDialog.setMessage("Name is required to be filled in");
-      alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialog, which) -> {
-      });
-      alertDialog.show();
+    if (!validateItemName() | !validateItemDescrition() | !validateItemBuyLink()) {
       return;
     }
-
 
     item.itemName = cosplayItemNameEditText.getText().toString();
     item.description = cosplayItemDescriptionEditText.getText().toString();
@@ -178,12 +169,46 @@ public class EditCosplayItem extends AppCompatActivity {
     item.worktimeMinutes = cosplayItemWorkTimeMinutes;
     db.getCosplayItemDAO().updateItem(item);
 
-    //Log.d(TAG, "onClickAddButton:" + newItem.description);
-    Intent intent = new Intent(EditCosplayItem.this, ShowCosplay.class);
-    intent.putExtra("cosplay", (Serializable) cosplay);
-    startActivity(intent);
+    Intent intentResult = new Intent();
+    intentResult.putExtra("editedCosplayItem", item);
+    setResult(RESULT_OK, intentResult);
+    finish();
+  }
+  private boolean validateItemBuyLink() {
+    String buyLink = EditcosplayItemBuyLinkLayout.getEditText().getText().toString();
+    if (buyLink.length() > 250) {
+      EditcosplayItemBuyLinkLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else {
+      EditcosplayItemBuyLinkLayout.setError(null);
+      return true;
+    }
+  }
+  private boolean validateItemDescrition() {
+    String description = EditcosplayItemDescriptionLayout.getEditText().getText().toString();
+    if (description.length() > 650) {
+      EditcosplayItemDescriptionLayout.setError(getApplicationContext().getString(R.string.max650Characters));
+      return false;
+    } else {
+      EditcosplayItemDescriptionLayout.setError(null);
+      return true;
+    }
   }
 
+  private boolean validateItemName() {
+    String itemName = EditcosplayItemNameLayout.getEditText().getText().toString();
+    if (itemName.length() > 150) {
+      EditcosplayItemNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
+      return false;
+    } else if(itemName.isEmpty()){
+      EditcosplayItemNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      return false;
+    }
+    else {
+      EditcosplayItemNameLayout.setError(null);
+      return true;
+    }
+  }
   private void onClickItemdueDate() {
     DatePickerDialog datePickerDialog = new DatePickerDialog(EditCosplayItem.this, (view, year, month, dayOfMonth) -> {
       month = month + 1;
@@ -234,33 +259,37 @@ public class EditCosplayItem extends AppCompatActivity {
   }
 
   private void addDatabase() {
+    Intent incomingIntent = getIntent();
+    item = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
     db = CosnetDb.getInstance(this);
   }
 
   private void getItemsBound() {
-    boughtItemLayout = (ConstraintLayout) findViewById(R.id.EditCosplayItemBoughtItemLayout);
-    madeItemLayout = (ConstraintLayout) findViewById(R.id.EditCosplayItemMadeItemLayout);
+    boughtItemLayout = (ConstraintLayout) findViewById(R.id.EditcosplayItemBoughtItemLayout);
+    madeItemLayout = (ConstraintLayout) findViewById(R.id.EditcosplayItemMadeItemLayout);
 
-    cosplayItemNameEditText = (EditText) findViewById(R.id.EditCosplayItemNameEditText);
-    cosplayItemDescriptionEditText = (EditText) findViewById(R.id.EditCosplayItemDescriptionEditText);
-    cosplayItemPriceEditText = findViewById(R.id.EditCosplayItemPriceEditText);
-    cosplayItemDueDateEditText = (EditText) findViewById(R.id.EditCosplayItemDueDateEditText);
-    cosplayItemTypeSwitch = (ToggleSwitch) findViewById(R.id.EditCosplayItemTypeSwitch);
+    cosplayItemNameEditText = (EditText) findViewById(R.id.EditcosplayItemNameEditText);
+    cosplayItemDescriptionEditText = (EditText) findViewById(R.id.EditcosplayItemDescriptionEditText);
+    cosplayItemPriceEditText = findViewById(R.id.EditcosplayItemPriceEditText);
+    cosplayItemDueDateEditText = (EditText) findViewById(R.id.EditdueDateEditText);
+    cosplayItemTypeSwitch = (ToggleSwitch) findViewById(R.id.EditcosplayItemTypeSwitch);
 
     boughtStatusSpinner = (Spinner) findViewById(R.id.EditboughtStatusSpinner);
-    cosplayItemBuyLinkEditText = (EditText) findViewById(R.id.EditCosplayItemBuyLinkEditText);
+    cosplayItemBuyLinkEditText = (EditText) findViewById(R.id.EditcosplayItemBuyLinkEditText);
 
     madeStatusSpinner = (Spinner) findViewById(R.id.EditmadeStatusSpinner);
-    cosplayItemProgressEditText = (EditText) findViewById(R.id.EditCosplayItemProgressEditText);
-    cosplayItemWorkTimeEditText = (EditText) findViewById(R.id.EditCosplayItemWorkTimeEditText);
+    cosplayItemProgressEditText = (EditText) findViewById(R.id.EditcosplayItemProgressEditText);
+    cosplayItemWorkTimeEditText = (EditText) findViewById(R.id.EditcosplayItemWorkTimeEditText);
 
-    addBoughtItemButton = (Button) findViewById(R.id.EditCosplayMadeItemAddButton);
-    addMadeItemButton = (Button) findViewById(R.id.EditCosplayBoughtItemAddButton);
+    addBoughtItemButton = (Button) findViewById(R.id.EditcosplayMadeItemAddButton);
+    addMadeItemButton = (Button) findViewById(R.id.EditcosplayBoughtItemAddButton);
+
+    EditcosplayItemBuyLinkLayout = findViewById(R.id.EditcosplayItemBuyLinkTextInput);
+    EditcosplayItemDescriptionLayout = findViewById(R.id.EditcosplayItemDescriptionTextInput);
+    EditcosplayItemNameLayout = findViewById(R.id.EditcosplayItemNameTextInput);
   }
 
   private void fillInFields() {
-    item = db.getCosplayItemDAO().getCosplayItemById(1);
-
     cosplayItemNameEditText.setText(item.itemName);
     cosplayItemDescriptionEditText.setText(item.description);
     cosplayItemPriceEditText.setText(item.price != null ? item.price.toString() : null);
