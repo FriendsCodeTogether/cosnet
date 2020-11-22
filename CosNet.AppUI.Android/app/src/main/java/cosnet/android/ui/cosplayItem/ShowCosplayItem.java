@@ -1,5 +1,6 @@
 package cosnet.android.ui.cosplayItem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.MainActivity;
 import cosnet.android.R;
@@ -127,6 +130,19 @@ public class ShowCosplayItem extends AppCompatActivity {
     }else{
       ConstraintLayout boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
       boughtitemattributesLayout.setVisibility(View.GONE);
+    }
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == REQUEST_EDIT_COSPLAYITEM) {
+      if (resultCode == RESULT_OK) {
+        item = (CosplayItem) data.getSerializableExtra("editedCosplayItem");
+        Toast.makeText(this, item.itemName + " Edited", Toast.LENGTH_SHORT).show();
+        setWidgets();
+      }
     }
   }
 }
