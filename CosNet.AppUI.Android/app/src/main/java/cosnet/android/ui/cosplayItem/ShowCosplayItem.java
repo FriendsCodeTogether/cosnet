@@ -35,6 +35,8 @@ public class ShowCosplayItem extends AppCompatActivity {
   private TextView cosplayItemBuylink;
   private TextView cosplayItemWorkTime;
   private TextView cosplayItemProgress;
+  private ConstraintLayout madeitemattributesLayout;
+  private ConstraintLayout boughtitemattributesLayout;
 
   private CosnetDb db;
 
@@ -51,6 +53,7 @@ public class ShowCosplayItem extends AppCompatActivity {
     addDatabase();
     initialiseWidgets();
     setWidgets();
+    togglelayout();
   }
 
   private void addToolbar() {
@@ -80,10 +83,11 @@ public class ShowCosplayItem extends AppCompatActivity {
         AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplayItem.this).create();
         alertDialog.setTitle("Oh No");
         alertDialog.setMessage("Are you sure you want to delete this item: " + this.item.itemName + "?");
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> { });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {
+        });
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
           db.getCosplayItemDAO().deleteItem(this.item);
-          Intent intentDelete = new Intent(this, MainActivity.class);
+          Intent intentDelete = new Intent(this, CosplayItemsList.class);
           intentDelete.putExtra("deletedCosplayItemName", this.item.itemName);
           setResult(RESULT_OK, intentDelete);
           finish();
@@ -95,7 +99,7 @@ public class ShowCosplayItem extends AppCompatActivity {
   }
 
   private void addDatabase() {
-   db = CosnetDb.getInstance(this);
+    db = CosnetDb.getInstance(this);
   }
 
   private void setWidgets() {
@@ -105,10 +109,10 @@ public class ShowCosplayItem extends AppCompatActivity {
     cosplayItemStatus.setText(item.status);
     cosplayItemBudget.setText("€" + item.price);
     cosplayItemDueDate.setText(item.dueDate);
-    if (item.isMade == 0){
+    if (item.isMade == 0) {
       cosplayItemBuylink.setText(item.buylink);
     } else {
-      cosplayItemWorkTime.setText(item.worktimeHours +" H " + item.worktimeMinutes + " min");
+      cosplayItemWorkTime.setText(item.worktimeHours + " H " + item.worktimeMinutes + " min");
       cosplayItemProgress.setText(item.progress + "%");
     }
   }
@@ -123,13 +127,18 @@ public class ShowCosplayItem extends AppCompatActivity {
     cosplayItemBuylink = findViewById(R.id.CosplayItemShowBuyLink);
     cosplayItemWorkTime = findViewById(R.id.CosplayItemShowWorkTime);
     cosplayItemProgress = findViewById(R.id.CosplayItemShowProgress);
+    madeitemattributesLayout = findViewById(R.id.MadeItemAttributesLayout);
+    boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
+  }
 
-    if (item.isMade == 0){
-      ConstraintLayout madeitemattributesLayout = findViewById(R.id.MadeItemAttributesLayout);
+  private void togglelayout() {
+    if (item.isMade == 0) {
       madeitemattributesLayout.setVisibility(View.GONE);
-    }else{
-      ConstraintLayout boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
+      boughtitemattributesLayout.setVisibility(View.VISIBLE);
+
+    } else {
       boughtitemattributesLayout.setVisibility(View.GONE);
+      madeitemattributesLayout.setVisibility(View.VISIBLE);
     }
   }
 
@@ -141,7 +150,9 @@ public class ShowCosplayItem extends AppCompatActivity {
       if (resultCode == RESULT_OK) {
         item = (CosplayItem) data.getSerializableExtra("editedCosplayItem");
         Toast.makeText(this, item.itemName + " Edited", Toast.LENGTH_SHORT).show();
+        initialiseWidgets();
         setWidgets();
+        togglelayout();
       }
     }
   }
