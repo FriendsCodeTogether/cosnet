@@ -30,6 +30,7 @@ public class CosplayItemsList extends AppCompatActivity {
 
   private static final String TAG = "CosplayItemList";
   private static final int REQUEST_ADD_COSPLAY_ITEM = 1;
+  private static final int REQUEST_DELETE_COSPLAY_ITEM = 2;
 
   private ImageButton createCosplayItemBTN;
   private TextView character;
@@ -66,8 +67,8 @@ public class CosplayItemsList extends AppCompatActivity {
     madeCosplays = new ArrayList<>();
     itemsList = cosplayItemDAO.getCosplayWithItems(cosplay.cosplayId).cosplayItems;
 
-    for(CosplayItem cosplayItem : itemsList){
-      if (cosplayItem.isMade == 0){
+    for (CosplayItem cosplayItem : itemsList) {
+      if (cosplayItem.isMade == 0) {
         boughtCosplays.add(cosplayItem);
       } else {
         madeCosplays.add(cosplayItem);
@@ -79,10 +80,10 @@ public class CosplayItemsList extends AppCompatActivity {
     itemTypes.add("Bought Items");
 
     HashMap<String, List<CosplayItem>> items = new HashMap<>();
-    items.put(itemTypes.get(0),madeCosplays);
-    items.put(itemTypes.get(1),boughtCosplays);
+    items.put(itemTypes.get(0), madeCosplays);
+    items.put(itemTypes.get(1), boughtCosplays);
 
-    adapter = new CosplayItemsExpandableListAdapter(this,itemTypes,items);
+    adapter = new CosplayItemsExpandableListAdapter(this, itemTypes, items);
     cosplayItemsListView.setAdapter(adapter);
   }
 
@@ -117,10 +118,11 @@ public class CosplayItemsList extends AppCompatActivity {
     });
 
     cosplayItemsListView.setOnChildClickListener((ExpandableListView parent, View v, int groupPosition, int childPosition, long id) -> {
-      CosplayItem item = (CosplayItem) adapter.getChild(groupPosition,childPosition);
+      CosplayItem item = (CosplayItem) adapter.getChild(groupPosition, childPosition);
       Intent intent = new Intent(this, ShowCosplayItem.class);
       intent.putExtra("cosplayItem", item);
-      startActivity(intent);
+      //startActivity(intent);
+      startActivityForResult(intent, REQUEST_DELETE_COSPLAY_ITEM);
       return true;
     });
 
@@ -169,6 +171,19 @@ public class CosplayItemsList extends AppCompatActivity {
             break;
         }
         break;
+      case REQUEST_DELETE_COSPLAY_ITEM:
+        switch (resultCode) {
+          case RESULT_OK:
+            String deletedItem = data.getStringExtra("deletedCosplayItemName");
+            Toast.makeText(this, deletedItem + " Deleted", Toast.LENGTH_SHORT).show();
+            createList();
+            break;
+          case RESULT_CANCELED:
+            createList();
+            break;
+        }
+        break;
     }
   }
 }
+

@@ -69,22 +69,24 @@
     <string name="CosplayItemBuyLinkInput" />
     <string name="CosplayItemWorkTimeInput" />
 
-    <!--STATUSSEN-->
-    <string name="In_Progess">In Progress</string>
-    <string name="Planned">Planned</string>
-    <!--COSPLAY ITEM STATUSSES-->
-    <string name="Completed">Completed</string>
-    <string name="Ordered">Ordered</string>
-    <string name="ToBuy">To Buy</string>
-    <string name="InProgress">In Progress</string>
+  <!--STATUSSEN-->
+  <string name="In_Progess">In Progress</string>
+  <string name="Planned">Planned</string>
+  <!--COSPLAY ITEM STATUSSES-->
+  <string name="Completed">Completed</string>
+  <string name="Ordered">Ordered</string>
+  <string name="ToBuy">To Buy</string>
+  <string name="InProgress">In Progress</string>
 
-    <!--MENUITEMS-->
-    <string name="EditMenuItem">Edit</string>
-    <string name="FinishMenuItem">Finish</string>
-    <string name="DeleteMenuItem">Delete</string>
-    <string name="OnHold">On Hold</string>
-    <string name="Cancelled">Cancelled</string>
-    <string name="Done">Done</string>
+  <!--MENUITEMS-->
+  <string name="EditMenuItem">Edit</string>
+  <string name="FinishMenuItem">Finish</string>
+  <string name="DeleteMenuItem">Delete</string>
+  <string name="OnHold">On Hold</string>
+  <string name="Cancelled">Cancelled</string>
+  <string name="Done">Done</string>
+  <string name="EditCosplayTitle">Edit Item</string>
+  <!--UNSORTED-->
     <string name="Items">Items</string>
     <string name="ItemList">List of Cosplay items</string>
     <string name="CosplayItems">Cosplay Items</string>
@@ -100,7 +102,6 @@
     <string name="dueBeforeStart">*Due Date can\'t be before Start Date</string>
     <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
     <string name="max650Characters">*Max 650 characters</string>
-    <!--UNSORTED-->
 
 
 </resources>

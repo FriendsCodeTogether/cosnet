@@ -9,8 +9,8 @@ import androidx.room.RoomDatabase;
 import cosnet.android.Data.DAOs.*;
 import cosnet.android.Entities.*;
 
-@Database(entities = {Cosplay.class, CosplayItem.class}, version = 5)
-public abstract class CosnetDb extends RoomDatabase {
+@Database(entities = {Cosplay.class, CosplayItem.class}, version = 6, exportSchema = false)
+public abstract  class CosnetDb extends RoomDatabase {
 
    private static CosnetDb minstance;
    private static final String DB_NAME = "cosnet.db";
