@@ -7,7 +7,7 @@ using CosNet.API.Entities;
 
 namespace CosNet.API.Data.Repositories
 {
-    public class CosplayItemMaterialRepository
+    public class CosplayItemMaterialRepository : ICosplayItemMaterialRepository
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -35,7 +35,7 @@ namespace CosNet.API.Data.Repositories
             _dbContext.CosplayItemMaterials.Add(cosplayItemMaterial);
         }
 
-        public void UpdateCosplayItemMaterial(CosplayItem cosplayItem)
+        public void UpdateCosplayItemMaterial(CosplayItemMaterial cosplayItemMaterial)
         {
         }
 

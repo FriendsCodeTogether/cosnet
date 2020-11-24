@@ -45,6 +45,11 @@ namespace CosNet.API.Data.Repositories
             _dbContext.CosplayItems.Remove(cosplayItem);
         }
 
+        public bool CosplayItemExists(Guid cosplayId)
+        {
+            return _dbContext.CosplayItems.Any(c => c.CosplayId == cosplayId);
+        }
+
         public bool SaveChanges()
         {
             return (_dbContext.SaveChanges() >= 0);
