@@ -46,7 +46,7 @@ namespace CosNet.API.Data.Repositories
 
         public bool CosplayExists(Guid cosplayId)
         {
-            return _dbContext.CosplayItems.Any(c => c.CosplayId == cosplayId);
+            return _dbContext.Cosplays.Any(c => c.CosplayId == cosplayId);
         }
 
         public bool SaveChanges()

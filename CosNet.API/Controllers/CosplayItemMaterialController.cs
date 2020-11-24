@@ -41,7 +41,7 @@ namespace CosNet.API.Controllers
         /// </summary>
         /// <param name="cosplayItemMaterialId">The id of the desired cosplay item material</param>
         /// <returns>a cosplay item material</returns>
-        [HttpGet("{cosplayItemId}")]
+        [HttpGet("{cosplayItemMaterialId}")]
         [Description("Get a cosplay item material by id")]
         [ProducesResponseType(typeof(CosplayItemMaterialDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

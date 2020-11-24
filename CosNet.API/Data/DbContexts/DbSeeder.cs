@@ -167,8 +167,8 @@ namespace CosNet.API.Data.DBContexts
                         Name = "Iron blade",
                         Price = 50.0m,
                         BuyLink = "https://www.kittyconnection.net/",
-                        CosplayItemId = cosplayItems[3].CosplayItemId,
-                        CosplayItem = cosplayItems[3]
+                        CosplayItemId = cosplayItems[1].CosplayItemId,
+                        CosplayItem = cosplayItems[1]
                     },
                     new CosplayItemMaterial
                     {
@@ -176,8 +176,8 @@ namespace CosNet.API.Data.DBContexts
                         Name = "Black Hilt",
                         Price = 10.0m,
                         BuyLink = "https://www.kittyconnection.net/",
-                        CosplayItemId = cosplayItems[3].CosplayItemId,
-                        CosplayItem = cosplayItems[3]
+                        CosplayItemId = cosplayItems[1].CosplayItemId,
+                        CosplayItem = cosplayItems[1]
                     }
                 };
                 context.CosplayItemMaterials.AddRange(cosplayItemMaterials);
