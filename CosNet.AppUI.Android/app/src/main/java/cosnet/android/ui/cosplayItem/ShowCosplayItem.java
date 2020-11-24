@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,12 +21,14 @@ import cosnet.android.Entities.CosplayItem;
 import cosnet.android.MainActivity;
 import cosnet.android.R;
 import cosnet.android.CosnetDb;
+import cosnet.android.ui.notes.AddNote;
 
 public class ShowCosplayItem extends AppCompatActivity {
 
   private static final int REQUEST_EDIT_COSPLAYITEM = 1;
   private CosplayItem item;
 
+  private ImageButton itemNotesBTN;
   private ImageView cosplayItemPic;
   private TextView cosplayItemName;
   private TextView cosplayItemDescription;
@@ -118,6 +121,7 @@ public class ShowCosplayItem extends AppCompatActivity {
   }
 
   private void initialiseWidgets() {
+    itemNotesBTN = findViewById(R.id.ItemNoteButton);
     cosplayItemName = findViewById(R.id.CosplayItemShowName);
     cosplayItemPic = findViewById(R.id.CosplayItemShowPic);
     cosplayItemDescription = findViewById(R.id.CosplayItemShowDescription);
@@ -131,6 +135,13 @@ public class ShowCosplayItem extends AppCompatActivity {
     boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
   }
 
+  private void setListeners() {
+    itemNotesBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this, AddNote.class);
+      intent.putExtra("cosplayItem", item);
+      startActivity(intent);
+    });
+  }
   private void togglelayout() {
     if (item.isMade == 0) {
       madeitemattributesLayout.setVisibility(View.GONE);
