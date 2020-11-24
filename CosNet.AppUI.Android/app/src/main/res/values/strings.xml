@@ -102,6 +102,7 @@
     <string name="dueBeforeStart">*Due Date can\'t be before Start Date</string>
     <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
     <string name="max650Characters">*Max 650 characters</string>
+    <string name="Notes">Notes</string>
 
 
 </resources>
