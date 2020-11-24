@@ -3,6 +3,7 @@ package cosnet.android.ui.notes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +13,7 @@ import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.CosplayItemNote;
 import cosnet.android.R;
+import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 
 public class AddNote extends AppCompatActivity {
 
@@ -20,6 +22,9 @@ public class AddNote extends AppCompatActivity {
   private CosnetDb db;
   private CosplayItem cosplayItem;
   private Button addNoteButton;
+  private EditText noteTitleEditText;
+  private EditText noteDescriptionEditText;
+  private EditText noteTypeEditText;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,10 @@ public class AddNote extends AppCompatActivity {
   }
 
   private void initializeItems() {
- //   addNoteButton = findViewById(R.id.NoteAddButton);
+  //addNoteButton = findViewById(R.id.NoteAddButton);
+  //noteTitleEditText = findViewById(R.id.NoteTitleEditText);
+  //noteDescriptionEditText = findViewById(R.id.NoteDescriptionEditText);
+  //noteTypeEditText = findViewById(R.id.NoteTypeEditText);
   }
 
   private void setListeners() {
@@ -60,8 +68,15 @@ public class AddNote extends AppCompatActivity {
 
   private void onClickAddButton() {
     CosplayItemNote newNote = new CosplayItemNote();
+    newNote.cosplayItemId = cosplayItem.itemId;
+    //newNote.title =
+    //newNote.description =
+    //newNote.type =
+    db.getCosplayItemNoteDAO().insertItem(newNote);
 
-
+    Intent intent = new Intent(this, ShowCosplayItem.class);
+    intent.putExtra("cosplayItem", cosplayItem);
+    startActivity(intent);
   }
 }
 
