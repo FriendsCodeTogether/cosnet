@@ -57,6 +57,7 @@ public class ShowCosplayItem extends AppCompatActivity {
     initialiseWidgets();
     setWidgets();
     togglelayout();
+    setListeners();
   }
 
   private void addToolbar() {
