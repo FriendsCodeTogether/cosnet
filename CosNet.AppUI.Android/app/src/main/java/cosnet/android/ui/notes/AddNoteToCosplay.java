@@ -67,7 +67,7 @@ public class AddNoteToCosplay extends AppCompatActivity {
   private void initializeItems() {
     noteType="cosplay";
     Date c = Calendar.getInstance().getTime();
-    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+    SimpleDateFormat df = new SimpleDateFormat("dd/MMM/yyyy  HH:mm", Locale.getDefault());
     date = df.format(c);
   }
 

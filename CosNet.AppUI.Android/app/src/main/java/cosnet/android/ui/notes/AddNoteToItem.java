@@ -2,6 +2,7 @@ package cosnet.android.ui.notes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,7 +70,7 @@ public class AddNoteToItem extends AppCompatActivity {
     noteType="item";
 
     Date c = Calendar.getInstance().getTime();
-    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+    SimpleDateFormat df = new SimpleDateFormat("dd/MMM/yyyy  HH:mm", Locale.getDefault());
     date = df.format(c);
   }
 
