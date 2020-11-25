@@ -99,11 +99,12 @@ public class AddNote extends AppCompatActivity {
     newNote.cosplayItemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
-    
+
 
     db.getCosplayItemNoteDAO().insertItem(newNote);
 
     Intent intent = new Intent();
+    intent.putExtra("addedNote",newNote.title);
     setResult(RESULT_OK,intent);
     finish();
   }

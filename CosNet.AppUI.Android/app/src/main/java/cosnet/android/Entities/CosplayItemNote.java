@@ -1,6 +1,7 @@
 package cosnet.android.Entities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -21,17 +22,16 @@ public class CosplayItemNote implements Serializable {
   @NonNull public String cosplayItemId;
 
   @ColumnInfo(name = "note_type")
-  @NonNull
-  public String type;
+  @Nullable public String type;
 
   @ColumnInfo(name = "note_title")
   @NonNull public String title;
 
   @ColumnInfo(name = "note_description")
-  @NonNull public String description;
+  @Nullable public String description;
 
   @ColumnInfo(name = "note_createdDate")
-  @NonNull public String createdDate;
+  @Nullable public String createdDate;
 
   public CosplayItemNote() { this.noteId = UUID.randomUUID().toString(); }
 }
