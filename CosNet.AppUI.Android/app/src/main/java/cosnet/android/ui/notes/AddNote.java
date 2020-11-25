@@ -3,7 +3,6 @@ package cosnet.android.ui.notes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,11 +10,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import cosnet.android.CosnetDb;
-import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.CosplayItemNote;
 import cosnet.android.R;
-import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 
 public class AddNote extends AppCompatActivity {
 

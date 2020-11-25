@@ -31,7 +31,7 @@ public class CosplayItemNote implements Serializable {
   @NonNull public String description;
 
   @ColumnInfo(name = "note_createdDate")
-  @NonNull public Date createdDate;
+  @NonNull public String createdDate;
 
   public CosplayItemNote() { this.noteId = UUID.randomUUID().toString(); }
 }
