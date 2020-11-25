@@ -45,7 +45,7 @@ public class AddNote extends AppCompatActivity {
 
     Intent incomingIntent = getIntent();
     cosplayItem = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
-    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
+    //cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
   }
 
   private void addToolbar() {
@@ -73,7 +73,7 @@ public class AddNote extends AppCompatActivity {
       noteType="cosplay";
     }
 
-    date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+    date = "1111";
   }
 
   private void setListeners() {
@@ -113,12 +113,11 @@ public class AddNote extends AppCompatActivity {
     }
     Note newNote = new Note();
 
-    newNote.cosplayId = cosplay.cosplayId;
     newNote.itemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
     newNote.type=noteType;
-    newNote.createdDate=date;
+    newNote.createdDate="lol";
 
     db.getNoteDAO().insertItem(newNote);
 
