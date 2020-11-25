@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.CosplayItem;
-import cosnet.android.Entities.CosplayItemNote;
+import cosnet.android.Entities.Note;
 import cosnet.android.R;
 
 public class AddNote extends AppCompatActivity {
@@ -94,14 +94,14 @@ public class AddNote extends AppCompatActivity {
     if (!validateItemName() | !validateItemDescrition()) {
       return;
     }
-    CosplayItemNote newNote = new CosplayItemNote();
+    Note newNote = new Note();
 
-    newNote.cosplayItemId = cosplayItem.itemId;
+    newNote.itemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
 
 
-    db.getCosplayItemNoteDAO().insertItem(newNote);
+    db.getNoteDAO().insertItem(newNote);
 
     Intent intent = new Intent();
     intent.putExtra("addedNote",newNote.title);
