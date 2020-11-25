@@ -9,7 +9,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import cosnet.android.CosnetDb;
+import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.CosplayItemNote;
 import cosnet.android.R;
@@ -20,9 +25,12 @@ public class AddNote extends AppCompatActivity {
 
   private CosnetDb db;
   private CosplayItem cosplayItem;
+  private Cosplay cosplay;
   private Button addNoteButton;
   private TextInputLayout noteNameLayout;
   private TextInputLayout noteDescriptionLayout;
+  private String noteType;
+  private String date;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,7 @@ public class AddNote extends AppCompatActivity {
 
     Intent incomingIntent = getIntent();
     cosplayItem = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
+    cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
   }
 
   private void addToolbar() {
@@ -58,6 +67,13 @@ public class AddNote extends AppCompatActivity {
   }
 
   private void initializeItems() {
+    if(!(cosplayItem ==null)){
+      noteType="cosplayItem";
+    }else if(!(cosplay==null)){
+      noteType="cosplay";
+    }
+
+    date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
   }
 
   private void setListeners() {
@@ -90,6 +106,7 @@ public class AddNote extends AppCompatActivity {
     }
   }
 
+
   private void onClickAddButton() {
     if (!validateItemName() | !validateItemDescrition()) {
       return;
@@ -97,8 +114,11 @@ public class AddNote extends AppCompatActivity {
     CosplayItemNote newNote = new CosplayItemNote();
 
     newNote.cosplayItemId = cosplayItem.itemId;
+    newNote.cosplayId = cosplay.cosplayId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
+    newNote.type=noteType;
+    newNote.createdDate=date;
 
 
     db.getCosplayItemNoteDAO().insertItem(newNote);
