@@ -13,8 +13,8 @@ public class ItemWithNotes {
   @Embedded
   public CosplayItem cosplayItem;
   @Relation(
-    parentColumn = "cosplayItem_id",
-    entityColumn = "cosplayItem_id"
+    parentColumn = "item_id",
+    entityColumn = "item_id"
   )
   public List<CosplayItemNote> cosplayItemNotes;
 }

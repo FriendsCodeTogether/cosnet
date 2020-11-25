@@ -5,17 +5,18 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-public class CosplayItemNote {
+public class CosplayItemNote implements Serializable {
   @PrimaryKey(autoGenerate = true)
   public int id;
 
   @ColumnInfo(name = "note_id")
   @NonNull public String noteId;
 
-  @ColumnInfo(name = "cosplayItem_id")
+  @ColumnInfo(name = "item_id")
   @NonNull public String cosplayItemId;
 
   @ColumnInfo(name = "note_type")

@@ -26,12 +26,12 @@ public interface CosplayItemNoteDAO {
   void deleteItem(CosplayItemNote cosplayItemNote);
 
   @Query("SELECT * FROM CosplayItemNote")
-  List<CosplayItem> getAllCosplayItemNotes();
+  List<CosplayItemNote> getAllCosplayItemNotes();
 
   @Query("SELECT * FROM CosplayItemNote WHERE id = :id")
   CosplayItemNote getCosplayItemNoteById(int id);
 
   @Transaction
-  @Query("SELECT * FROM Cosplay WHERE cosplay_id = :id")
+  @Query("SELECT * FROM CosplayItem WHERE item_id = :id")
   ItemWithNotes getItemWithNotes(String id);
 }
