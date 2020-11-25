@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class ShowCosplayItem extends AppCompatActivity {
   private TextView cosplayItemProgress;
   private ConstraintLayout madeitemattributesLayout;
   private ConstraintLayout boughtitemattributesLayout;
+  private ImageButton itemMaterialsBtn;
 
   private CosnetDb db;
 
@@ -53,7 +55,16 @@ public class ShowCosplayItem extends AppCompatActivity {
     addDatabase();
     initialiseWidgets();
     setWidgets();
+    setListeners();
     togglelayout();
+  }
+
+  private void setListeners() {
+    itemMaterialsBtn.setOnClickListener(v -> {
+      Intent intent = new Intent();
+      intent.putExtra("item", item);
+      startActivity(intent);
+    });
   }
 
   private void addToolbar() {
@@ -129,6 +140,7 @@ public class ShowCosplayItem extends AppCompatActivity {
     cosplayItemProgress = findViewById(R.id.CosplayItemShowProgress);
     madeitemattributesLayout = findViewById(R.id.MadeItemAttributesLayout);
     boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
+    itemMaterialsBtn = findViewById(R.id.CosplayItemMaterialsListBtn);
   }
 
   private void togglelayout() {
