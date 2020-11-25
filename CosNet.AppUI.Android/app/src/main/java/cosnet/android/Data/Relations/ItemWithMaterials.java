@@ -5,7 +5,6 @@ import androidx.room.Relation;
 
 import java.util.List;
 
-import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.CosplayItemMaterial;
 
