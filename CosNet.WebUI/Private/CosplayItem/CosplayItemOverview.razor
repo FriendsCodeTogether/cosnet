@@ -47,22 +47,25 @@ else
             }
             else
             {
-                @foreach (var material in cosplayItemMaterials)
+                @if (cosplayItem.IsMade)
                 {
-                    <div class="cosplay-item-material-item">
-                        <div class="cosplay-item-material-item-first-text">
-                            <div>@material.Name</div>
-                            <div class="cosplay-item-material-item-description">@material.Description</div>
+                    @foreach (var material in cosplayItemMaterials)
+                    {
+                        <div class="cosplay-item-material-item">
+                            <div class="cosplay-item-material-item-first-text">
+                                <div>@material.Name</div>
+                                <div class="cosplay-item-material-item-description">@material.Description</div>
+                            </div>
+                            <div class="cosplay-item-material-item-middle-text">
+                                <div>€@material.Price</div>
+                                <div>@material.BuyLink</div>
+                            </div>
+                            <div class="cosplay-item-material-item-buttons">
+                                <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
+                                <a class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" href="">Delete</a>
+                            </div>
                         </div>
-                        <div class="cosplay-item-material-item-middle-text">
-                            <div>€@material.Price</div>
-                            <div>@material.BuyLink</div>
-                        </div>
-                        <div class="cosplay-item-material-item-buttons">
-                            <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
-                            <a class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" href="">Delete</a>
-                        </div>
-                    </div>
+                    }
                 }
             }
         </div>
