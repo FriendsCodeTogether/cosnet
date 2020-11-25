@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CosNet.API.Controllers
 {
-    [Route("cosplay/{cosplayId}/[controller]")]
+    [Route("Cosplay/{cosplayId}/[controller]")]
     [ApiController]
     public class CosplayItemController : ControllerBase
     {
