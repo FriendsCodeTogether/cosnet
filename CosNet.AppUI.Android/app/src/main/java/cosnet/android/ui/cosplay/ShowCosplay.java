@@ -22,12 +22,15 @@ import cosnet.android.Entities.Cosplay;
 import cosnet.android.MainActivity;
 import cosnet.android.R;
 import cosnet.android.ui.cosplayItem.CosplayItemsList;
+import cosnet.android.ui.notes.AddNoteToCosplay;
+import cosnet.android.ui.notes.AddNoteToItem;
 
 public class ShowCosplay extends AppCompatActivity {
 
   private static final int REQUEST_EDIT_COSPLAY = 1;
 
   private ImageButton cosplayItemListBTN;
+  private ImageButton cosplayNotesBTN;
   private TextView character;
   private TextView series;
   private TextView status;
@@ -66,6 +69,7 @@ public class ShowCosplay extends AppCompatActivity {
 
   private void initialiseWidgets() {
     cosplayItemListBTN = findViewById(R.id.CosplayItemListBtn);
+    cosplayNotesBTN = findViewById(R.id.CosplayNoteBtn);
     character = findViewById(R.id.ShowCosplayCharacterName);
     series = findViewById(R.id.ShowCosplaySeries);
     status = findViewById(R.id.ShowCosplayStatus);
@@ -91,6 +95,11 @@ public class ShowCosplay extends AppCompatActivity {
   private void setListeners() {
     cosplayItemListBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this, CosplayItemsList.class);
+      intent.putExtra("cosplay", cosplay);
+      startActivity(intent);
+    });
+    cosplayNotesBTN.setOnClickListener(v -> {
+      Intent intent = new Intent(this, AddNoteToCosplay.class);
       intent.putExtra("cosplay", cosplay);
       startActivity(intent);
     });

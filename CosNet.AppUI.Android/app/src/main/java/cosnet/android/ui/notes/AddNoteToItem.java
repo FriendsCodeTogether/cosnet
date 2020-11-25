@@ -12,6 +12,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
@@ -66,7 +67,10 @@ public class AddNoteToItem extends AppCompatActivity {
 
   private void initializeItems() {
     noteType="item";
-    date = "1111";
+
+    Date c = Calendar.getInstance().getTime();
+    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+    date = df.format(c);
   }
 
   private void setListeners() {
@@ -111,7 +115,7 @@ public class AddNoteToItem extends AppCompatActivity {
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
     newNote.type=noteType;
-    newNote.createdDate="lol";
+    newNote.createdDate=date;
 
     db.getNoteDAO().insertItem(newNote);
 

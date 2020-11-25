@@ -9,6 +9,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputLayout;;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.Note;
@@ -61,7 +66,9 @@ public class AddNoteToCosplay extends AppCompatActivity {
 
   private void initializeItems() {
     noteType="cosplay";
-    date = "1111";
+    Date c = Calendar.getInstance().getTime();
+    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+    date = df.format(c);
   }
 
   private void setListeners() {
@@ -93,7 +100,6 @@ public class AddNoteToCosplay extends AppCompatActivity {
       return true;
     }
   }
-
 
   private void onClickAddButton() {
     if (!validateItemName() | !validateItemDescrition()) {
