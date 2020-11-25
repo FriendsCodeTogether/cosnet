@@ -19,13 +19,12 @@ import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.Note;
 import cosnet.android.R;
 
-public class AddNote extends AppCompatActivity {
+public class AddNoteToItem extends AppCompatActivity {
 
   private static final String TAG = "Add Note";
 
   private CosnetDb db;
   private CosplayItem cosplayItem;
-  private Cosplay cosplay;
   private Button addNoteButton;
   private TextInputLayout noteNameLayout;
   private TextInputLayout noteDescriptionLayout;
@@ -45,7 +44,6 @@ public class AddNote extends AppCompatActivity {
 
     Intent incomingIntent = getIntent();
     cosplayItem = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
-    //cosplay = (Cosplay) incomingIntent.getSerializableExtra("cosplay");
   }
 
   private void addToolbar() {
@@ -67,12 +65,7 @@ public class AddNote extends AppCompatActivity {
   }
 
   private void initializeItems() {
-    if(!(cosplayItem ==null)){
-      noteType="cosplayItem";
-    }else if(!(cosplay==null)){
-      noteType="cosplay";
-    }
-
+    noteType="item";
     date = "1111";
   }
 
@@ -113,6 +106,7 @@ public class AddNote extends AppCompatActivity {
     }
     Note newNote = new Note();
 
+    newNote.cosplayId="";
     newNote.itemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();

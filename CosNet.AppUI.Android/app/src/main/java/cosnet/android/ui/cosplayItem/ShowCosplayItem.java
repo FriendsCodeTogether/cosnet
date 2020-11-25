@@ -16,12 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
-import cosnet.android.MainActivity;
 import cosnet.android.R;
 import cosnet.android.CosnetDb;
-import cosnet.android.ui.notes.AddNote;
+import cosnet.android.ui.notes.AddNoteToItem;
 
 public class ShowCosplayItem extends AppCompatActivity {
 
@@ -138,7 +136,7 @@ public class ShowCosplayItem extends AppCompatActivity {
 
   private void setListeners() {
     itemNotesBTN.setOnClickListener(v -> {
-      Intent intent = new Intent(this, AddNote.class);
+      Intent intent = new Intent(this, AddNoteToItem.class);
       intent.putExtra("cosplayItem", item);
       startActivity(intent);
     });

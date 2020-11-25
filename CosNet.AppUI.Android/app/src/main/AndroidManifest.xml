@@ -23,8 +23,11 @@
       android:name=".ui.cosplay.EditCosplay"
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
     <activity
-      android:name=".ui.notes.AddNote"
+      android:name=".ui.notes.AddNoteToItem"
       android:parentActivityName=".ui.cosplayItem.ShowCosplayItem" />
+    <activity
+      android:name=".ui.notes.AddNoteToCosplay"
+      android:parentActivityName=".ui.cosplay.ShowCosplay" />
     <activity
       android:name=".ui.cosplay.ShowCosplay"
       android:parentActivityName=".MainActivity" />
