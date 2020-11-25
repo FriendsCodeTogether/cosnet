@@ -5,15 +5,16 @@ import androidx.room.Relation;
 
 import java.util.List;
 
+import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.Note;
 
-public class ItemWithNotes {
+public class CosplayWithNotes {
   @Embedded
-  public CosplayItem cosplayItem;
+  public Cosplay cosplay;
   @Relation(
-    parentColumn = "item_id",
-    entityColumn = "item_id"
+    parentColumn = "cosplay_id",
+    entityColumn = "cosplay_id"
   )
   public List<Note> notes;
 }

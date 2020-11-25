@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class CosplayItemNote implements Serializable {
+public class Note implements Serializable {
   @PrimaryKey(autoGenerate = true)
   public int id;
 
@@ -19,10 +19,13 @@ public class CosplayItemNote implements Serializable {
   @NonNull public String noteId;
 
   @ColumnInfo(name = "item_id")
-  @NonNull public String cosplayItemId;
+  @Nullable public String itemId;
+
+  @ColumnInfo(name = "cosplay_id")
+  @Nullable public String cosplayId;
 
   @ColumnInfo(name = "note_type")
-  @Nullable public String type;
+  @NonNull public String type;
 
   @ColumnInfo(name = "note_title")
   @NonNull public String title;
@@ -31,7 +34,7 @@ public class CosplayItemNote implements Serializable {
   @Nullable public String description;
 
   @ColumnInfo(name = "note_createdDate")
-  @Nullable public String createdDate;
+  @NonNull public String createdDate;
 
-  public CosplayItemNote() { this.noteId = UUID.randomUUID().toString(); }
+  public Note() { this.noteId = UUID.randomUUID().toString(); }
 }
