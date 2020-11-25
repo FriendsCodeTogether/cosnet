@@ -30,7 +30,7 @@ public class AddNote extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.add_cosplay_item_main);
+    setContentView(R.layout.add_note);
 
     addToolbar();
     addDatabase();
@@ -57,14 +57,10 @@ public class AddNote extends AppCompatActivity {
     addNoteButton = (Button) findViewById(R.id.NoteAddButton);
     noteNameLayout = (TextInputLayout) findViewById(R.id.noteNametextInput);
     noteDescriptionLayout = (TextInputLayout) findViewById(R.id.noteDescriptionTextInput);
+
   }
 
   private void initializeItems() {
-  //addNoteButton = findViewById(R.id.NoteAddButton);
-  //noteTitleEditText = findViewById(R.id.NoteTitleEditText);
-  //noteDescriptionEditText = findViewById(R.id.NoteDescriptionEditText);
-  //noteTypeEditText = findViewById(R.id.NoteTypeEditText);
-
   }
 
   private void setListeners() {
@@ -106,6 +102,7 @@ public class AddNote extends AppCompatActivity {
     newNote.cosplayItemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
+    
 
     db.getCosplayItemNoteDAO().insertItem(newNote);
 
