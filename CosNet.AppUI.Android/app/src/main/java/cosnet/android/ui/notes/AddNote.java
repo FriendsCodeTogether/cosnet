@@ -60,11 +60,6 @@ public class AddNote extends AppCompatActivity {
   }
 
   private void initializeItems() {
-  //addNoteButton = findViewById(R.id.NoteAddButton);
-  //noteTitleEditText = findViewById(R.id.NoteTitleEditText);
-  //noteDescriptionEditText = findViewById(R.id.NoteDescriptionEditText);
-  //noteTypeEditText = findViewById(R.id.NoteTypeEditText);
-
   }
 
   private void setListeners() {
