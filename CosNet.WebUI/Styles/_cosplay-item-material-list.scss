@@ -1,0 +1,99 @@
+.cosplay-item-material-list {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cosplay-item-material-list-add-btn {
+  border: none;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-right: 2rem;
+  margin-left: auto;
+  padding: 0.4rem 4rem;
+  font-size: 1.1em;
+  background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
+
+  &:hover {
+    filter: brightness(50%);
+  }
+}
+
+.cosplay-item-material-list-edit-btn,
+.cosplay-item-material-list-delete-btn {
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 1.1em;
+  width: 100%
+}
+
+.cosplay-item-material-list-edit-btn {
+  margin-bottom: .5rem;
+  background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
+
+  &:hover {
+    filter: brightness(50%);
+  }
+}
+
+.cosplay-item-material-list-delete-btn {
+  background-color: #be1616;
+
+  &:hover {
+    background-color: #be161680;
+  }
+}
+
+.cosplay-item-material-item {
+  background-color: #808080;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cosplay-item-material-title-container {
+  background-color: #808080;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.cosplay-item-material-title {
+  padding: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 2rem;
+}
+
+.cosplay-item-material-item-first-text {
+  margin-left: 2rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.cosplay-item-material-item-middle-text {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.cosplay-item-material-item-buttons {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-right: 2rem;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
