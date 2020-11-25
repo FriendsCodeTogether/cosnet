@@ -112,7 +112,7 @@ public class AddNoteToCosplay extends AppCompatActivity {
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
     newNote.type=noteType;
-    newNote.createdDate="lol";
+    newNote.createdDate=date;
 
     db.getNoteDAO().insertItem(newNote);
 
