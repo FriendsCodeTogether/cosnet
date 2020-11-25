@@ -103,6 +103,9 @@
     <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
     <string name="max650Characters">*Max 650 characters</string>
     <string name="Notes">Notes</string>
+  <string name="NoteNameInput" />
+  <string name="NoteHint">Note name</string>
+  <string name="Name">Name</string>
 
 
 </resources>
