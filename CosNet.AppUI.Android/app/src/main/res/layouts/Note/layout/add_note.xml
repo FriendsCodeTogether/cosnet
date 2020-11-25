@@ -108,7 +108,7 @@
       android:id="@+id/cosplayItemDescriptionEditText"
       style="@style/EditText"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="300dp"
       android:layout_marginTop="8dp"
       android:layout_marginEnd="8dp"
       android:autofillHints="@string/CosplayItemDescription"
@@ -125,7 +125,22 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0" />
   </com.google.android.material.textfield.TextInputLayout>
-
+  <Button
+    android:id="@+id/NoteAddButton"
+    android:layout_width="165dp"
+    android:layout_height="46dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/roundbutton"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/save"
+    android:textAllCaps="false"
+    android:textColor="@android:color/background_light"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/noteDescriptionTextInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
