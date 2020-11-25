@@ -1,6 +1,8 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}"
 @inject ICosplayItemService CosplayItemService
+@inject ICosplayItemMaterialService CosplayItemMaterialService
 @using CosNet.Shared.DTOs.CosplayItem
+@using CosNet.Shared.DTOs.CosplayItemMaterial
 
 @if (cosplayItem == null)
 {
@@ -8,39 +10,73 @@
 }
 else
 {
-    <div class="cosplay-item-show-container">
-        <h1>@cosplayItem.Name</h1>
-        <div class="cosplay-item-show">
-            <div class="cosplay-item-show-info">
-                <p>@cosplayItem.Description</p>
+<div class="cosplay-item-show-container">
+    <h1>@cosplayItem.Name</h1>
+    <div class="cosplay-item-show">
+        <div class="cosplay-item-show-info">
+            <p>@cosplayItem.Description</p>
 
-                <h2>Info</h2>
-                <div>Status: @cosplayItem.Status</div>
-                <div>Price: @cosplayItem.Price</div>
-                <div>Due Date: @cosplayItem.DueDate</div>
-                @if (cosplayItem.IsMade)
-                {
-                    <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
-                    <div>Progress: @cosplayItem.Progress %</div>
-                }
-                else
-                {
-                    <div>Buy Link: @cosplayItem.BuyLink</div>
-                }
-            </div>
-            <div class="cosplay-item-show-image-group">
-                <img class="cosplay-show-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
-                <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
-            </div>
+            <h2>Info</h2>
+            <div>Status: @cosplayItem.Status</div>
+            <div>Price: @cosplayItem.Price</div>
+            <div>Due Date: @cosplayItem.DueDate</div>
+            @if (cosplayItem.IsMade)
+            {
+                <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
+                <div>Progress: @cosplayItem.Progress %</div>
+            }
+            else
+            {
+                <div>Buy Link: @cosplayItem.BuyLink</div>
+            }
+        </div>
+        <div class="cosplay-item-show-image-group">
+            <img class="cosplay-show-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+            <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
         </div>
     </div>
-    
+    @if (cosplayItem.IsMade)
+    {
+        <div class="cosplay-item-material-list">
+            <div class="cosplay-item-material-title-container">
+                <h2 class="cosplay-item-material-title">Materials</h2>
+                <a class="cosplay-item-material-list-add-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/create">Add</a>
+            </div>
+            @if (cosplayItemMaterials == null)
+            {
+                <p><em>Loading...</em></p>
+            }
+            else
+            {
 
+                @foreach (var material in cosplayItemMaterials)
+                {
+                    <div class="cosplay-item-material-item">
+                        <div class="cosplay-item-material-item-first-text">
+                            <div>@material.Name</div>
+                            <div class="cosplay-item-material-item-description">@material.Description</div>
+                        </div>
+                        <div class="cosplay-item-material-item-middle-text">
+                            <div>€@material.Price</div>
+                            <div>@material.BuyLink</div>
+                        </div>
+                        <div class="cosplay-item-material-item-buttons">
+                            <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
+                            <a class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" href="">Delete</a>
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+    }
+    </div>
 }
 
 
 @code {
     public CosplayItemDTO cosplayItem = new CosplayItemDTO();
+    public IEnumerable<CosplayItemMaterialDTO> cosplayItemMaterials;
 
     [Parameter]
     public Guid CosplayId { get; set; }
@@ -51,5 +87,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         cosplayItem = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
+        cosplayItemMaterials = await CosplayItemMaterialService.GetCosplayItemMaterialsAsync(CosplayItemId);
     }
 }

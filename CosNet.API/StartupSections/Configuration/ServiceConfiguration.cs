@@ -13,6 +13,7 @@ namespace CosNet.API.StartupSections.Configuration
         {
             services.AddTransient<ICosplayService, CosplayService>();
             services.AddTransient<ICosplayItemService, CosplayItemService>();
+            services.AddTransient<ICosplayItemMaterialService, CosplayItemMaterialService>();
 
             return services;
         }
