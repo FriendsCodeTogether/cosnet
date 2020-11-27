@@ -10,8 +10,6 @@ namespace CosNet.Shared.DTOs.CosplayItemMaterial
 {
     public class CosplayItemMaterialForUpdateDTO
     {
-        public Guid CosplayItemId { get; set; }
-
         [Required]
         [MaxLength(150)]
         public string Name { get; set; }
