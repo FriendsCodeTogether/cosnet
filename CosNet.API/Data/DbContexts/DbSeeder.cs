@@ -23,7 +23,8 @@ namespace CosNet.API.Data.DBContexts
                        Budget= 100.0m,
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now.AddDays(40),
-                       Status = "In Progress"
+                       Status = "In Progress",
+                       UserId = Guid.Parse("10000000-0000-0000-0000-000000000001")
                     },
                     new Cosplay
                     {
@@ -33,7 +34,8 @@ namespace CosNet.API.Data.DBContexts
                        Budget= 90.0m,
                        StartDate = DateTime.Now.AddDays(2),
                        DueDate = DateTime.Now.AddDays(50),
-                       Status = "Planned"
+                       Status = "Planned",
+                       UserId = Guid.Parse("10000000-0000-0000-0000-000000000001")
                     },
                     new Cosplay
                     {
