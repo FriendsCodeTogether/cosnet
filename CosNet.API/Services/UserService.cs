@@ -7,16 +7,15 @@ using Microsoft.AspNetCore.Http;
 
 namespace CosNet.API.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly ClaimsPrincipal _user;
 
-        public UserService(HttpContextAccessor httpContextAccessor)
+        public ClaimsPrincipal User { get; }
+        public Guid UserId => Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value);
+
+        public UserService(IHttpContextAccessor httpContextAccessor)
         {
-            if (httpContextAccessor.HttpContext != null)
-            {
-                _user = httpContextAccessor.HttpContext.User;
-            } 
+            User = httpContextAccessor.HttpContext?.User;
         }
     }
 }

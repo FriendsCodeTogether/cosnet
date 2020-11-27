@@ -24,7 +24,7 @@ namespace CosNet.API.Data.DBContexts
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now.AddDays(40),
                        Status = "In Progress",
-                       UserId = Guid.Parse("10000000-0000-0000-0000-000000000001")
+                       UserId = Guid.Parse("e9947802-63d4-48ec-b8a7-2135e6a372b9")
                     },
                     new Cosplay
                     {
@@ -35,7 +35,7 @@ namespace CosNet.API.Data.DBContexts
                        StartDate = DateTime.Now.AddDays(2),
                        DueDate = DateTime.Now.AddDays(50),
                        Status = "Planned",
-                       UserId = Guid.Parse("10000000-0000-0000-0000-000000000001")
+                       UserId = Guid.Parse("e9947802-63d4-48ec-b8a7-2135e6a372b9")
                     },
                     new Cosplay
                     {

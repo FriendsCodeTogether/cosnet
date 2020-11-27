@@ -12,9 +12,10 @@ namespace IdentityServerHost.Quickstart.UI
     {
         public static List<TestUser> Users = new List<TestUser>
         {
-            new TestUser{SubjectId = "10000000-0000-0000-0000-000000000001", Username = "alice", Password = "alice",
+            new TestUser{SubjectId = "e9947802-63d4-48ec-b8a7-2135e6a372b9", Username = "alice", Password = "alice",
                 Claims =
                 {
+                    new Claim(JwtClaimTypes.Subject, "e9947802-63d4-48ec-b8a7-2135e6a372b9"),
                     new Claim(JwtClaimTypes.Name, "Alice Smith"),
                     new Claim(JwtClaimTypes.GivenName, "Alice"),
                     new Claim(JwtClaimTypes.FamilyName, "Smith"),
