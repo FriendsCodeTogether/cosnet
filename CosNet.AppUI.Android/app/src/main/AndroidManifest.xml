@@ -24,6 +24,9 @@
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
     <activity
       android:name=".ui.notes.AddNoteToItem"
+      android:parentActivityName=".ui.notes.NoteList" />
+    <activity
+      android:name=".ui.notes.NoteList"
       android:parentActivityName=".ui.cosplayItem.ShowCosplayItem" />
     <activity
       android:name=".ui.notes.AddNoteToCosplay"

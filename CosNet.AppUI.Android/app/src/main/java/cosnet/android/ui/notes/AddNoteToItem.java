@@ -63,7 +63,6 @@ public class AddNoteToItem extends AppCompatActivity {
     addNoteButton = (Button) findViewById(R.id.NoteAddButton);
     noteNameLayout = (TextInputLayout) findViewById(R.id.noteNametextInput);
     noteDescriptionLayout = (TextInputLayout) findViewById(R.id.noteDescriptionTextInput);
-
   }
 
   private void initializeItems() {
