@@ -106,6 +106,8 @@
   <string name="NoteNameInput" />
   <string name="NoteHint">Note name</string>
   <string name="Name">Name</string>
+    <string name="ItemNotesToolbarTitle">Item Notes</string>
+  <string name="my_notes">My Notes</string>
 
 
 </resources>
