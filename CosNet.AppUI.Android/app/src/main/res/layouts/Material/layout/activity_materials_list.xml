@@ -34,6 +34,7 @@
   </com.google.android.material.appbar.AppBarLayout>
 
   <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout2"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     app:layout_constraintEnd_toEndOf="parent"
@@ -71,4 +72,14 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ListView
+    android:id="@+id/MaterialsListView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+    tools:listitem="@layout/cosplay_item_material_list_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
