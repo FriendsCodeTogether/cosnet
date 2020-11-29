@@ -7,21 +7,18 @@ using System.Threading.Tasks;
 
 namespace CosNet.API.Entities
 {
-    public class CosplayItem
+    public class CosplayItemMaterial
     {
         [Key]
         public int Id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid CosplayItemId { get; set; }
+        public Guid CosplayItemMaterialId { get; set; }
 
         [Required]
         [MinLength(1)]
         [MaxLength(150)]
         public string Name { get; set; }
-
-        [MaxLength(25)]
-        public string Status { get; set; }
 
         [MaxLength(500)]
         public string Description { get; set; }
@@ -29,22 +26,11 @@ namespace CosNet.API.Entities
         [Column(TypeName = "decimal(9,2)")]
         public decimal Price { get; set; }
 
-        public DateTime DueDate { get; set; }
-
-        public bool IsMade { get; set; }
-
-        //Bought Info
         [MaxLength(200)]
         public string BuyLink { get; set; }
 
-        //Made Info
-        public int Progress { get; set; }
-        public int WorkTimeHours { get; set; }
-        public int WorkTimeMinutes { get; set; }
-        public IEnumerable<CosplayItemMaterial> Materials { get; set; }
-
-        //Relations Cosplay
-        public Guid CosplayId { get; set; }
-        public Cosplay Cosplay { get; set; }
+        //Relations
+        public Guid CosplayItemId { get; set; }
+        public CosplayItem CosplayItem { get; set; }
     }
 }
