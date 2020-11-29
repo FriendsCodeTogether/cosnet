@@ -25,15 +25,6 @@
       android:name="com.google.android.wearable.standalone"
       android:value="true" />
 
-    <activity
-      android:name=".ui.notes.ShowItemNote"
-      android:label="@string/title_activity_show_note">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
     <activity android:name=".ui.cosplayItem.ShowCosplayItem">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
@@ -44,6 +35,12 @@
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.cosplay.ShowCosplay" />
     </activity>
+    <activity
+    android:name=".ui.notes.EditItemNote"
+    android:parentActivityName=".ui.notes.ShowItemNote" />
+    <activity
+      android:name=".ui.notes.EditCosplayNote"
+      android:parentActivityName=".ui.notes.ShowCosplayNote" />
     <activity
       android:name=".ui.cosplay.EditCosplay"
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
@@ -56,6 +53,12 @@
     <activity
       android:name=".ui.notes.AddNoteToCosplay"
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
+    <activity
+      android:name=".ui.notes.ShowCosplayNote"
+      android:parentActivityName=".ui.cosplay.ShowCosplay" />
+    <activity
+      android:name=".ui.notes.ShowItemNote"
+      android:parentActivityName=".ui.cosplayItem.ShowCosplayItem" />
     <activity
       android:name=".ui.cosplay.ShowCosplay"
       android:parentActivityName=".MainActivity" />

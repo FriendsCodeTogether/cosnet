@@ -18,7 +18,7 @@ import cosnet.android.Entities.Note;
 import cosnet.android.R;
 import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 
-public class ShowItemNote extends AppCompatActivity {
+public class ShowCosplayNote extends AppCompatActivity {
 
   private static final int REQUEST_EDIT_NOTE = 1;
   private TextView noteName;
@@ -82,7 +82,7 @@ public class ShowItemNote extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_EDIT_NOTE);
         return true;
       case R.id.showNoteDeleteMenu:
-        AlertDialog alertDialog = new AlertDialog.Builder(ShowItemNote.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(ShowCosplayNote.this).create();
         alertDialog.setTitle("Oh No");
         alertDialog.setMessage("Are you sure you want to delete your " + note.title + " note?");
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> { });
