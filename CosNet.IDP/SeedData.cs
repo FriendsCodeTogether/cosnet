@@ -25,6 +25,22 @@ namespace CosNet.IDP
             Log.Information("Start building Service container.");
 
             var services = new ServiceCollection();
+            BuildServiceContainer(configuration, services);
+
+            Log.Information("Done building Service container.");
+
+            using (var serviceProvider = services.BuildServiceProvider())
+            {
+                Log.Information("Seeding CosNet users.");
+                AddCosNetUsers(serviceProvider);
+
+                Log.Information("Seeding IdentityServer DbContexts:");
+                AddIdentityServerConfiguration(serviceProvider);
+            }
+        }
+
+        private static void BuildServiceContainer(IConfiguration configuration, ServiceCollection services)
+        {
             services.AddLogging();
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("IDPIdentityDb")));
@@ -44,17 +60,6 @@ namespace CosNet.IDP
 
             services.AddDbContext<ConfigurationDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("IDPDataDb")));
-
-            Log.Information("Done building Service container.");
-
-            using (var serviceProvider = services.BuildServiceProvider())
-            {
-                Log.Information("Seeding CosNet users.");
-                AddCosNetUsers(serviceProvider);
-
-                Log.Information("Seeding IdentityServer DbContexts:");
-                AddIdentityServerConfiguration(serviceProvider);
-            }
         }
 
         private static void AddCosNetUsers(ServiceProvider serviceProvider)
@@ -103,7 +108,7 @@ namespace CosNet.IDP
                 {
                     bob = new CosNetUser
                     {
-                        Id = "f22f1397-c53f-4f88-9300-5dbdf13ee208",
+                        Id = "b7a00a7e-101f-40ad-bd0b-54b47f2d996c",
                         UserName = "bob",
                         Email = "BobSmith@email.com",
                         EmailConfirmed = true
