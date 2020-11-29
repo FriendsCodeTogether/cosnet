@@ -42,7 +42,7 @@ public class NoteList extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cosplay_items_list);
+    setContentView(R.layout.activity_notes_list);
 
     addDatabase();
     Intent incomingIntent = getIntent();
