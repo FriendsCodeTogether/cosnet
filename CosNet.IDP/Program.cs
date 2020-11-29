@@ -46,11 +46,11 @@ namespace CosNet.IDP
 
                 if (seed)
                 {
-                    Log.Information("Seeding database...");
+                    Log.Information("Start Database Seeder...");
                     var config = host.Services.GetRequiredService<IConfiguration>();
                     var connectionString = config.GetConnectionString("IDPIdentityDb");
                     SeedData.EnsureSeedData(config);
-                    Log.Information("Done seeding database.");
+                    Log.Information("Done seeding databases.");
                     return 0;
                 }
 

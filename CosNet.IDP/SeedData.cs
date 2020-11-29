@@ -22,6 +22,8 @@ namespace CosNet.IDP
     {
         public static void EnsureSeedData(IConfiguration configuration)
         {
+            Log.Information("Start building Service container.");
+
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -43,9 +45,14 @@ namespace CosNet.IDP
             services.AddDbContext<ConfigurationDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("IDPDataDb")));
 
+            Log.Information("Done building Service container.");
+
             using (var serviceProvider = services.BuildServiceProvider())
             {
+                Log.Information("Seeding CosNet users.");
                 AddCosNetUsers(serviceProvider);
+
+                Log.Information("Seeding IdentityServer DbContexts:");
                 AddIdentityServerConfiguration(serviceProvider);
             }
         }
@@ -131,8 +138,10 @@ namespace CosNet.IDP
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
+                Log.Information("Seeding PersistedGrantDbContext.");
                 serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
+                Log.Information("Seeding ConfigurationDbContext.");
                 var context = serviceScope.ServiceProvider
                     .GetRequiredService<ConfigurationDbContext>();
                 context.Database.Migrate();
