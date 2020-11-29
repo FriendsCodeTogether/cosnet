@@ -26,7 +26,7 @@
       android:value="true" />
 
     <activity
-      android:name=".ui.notes.ShowNote"
+      android:name=".ui.notes.ShowItemNote"
       android:label="@string/title_activity_show_note">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
