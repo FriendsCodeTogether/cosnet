@@ -16,9 +16,19 @@ body {
   height: 100%;
   display: grid;
   grid-template:
-    'navbar navbar' auto
-    'sidenav appcontent' 1fr
-    / 250px 1fr;
+    'navbar' auto
+    'sidenav' auto
+    'appcontent' 1fr
+    / 100%;
+  color: red;
+
+  @include desktop() {
+    color: white;
+    grid-template:
+      'navbar navbar' auto
+      'sidenav appcontent' 1fr
+      / 250px 1fr;
+  }
 }
 
 .app-content {
@@ -28,6 +38,22 @@ body {
 
 .flex-spacer {
   flex: 1;
+}
+
+.mobile-only {
+  display: unset;
+
+  @include desktop() {
+    display: none;
+  }
+}
+
+.desktop-only {
+  display: none;
+
+  @include desktop() {
+    display: unset;
+  }
 }
 
 #blazor-error-ui {
