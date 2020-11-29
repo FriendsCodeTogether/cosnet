@@ -1,73 +1,73 @@
 <resources>
-    <string name="app_name">CosNet.AppUI.Android</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+  <string name="app_name">CosNet.AppUI.Android</string>
+  <string name="nav_header_title">Android Studio</string>
+  <string name="nav_header_subtitle">android.studio@android.com</string>
+  <string name="nav_header_desc">Navigation header</string>
+  <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="my_cosplays">My Cosplays</string>
+  <string name="menu_home">Home</string>
+  <string name="menu_gallery">Gallery</string>
+  <string name="menu_slideshow">Slideshow</string>
+  <string name="my_cosplays">My Cosplays</string>
 
-    <!--TITLES-->
-    <string name="CosNet">CosNet</string>
-    <string name="AddCosplayItemTitle">Add Item</string>
-    <string name="CosplayItemShowTitle">Cosplay Item</string>
+  <!--TITLES-->
+  <string name="CosNet">CosNet</string>
+  <string name="AddCosplayItemTitle">Add Item</string>
+  <string name="CosplayItemShowTitle">Cosplay Item</string>
 
-    <!--LABELS-->
-    <string name="Character">Character*:</string>
-    <string name="Series">Series:</string>
-    <string name="Start_Date">Start Date:</string>
-    <string name="Due_Date">Due Date:</string>
-    <string name="Budget">Budget:</string>
-    <string name="Status">Status:</string>
-    <string name="add_button_plus">+</string>
-    <string name="save">Save</string>
+  <!--LABELS-->
+  <string name="Character">Character*:</string>
+  <string name="Series">Series:</string>
+  <string name="Start_Date">Start Date:</string>
+  <string name="Due_Date">Due Date:</string>
+  <string name="Budget">Budget:</string>
+  <string name="Status">Status:</string>
+  <string name="add_button_plus">+</string>
+  <string name="save">Save</string>
 
-    <!--CosplayItem Labels-->
-    <string name="CosplayItemName">Name:*</string>
-    <string name="CosplayItemDescription">Description:</string>
-    <string name="CosplayItemProgress">Progress:</string>
-    <string name="CosplayItemWorkTime">Work Time:</string>
-    <string name="CosplayItemPrice">Price:</string>
-    <string name="CosplayItemDueDate">Due Date:</string>
-    <string name="CosplayItemType">Type:</string>
-    <string name="CosplayItemTypeBought">Bought</string>
-    <string name="CosplayItemTypeMade">Made</string>
-    <string name="CosplayItemBuyLink">Buy Link:</string>
-    <string name="NumberPickerTime">:</string>
-    <string name="NumberPickerTimeH">H</string>
-    <string name="CosplayItemShowInfo">Info:</string>
-    <!--HINTS-->
-    <string name="CharacterHint">Character name</string>
-    <string name="SeriesHint">Serie name</string>
-    <string name="BudgetHint">Budget</string>
-    <string name="DueDateHint">15/09/2025</string>
-    <string name="StartDateHint">20/10/2020</string>
+  <!--CosplayItem Labels-->
+  <string name="CosplayItemName">Name:*</string>
+  <string name="CosplayItemDescription">Description:</string>
+  <string name="CosplayItemProgress">Progress:</string>
+  <string name="CosplayItemWorkTime">Work Time:</string>
+  <string name="CosplayItemPrice">Price:</string>
+  <string name="CosplayItemDueDate">Due Date:</string>
+  <string name="CosplayItemType">Type:</string>
+  <string name="CosplayItemTypeBought">Bought</string>
+  <string name="CosplayItemTypeMade">Made</string>
+  <string name="CosplayItemBuyLink">Buy Link:</string>
+  <string name="NumberPickerTime">:</string>
+  <string name="NumberPickerTimeH">H</string>
+  <string name="CosplayItemShowInfo">Info:</string>
+  <!--HINTS-->
+  <string name="CharacterHint">Character name</string>
+  <string name="SeriesHint">Serie name</string>
+  <string name="BudgetHint">Budget</string>
+  <string name="DueDateHint">15/09/2025</string>
+  <string name="StartDateHint">20/10/2020</string>
 
-    <!--CosplayItem Hints-->
-    <string name="CosplayItemNameHint">Name</string>
-    <string name="CosplayItemDescriptionHint">Description</string>
-    <string name="CosplayItemProgressHint">Progress</string>
-    <string name="CosplayItemWorkTimeHint">Total Work Time</string>
-    <string name="CosplayItemDueDateHint">15/09/2025</string>
-    <string name="CosplayItemPriceHint">Price</string>
-    <string name="CosplayItemBuyLinkHint">buy Link</string>
+  <!--CosplayItem Hints-->
+  <string name="CosplayItemNameHint">Name</string>
+  <string name="CosplayItemDescriptionHint">Description</string>
+  <string name="CosplayItemProgressHint">Progress</string>
+  <string name="CosplayItemWorkTimeHint">Total Work Time</string>
+  <string name="CosplayItemDueDateHint">15/09/2025</string>
+  <string name="CosplayItemPriceHint">Price</string>
+  <string name="CosplayItemBuyLinkHint">Buy Link</string>
 
-    <!--CONTENTDESCRIPTIONS-->
-    <string name="CosplayPic">Cosplay Picture</string>
+  <!--CONTENTDESCRIPTIONS-->
+  <string name="CosplayPic">Cosplay Picture</string>
 
-    <!--INPUTS-->
-    <string name="CharacterInput" />
-    <string name="SeriesInput" />
+  <!--INPUTS-->
+  <string name="CharacterInput" />
+  <string name="SeriesInput" />
 
-    <!--COSPLAY ITEM INPUTS-->
-    <string name="CosplayItemNameInput" />
-    <string name="CosplayItemDescriptionInput" />
-    <string name="CosplayItemProgressInput" />
-    <string name="CosplayItemBuyLinkInput" />
-    <string name="CosplayItemWorkTimeInput" />
+  <!--COSPLAY ITEM INPUTS-->
+  <string name="CosplayItemNameInput" />
+  <string name="CosplayItemDescriptionInput" />
+  <string name="CosplayItemProgressInput" />
+  <string name="CosplayItemBuyLinkInput" />
+  <string name="CosplayItemWorkTimeInput" />
 
   <!--STATUSSEN-->
   <string name="In_Progess">In Progress</string>
@@ -87,21 +87,26 @@
   <string name="Done">Done</string>
   <string name="EditCosplayTitle">Edit Item</string>
   <!--UNSORTED-->
-    <string name="Items">Items</string>
-    <string name="ItemList">List of Cosplay items</string>
-    <string name="CosplayItems">Cosplay Items</string>
-    <string name="CosplayItemPicContentDescription">Picture of cosplay item</string>
-    <string name="CosplayItemStatusPicContentDecription" />
-    <string name="TimeLbl">Time:</string>
-    <string name="MadeItem">Made Items</string>
-    <string name="BoughtItems">Bought Items</string>
-    <string name="create">Create</string>
-    <string name="characterNameErrorEmpty">*Field is required</string>
-    <string name="max150Characters">*Max 150 characters</string>
-    <string name="max9Numbers">*Max 9 numbers</string>
-    <string name="dueBeforeStart">*Due Date can\'t be before Start Date</string>
-    <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
-    <string name="max650Characters">*Max 650 characters</string>
+  <string name="Items">Items</string>
+  <string name="ItemList">List of Cosplay items</string>
+  <string name="CosplayItems">Cosplay Items</string>
+  <string name="CosplayItemPicContentDescription">Picture of cosplay item</string>
+  <string name="CosplayItemStatusPicContentDecription" />
+  <string name="TimeLbl">Time:</string>
+  <string name="MadeItem">Made Items</string>
+  <string name="BoughtItems">Bought Items</string>
+  <string name="create">Create</string>
+  <string name="characterNameErrorEmpty">*Field is required</string>
+  <string name="max150Characters">*Max 150 characters</string>
+  <string name="max9Numbers">*Max 9 numbers</string>
+  <string name="dueBeforeStart">*Due Date can\'t be before Start Date</string>
+  <string name="startAfterDue">*Start Date can\'t be after Due Date</string>
+  <string name="max650Characters">*Max 650 characters</string>
+  <string name="materials">Materials</string>
+  <string name="MaterialsTitle">Item Materials</string>
+  <string name="AddMaterialTitle">Add Material</string>
+  <string name="MaterialNameHint">Name of material</string>
+  <string name="max250Characters">*Max 250 characters</string>
 
 
 </resources>
