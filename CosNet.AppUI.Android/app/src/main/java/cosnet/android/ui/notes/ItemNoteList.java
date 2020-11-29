@@ -6,7 +6,9 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -22,6 +24,8 @@ import cosnet.android.adapters.NotesListAdapter;
 
 public class ItemNoteList extends AppCompatActivity {
   private static final String TAG = "ItemNoteList";
+  private static final int REQUEST_DELETE_NOTE = 1;
+  private static final int REQUEST_ADD_NOTE = 2;
 
   private ImageButton createNoteBTN;
   private List<Note> notesList;
@@ -56,7 +60,7 @@ public class ItemNoteList extends AppCompatActivity {
 
       for (Note note : notesList)
       {
-        if(note.itemId != null)
+        if(note.type == "item")
         {
           list.add(note);
         }
@@ -89,10 +93,16 @@ public class ItemNoteList extends AppCompatActivity {
   }
 
   private void setListeners() {
+    notesListView.setOnItemClickListener((parent, v , position, id) ->{
+      Note note = notesList.get(position);
+      Intent intent = new Intent(this, ShowItemNote.class);
+      intent.putExtra("note", note);
+      startActivityForResult(intent, REQUEST_DELETE_NOTE);
+    });
     createNoteBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this, AddNoteToItem.class);
-      intent.putExtra("cosplayItem", cosplayItem);
-      startActivity(intent);
+      intent.putExtra("cosplayitem", cosplayItem);
+      startActivityForResult(intent, REQUEST_ADD_NOTE);
     });
   }
 
@@ -101,5 +111,39 @@ public class ItemNoteList extends AppCompatActivity {
     notesListView = findViewById(R.id.NotesList);
     toolbarTitle = findViewById(R.id.toolbarTitle);
     toolbarTitle.setText(cosplayItem.itemName);
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    //switch for the requests
+    switch (requestCode) {
+      case REQUEST_DELETE_NOTE:
+        //switch for the results from add cosplay item
+        switch (resultCode) {
+          case RESULT_OK:
+            String addedNote = data.getStringExtra("addedNote");
+            Toast.makeText(this, addedNote + " Added", Toast.LENGTH_SHORT).show();
+            createList();
+            break;
+          case RESULT_CANCELED:
+            Toast.makeText(this, "Cosplay Note Canceled", Toast.LENGTH_SHORT).show();
+            break;
+        }
+        break;
+      case REQUEST_ADD_NOTE:
+        switch (resultCode) {
+          case RESULT_OK:
+            String deletedNote = data.getStringExtra("deletedCosplayNote");
+            Toast.makeText(this, deletedNote + " Deleted", Toast.LENGTH_SHORT).show();
+            createList();
+            break;
+          case RESULT_CANCELED:
+            createList();
+            break;
+        }
+        break;
+    }
   }
 }
