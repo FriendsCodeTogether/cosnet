@@ -11,5 +11,6 @@ namespace CosNet.API.Data.DBContexts
 
         public DbSet<Cosplay> Cosplays { get; set; }
         public DbSet<CosplayItem> CosplayItems { get; set; }
+        public DbSet<CosplayItemMaterial> CosplayItemMaterials { get; set; }
     }
 }

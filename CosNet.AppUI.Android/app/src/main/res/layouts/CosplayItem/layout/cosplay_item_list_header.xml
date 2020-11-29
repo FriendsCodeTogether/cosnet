@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/borders_light_grey"
+  android:backgroundTint="@color/colorPrimaryDark">
+
+  <TextView
+    android:id="@+id/CosplayItemsExpListViewHeaderTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/MadeItem"
+    android:textColor="@android:color/background_light"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+    android:id="@+id/MadeItemsListCollapseBtn"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_marginEnd="16dp"
+    android:background="@color/colorPrimaryDark"
+    android:scaleType="fitCenter"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@android:drawable/arrow_down_float" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
