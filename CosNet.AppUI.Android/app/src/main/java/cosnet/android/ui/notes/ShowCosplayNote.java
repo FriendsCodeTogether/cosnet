@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Note;
 import cosnet.android.R;
+import cosnet.android.ui.cosplay.ShowCosplay;
 import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 
 public class ShowCosplayNote extends AppCompatActivity {
@@ -77,7 +78,7 @@ public class ShowCosplayNote extends AppCompatActivity {
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.showNoteEditMenu:
-        Intent intent = new Intent(this, EditItemNote.class);
+        Intent intent = new Intent(this, EditCosplayNote.class);
         intent.putExtra("note", note);
         startActivityForResult(intent, REQUEST_EDIT_NOTE);
         return true;
@@ -88,7 +89,7 @@ public class ShowCosplayNote extends AppCompatActivity {
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> { });
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
           db.getNoteDAO().deleteItem(note);
-          Intent intentDelete = new Intent(this, ShowCosplayItem.class);
+          Intent intentDelete = new Intent(this, ShowCosplay.class);
           intentDelete.putExtra("deletedNote", note.title);
           setResult(RESULT_OK, intentDelete);
           finish();
