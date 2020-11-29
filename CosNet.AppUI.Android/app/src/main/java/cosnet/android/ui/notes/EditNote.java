@@ -2,7 +2,6 @@ package cosnet.android.ui.notes;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
 
@@ -11,33 +10,23 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
 import cosnet.android.CosnetDb;
-import cosnet.android.Entities.Cosplay;
-import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.Note;
 import cosnet.android.R;
 
-public class AddNoteToItem extends AppCompatActivity {
-
+public class EditNote extends AppCompatActivity {
   private static final String TAG = "Add Note";
 
   private CosnetDb db;
-  private CosplayItem cosplayItem;
-  private Button addNoteButton;
+  private Note note;
+  private Button saveNoteButton;
   private TextInputLayout noteNameLayout;
   private TextInputLayout noteDescriptionLayout;
-  private String noteType;
-  private String date;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.add_note);
+    setContentView(R.layout.edit_note);
     getWindow().setSoftInputMode(
       WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     addToolbar();
@@ -47,7 +36,7 @@ public class AddNoteToItem extends AppCompatActivity {
     setListeners();
 
     Intent incomingIntent = getIntent();
-    cosplayItem = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
+    note = (Note) incomingIntent.getSerializableExtra("note");
   }
 
   private void addToolbar() {
@@ -62,21 +51,18 @@ public class AddNoteToItem extends AppCompatActivity {
   }
 
   private void getItemsBound() {
-    addNoteButton = (Button) findViewById(R.id.NoteAddButton);
-    noteNameLayout = (TextInputLayout) findViewById(R.id.noteNametextInput);
-    noteDescriptionLayout = (TextInputLayout) findViewById(R.id.noteDescriptionTextInput);
+    saveNoteButton = findViewById(R.id.editNoteAddButton);
+    noteNameLayout = findViewById(R.id.editNoteNametextInput);
+    noteDescriptionLayout = findViewById(R.id.editNoteDescriptionTextInput);
   }
 
   private void initializeItems() {
-    noteType="item";
-
-    Date c = Calendar.getInstance().getTime();
-    SimpleDateFormat df = new SimpleDateFormat("dd/MMM/yyyy  HH:mm", Locale.getDefault());
-    date = df.format(c);
+    noteNameLayout.getEditText().setText(note.title);
+    noteDescriptionLayout.getEditText().setText(note.description);
   }
 
   private void setListeners() {
-    addNoteButton.setOnClickListener(v -> onClickAddButton());
+    saveNoteButton.setOnClickListener(v -> onClickAddButton());
   }
 
   private boolean validateItemDescrition() {
@@ -109,21 +95,15 @@ public class AddNoteToItem extends AppCompatActivity {
     if (!validateItemName() | !validateItemDescrition()) {
       return;
     }
-    Note newNote = new Note();
 
-    newNote.cosplayId="";
-    newNote.itemId = cosplayItem.itemId;
-    newNote.title = noteNameLayout.getEditText().getText().toString();
-    newNote.description= noteDescriptionLayout.getEditText().getText().toString();
-    newNote.type=noteType;
-    newNote.createdDate=date;
+    note.title = noteNameLayout.getEditText().getText().toString();
+    note.description= noteDescriptionLayout.getEditText().getText().toString();
 
-    db.getNoteDAO().insertItem(newNote);
+    db.getNoteDAO().updateItem(note);
 
     Intent intent = new Intent();
-    intent.putExtra("addedNote",newNote.title);
+    intent.putExtra("addedNote",note.title);
     setResult(RESULT_OK,intent);
     finish();
   }
 }
-
