@@ -6,7 +6,7 @@
   android:background="@color/colorPrimaryDark"
   android:isScrollContainer="true"
   android:orientation="vertical"
-  tools:context=".ui.notes.NoteList">
+  tools:context=".ui.notes.ItemNoteList">
 
   <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appBarLayout"

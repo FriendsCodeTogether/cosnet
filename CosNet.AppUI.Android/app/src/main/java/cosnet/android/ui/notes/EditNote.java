@@ -15,7 +15,7 @@ import cosnet.android.Entities.Note;
 import cosnet.android.R;
 
 public class EditNote extends AppCompatActivity {
-  private static final String TAG = "Add Note";
+  private static final String TAG = "Edit Note";
 
   private CosnetDb db;
   private Note note;

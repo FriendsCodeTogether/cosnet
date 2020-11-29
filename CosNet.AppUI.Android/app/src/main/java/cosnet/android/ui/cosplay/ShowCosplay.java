@@ -24,6 +24,7 @@ import cosnet.android.R;
 import cosnet.android.ui.cosplayItem.CosplayItemsList;
 import cosnet.android.ui.notes.AddNoteToCosplay;
 import cosnet.android.ui.notes.AddNoteToItem;
+import cosnet.android.ui.notes.CosplayNoteList;
 
 public class ShowCosplay extends AppCompatActivity {
 
@@ -99,7 +100,7 @@ public class ShowCosplay extends AppCompatActivity {
       startActivity(intent);
     });
     cosplayNotesBTN.setOnClickListener(v -> {
-      Intent intent = new Intent(this, AddNoteToCosplay.class);
+      Intent intent = new Intent(this, CosplayNoteList.class);
       intent.putExtra("cosplay", cosplay);
       startActivity(intent);
     });

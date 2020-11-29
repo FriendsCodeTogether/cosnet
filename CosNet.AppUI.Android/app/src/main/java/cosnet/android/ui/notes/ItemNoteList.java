@@ -3,18 +3,12 @@ package cosnet.android.ui.notes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +19,9 @@ import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.Note;
 import cosnet.android.R;
 import cosnet.android.adapters.NotesListAdapter;
-import cosnet.android.ui.cosplayItem.AddCosplayItem;
-import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 
-public class NoteList extends AppCompatActivity {
-  private static final String TAG = "CosplayItemList";
+public class ItemNoteList extends AppCompatActivity {
+  private static final String TAG = "ItemNoteList";
 
   private ImageButton createNoteBTN;
   private List<Note> notesList;
@@ -61,7 +53,14 @@ public class NoteList extends AppCompatActivity {
     if (!notesList.isEmpty())
     {
       ArrayList<Note> list = new ArrayList<>();
-      list.addAll(notesList);
+
+      for (Note note : notesList)
+      {
+        if(note.itemId != null)
+        {
+          list.add(note);
+        }
+      }
 
       adapter = new NotesListAdapter(this, R.layout.note_list_item, list);
       notesListView.setAdapter(adapter);

@@ -49,12 +49,15 @@
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
     <activity
       android:name=".ui.notes.AddNoteToItem"
-      android:parentActivityName=".ui.notes.NoteList" />
+      android:parentActivityName=".ui.notes.ItemNoteList" />
     <activity
-      android:name=".ui.notes.NoteList"
+      android:name=".ui.notes.ItemNoteList"
       android:parentActivityName=".ui.cosplayItem.ShowCosplayItem" />
     <activity
       android:name=".ui.notes.AddNoteToCosplay"
+      android:parentActivityName=".ui.notes.CosplayNoteList" />
+    <activity
+      android:name=".ui.notes.CosplayNoteList"
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
     <activity
       android:name=".ui.cosplay.ShowCosplay"
