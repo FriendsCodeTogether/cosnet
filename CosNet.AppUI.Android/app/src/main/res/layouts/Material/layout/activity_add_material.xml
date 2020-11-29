@@ -6,7 +6,6 @@
   android:layout_height="match_parent"
   android:fillViewport="true">
 
-
   <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/addMaterialConstraintLayout"
     android:layout_width="match_parent"
