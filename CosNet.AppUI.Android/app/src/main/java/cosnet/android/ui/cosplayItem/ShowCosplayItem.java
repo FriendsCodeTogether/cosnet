@@ -21,6 +21,7 @@ import cosnet.android.Entities.CosplayItem;
 import cosnet.android.MainActivity;
 import cosnet.android.R;
 import cosnet.android.CosnetDb;
+import cosnet.android.ui.material.MaterialsList;
 
 public class ShowCosplayItem extends AppCompatActivity {
 
@@ -61,7 +62,7 @@ public class ShowCosplayItem extends AppCompatActivity {
 
   private void setListeners() {
     itemMaterialsBtn.setOnClickListener(v -> {
-      Intent intent = new Intent();
+      Intent intent = new Intent(this, MaterialsList.class);
       intent.putExtra("item", item);
       startActivity(intent);
     });
