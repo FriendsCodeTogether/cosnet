@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  tools:context=".ui.material.ShowMaterial">
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    tools:ignore="MissingConstraints">
+    <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="@drawable/gradient"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/kalam_bold"
+        android:text="@string/MaterialShowTitle"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+    </androidx.appcompat.widget.Toolbar>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <TextView
+    android:id="@+id/MaterialShowName"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:fontFamily="@font/lato_bold"
+    android:gravity="center_vertical"
+    android:text="@string/MaterialNameHint"
+    android:textColor="@android:color/background_light"
+    android:textSize="30sp"
+    android:textStyle="bold"
+    app:autoSizeMaxTextSize="35sp"
+    app:autoSizeMinTextSize="18sp"
+    app:autoSizeTextType="uniform"
+    app:layout_constraintStart_toStartOf="@+id/MaterialShowDescription"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+
+    <TextView
+      android:id="@+id/MaterialShowPrice"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemPriceHint"
+      android:textColor="@android:color/background_light"
+      android:textSize="15sp"
+      app:layout_constraintStart_toEndOf="@+id/MaterialShowPriceLabel"
+      app:layout_constraintTop_toTopOf="@+id/MaterialShowPriceLabel" />
+
+    <TextView
+      android:id="@+id/MaterialShowPriceLabel"
+      style="@style/CustomText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemPrice"
+      android:textSize="15sp"
+      app:layout_constraintStart_toStartOf="@+id/MaterialShowDescription"
+      app:layout_constraintTop_toBottomOf="@+id/MaterialShowDescription" />
+
+  <TextView
+    android:id="@+id/MaterialShowDescription"
+    style="@style/CustomText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:fontFamily="@font/lato_bold"
+    android:text="@string/CosplayItemDescriptionHint"
+    android:textSize="20sp"
+    app:autoSizeMaxTextSize="20sp"
+    app:autoSizeTextType="uniform"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/MaterialShowName" />
+
+    <TextView
+      android:id="@+id/MaterialShowBuyLink"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemBuyLinkHint"
+      android:textColor="@android:color/background_light"
+      android:textSize="15sp"
+      app:layout_constraintStart_toEndOf="@+id/MaterialShowBuyLinkLabel"
+      app:layout_constraintTop_toTopOf="@+id/MaterialShowBuyLinkLabel" />
+
+    <TextView
+      android:id="@+id/MaterialShowBuyLinkLabel"
+      style="@style/CustomText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemBuyLink"
+      android:textSize="15sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/MaterialShowPriceLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

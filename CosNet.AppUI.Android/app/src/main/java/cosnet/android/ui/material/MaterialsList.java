@@ -23,6 +23,8 @@ public class MaterialsList extends AppCompatActivity {
   private final static int REQUEST_ADD_MATERIAL = 1;
 
   private ImageButton addMaterialBtn;
+  //temp
+  private ImageButton showButton;
 
   private CosplayItem cosplayItem;
 
@@ -41,6 +43,7 @@ public class MaterialsList extends AppCompatActivity {
 
   private void initialiseWidgets() {
     addMaterialBtn = findViewById(R.id.addNewMaterialBTN);
+    showButton = findViewById(R.id.showBTN);
   }
 
   private void setListeners() {
@@ -48,6 +51,12 @@ public class MaterialsList extends AppCompatActivity {
       Intent intent = new Intent(this, AddMaterial.class);
       intent.putExtra("item", cosplayItem);
       startActivityForResult(intent, REQUEST_ADD_MATERIAL);
+    });
+
+    //temp
+    showButton.setOnClickListener(v ->{
+      Intent intent = new Intent(this, ShowMaterial.class);
+      startActivity(intent);
     });
   }
 
