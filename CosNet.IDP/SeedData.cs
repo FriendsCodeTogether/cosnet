@@ -21,9 +21,9 @@ namespace CosNet.IDP
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlite(connectionString));
+               options.UseSqlServer(connectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<CosNetUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -34,12 +34,13 @@ namespace CosNet.IDP
                     var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
                     context.Database.Migrate();
 
-                    var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<CosNetUser>>();
                     var alice = userMgr.FindByNameAsync("alice").Result;
                     if (alice == null)
                     {
-                        alice = new ApplicationUser
+                        alice = new CosNetUser
                         {
+                            Id = "f22f1397-c53f-4f88-9300-5dbdf13ee207",
                             UserName = "alice",
                             Email = "AliceSmith@email.com",
                             EmailConfirmed = true,
@@ -70,8 +71,9 @@ namespace CosNet.IDP
                     var bob = userMgr.FindByNameAsync("bob").Result;
                     if (bob == null)
                     {
-                        bob = new ApplicationUser
+                        bob = new CosNetUser
                         {
+                            Id = "f22f1397-c53f-4f88-9300-5dbdf13ee208",
                             UserName = "bob",
                             Email = "BobSmith@email.com",
                             EmailConfirmed = true

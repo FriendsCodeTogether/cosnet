@@ -31,14 +31,14 @@ namespace CosNet.IDP
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             if (Environment.IsDevelopment())
             {
                 services.AddDatabaseDeveloperPageExceptionFilter();
             }
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<CosNetUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -56,7 +56,7 @@ namespace CosNet.IDP
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryClients(Config.Clients)
-                .AddAspNetIdentity<ApplicationUser>();
+                .AddAspNetIdentity<CosNetUser>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
