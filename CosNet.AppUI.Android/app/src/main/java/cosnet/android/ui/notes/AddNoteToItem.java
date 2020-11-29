@@ -3,6 +3,7 @@ package cosnet.android.ui.notes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +38,8 @@ public class AddNoteToItem extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.add_note);
-
+    getWindow().setSoftInputMode(
+      WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     addToolbar();
     addDatabase();
     getItemsBound();
