@@ -2,6 +2,7 @@ package cosnet.android.ui.notes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -65,6 +66,15 @@ public class NoteList extends AppCompatActivity {
       adapter = new NotesListAdapter(this, R.layout.note_list_item, list);
       notesListView.setAdapter(adapter);
     }
+  }
+
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   private void addDatabase() {
