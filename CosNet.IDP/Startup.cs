@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace CosNet.IDP
 {
@@ -31,7 +32,7 @@ namespace CosNet.IDP
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("IDPIdentityDb")));
 
             if (Environment.IsDevelopment())
             {
@@ -52,14 +53,28 @@ namespace CosNet.IDP
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
             })
-                .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryApiResources(Config.ApiResources)
-                .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<CosNetUser>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            var migrationsAssembly = typeof(Startup)
+                .GetTypeInfo().Assembly.GetName().Name;
+
+            builder.AddConfigurationStore(options =>
+            {
+                options.ConfigureDbContext = builder =>
+                    builder.UseSqlServer(
+                        Configuration.GetConnectionString("IDPDataDb"),
+                        options => options.MigrationsAssembly(migrationsAssembly));
+            });
+
+            builder.AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = builder =>
+                    builder.UseSqlServer(Configuration.GetConnectionString("IDPDataDb"),
+                    options => options.MigrationsAssembly(migrationsAssembly));
+            });
 
             services.AddAuthentication()
                 .AddGoogle(options =>

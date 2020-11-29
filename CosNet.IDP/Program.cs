@@ -48,8 +48,8 @@ namespace CosNet.IDP
                 {
                     Log.Information("Seeding database...");
                     var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString("DefaultConnection");
-                    SeedData.EnsureSeedData(connectionString);
+                    var connectionString = config.GetConnectionString("IDPIdentityDb");
+                    SeedData.EnsureSeedData(config);
                     Log.Information("Done seeding database.");
                     return 0;
                 }
