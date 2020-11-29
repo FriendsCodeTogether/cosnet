@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import cosnet.android.Data.DAOs.*;
 import cosnet.android.Entities.*;
 
-@Database(entities = {Cosplay.class, CosplayItem.class}, version = 6, exportSchema = false)
+@Database(entities = {Cosplay.class, CosplayItem.class, CosplayItemMaterial.class}, version = 7, exportSchema = false)
 public abstract  class CosnetDb extends RoomDatabase {
 
    private static CosnetDb minstance;
@@ -17,6 +17,7 @@ public abstract  class CosnetDb extends RoomDatabase {
 
    public abstract CosplayDAO getCosplayDAO();
    public abstract CosplayItemDAO getCosplayItemDAO();
+   public abstract CosplayItemMaterialDAO getCosplayItemMaterialDAO();
 
    public static synchronized CosnetDb getInstance(Context ctx) {
       if (minstance == null){
