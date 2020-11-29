@@ -34,6 +34,7 @@
   </com.google.android.material.appbar.AppBarLayout>
 
   <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout2"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     app:layout_constraintEnd_toEndOf="parent"
@@ -72,21 +73,13 @@
       app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <ImageButton
-    android:id="@+id/showBTN"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
-    android:background="@drawable/roundbutton"
-    android:contentDescription="@string/add_button_plus"
-    android:src="@drawable/ic_baseline_add_24"
-    android:text="@string/add_button_plus"
-    android:textAlignment="center"
-    android:textColor="@color/cardview_light_background"
-    android:textSize="40sp"
+  <ListView
+    android:id="@+id/MaterialsListView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+    tools:listitem="@layout/cosplay_item_material_list_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

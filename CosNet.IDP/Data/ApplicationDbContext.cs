@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CosNet.IDP.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<CosNetUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

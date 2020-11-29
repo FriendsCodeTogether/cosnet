@@ -61,6 +61,9 @@ public class AddMaterial extends AppCompatActivity {
     materialBuyLinkLayout = findViewById(R.id.AddMaterialBuyLinkTextInputLayout);
     materialPriceEditText = findViewById(R.id.AddMaterialPriceEditText);
     saveMaterialBtn = findViewById(R.id.AddMaterialAddBtn);
+
+    materialPriceEditText.setCurrency("€");
+    materialPriceEditText.setSpacing(true);
   }
 
   private void setListeners() {
