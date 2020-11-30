@@ -13,9 +13,10 @@ namespace CosNet.API.StartupSections.Configuration
         {
             services.AddHttpContextAccessor();
 
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICosplayService, CosplayService>();
             services.AddTransient<ICosplayItemService, CosplayItemService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICosplayItemMaterialService, CosplayItemMaterialService>();
 
             return services;
         }

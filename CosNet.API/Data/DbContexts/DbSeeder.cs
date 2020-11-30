@@ -160,6 +160,32 @@ namespace CosNet.API.Data.DBContexts
                 };
                 context.CosplayItems.AddRange(cosplayItems);
                 context.SaveChanges();
+
+                var cosplayItemMaterials = new List<CosplayItemMaterial>
+                {
+                    new CosplayItemMaterial
+                    {
+                        CosplayItemMaterialId = Guid.NewGuid(),
+                        Name = "Steel Blade",
+                        Description = "This is made out of steel with a size of 1 meter",
+                        Price = 50.0m,
+                        BuyLink = "https://www.kittyconnection.net/",
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    },
+                    new CosplayItemMaterial
+                    {
+                        CosplayItemMaterialId = Guid.NewGuid(),
+                        Name = "Black Hilt",
+                        Description = "Hilt made out of wood with iron chain hanging",
+                        Price = 10.0m,
+                        BuyLink = "https://www.kittyconnection.net/",
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    }
+                };
+                context.CosplayItemMaterials.AddRange(cosplayItemMaterials);
+                context.SaveChanges();
             }
         }
 
