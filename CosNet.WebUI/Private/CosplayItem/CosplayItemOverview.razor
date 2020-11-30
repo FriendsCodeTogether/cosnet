@@ -1,6 +1,8 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}"
 @inject ICosplayItemService CosplayItemService
 @inject ICosplayItemMaterialService CosplayItemMaterialService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 @using CosNet.Shared.DTOs.CosplayItem
 @using CosNet.Shared.DTOs.CosplayItemMaterial
 
@@ -62,10 +64,9 @@ else
                             </div>
                             <div class="cosplay-item-material-item-buttons">
                                 <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
-                                <a class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" href="">Delete</a>
+                                <button class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" @onclick="() => Delete(material)">Delete</button>
                             </div>
                         </div>
-
                     }
                 }
             </div>
@@ -87,5 +88,14 @@ else
     {
         cosplayItem = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
         cosplayItemMaterials = await CosplayItemMaterialService.GetCosplayItemMaterialsAsync(CosplayItemId);
+    }
+
+    async Task Delete(CosplayItemMaterialDTO cosplayItemMaterial)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay item material '{cosplayItemMaterial.Name}'?"))
+            return;
+
+        await CosplayItemMaterialService.DeleteCosplayItemMaterialAsync(CosplayItemId, cosplayItemMaterial.CosplayItemMaterialId);
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}",true);
     }
 }
