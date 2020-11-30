@@ -1,6 +1,7 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}/cosplayitemmaterial/{CosplayItemMaterialId:guid}/edit"
 @inject ICosplayItemMaterialService CosplayItemMaterialService
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 @using CosNet.Shared.DTOs.CosplayItemMaterial
 
 <div class="cosplay-form-container">
@@ -40,6 +41,7 @@
                     <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId">Cancel</a>
                 </div>
             </EditForm>
+            <button class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" @onclick="() => Delete(cosplayItemMaterial)">Delete</button>
         </div>
     </div>
 </div>
@@ -75,6 +77,15 @@
     {
         await CosplayItemMaterialService.UpdateCosplayItemMaterialAsync(CosplayItemId, CosplayItemMaterialId, cosplayItemMaterial);
 
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}");
+    }
+
+    async Task Delete(CosplayItemMaterialForUpdateDTO cosplayItemMaterial)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay item material '{cosplayItemMaterial.Name}'?"))
+            return;
+
+        await CosplayItemMaterialService.DeleteCosplayItemMaterialAsync(CosplayItemId, CosplayItemMaterialId);
         NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}");
     }
 }
