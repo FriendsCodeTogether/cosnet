@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -29,7 +30,7 @@ public class ItemNoteList extends AppCompatActivity {
   private static final int REQUEST_ADD_NOTE = 2;
 
   private ImageButton createNoteBTN;
-  private List<Note> notesList;
+  private ArrayList<Note> notes;
   private ListView notesListView;
   private NotesListAdapter adapter;
   private CosplayItem cosplayItem;
@@ -54,22 +55,12 @@ public class ItemNoteList extends AppCompatActivity {
   }
 
   private void createList() {
-    notesList = noteDAO.getNotes();
-    if (!notesList.isEmpty())
-    {
-      ArrayList<Note> list = new ArrayList<>();
+      List<Note> notelist = noteDAO.getNotesWithItem(cosplayItem.itemId);
+      notes = new ArrayList<>();
+      notes.addAll(notelist);
 
-      for (Note note : notesList)
-      {
-        if(Objects.equals(note.itemId, cosplayItem.itemId))
-        {
-          list.add(note);
-        }
-      }
-
-      adapter = new NotesListAdapter(this, R.layout.note_list_item, list);
+      adapter = new NotesListAdapter(this, R.layout.note_list_item, notes);
       notesListView.setAdapter(adapter);
-    }
   }
 
   public boolean onOptionsItemSelected(MenuItem item) {
@@ -95,7 +86,7 @@ public class ItemNoteList extends AppCompatActivity {
 
   private void setListeners() {
     notesListView.setOnItemClickListener((parent, v , position, id) ->{
-      Note note = notesList.get(position);
+      Note note = notes.get(position);
       Intent intent = new Intent(this, ShowItemNote.class);
       intent.putExtra("note", note);
       startActivityForResult(intent, REQUEST_DELETE_NOTE);

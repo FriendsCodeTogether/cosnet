@@ -31,10 +31,10 @@ public interface NoteDAO {
   Note getNoteById(int id);
 
   @Transaction
-  @Query("SELECT * FROM CosplayItem WHERE item_id = :id")
-  ItemWithNotes getItemWithNotes(String id);
+  @Query("SELECT * FROM Note WHERE item_id = :id")
+  List<Note> getNotesWithItem(String id);
 
   @Transaction
-  @Query("SELECT * FROM Cosplay WHERE cosplay_id = :id")
-  CosplayWithNotes getCosplayWithNotes(String id);
+  @Query("SELECT * FROM Note WHERE cosplay_id = :id")
+  List<Note> getNotesWithCosplay(String id);
 }
