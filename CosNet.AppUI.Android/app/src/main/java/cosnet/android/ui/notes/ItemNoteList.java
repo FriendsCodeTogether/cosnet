@@ -102,7 +102,7 @@ public class ItemNoteList extends AppCompatActivity {
     });
     createNoteBTN.setOnClickListener(v -> {
       Intent intent = new Intent(this, AddNoteToItem.class);
-      intent.putExtra("cosplayitem", cosplayItem);
+      intent.putExtra("cosplayItem", cosplayItem);
       startActivityForResult(intent, REQUEST_ADD_NOTE);
     });
   }
