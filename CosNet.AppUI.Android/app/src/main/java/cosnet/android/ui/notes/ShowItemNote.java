@@ -21,6 +21,7 @@ import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 public class ShowItemNote extends AppCompatActivity {
 
   private static final int REQUEST_EDIT_NOTE = 1;
+
   private TextView noteName;
   private TextView noteDescription;
   private TextView noteDate;
@@ -39,7 +40,6 @@ public class ShowItemNote extends AppCompatActivity {
     addDatabase();
     initialiseWidgets();
     setWidgets();
-
   }
 
   private void addToolbar() {
@@ -114,6 +114,4 @@ public class ShowItemNote extends AppCompatActivity {
       }
     }
   }
-
-
 }

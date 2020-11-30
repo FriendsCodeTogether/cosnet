@@ -17,11 +17,11 @@ import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Note;
 import cosnet.android.R;
 import cosnet.android.ui.cosplay.ShowCosplay;
-import cosnet.android.ui.cosplayItem.ShowCosplayItem;
 
 public class ShowCosplayNote extends AppCompatActivity {
 
   private static final int REQUEST_EDIT_NOTE = 1;
+
   private TextView noteName;
   private TextView noteDescription;
   private TextView noteDate;
@@ -40,10 +40,7 @@ public class ShowCosplayNote extends AppCompatActivity {
     addDatabase();
     initialiseWidgets();
     setWidgets();
-
   }
-
-
 
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
@@ -105,6 +102,7 @@ public class ShowCosplayNote extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
   }
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
@@ -117,6 +115,4 @@ public class ShowCosplayNote extends AppCompatActivity {
       }
     }
   }
-
-
 }

@@ -12,10 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Data.DAOs.NoteDAO;
@@ -25,6 +23,7 @@ import cosnet.android.R;
 import cosnet.android.adapters.NotesListAdapter;
 
 public class ItemNoteList extends AppCompatActivity {
+
   private static final String TAG = "ItemNoteList";
   private static final int REQUEST_DELETE_NOTE = 1;
   private static final int REQUEST_ADD_NOTE = 2;
@@ -51,14 +50,12 @@ public class ItemNoteList extends AppCompatActivity {
     initialiseWidgets();
     createList();
     setListeners();
-
   }
 
   private void createList() {
       List<Note> notelist = noteDAO.getNotesWithItem(cosplayItem.itemId);
       notes = new ArrayList<>();
       notes.addAll(notelist);
-
       adapter = new NotesListAdapter(this, R.layout.note_list_item, notes);
       notesListView.setAdapter(adapter);
   }

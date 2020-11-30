@@ -31,7 +31,6 @@
         android:text="@string/ItemNotesToolbarTitle"
         android:textColor="@android:color/white"
         android:textSize="40sp" />
-
     </androidx.appcompat.widget.Toolbar>
   </com.google.android.material.appbar.AppBarLayout>
 
@@ -81,7 +80,5 @@
       android:textSize="30sp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
-
   </androidx.constraintlayout.widget.ConstraintLayout>
-
 </LinearLayout>

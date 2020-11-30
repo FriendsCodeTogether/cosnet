@@ -6,11 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
-
 import java.util.List;
-
-import cosnet.android.Data.Relations.CosplayWithNotes;
-import cosnet.android.Data.Relations.ItemWithNotes;
 import cosnet.android.Entities.Note;
 
 @Dao

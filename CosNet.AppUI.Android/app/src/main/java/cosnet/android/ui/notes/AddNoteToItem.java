@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import cosnet.android.CosnetDb;
-import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.Note;
 import cosnet.android.R;
@@ -40,6 +39,7 @@ public class AddNoteToItem extends AppCompatActivity {
     setContentView(R.layout.add_note);
     getWindow().setSoftInputMode(
       WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     addToolbar();
     addDatabase();
     getItemsBound();
@@ -79,7 +79,6 @@ public class AddNoteToItem extends AppCompatActivity {
 
   private void initializeItems() {
     noteType="item";
-
     Date c = Calendar.getInstance().getTime();
     SimpleDateFormat df = new SimpleDateFormat("dd/MMM/yyyy  HH:mm", Locale.getDefault());
     date = df.format(c);
@@ -120,7 +119,6 @@ public class AddNoteToItem extends AppCompatActivity {
       return;
     }
     Note newNote = new Note();
-
     newNote.cosplayId=null;
     newNote.itemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
@@ -136,4 +134,3 @@ public class AddNoteToItem extends AppCompatActivity {
     finish();
   }
 }
-

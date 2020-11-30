@@ -16,6 +16,7 @@ import cosnet.android.Entities.Note;
 import cosnet.android.R;
 
 public class EditCosplayNote extends AppCompatActivity {
+
   private static final String TAG = "Add Note";
 
   private CosnetDb db;
@@ -39,7 +40,6 @@ public class EditCosplayNote extends AppCompatActivity {
     getItemsBound();
     initializeItems();
     setListeners();
-
   }
 
   public boolean onOptionsItemSelected(MenuItem item) {

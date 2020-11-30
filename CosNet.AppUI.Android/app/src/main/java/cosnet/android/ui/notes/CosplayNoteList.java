@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Data.DAOs.NoteDAO;
@@ -24,6 +23,7 @@ import cosnet.android.R;
 import cosnet.android.adapters.NotesListAdapter;
 
 public class CosplayNoteList extends AppCompatActivity {
+
   private static final String TAG = "CosplayNoteList";
 
   private static final int REQUEST_DELETE_NOTE = 1;
@@ -57,10 +57,8 @@ public class CosplayNoteList extends AppCompatActivity {
       List<Note> noteList = noteDAO.getNotesWithCosplay(cosplay.cosplayId);
       notes = new ArrayList<>();
       notes.addAll(noteList);
-
       adapter = new NotesListAdapter(this, R.layout.note_list_item, notes);
       notesListView.setAdapter(adapter);
-
   }
 
   private void addDatabase() {

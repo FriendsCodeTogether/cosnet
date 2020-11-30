@@ -16,6 +16,7 @@ import cosnet.android.Entities.Note;
 import cosnet.android.R;
 
 public class EditItemNote extends AppCompatActivity {
+
   private static final String TAG = "Edit Note";
 
   private CosnetDb db;
@@ -118,6 +119,4 @@ public class EditItemNote extends AppCompatActivity {
     setResult(RESULT_OK,intent);
     finish();
   }
-
-
 }

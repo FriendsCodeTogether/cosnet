@@ -39,6 +39,7 @@ public class AddNoteToCosplay extends AppCompatActivity {
     setContentView(R.layout.add_note);
     getWindow().setSoftInputMode(
       WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     addToolbar();
     addDatabase();
     getItemsBound();
@@ -74,7 +75,6 @@ public class AddNoteToCosplay extends AppCompatActivity {
     addNoteButton = (Button) findViewById(R.id.NoteAddButton);
     noteNameLayout = (TextInputLayout) findViewById(R.id.noteNametextInput);
     noteDescriptionLayout = (TextInputLayout) findViewById(R.id.noteDescriptionTextInput);
-
   }
 
   private void initializeItems() {
@@ -119,7 +119,6 @@ public class AddNoteToCosplay extends AppCompatActivity {
       return;
     }
     Note newNote = new Note();
-
     newNote.cosplayId=cosplay.cosplayId;
     newNote.itemId = "";
     newNote.title = noteNameLayout.getEditText().getText().toString();
@@ -135,4 +134,3 @@ public class AddNoteToCosplay extends AppCompatActivity {
     finish();
   }
 }
-
