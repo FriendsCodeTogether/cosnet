@@ -61,7 +61,7 @@
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
     <activity
       android:name=".ui.notes.ShowItemNote"
-      android:parentActivityName=".ui.cosplayItem.ShowCosplayItem" />
+      android:parentActivityName=".ui.notes.ItemNoteList" />
     <activity
       android:name=".ui.cosplay.ShowCosplay"
       android:parentActivityName=".MainActivity" />

@@ -95,6 +95,9 @@ public class ShowItemNote extends AppCompatActivity {
         });
         alertDialog.show();
         return true;
+      case android.R.id.home:
+        onBackPressed();
+        return true;
       default:
         return super.onOptionsItemSelected(item);
     }
