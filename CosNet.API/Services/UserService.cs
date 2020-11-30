@@ -9,7 +9,6 @@ namespace CosNet.API.Services
 {
     public class UserService : IUserService
     {
-
         public ClaimsPrincipal User { get; }
         public Guid UserId => Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value);
 
