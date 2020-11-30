@@ -120,7 +120,7 @@ public class ItemNoteList extends AppCompatActivity {
 
     //switch for the requests
     switch (requestCode) {
-      case REQUEST_DELETE_NOTE:
+      case REQUEST_ADD_NOTE:
         //switch for the results from add cosplay item
         switch (resultCode) {
           case RESULT_OK:
@@ -133,10 +133,10 @@ public class ItemNoteList extends AppCompatActivity {
             break;
         }
         break;
-      case REQUEST_ADD_NOTE:
+      case REQUEST_DELETE_NOTE:
         switch (resultCode) {
           case RESULT_OK:
-            String deletedNote = data.getStringExtra("deletedCosplayNote");
+            String deletedNote = data.getStringExtra("deletedNote");
             Toast.makeText(this, deletedNote + " Deleted", Toast.LENGTH_SHORT).show();
             createList();
             break;
