@@ -107,6 +107,7 @@
   <string name="AddMaterialTitle">Add Material</string>
   <string name="MaterialNameHint">Name of material</string>
   <string name="max250Characters">*Max 250 characters</string>
+    <string name="MaterialShowTitle">Material</string>
     <string name="Price_example">€xx,xx</string>
 
 
