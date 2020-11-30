@@ -61,13 +61,6 @@ public class ShowCosplayItem extends AppCompatActivity {
     setListeners();
   }
 
-  private void setListeners() {
-    itemMaterialsBtn.setOnClickListener(v -> {
-      Intent intent = new Intent(this, MaterialsList.class);
-      intent.putExtra("item", item);
-      startActivity(intent);
-    });
-  }
 
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
