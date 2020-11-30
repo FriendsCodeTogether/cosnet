@@ -54,7 +54,7 @@ public class CosplayNoteList extends AppCompatActivity {
   }
 
   private void createList() {
-      List<Note> noteList = NoteDAO.getNotesWithCosplay(cosplay.cosplayId);
+      List<Note> noteList = noteDAO.getNotesWithCosplay(cosplay.cosplayId);
       notes = new ArrayList<>();
       notes.addAll(noteList);
 
