@@ -7,11 +7,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import cosnet.android.CosnetDb;
+import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.CosplayItemMaterial;
 import cosnet.android.R;
@@ -100,5 +103,18 @@ public class ShowMaterial extends AppCompatActivity {
   }
   private void addDatabase() {
     db = CosnetDb.getInstance(this);
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == REQUEST_EDIT_MATERIAL) {
+      if (resultCode == RESULT_OK) {
+        material = (CosplayItemMaterial) data.getSerializableExtra("editedMaterial");
+        Toast.makeText(this, material.materialName + " Edited", Toast.LENGTH_SHORT).show();
+        setWidgets();
+      }
+    }
   }
 }

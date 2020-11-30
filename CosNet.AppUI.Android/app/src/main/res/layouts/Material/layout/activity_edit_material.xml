@@ -1,9 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fillViewport="true">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/editMaterialConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     tools:context=".ui.material.EditMaterial">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appBarLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:theme="@style/AppTheme.AppBarOverlay"
+      tools:ignore="MissingConstraints">
+
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+          android:id="@+id/toolbarTitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:fontFamily="@font/kalam_bold"
+          android:text="@string/EditMaterialTitle"
+          android:textColor="@android:color/white"
+          android:textSize="40sp" />
+
+      </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+      android:id="@+id/EditMaterialNameLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemName"
+      android:textColor="@android:color/background_light"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/EditMaterialNametextInputLayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      app:counterEnabled="true"
+      app:counterMaxLength="150"
+      app:counterTextAppearance="@style/Counter"
+      app:errorEnabled="true"
+      app:errorTextAppearance="@style/Error"
+      app:hintEnabled="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialNameLbl"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialNameLbl">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditMaterialNameTextInputEditText"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:hint="@string/MaterialNameHint"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+      android:id="@+id/EditMaterialDescriptionLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemDescription"
+      android:textColor="@android:color/background_light"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialNametextInputLayout"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialNametextInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/EditMaterialDescriptionTextInputLayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      app:counterEnabled="true"
+      app:counterMaxLength="650"
+      app:counterTextAppearance="@style/Counter"
+      app:errorEnabled="true"
+      app:errorTextAppearance="@style/Error"
+      app:hintEnabled="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialDescriptionLbl"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialDescriptionLbl">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditMaterialDescriptionTextInputEditText"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="start"
+        android:hint="@string/CosplayItemDescriptionHint"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+      android:id="@+id/EditMaterialPriceLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemPrice"
+      android:textColor="@android:color/background_light"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialDescriptionTextInputLayout"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialDescriptionTextInputLayout" />
+
+    <me.abhinay.input.CurrencyEditText
+      android:id="@+id/EditMaterialPriceEditText"
+      style="@style/EditText"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:fontFamily="@font/lato_bold"
+      android:hint="@string/CosplayItemPriceHint"
+      android:importantForAutofill="no"
+      android:inputType="number"
+      android:maxLength="16"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialPriceLbl"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialPriceLbl" />
+
+    <TextView
+      android:id="@+id/EditMaterialBuyLinkLbl"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/CosplayItemBuyLink"
+      android:textColor="@android:color/background_light"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialPriceEditText"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialPriceEditText" />
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/EditMaterialBuyLinkTextInputLayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      app:counterEnabled="true"
+      app:counterMaxLength="250"
+      app:counterTextAppearance="@style/Counter"
+      app:errorEnabled="true"
+      app:errorTextAppearance="@style/Error"
+      app:hintEnabled="false"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/EditMaterialBuyLinkLbl"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialBuyLinkLbl">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditMaterialBuyLinkTextInputEditText"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:hint="@string/CosplayItemBuyLinkHint"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+      android:id="@+id/EditMaterialSaveBtn"
+      android:layout_width="165dp"
+      android:layout_height="46dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="24dp"
+      android:background="@drawable/roundbutton"
+      android:fontFamily="@font/lato_bold"
+      android:text="@string/save"
+      android:textAllCaps="false"
+      android:textColor="@android:color/background_light"
+      android:textSize="20sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/EditMaterialBuyLinkTextInputLayout"
+      app:layout_constraintVertical_bias="0.0" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
