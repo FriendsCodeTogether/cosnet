@@ -43,6 +43,8 @@ public class ShowCosplayNote extends AppCompatActivity {
 
   }
 
+
+
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -95,6 +97,9 @@ public class ShowCosplayNote extends AppCompatActivity {
           finish();
         });
         alertDialog.show();
+        return true;
+      case android.R.id.home:
+        onBackPressed();
         return true;
       default:
         return super.onOptionsItemSelected(item);
