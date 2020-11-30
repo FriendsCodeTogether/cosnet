@@ -30,8 +30,8 @@ public class CosplayNoteList extends AppCompatActivity {
   private static final int REQUEST_ADD_NOTE = 2;
 
   private ImageButton createNoteBTN;
-  private List<Note> notesList;
   private ListView notesListView;
+  ArrayList<Note> notes;
   private NotesListAdapter adapter;
   private Cosplay cosplay;
   private TextView toolbarTitle;
@@ -54,21 +54,13 @@ public class CosplayNoteList extends AppCompatActivity {
   }
 
   private void createList() {
-    notesList = noteDAO.getNotes();
-    if (!notesList.isEmpty())
-    {
-      ArrayList<Note> list = new ArrayList<>();
-      for (Note note : notesList)
-      {
-        if(Objects.equals(note.cosplayId, cosplay.cosplayId))
-          {
-            list.add(note);
-          }
-      }
+      List<Note> noteList = NoteDAO.getNotesWithCosplay(cosplay.cosplayId);
+      notes = new ArrayList<>();
+      notes.addAll(noteList);
 
-      adapter = new NotesListAdapter(this, R.layout.note_list_item, list);
+      adapter = new NotesListAdapter(this, R.layout.note_list_item, notes);
       notesListView.setAdapter(adapter);
-    }
+
   }
 
   private void addDatabase() {
@@ -85,7 +77,7 @@ public class CosplayNoteList extends AppCompatActivity {
 
   private void setListeners() {
     notesListView.setOnItemClickListener((parent, v , position, id) ->{
-      Note note = notesList.get(position);
+      Note note = notes.get(position);
       Intent intent = new Intent(this, ShowCosplayNote.class);
       intent.putExtra("note", note);
       startActivityForResult(intent, REQUEST_DELETE_NOTE);
