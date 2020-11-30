@@ -26,10 +26,12 @@ import cosnet.android.R;
 import cosnet.android.adapters.CosplayItemMaterialsListAdapter;
 import cosnet.android.adapters.CosplayItemsExpandableListAdapter;
 import cosnet.android.adapters.CosplayListAdapter;
+import cosnet.android.ui.cosplay.ShowCosplay;
 
 public class MaterialsList extends AppCompatActivity {
 
   private final static int REQUEST_ADD_MATERIAL = 1;
+  private final static int REQUEST_DELETE_MATERIAL = 2;
 
   private ImageButton addMaterialBtn;
   private ListView materialsListView;
@@ -82,10 +84,12 @@ public class MaterialsList extends AppCompatActivity {
       startActivityForResult(intent, REQUEST_ADD_MATERIAL);
     });
 
-    //temp
-    showButton.setOnClickListener(v ->{
+    //show selected Material from list
+    materialsListView.setOnItemClickListener((parent, view, position, id) -> {
+      CosplayItemMaterial material = materialsList.get(position);
       Intent intent = new Intent(this, ShowMaterial.class);
-      startActivity(intent);
+      intent.putExtra("material", material);
+      startActivityForResult(intent, REQUEST_DELETE_MATERIAL);
     });
   }
 
@@ -122,6 +126,18 @@ public class MaterialsList extends AppCompatActivity {
             break;
           case RESULT_CANCELED:
             Toast.makeText(this, "Material Canceled", Toast.LENGTH_SHORT).show();
+            break;
+        }
+        break;
+      case REQUEST_DELETE_MATERIAL:
+        switch (resultCode){
+          case RESULT_OK:
+            String deletedMaterialName = data.getStringExtra("deletedMaterialName");
+            Toast.makeText(this,deletedMaterialName+ " Deleted",Toast.LENGTH_SHORT).show();
+            createList();
+            break;
+          case RESULT_CANCELED:
+            createList();
             break;
         }
         break;

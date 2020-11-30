@@ -3,6 +3,7 @@ package cosnet.android.ui.material;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -24,6 +25,11 @@ public class ShowMaterial extends AppCompatActivity {
   private CosplayItemMaterial material;
   private CosnetDb db;
 
+  private TextView materialName;
+  private TextView materialDescription;
+  private TextView materialPrice;
+  private TextView materialBuyLink;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,11 +37,27 @@ public class ShowMaterial extends AppCompatActivity {
 
     Intent incomingIntent = getIntent();
     material = (CosplayItemMaterial) incomingIntent.getSerializableExtra("material");
-
+    Log.d("Test", "onCreate: "+ material);
     addToolbar();
     addDatabase();
-
+    initialiseWidgets();
+    setWidgets();
   }
+
+  private void setWidgets() {
+  materialName.setText(material.materialName);
+  materialDescription.setText(material.description);
+  materialPrice.setText("€ "+material.price);
+  materialBuyLink.setText(material.buylink);
+  }
+
+  private void initialiseWidgets() {
+  materialBuyLink = findViewById(R.id.MaterialShowBuyLink);
+  materialDescription = findViewById(R.id.MaterialShowDescription);
+  materialName = findViewById(R.id.MaterialShowName);
+  materialPrice = findViewById(R.id.MaterialShowPrice);
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.show_cosplayitem_menu, menu);
@@ -55,7 +77,7 @@ public class ShowMaterial extends AppCompatActivity {
       case R.id.showCosplayItemDeleteMenu:
         AlertDialog alertDialog = new AlertDialog.Builder(ShowMaterial.this).create();
         alertDialog.setTitle("Oh No");
-        alertDialog.setMessage("Are you sure you want to delete this item: " + this.material.materialName + "?");
+        alertDialog.setMessage("Are you sure you want to delete this item: " + material.materialName + "?");
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO", (dialog, which) -> {
         });
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES", (dialog, which) -> {
