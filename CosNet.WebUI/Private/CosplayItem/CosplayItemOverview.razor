@@ -1,6 +1,10 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}"
 @inject ICosplayItemService CosplayItemService
+@inject ICosplayItemMaterialService CosplayItemMaterialService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 @using CosNet.Shared.DTOs.CosplayItem
+@using CosNet.Shared.DTOs.CosplayItemMaterial
 
 @if (cosplayItem == null)
 {
@@ -33,14 +37,46 @@ else
                 <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
             </div>
         </div>
+        @if (cosplayItem.IsMade)
+        {
+            <div class="cosplay-item-material-list">
+                <div class="cosplay-item-material-title-container">
+                    <h2 class="cosplay-item-material-title">Materials</h2>
+                    <a class="cosplay-item-material-list-add-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/create">Add</a>
+                </div>
+                @if (cosplayItemMaterials == null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else
+                {
+
+                    @foreach (var material in cosplayItemMaterials)
+                    {
+                        <div class="cosplay-item-material-item">
+                            <div class="cosplay-item-material-item-first-text">
+                                <div>@material.Name</div>
+                                <div class="cosplay-item-material-item-description">@material.Description</div>
+                            </div>
+                            <div class="cosplay-item-material-item-middle-text">
+                                <div>€@material.Price</div>
+                                <div>@material.BuyLink</div>
+                            </div>
+                            <div class="cosplay-item-material-item-buttons">
+                                <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
+                                <button class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" @onclick="() => Delete(material)">Delete</button>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
     </div>
-    
-
 }
-
 
 @code {
     public CosplayItemDTO cosplayItem = new CosplayItemDTO();
+    public IEnumerable<CosplayItemMaterialDTO> cosplayItemMaterials;
 
     [Parameter]
     public Guid CosplayId { get; set; }
@@ -51,5 +87,15 @@ else
     protected override async Task OnInitializedAsync()
     {
         cosplayItem = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
+        cosplayItemMaterials = await CosplayItemMaterialService.GetCosplayItemMaterialsAsync(CosplayItemId);
+    }
+
+    async Task Delete(CosplayItemMaterialDTO cosplayItemMaterial)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay item material '{cosplayItemMaterial.Name}'?"))
+            return;
+
+        await CosplayItemMaterialService.DeleteCosplayItemMaterialAsync(CosplayItemId, cosplayItemMaterial.CosplayItemMaterialId);
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}",true);
     }
 }

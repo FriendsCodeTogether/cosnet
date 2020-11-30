@@ -1,0 +1,91 @@
+﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}/cosplayitemmaterial/{CosplayItemMaterialId:guid}/edit"
+@inject ICosplayItemMaterialService CosplayItemMaterialService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@using CosNet.Shared.DTOs.CosplayItemMaterial
+
+<div class="cosplay-form-container">
+
+    <h2 class="title cosplay-form-title">Edit material</h2>
+
+    <div class="cosplay-form-content">
+
+        <div class="cosplay-form-group">
+
+            <EditForm Model="@cosplayItemMaterial" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <p>
+                    <label class="form-label" for="name">Name:</label><br />
+                    <input type="text" maxlength="150" class="form-input" id="name" placeholder="Item name" @bind-Value="cosplayItemMaterial.Name" @bind-Value:event="oninput" />
+                    <label class="max-input">@cosplayItemMaterial.Name?.Count()/@maxName</label>
+                </p>
+                <p>
+                    <label class="form-label" for="serie">Description:</label><br />
+                    <textarea class="form-input" id="serie" placeholder="Description" @bind="cosplayItemMaterial.Description" @bind:event="oninput" />
+                    <label class="form-error-description">*Max 500 Characters</label><label class="max-input">@cosplayItemMaterial.Description?.Count()/@maxDescription</label>
+                </p>
+                <p>
+                    <label class="form-label" for="price">Price:</label><br />
+                    <span class="currencyinput"><input type="number" min="0" class="form-input" id="price" @bind-Value="cosplayItemMaterial.Price" @bind-Value:event="oninput" /></span>
+                    <label class="form-error-price">*Max 9 Characters</label><label class="max-input">@cosplayItemMaterial.Price.ToString().Count()/@maxPrice</label>
+                </p>
+                <p>
+                    <label class="form-label" for="buyLink">Buy Link:</label><br />
+                    <input type="text" class="form-input" id="buyLink" placeholder="https://cosnet.azurewebsites.net/" @bind-Value="cosplayItemMaterial.BuyLink" @bind-Value:event="oninput" />
+                    <label class="form-error-buy-link">*Max 200 Characters</label><label class="max-input">@cosplayItemMaterial.BuyLink?.Count()/@maxBuyLink</label>
+                </p>
+                <div class="cosplay-form-group-button-row">
+                    <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
+                    <span class="flex-spacer"></span>
+                    <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId">Cancel</a>
+                </div>
+            </EditForm>
+            <button class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" @onclick="() => Delete(cosplayItemMaterial)">Delete</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private CosplayItemMaterialForUpdateDTO cosplayItemMaterial = new CosplayItemMaterialForUpdateDTO();
+
+    [Parameter]
+    public Guid CosplayId { get; set; }
+
+    [Parameter]
+    public Guid CosplayItemId { get; set; }
+
+    [Parameter]
+    public Guid CosplayItemMaterialId { get; set; }
+
+    private const int maxName = 150;
+    private const int maxDescription = 500;
+    private const int maxPrice = 9;
+    private const int maxBuyLink = 200;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CosplayItemMaterialDTO cosplayItemMaterialUpdate = await CosplayItemMaterialService.GetCosplayItemMaterialAsync(CosplayItemId, CosplayItemMaterialId);
+
+        cosplayItemMaterial.Name = cosplayItemMaterialUpdate.Name;
+        cosplayItemMaterial.Description = cosplayItemMaterialUpdate.Description;
+        cosplayItemMaterial.Price = cosplayItemMaterialUpdate.Price;
+        cosplayItemMaterial.BuyLink = cosplayItemMaterialUpdate.BuyLink;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await CosplayItemMaterialService.UpdateCosplayItemMaterialAsync(CosplayItemId, CosplayItemMaterialId, cosplayItemMaterial);
+
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}");
+    }
+
+    async Task Delete(CosplayItemMaterialForUpdateDTO cosplayItemMaterial)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay item material '{cosplayItemMaterial.Name}'?"))
+            return;
+
+        await CosplayItemMaterialService.DeleteCosplayItemMaterialAsync(CosplayItemId, CosplayItemMaterialId);
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}");
+    }
+}

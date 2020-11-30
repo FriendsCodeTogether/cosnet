@@ -53,7 +53,7 @@
   <string name="CosplayItemWorkTimeHint">Total Work Time</string>
   <string name="CosplayItemDueDateHint">15/09/2025</string>
   <string name="CosplayItemPriceHint">Price</string>
-  <string name="CosplayItemBuyLinkHint">buy Link</string>
+  <string name="CosplayItemBuyLinkHint">Buy Link</string>
 
   <!--CONTENTDESCRIPTIONS-->
   <string name="CosplayPic">Cosplay Picture</string>
@@ -115,6 +115,13 @@
     -->
   <string name="hello_world">Hello Square World!</string>
   <string name="DateHint">date time</string>
+  <string name="materials">Materials</string>
+  <string name="MaterialsTitle">Item Materials</string>
+  <string name="AddMaterialTitle">Add Material</string>
+  <string name="MaterialNameHint">Name of material</string>
+  <string name="max250Characters">*Max 250 characters</string>
+    <string name="MaterialShowTitle">Material</string>
+    <string name="Price_example">€xx,xx</string>
 
 
 </resources>

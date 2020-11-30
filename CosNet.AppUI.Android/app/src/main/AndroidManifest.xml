@@ -25,6 +25,21 @@
       android:name="com.google.android.wearable.standalone"
       android:value="true" />
 
+    <activity android:name=".ui.material.EditMaterial"></activity>
+    <activity
+      android:name=".ui.material.ShowMaterial">
+    </activity>
+
+    <activity android:name=".ui.material.AddMaterial">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.material.MaterialsList" />
+    </activity>
+    <activity android:name=".ui.material.MaterialsList">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.cosplayItem.ShowCosplayItem" />
+    </activity>
     <activity android:name=".ui.cosplayItem.ShowCosplayItem">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"

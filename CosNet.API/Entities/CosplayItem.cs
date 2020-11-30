@@ -41,6 +41,7 @@ namespace CosNet.API.Entities
         public int Progress { get; set; }
         public int WorkTimeHours { get; set; }
         public int WorkTimeMinutes { get; set; }
+        public IEnumerable<CosplayItemMaterial> Materials { get; set; }
 
         //Relations Cosplay
         public Guid CosplayId { get; set; }

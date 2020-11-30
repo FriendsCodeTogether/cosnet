@@ -14,16 +14,18 @@ namespace CosNet.API.Services
     {
         private readonly IMapper _mapper;
         private readonly ICosplayRepository _cosplayRepository;
+        private readonly IUserService _userService;
 
-        public CosplayService(IMapper mapper, ICosplayRepository cosplayRepository)
+        public CosplayService(IMapper mapper, ICosplayRepository cosplayRepository, IUserService userService)
         {
             _mapper = mapper;
             _cosplayRepository = cosplayRepository;
+            _userService = userService;
         }
 
         public IEnumerable<CosplayDTO> GetCosplays()
         {
-            var cosplays = _cosplayRepository.GetCosplays();
+            var cosplays = _cosplayRepository.GetCosplays().Where(c => c.UserId == _userService.UserId);
             var cosplayDTOs = _mapper.Map<IEnumerable<CosplayDTO>>(cosplays);
             return cosplayDTOs;
         }

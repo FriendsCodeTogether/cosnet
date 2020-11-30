@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CosNet.API.Controllers
 {
-    [Route("cosplay/{cosplayId}/[controller]")]
+    [Route("Cosplay/{cosplayId}/[controller]")]
     [ApiController]
     public class CosplayItemController : ControllerBase
     {
@@ -40,7 +40,7 @@ namespace CosNet.API.Controllers
         /// Get a cosplay Item by id
         /// </summary>
         /// <param name="cosplayItemId">The id of the desired cosplay item</param>
-        /// <returns>a cosplay</returns>
+        /// <returns>a cosplay item</returns>
         [HttpGet("{cosplayItemId}")]
         [Description("Get a cosplay item by id")]
         [ProducesResponseType(typeof(CosplayItemDTO), StatusCodes.Status200OK)]
@@ -71,7 +71,7 @@ namespace CosNet.API.Controllers
         /// Update a cosplay item
         /// </summary>
         /// <param name="cosplayItemId">The id of the desired cosplay item</param>
-        /// <param name="cosplayItemId">The desired cosplay item</param>
+        /// <param name="cosplayItem">The desired cosplay item</param>
         [HttpPut("{cosplayItemId}")]
         [Description("Update a cosplay item")]
         [ProducesResponseType(StatusCodes.Status200OK)]

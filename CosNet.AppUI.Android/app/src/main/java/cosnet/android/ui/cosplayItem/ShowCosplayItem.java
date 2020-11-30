@@ -20,6 +20,7 @@ import cosnet.android.Entities.CosplayItem;
 import cosnet.android.R;
 import cosnet.android.CosnetDb;
 import cosnet.android.ui.notes.ItemNoteList;
+import cosnet.android.ui.material.MaterialsList;
 
 public class ShowCosplayItem extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class ShowCosplayItem extends AppCompatActivity {
   private TextView cosplayItemProgress;
   private ConstraintLayout madeitemattributesLayout;
   private ConstraintLayout boughtitemattributesLayout;
+  private ImageButton itemMaterialsBtn;
 
   private CosnetDb db;
 
@@ -54,8 +56,17 @@ public class ShowCosplayItem extends AppCompatActivity {
     addDatabase();
     initialiseWidgets();
     setWidgets();
+    setListeners();
     togglelayout();
     setListeners();
+  }
+
+  private void setListeners() {
+    itemMaterialsBtn.setOnClickListener(v -> {
+      Intent intent = new Intent(this, MaterialsList.class);
+      intent.putExtra("item", item);
+      startActivity(intent);
+    });
   }
 
   private void addToolbar() {
@@ -132,6 +143,7 @@ public class ShowCosplayItem extends AppCompatActivity {
     cosplayItemProgress = findViewById(R.id.CosplayItemShowProgress);
     madeitemattributesLayout = findViewById(R.id.MadeItemAttributesLayout);
     boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
+    itemMaterialsBtn = findViewById(R.id.CosplayItemMaterialsListBtn);
   }
 
   private void setListeners() {

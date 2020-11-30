@@ -23,7 +23,8 @@ namespace CosNet.API.Data.DBContexts
                        Budget= 100.0m,
                        StartDate = DateTime.Now,
                        DueDate = DateTime.Now.AddDays(40),
-                       Status = "In Progress"
+                       Status = "In Progress",
+                       UserId = Guid.Parse("f22f1397-c53f-4f88-9300-5dbdf13ee207")
                     },
                     new Cosplay
                     {
@@ -33,7 +34,8 @@ namespace CosNet.API.Data.DBContexts
                        Budget= 90.0m,
                        StartDate = DateTime.Now.AddDays(2),
                        DueDate = DateTime.Now.AddDays(50),
-                       Status = "Planned"
+                       Status = "Planned",
+                       UserId = Guid.Parse("f22f1397-c53f-4f88-9300-5dbdf13ee207")
                     },
                     new Cosplay
                     {
@@ -157,6 +159,32 @@ namespace CosNet.API.Data.DBContexts
                     }
                 };
                 context.CosplayItems.AddRange(cosplayItems);
+                context.SaveChanges();
+
+                var cosplayItemMaterials = new List<CosplayItemMaterial>
+                {
+                    new CosplayItemMaterial
+                    {
+                        CosplayItemMaterialId = Guid.NewGuid(),
+                        Name = "Steel Blade",
+                        Description = "This is made out of steel with a size of 1 meter",
+                        Price = 50.0m,
+                        BuyLink = "https://www.kittyconnection.net/",
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    },
+                    new CosplayItemMaterial
+                    {
+                        CosplayItemMaterialId = Guid.NewGuid(),
+                        Name = "Black Hilt",
+                        Description = "Hilt made out of wood with iron chain hanging",
+                        Price = 10.0m,
+                        BuyLink = "https://www.kittyconnection.net/",
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    }
+                };
+                context.CosplayItemMaterials.AddRange(cosplayItemMaterials);
                 context.SaveChanges();
             }
         }
