@@ -71,15 +71,6 @@ public class CosplayNoteList extends AppCompatActivity {
     }
   }
 
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
   private void addDatabase() {
     db = CosnetDb.getInstance(this);
     noteDAO = db.getNoteDAO();
@@ -113,6 +104,16 @@ public class CosplayNoteList extends AppCompatActivity {
     toolbarTitle.setText(cosplay.cosplayName);
   }
 
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
   @Override
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
@@ -123,8 +124,8 @@ public class CosplayNoteList extends AppCompatActivity {
         //switch for the results from add cosplay item
         switch (resultCode) {
           case RESULT_OK:
-            String addedNote = data.getStringExtra("addedNote");
-            Toast.makeText(this, addedNote + " Added", Toast.LENGTH_SHORT).show();
+            String deletedNote = data.getStringExtra("deletedNote");
+            Toast.makeText(this, deletedNote + " Deleted", Toast.LENGTH_SHORT).show();
             createList();
             break;
           case RESULT_CANCELED:
@@ -135,8 +136,8 @@ public class CosplayNoteList extends AppCompatActivity {
       case REQUEST_ADD_NOTE:
         switch (resultCode) {
           case RESULT_OK:
-            String deletedNote = data.getStringExtra("deletedCosplayNote");
-            Toast.makeText(this, deletedNote + " Deleted", Toast.LENGTH_SHORT).show();
+            String addNote = data.getStringExtra("addedNote");
+            Toast.makeText(this, addNote + " Added", Toast.LENGTH_SHORT).show();
             createList();
             break;
           case RESULT_CANCELED:

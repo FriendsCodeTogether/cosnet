@@ -106,7 +106,7 @@ public class ShowCosplayNote extends AppCompatActivity {
 
     if (requestCode == REQUEST_EDIT_NOTE) {
       if (resultCode == RESULT_OK) {
-        note = (Note) data.getSerializableExtra("editNote");
+        note = (Note) data.getSerializableExtra("note");
         Toast.makeText(this, note.title + " Edited", Toast.LENGTH_SHORT).show();
         setWidgets();
       }

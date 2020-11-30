@@ -2,6 +2,7 @@ package cosnet.android.ui.notes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
 
@@ -29,14 +30,26 @@ public class EditCosplayNote extends AppCompatActivity {
     setContentView(R.layout.edit_note);
     getWindow().setSoftInputMode(
       WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+    Intent incomingIntent = getIntent();
+    note = (Note) incomingIntent.getSerializableExtra("note");
+
     addToolbar();
     addDatabase();
     getItemsBound();
     initializeItems();
     setListeners();
 
-    Intent incomingIntent = getIntent();
-    note = (Note) incomingIntent.getSerializableExtra("note");
+  }
+
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 
   private void addToolbar() {
@@ -102,7 +115,7 @@ public class EditCosplayNote extends AppCompatActivity {
     db.getNoteDAO().updateItem(note);
 
     Intent intent = new Intent();
-    intent.putExtra("addedNote",note.title);
+    intent.putExtra("note",note);
     setResult(RESULT_OK,intent);
     finish();
   }
