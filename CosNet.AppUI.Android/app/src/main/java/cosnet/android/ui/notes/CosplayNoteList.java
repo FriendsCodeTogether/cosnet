@@ -123,8 +123,8 @@ public class CosplayNoteList extends AppCompatActivity {
         //switch for the results from add cosplay item
         switch (resultCode) {
           case RESULT_OK:
-            String addedNote = data.getStringExtra("addedNote");
-            Toast.makeText(this, addedNote + " Added", Toast.LENGTH_SHORT).show();
+            String deletedNote = data.getStringExtra("deletedNote");
+            Toast.makeText(this, deletedNote + " Deleted", Toast.LENGTH_SHORT).show();
             createList();
             break;
           case RESULT_CANCELED:
@@ -135,8 +135,8 @@ public class CosplayNoteList extends AppCompatActivity {
       case REQUEST_ADD_NOTE:
         switch (resultCode) {
           case RESULT_OK:
-            String deletedNote = data.getStringExtra("deletedCosplayNote");
-            Toast.makeText(this, deletedNote + " Deleted", Toast.LENGTH_SHORT).show();
+            String addNote = data.getStringExtra("addedNote");
+            Toast.makeText(this, addNote + " Added", Toast.LENGTH_SHORT).show();
             createList();
             break;
           case RESULT_CANCELED:
