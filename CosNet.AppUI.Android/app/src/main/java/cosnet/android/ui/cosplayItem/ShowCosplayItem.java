@@ -145,7 +145,13 @@ public class ShowCosplayItem extends AppCompatActivity {
       intent.putExtra("cosplayItem", item);
       startActivity(intent);
     });
+    itemMaterialsBtn.setOnClickListener(v -> {
+      Intent intent = new Intent(this, MaterialsList.class);
+      intent.putExtra("item", item);
+      startActivity(intent);
+    });
   }
+  
   private void togglelayout() {
     if (item.isMade == 0) {
       madeitemattributesLayout.setVisibility(View.GONE);
