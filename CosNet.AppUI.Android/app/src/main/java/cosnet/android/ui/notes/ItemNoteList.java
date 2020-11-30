@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Data.DAOs.NoteDAO;
@@ -60,7 +61,7 @@ public class ItemNoteList extends AppCompatActivity {
 
       for (Note note : notesList)
       {
-        if(note.type == "item")
+        if(Objects.equals(note.itemId, cosplayItem.itemId))
         {
           list.add(note);
         }

@@ -50,6 +50,16 @@ public class AddNoteToItem extends AppCompatActivity {
     cosplayItem = (CosplayItem) incomingIntent.getSerializableExtra("cosplayItem");
   }
 
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -111,7 +121,7 @@ public class AddNoteToItem extends AppCompatActivity {
     }
     Note newNote = new Note();
 
-    newNote.cosplayId="";
+    newNote.cosplayId=null;
     newNote.itemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
