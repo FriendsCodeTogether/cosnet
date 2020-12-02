@@ -146,6 +146,7 @@ public class ShowCosplayItem extends AppCompatActivity {
     intent.putExtra("cosplayItem", item);
     startActivity(intent);
   }
+  
   private void setListeners() {
     itemNotesBTN.setOnClickListener(v -> {
       addNoteButton();

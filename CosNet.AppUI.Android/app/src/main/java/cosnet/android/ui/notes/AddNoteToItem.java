@@ -88,7 +88,7 @@ public class AddNoteToItem extends AppCompatActivity {
     addNoteButton.setOnClickListener(v -> onClickAddButton());
   }
 
-  private boolean validateItemDescrition() {
+  private boolean validateItemNoteDescrition() {
     String description = noteDescriptionLayout.getEditText().getText().toString();
     if (description.length() > 650) {
       noteDescriptionLayout.setError(getApplicationContext().getString(R.string.max650Characters));
@@ -99,12 +99,12 @@ public class AddNoteToItem extends AppCompatActivity {
     }
   }
 
-  private boolean validateItemName() {
-    String itemName = noteNameLayout.getEditText().getText().toString();
-    if (itemName.length() > 150) {
+  private boolean validateItemNoteName() {
+    String itemNoteName = noteNameLayout.getEditText().getText().toString();
+    if (itemNoteName.length() > 150) {
       noteNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
-    } else if(itemName.isEmpty()){
+    } else if(itemNoteName.isEmpty()){
       noteNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
@@ -115,7 +115,7 @@ public class AddNoteToItem extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-    if (!validateItemName() | !validateItemDescrition()) {
+    if (!validateItemNoteName() | !validateItemNoteDescrition()) {
       return;
     }
     Note newNote = new Note();

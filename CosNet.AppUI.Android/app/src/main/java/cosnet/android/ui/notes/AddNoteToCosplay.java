@@ -99,12 +99,12 @@ public class AddNoteToCosplay extends AppCompatActivity {
     }
   }
 
-  private boolean validateCosplayName() {
-    String itemName = noteNameLayout.getEditText().getText().toString();
-    if (itemName.length() > 150) {
+  private boolean validateCosplayNoteName() {
+    String cosplayNoteName = noteNameLayout.getEditText().getText().toString();
+    if (cosplayNoteName.length() > 150) {
       noteNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
-    } else if(itemName.isEmpty()){
+    } else if(cosplayNoteName.isEmpty()){
       noteNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
@@ -115,7 +115,7 @@ public class AddNoteToCosplay extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-    if (!validateCosplayName() | !validateCosplayNoteDescrition()) {
+    if (!validateCosplayNoteName() | !validateCosplayNoteDescrition()) {
       return;
     }
     Note newNote = new Note();
