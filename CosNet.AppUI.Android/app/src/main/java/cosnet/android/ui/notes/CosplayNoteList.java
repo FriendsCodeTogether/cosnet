@@ -119,7 +119,7 @@ public class CosplayNoteList extends AppCompatActivity {
             createList();
             break;
           case RESULT_CANCELED:
-            Toast.makeText(this, "Cosplay Note Canceled", Toast.LENGTH_SHORT).show();
+            createList();
             break;
         }
         break;

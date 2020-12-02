@@ -119,7 +119,6 @@ public class AddNoteToItem extends AppCompatActivity {
       return;
     }
     Note newNote = new Note();
-    newNote.cosplayId=null;
     newNote.itemId = cosplayItem.itemId;
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();

@@ -78,7 +78,7 @@ public class EditCosplayNote extends AppCompatActivity {
     saveNoteButton.setOnClickListener(v -> onClickAddButton());
   }
 
-  private boolean validateItemDescrition() {
+  private boolean validateCosplayNoteDescrition() {
     String description = noteDescriptionLayout.getEditText().getText().toString();
     if (description.length() > 650) {
       noteDescriptionLayout.setError(getApplicationContext().getString(R.string.max650Characters));
@@ -89,7 +89,7 @@ public class EditCosplayNote extends AppCompatActivity {
     }
   }
 
-  private boolean validateItemName() {
+  private boolean validateCosplayNoteName() {
     String itemName = noteNameLayout.getEditText().getText().toString();
     if (itemName.length() > 150) {
       noteNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
@@ -105,7 +105,7 @@ public class EditCosplayNote extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-    if (!validateItemName() | !validateItemDescrition()) {
+    if (!validateCosplayNoteName() | !validateCosplayNoteDescrition()) {
       return;
     }
 
