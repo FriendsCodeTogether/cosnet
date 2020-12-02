@@ -141,11 +141,14 @@ public class ShowCosplayItem extends AppCompatActivity {
     itemMaterialsBtn = findViewById(R.id.CosplayItemMaterialsListBtn);
   }
 
+  private void addNoteButton(){
+    Intent intent = new Intent(this, ItemNoteList.class);
+    intent.putExtra("cosplayItem", item);
+    startActivity(intent);
+  }
   private void setListeners() {
     itemNotesBTN.setOnClickListener(v -> {
-      Intent intent = new Intent(this, ItemNoteList.class);
-      intent.putExtra("cosplayItem", item);
-      startActivity(intent);
+      addNoteButton();
     });
     itemNotesBTNMade.setOnClickListener(v -> {
       Intent intent = new Intent(this, ItemNoteList.class);
@@ -153,9 +156,7 @@ public class ShowCosplayItem extends AppCompatActivity {
       startActivity(intent);
     });
     itemMaterialsBtn.setOnClickListener(v -> {
-      Intent intent = new Intent(this, MaterialsList.class);
-      intent.putExtra("item", item);
-      startActivity(intent);
+      addNoteButton();
     });
   }
 
