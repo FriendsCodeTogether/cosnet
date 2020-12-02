@@ -16,11 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
-import cosnet.android.MainActivity;
 import cosnet.android.R;
 import cosnet.android.CosnetDb;
+import cosnet.android.ui.notes.ItemNoteList;
 import cosnet.android.ui.material.MaterialsList;
 
 public class ShowCosplayItem extends AppCompatActivity {
@@ -28,6 +27,8 @@ public class ShowCosplayItem extends AppCompatActivity {
   private static final int REQUEST_EDIT_COSPLAYITEM = 1;
   private CosplayItem item;
 
+  private ImageButton itemNotesBTN;
+  private ImageButton itemNotesBTNMade;
   private ImageView cosplayItemPic;
   private TextView cosplayItemName;
   private TextView cosplayItemDescription;
@@ -58,15 +59,9 @@ public class ShowCosplayItem extends AppCompatActivity {
     setWidgets();
     setListeners();
     togglelayout();
+    setListeners();
   }
 
-  private void setListeners() {
-    itemMaterialsBtn.setOnClickListener(v -> {
-      Intent intent = new Intent(this, MaterialsList.class);
-      intent.putExtra("item", item);
-      startActivity(intent);
-    });
-  }
 
   private void addToolbar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
@@ -130,6 +125,8 @@ public class ShowCosplayItem extends AppCompatActivity {
   }
 
   private void initialiseWidgets() {
+    itemNotesBTN = findViewById(R.id.ItemNoteButton);
+    itemNotesBTNMade = findViewById(R.id.ItemNoteButtonMade);
     cosplayItemName = findViewById(R.id.CosplayItemShowName);
     cosplayItemPic = findViewById(R.id.CosplayItemShowPic);
     cosplayItemDescription = findViewById(R.id.CosplayItemShowDescription);
@@ -142,6 +139,26 @@ public class ShowCosplayItem extends AppCompatActivity {
     madeitemattributesLayout = findViewById(R.id.MadeItemAttributesLayout);
     boughtitemattributesLayout = findViewById(R.id.BoughtItemAttributesLayout);
     itemMaterialsBtn = findViewById(R.id.CosplayItemMaterialsListBtn);
+  }
+
+  private void addNoteButton(){
+    Intent intent = new Intent(this, ItemNoteList.class);
+    intent.putExtra("cosplayItem", item);
+    startActivity(intent);
+  }
+  
+  private void setListeners() {
+    itemNotesBTN.setOnClickListener(v -> {
+      addNoteButton();
+    });
+    itemNotesBTNMade.setOnClickListener(v -> {
+      Intent intent = new Intent(this, ItemNoteList.class);
+      intent.putExtra("cosplayItem", item);
+      startActivity(intent);
+    });
+    itemMaterialsBtn.setOnClickListener(v -> {
+      addNoteButton();
+    });
   }
 
   private void togglelayout() {

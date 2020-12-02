@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  android:isScrollContainer="true"
+  android:orientation="vertical"
+  tools:context=".ui.notes.ItemNoteList">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    tools:ignore="MissingConstraints">
+
+    <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="@drawable/gradient"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/kalam_bold"
+        android:text="@string/ItemNotesToolbarTitle"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+    </androidx.appcompat.widget.Toolbar>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="672dp"
+    android:background="@color/colorPrimaryDark"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+    <ImageButton
+      android:id="@+id/addNewNoteBTN"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="16dp"
+      android:background="@drawable/roundbutton"
+      android:contentDescription="@string/add_button_plus"
+      android:src="@drawable/ic_baseline_add_24"
+      android:text="@string/add_button_plus"
+      android:textAlignment="center"
+      android:textColor="@color/cardview_light_background"
+      android:textSize="40sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+      android:id="@+id/NotesList"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="85dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/myNotesLabel" />
+
+    <TextView
+      android:id="@+id/myNotesLabel"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:fontFamily="@font/kalam_bold"
+      android:text="@string/my_notes"
+      android:textColor="@android:color/white"
+      android:textSize="30sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

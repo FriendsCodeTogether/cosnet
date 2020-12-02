@@ -14,7 +14,6 @@ import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -152,7 +151,7 @@ public class EditCosplay extends AppCompatActivity {
     String characterName = characterLayout.getEditText().getText().toString();
 
     if (characterName.isEmpty()) {
-      characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      characterLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     } else if (characterName.length() > 150) {
       characterLayout.setError(getApplicationContext().getString(R.string.max150Characters));

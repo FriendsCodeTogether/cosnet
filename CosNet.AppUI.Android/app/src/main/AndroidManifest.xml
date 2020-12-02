@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="cosnet.android">
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
@@ -8,6 +9,7 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+
     <activity android:name=".ui.material.EditMaterial"></activity>
     <activity
       android:name=".ui.material.ShowMaterial">
@@ -34,8 +36,32 @@
         android:value=".ui.cosplay.ShowCosplay" />
     </activity>
     <activity
+    android:name=".ui.notes.EditItemNote"
+    android:parentActivityName=".ui.notes.ShowItemNote" />
+    <activity
+      android:name=".ui.notes.EditCosplayNote"
+      android:parentActivityName=".ui.notes.ShowCosplayNote" />
+    <activity
       android:name=".ui.cosplay.EditCosplay"
       android:parentActivityName=".ui.cosplay.ShowCosplay" />
+    <activity
+      android:name=".ui.notes.AddNoteToItem"
+      android:parentActivityName=".ui.notes.ItemNoteList" />
+    <activity
+      android:name=".ui.notes.ItemNoteList"
+      android:parentActivityName=".ui.cosplayItem.ShowCosplayItem" />
+    <activity
+      android:name=".ui.notes.AddNoteToCosplay"
+      android:parentActivityName=".ui.notes.CosplayNoteList" />
+    <activity
+      android:name=".ui.notes.CosplayNoteList"
+      android:parentActivityName=".ui.cosplay.ShowCosplay" />
+    <activity
+      android:name=".ui.notes.ShowCosplayNote"
+      android:parentActivityName=".ui.notes.CosplayNoteList" />
+    <activity
+      android:name=".ui.notes.ShowItemNote"
+      android:parentActivityName=".ui.notes.ItemNoteList" />
     <activity
       android:name=".ui.cosplay.ShowCosplay"
       android:parentActivityName=".MainActivity" />
@@ -65,5 +91,4 @@
       android:name="preloaded_fonts"
       android:resource="@array/preloaded_fonts" />
   </application>
-
 </manifest>

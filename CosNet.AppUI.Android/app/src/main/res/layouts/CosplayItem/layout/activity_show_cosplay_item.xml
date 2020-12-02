@@ -269,9 +269,11 @@
           app:layout_constraintTop_toTopOf="@+id/CosplayItemShowWorkTimeLabel" />
 
         <ImageButton
-          android:id="@+id/CosplayItemMaterialsListBtn"
+          android:id="@+id/ItemNoteButtonMade"
           android:layout_width="150dp"
           android:layout_height="150dp"
+          android:layout_gravity="center"
+          android:layout_marginStart="32dp"
           android:layout_marginTop="16dp"
           android:layout_marginBottom="32dp"
           android:adjustViewBounds="true"
@@ -286,8 +288,45 @@
           android:scaleType="fitCenter"
           android:tint="@android:color/background_light"
           app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowProgressLabel"
+          app:srcCompat="@drawable/ic_notes" />
+
+        <TextView
+          android:id="@+id/NotesLabelMatede"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:clickable="false"
+          android:elevation="20dp"
+          android:fontFamily="@font/lato_bold"
+          android:text="@string/Notes"
+          android:textColor="@android:color/background_light"
+          android:textSize="20sp"
+          app:layout_constraintBottom_toBottomOf="@+id/ItemNoteButtonMade"
+          app:layout_constraintEnd_toEndOf="@+id/ItemNoteButtonMade"
+          app:layout_constraintStart_toStartOf="@+id/ItemNoteButtonMade" />
+
+        <ImageButton
+          android:id="@+id/CosplayItemMaterialsListBtn"
+          android:layout_width="150dp"
+          android:layout_height="150dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginEnd="32dp"
+          android:layout_marginBottom="32dp"
+          android:adjustViewBounds="true"
+          android:background="@color/colorPrimaryDark"
+          android:contentDescription="@string/ItemList"
+          android:cropToPadding="false"
+          android:elevation="10dp"
+          android:paddingLeft="20dp"
+          android:paddingTop="10dp"
+          android:paddingRight="20dp"
+          android:paddingBottom="40dp"
+          android:scaleType="fitCenter"
+          android:tint="@android:color/background_light"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowProgressLabel"
           app:srcCompat="@drawable/ic_materials" />
 
@@ -330,8 +369,10 @@
           android:textSize="15sp"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintStart_toEndOf="@+id/CosplayItemShowBuyLinkLabel"
-          app:layout_constraintTop_toTopOf="@+id/CosplayItemShowBuyLinkLabel" />
+          app:layout_constraintTop_toTopOf="@+id/CosplayItemShowBuyLinkLabel"
+          app:layout_constraintVertical_bias="0.0" />
 
         <TextView
           android:id="@+id/CosplayItemShowBuyLinkLabel"
@@ -346,7 +387,47 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+          android:id="@+id/ItemNoteButton"
+          android:layout_width="150dp"
+          android:layout_height="150dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="16dp"
+          android:adjustViewBounds="true"
+          android:background="@color/colorPrimaryDark"
+          android:contentDescription="@string/ItemList"
+          android:cropToPadding="false"
+          android:elevation="10dp"
+          android:paddingLeft="20dp"
+          android:paddingTop="10dp"
+          android:paddingRight="20dp"
+          android:paddingBottom="40dp"
+          android:scaleType="fitCenter"
+          android:tint="@android:color/background_light"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/CosplayItemShowBuyLink"
+          app:srcCompat="@drawable/ic_notes" />
+
+        <TextView
+          android:id="@+id/NotesLabel"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:clickable="false"
+          android:elevation="20dp"
+          android:fontFamily="@font/lato_bold"
+          android:text="@string/Notes"
+          android:textColor="@android:color/background_light"
+          android:textSize="20sp"
+          app:layout_constraintBottom_toBottomOf="@+id/ItemNoteButton"
+          app:layout_constraintEnd_toEndOf="@+id/ItemNoteButton"
+          app:layout_constraintStart_toStartOf="@+id/ItemNoteButton" />
+
       </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
 
