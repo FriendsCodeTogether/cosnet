@@ -108,7 +108,7 @@ public class ShowItemNote extends AppCompatActivity {
 
     if (requestCode == REQUEST_EDIT_NOTE) {
       if (resultCode == RESULT_OK) {
-        note = (Note) data.getSerializableExtra("editNote");
+        note = (Note) data.getSerializableExtra("editedNote");
         Toast.makeText(this, note.title + " Edited", Toast.LENGTH_SHORT).show();
         setWidgets();
       }

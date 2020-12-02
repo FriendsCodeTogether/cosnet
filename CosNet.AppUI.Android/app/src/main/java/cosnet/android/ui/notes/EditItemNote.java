@@ -115,7 +115,7 @@ public class EditItemNote extends AppCompatActivity {
     db.getNoteDAO().updateItem(note);
 
     Intent intent = new Intent();
-    intent.putExtra("addedNote",note.title);
+    intent.putExtra("editedNote",note);
     setResult(RESULT_OK,intent);
     finish();
   }
