@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,7 +20,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.llollox.androidtoggleswitch.widgets.ToggleSwitch;
 import com.shawnlin.numberpicker.NumberPicker;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -30,7 +28,6 @@ import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.Entities.CosplayItem;
 import cosnet.android.R;
-import cosnet.android.ui.cosplay.ShowCosplay;
 import me.abhinay.input.CurrencyEditText;
 
 public class EditCosplayItem extends AppCompatActivity {
@@ -201,7 +198,7 @@ public class EditCosplayItem extends AppCompatActivity {
       EditcosplayItemNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
     } else if(itemName.isEmpty()){
-      EditcosplayItemNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      EditcosplayItemNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
     else {

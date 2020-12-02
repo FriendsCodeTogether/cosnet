@@ -12,7 +12,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Data.DAOs.CosplayItemMaterialDAO;
-import cosnet.android.Entities.CosplayItem;
 import cosnet.android.Entities.CosplayItemMaterial;
 import cosnet.android.R;
 import me.abhinay.input.CurrencyEditText;
@@ -124,7 +123,7 @@ public class EditMaterial extends AppCompatActivity {
       materialNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
     } else if(itemName.isEmpty()){
-      materialNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      materialNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
     else {

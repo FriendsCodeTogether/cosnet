@@ -88,7 +88,7 @@ public class AddNoteToCosplay extends AppCompatActivity {
     addNoteButton.setOnClickListener(v -> onClickAddButton());
   }
 
-  private boolean validateItemDescrition() {
+  private boolean validateCosplayNoteDescrition() {
     String description = noteDescriptionLayout.getEditText().getText().toString();
     if (description.length() > 650) {
       noteDescriptionLayout.setError(getApplicationContext().getString(R.string.max650Characters));
@@ -99,13 +99,13 @@ public class AddNoteToCosplay extends AppCompatActivity {
     }
   }
 
-  private boolean validateItemName() {
-    String itemName = noteNameLayout.getEditText().getText().toString();
-    if (itemName.length() > 150) {
+  private boolean validateCosplayNoteName() {
+    String cosplayNoteName = noteNameLayout.getEditText().getText().toString();
+    if (cosplayNoteName.length() > 150) {
       noteNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
-    } else if(itemName.isEmpty()){
-      noteNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+    } else if(cosplayNoteName.isEmpty()){
+      noteNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
     else {
@@ -115,12 +115,11 @@ public class AddNoteToCosplay extends AppCompatActivity {
   }
 
   private void onClickAddButton() {
-    if (!validateItemName() | !validateItemDescrition()) {
+    if (!validateCosplayNoteName() | !validateCosplayNoteDescrition()) {
       return;
     }
     Note newNote = new Note();
     newNote.cosplayId=cosplay.cosplayId;
-    newNote.itemId = "";
     newNote.title = noteNameLayout.getEditText().getText().toString();
     newNote.description= noteDescriptionLayout.getEditText().getText().toString();
     newNote.type=noteType;

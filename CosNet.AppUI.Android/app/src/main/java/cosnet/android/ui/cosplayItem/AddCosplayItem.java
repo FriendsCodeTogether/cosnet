@@ -23,14 +23,10 @@ import com.shawnlin.numberpicker.*;
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
 import cosnet.android.R;
-import cosnet.android.ui.cosplay.ShowCosplay;
 import me.abhinay.input.CurrencyEditText;
 
-import java.text.SimpleDateFormat;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import cosnet.android.Entities.CosplayItem;
@@ -214,7 +210,7 @@ public class AddCosplayItem extends AppCompatActivity {
       cosplayItemNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
     } else if(itemName.isEmpty()){
-      cosplayItemNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      cosplayItemNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
     else {

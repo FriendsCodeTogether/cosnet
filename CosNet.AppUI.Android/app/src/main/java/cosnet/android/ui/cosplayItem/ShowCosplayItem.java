@@ -28,6 +28,7 @@ public class ShowCosplayItem extends AppCompatActivity {
   private CosplayItem item;
 
   private ImageButton itemNotesBTN;
+  private ImageButton itemNotesBTNMade;
   private ImageView cosplayItemPic;
   private TextView cosplayItemName;
   private TextView cosplayItemDescription;
@@ -125,6 +126,7 @@ public class ShowCosplayItem extends AppCompatActivity {
 
   private void initialiseWidgets() {
     itemNotesBTN = findViewById(R.id.ItemNoteButton);
+    itemNotesBTNMade = findViewById(R.id.ItemNoteButtonMade);
     cosplayItemName = findViewById(R.id.CosplayItemShowName);
     cosplayItemPic = findViewById(R.id.CosplayItemShowPic);
     cosplayItemDescription = findViewById(R.id.CosplayItemShowDescription);
@@ -139,19 +141,26 @@ public class ShowCosplayItem extends AppCompatActivity {
     itemMaterialsBtn = findViewById(R.id.CosplayItemMaterialsListBtn);
   }
 
+  private void addNoteButton(){
+    Intent intent = new Intent(this, ItemNoteList.class);
+    intent.putExtra("cosplayItem", item);
+    startActivity(intent);
+  }
+  
   private void setListeners() {
     itemNotesBTN.setOnClickListener(v -> {
+      addNoteButton();
+    });
+    itemNotesBTNMade.setOnClickListener(v -> {
       Intent intent = new Intent(this, ItemNoteList.class);
       intent.putExtra("cosplayItem", item);
       startActivity(intent);
     });
     itemMaterialsBtn.setOnClickListener(v -> {
-      Intent intent = new Intent(this, MaterialsList.class);
-      intent.putExtra("item", item);
-      startActivity(intent);
+      addNoteButton();
     });
   }
-  
+
   private void togglelayout() {
     if (item.isMade == 0) {
       madeitemattributesLayout.setVisibility(View.GONE);
