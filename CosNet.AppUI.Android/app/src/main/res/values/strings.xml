@@ -109,11 +109,6 @@
   <string name="ItemNotesToolbarTitle">Item Notes</string>
   <string name="my_notes">My Notes</string>
   <string name="title_activity_show_note">ShowNote</string>
-  <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-  <string name="hello_world">Hello Square World!</string>
   <string name="DateHint">date time</string>
   <string name="materials">Materials</string>
   <string name="MaterialsTitle">Item Materials</string>
