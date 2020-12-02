@@ -53,7 +53,7 @@ public class ItemNoteList extends AppCompatActivity {
   }
 
   private void createList() {
-      List<Note> notelist = noteDAO.getNotesWithItem(cosplayItem.itemId);
+      List<Note> notelist = noteDAO.getNotesByItemId(cosplayItem.itemId);
       notes = new ArrayList<>();
       notes.addAll(notelist);
       adapter = new NotesListAdapter(this, R.layout.note_list_item, notes);

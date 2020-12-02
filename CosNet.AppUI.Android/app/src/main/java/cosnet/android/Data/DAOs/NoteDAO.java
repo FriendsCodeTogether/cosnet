@@ -26,11 +26,9 @@ public interface NoteDAO {
   @Query("SELECT * FROM Note WHERE id = :id")
   Note getNoteById(int id);
 
-  @Transaction
   @Query("SELECT * FROM Note WHERE item_id = :id")
-  List<Note> getNotesWithItem(String id);
+  List<Note> getNotesByItemId(String id);
 
-  @Transaction
   @Query("SELECT * FROM Note WHERE cosplay_id = :id")
-  List<Note> getNotesWithCosplay(String id);
+  List<Note> getNotesByCosplayId(String id);
 }
