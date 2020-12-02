@@ -90,11 +90,11 @@ public class EditItemNote extends AppCompatActivity {
   }
 
   private boolean validateItemName() {
-    String itemName = noteNameLayout.getEditText().getText().toString();
-    if (itemName.length() > 150) {
+    String noteName = noteNameLayout.getEditText().getText().toString();
+    if (noteName.length() > 150) {
       noteNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
-    } else if(itemName.isEmpty()){
+    } else if(noteName.isEmpty()){
       noteNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
