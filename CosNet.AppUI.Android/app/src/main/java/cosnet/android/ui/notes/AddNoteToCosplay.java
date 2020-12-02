@@ -105,7 +105,7 @@ public class AddNoteToCosplay extends AppCompatActivity {
       noteNameLayout.setError(getApplicationContext().getString(R.string.max150Characters));
       return false;
     } else if(itemName.isEmpty()){
-      noteNameLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      noteNameLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
       return false;
     }
     else {

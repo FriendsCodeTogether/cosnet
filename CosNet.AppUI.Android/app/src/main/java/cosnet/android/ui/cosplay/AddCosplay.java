@@ -22,7 +22,6 @@ import java.util.Locale;
 
 import cosnet.android.CosnetDb;
 import cosnet.android.Entities.Cosplay;
-import cosnet.android.MainActivity;
 import cosnet.android.R;
 import me.abhinay.input.CurrencyEditText;
 
@@ -92,7 +91,7 @@ public class AddCosplay extends AppCompatActivity {
     String characterName = characterLayout.getEditText().getText().toString();
 
     if (characterName.isEmpty()) {
-      characterLayout.setError(getApplicationContext().getString(R.string.characterNameErrorEmpty));
+      characterLayout.setError(getApplicationContext().getString(R.string.requiredFieldErrorEmpty));
 
       return false;
     } else if (characterName.length() > 150) {
