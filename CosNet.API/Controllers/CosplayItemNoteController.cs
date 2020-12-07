@@ -62,7 +62,7 @@ namespace CosNet.API.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult CreateCosplayItemNote([FromRoute] Guid cosplayId, [FromBody] CosplayItemNoteForCreationDTO cosplayItemNote)
         {
-            cosplayItemNote.CosplayId = cosplayId;
+            cosplayItemNote.CosplayItemId = cosplayId;
             _cosplayItemNoteService.CreateCosplayItemNote(cosplayItemNote);
             return NoContent();
         }

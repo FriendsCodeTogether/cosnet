@@ -7,47 +7,47 @@ using CosNet.API.Entities;
 
 namespace CosNet.API.Data.Repositories
 {
-    public class CosplayItemNoteRepository : ICosplayItemNoteRepository
+    public class CosplayNoteRepository
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public CosplayItemNoteRepository(ApplicationDbContext dbContext)
+        public CosplayNoteRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IEnumerable<CosplayItemNote> GetCosplayItemNotes(Guid cosplayId)
+        public IEnumerable<CosplayNote> GetCosplayNotes(Guid cosplayId)
         {
-            return _dbContext.CosplayItemNotes.Where(c => c.CosplayId == cosplayId);
+            return _dbContext.CosplayNotes.Where(c => c.CosplayId == cosplayId);
         }
 
-        public CosplayItemNote GetCosplayItemNote(Guid CosplayItemNoteId)
+        public CosplayNote GetCosplayNote(Guid CosplayNoteId)
         {
-            return _dbContext.CosplayItemNotes.FirstOrDefault(a => a.CosplayItemNoteId == CosplayItemNoteId);
+            return _dbContext.CosplayNotes.FirstOrDefault(a => a.CosplayNoteId == CosplayNoteId);
         }
 
-        public void AddCosplayItemNote(CosplayItemNote CosplayItemNote)
+        public void AddCosplayNote(CosplayNote CosplayNote)
         {
-            if (CosplayItemNote.CosplayItemNoteId == Guid.Empty)
+            if (CosplayNote.CosplayNoteId == Guid.Empty)
             {
-                CosplayItemNote.CosplayItemNoteId = Guid.NewGuid();
+                CosplayNote.CosplayNoteId = Guid.NewGuid();
             }
-            _dbContext.CosplayItemNotes.Add(CosplayItemNote);
+            _dbContext.CosplayNotes.Add(CosplayNote);
         }
 
-        public void UpdateCosplayItemNote(CosplayItemNote CosplayItemNote)
+        public void UpdateCosplayNote(CosplayNote CosplayNote)
         {
         }
 
-        public void DeleteCosplayItemNote(Guid CosplayItemNoteId)
+        public void DeleteCosplayNote(Guid CosplayNoteId)
         {
-            CosplayItemNote CosplayItemNote = GetCosplayItemNote(CosplayItemNoteId);
-            _dbContext.CosplayItemNotes.Remove(CosplayItemNote);
+            CosplayNote CosplayNote = GetCosplayNote(CosplayNoteId);
+            _dbContext.CosplayNotes.Remove(CosplayNote);
         }
 
-        public bool CosplayItemNoteExists(Guid CosplayItemNoteId)
+        public bool CosplayNoteExists(Guid CosplayNoteId)
         {
-            return _dbContext.CosplayItemNotes.Any(c => c.CosplayItemNoteId == CosplayItemNoteId);
+            return _dbContext.CosplayNotes.Any(c => c.CosplayNoteId == CosplayNoteId);
         }
 
         public bool SaveChanges()
