@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CosNet.API.Entities;
-using CosNet.Shared.DTOs.Cosplay;
+using CosNet.Shared.DTOs.CosplayNote;
 
 namespace CosNet.API.Profiles
 {
@@ -12,9 +12,9 @@ namespace CosNet.API.Profiles
     {
         public CosplayNoteProfile()
         {
-            CreateMap<Cosplay, CosplayDTO>().ReverseMap();
-            CreateMap<Cosplay, CosplayForCreationDTO>().ReverseMap();
-            CreateMap<Cosplay, CosplayForUpdateDTO>().ReverseMap();
+            CreateMap<CosplayNote, CosplayNoteDTO>().ReverseMap();
+            CreateMap<CosplayNote, CosplayNoteForCreationDTO>().ReverseMap();
+            CreateMap<CosplayNote, CosplayNoteForUpdateDTO>().ReverseMap();
         }
     }
 }
