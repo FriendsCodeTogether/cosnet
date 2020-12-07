@@ -85,6 +85,9 @@ public class CosplayItemsList extends AppCompatActivity {
 
     adapter = new CosplayItemsExpandableListAdapter(this, itemTypes, items);
     cosplayItemsListView.setAdapter(adapter);
+
+    for(int i=0; i < adapter.getGroupCount(); i++)
+      cosplayItemsListView.expandGroup(i);
   }
 
   private void addDatabase() {

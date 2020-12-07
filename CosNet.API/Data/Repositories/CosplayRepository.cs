@@ -25,8 +25,9 @@ namespace CosNet.API.Data.Repositories
             return _dbContext.Cosplays.FirstOrDefault(a => a.CosplayId == cosplayId);
         }
 
-        public void AddCosplay(Cosplay cosplay)
+        public void AddCosplay(Cosplay cosplay, Guid UserId)
         {
+            cosplay.UserId = UserId;
             if (cosplay.CosplayId == Guid.Empty)
             {
                 cosplay.CosplayId = Guid.NewGuid();

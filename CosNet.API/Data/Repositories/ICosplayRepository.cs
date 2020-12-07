@@ -10,7 +10,7 @@ namespace CosNet.API.Data.Repositories
 
         Cosplay GetCosplay(Guid cosplayId);
 
-        void AddCosplay(Cosplay cosplay);
+        void AddCosplay(Cosplay cosplay, Guid UserId);
 
         void UpdateCosplay(Cosplay cosplay);
 
