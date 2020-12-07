@@ -7,7 +7,7 @@ using CosNet.API.Entities;
 
 namespace CosNet.API.Data.Repositories
 {
-    public class CosplayItemNoteRepository
+    public class CosplayItemNoteRepository : ICosplayItemNoteRepository
     {
         private readonly ApplicationDbContext _dbContext;
 
