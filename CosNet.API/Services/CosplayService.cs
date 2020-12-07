@@ -46,7 +46,7 @@ namespace CosNet.API.Services
         public void CreateCosplay(CosplayForCreationDTO cosplay)
         {
             var cosplayEntity = _mapper.Map<Cosplay>(cosplay);
-            _cosplayRepository.AddCosplay(cosplayEntity);
+            _cosplayRepository.AddCosplay(cosplayEntity, _userService.UserId);
             _cosplayRepository.SaveChanges();
         }
 
