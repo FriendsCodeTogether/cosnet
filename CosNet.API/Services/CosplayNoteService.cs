@@ -13,17 +13,24 @@ namespace CosNet.API.Services
     public class CosplayNoteService : ICosplayNoteService
     {
         private readonly IMapper _mapper;
+        private readonly ICosplayRepository _cosplayRepository;
         private readonly ICosplayNoteRepository _cosplayNoteRepository;
 
-        public CosplayNoteService(IMapper mapper, ICosplayNoteRepository cosplayNoteRepository)
+        public CosplayNoteService(IMapper mapper,ICosplayRepository cosplayRepository, ICosplayNoteRepository cosplayNoteRepository)
         {
             _mapper = mapper;
+            _cosplayRepository = cosplayRepository;
             _cosplayNoteRepository = cosplayNoteRepository;
         }
 
-        public IEnumerable<CosplayNoteDTO> GetCosplayNotes()
+        public IEnumerable<CosplayNoteDTO> GetCosplayNotes(Guid cosplayId)
         {
-            var cosplayNotes = _cosplayNoteRepository.GetCosplayNotes();
+            if (!_cosplayRepository.CosplayExists(cosplayId))
+            {
+                throw new NotFoundException();
+            }
+
+            var cosplayNotes = _cosplayNoteRepository.GetCosplayNotes(cosplayId);
             var cosplayNoteDTOs = _mapper.Map<IEnumerable<CosplayNoteDTO>>(cosplayNotes);
             return cosplayNoteDTOs;
         }

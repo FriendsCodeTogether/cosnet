@@ -9,7 +9,7 @@ namespace CosNet.API.Services
         void CreateCosplayNote(CosplayNoteForCreationDTO cosplayNote);
         void DeleteCosplayNote(Guid cosplayNoteId);
         CosplayNoteDTO GetCosplayNote(Guid cosplayNoteId);
-        IEnumerable<CosplayNoteDTO> GetCosplayNotes();
+        IEnumerable<CosplayNoteDTO> GetCosplayNotes(Guid cosplayId);
         void UpdateCosplayNote(Guid cosplayNoteId, CosplayNoteForUpdateDTO cosplayNote);
     }
 }

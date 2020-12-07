@@ -10,7 +10,7 @@ namespace CosNet.API.Data.Repositories
         bool CosplayNoteExists(Guid CosplayNoteId);
         void DeleteCosplayNote(Guid CosplayNoteId);
         CosplayNote GetCosplayNote(Guid CosplayNoteId);
-        IEnumerable<CosplayNote> GetCosplayNotes();
+        IEnumerable<CosplayNote> GetCosplayNotes(Guid cosplayId);
         bool SaveChanges();
         void UpdateCosplayNote(CosplayNote CosplayNote);
     }
