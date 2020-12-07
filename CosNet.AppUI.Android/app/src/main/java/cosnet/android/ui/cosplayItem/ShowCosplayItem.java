@@ -141,23 +141,23 @@ public class ShowCosplayItem extends AppCompatActivity {
     itemMaterialsBtn = findViewById(R.id.CosplayItemMaterialsListBtn);
   }
 
-  private void addNoteButton(){
+  private void itemNotesButtonClicked(){
     Intent intent = new Intent(this, ItemNoteList.class);
     intent.putExtra("cosplayItem", item);
     startActivity(intent);
   }
-  
+
   private void setListeners() {
     itemNotesBTN.setOnClickListener(v -> {
-      addNoteButton();
+      itemNotesButtonClicked();
     });
     itemNotesBTNMade.setOnClickListener(v -> {
-      Intent intent = new Intent(this, ItemNoteList.class);
-      intent.putExtra("cosplayItem", item);
-      startActivity(intent);
+      itemNotesButtonClicked();
     });
     itemMaterialsBtn.setOnClickListener(v -> {
-      addNoteButton();
+      Intent intent = new Intent(this, MaterialsList.class);
+      intent.putExtra("item",item);
+      startActivity(intent);
     });
   }
 
