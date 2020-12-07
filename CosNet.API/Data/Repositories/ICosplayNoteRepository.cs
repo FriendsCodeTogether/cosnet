@@ -4,14 +4,20 @@ using CosNet.API.Entities;
 
 namespace CosNet.API.Data.Repositories
 {
-    public interface ICosplayNoteRepository
+    public interface ICosplayItemNoteRepository
     {
-        void AddCosplayNote(CosplayNote CosplayNote);
-        bool CosplayNoteExists(Guid CosplayNoteId);
-        void DeleteCosplayNote(Guid CosplayNoteId);
-        CosplayNote GetCosplayNote(Guid CosplayNoteId);
-        IEnumerable<CosplayNote> GetCosplayNotes(Guid cosplayId);
+        void AddCosplayItemNote(CosplayItemNote CosplayItemNote);
+
+        bool CosplayItemNoteExists(Guid CosplayItemNoteId);
+
+        void DeleteCosplayItemNote(Guid CosplayItemNoteId);
+
+        CosplayItemNote GetCosplayItemNote(Guid CosplayItemNoteId);
+
+        IEnumerable<CosplayItemNote> GetCosplayItemNotes(Guid cosplayId);
+
         bool SaveChanges();
-        void UpdateCosplayNote(CosplayNote CosplayNote);
+
+        void UpdateCosplayItemNote(CosplayItemNote CosplayItemNote);
     }
 }
