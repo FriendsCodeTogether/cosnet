@@ -35,7 +35,7 @@ namespace CosNet.WebUI
          builder.Services.AddScoped(sp => sp.GetService<IHttpClientFactory>().CreateClient("api"));
 
          builder.Services.AddScoped<ICosplayService, CosplayService>();
-         //builder.Services.AddScoped<ICosplayNoteService, CosplayNoteService>();
+         builder.Services.AddScoped<ICosplayNoteService, CosplayNoteService>();
          builder.Services.AddScoped<ICosplayItemService, CosplayItemService>();
          builder.Services.AddScoped<ICosplayItemMaterialService, CosplayItemMaterialService>();
          builder.Services.AddScoped<ICosplayItemNoteService, CosplayItemNoteService>();

@@ -35,7 +35,7 @@ else
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/toDos.svg" alt="Tasks" />
             Tasks
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToNote()">
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/notes.svg" alt="Notes" />
             Notes
         </div>
@@ -75,5 +75,10 @@ else
     public void ClickedToItem()
     {
         NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem");
+    }
+
+    public void ClickedToNote()
+    {
+        NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplaynote");
     }
 }
