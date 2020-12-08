@@ -30,9 +30,6 @@
   <ItemGroup>
     <ComponentScssFiles Include="**/*/*.scss" Exclude="node_modules/**;wwwroot/**;Styles/**" />
   </ItemGroup>
-  <ItemGroup>
-    <Watch Remove="Styles\_cosplay-item-note-list.scss" />
-  </ItemGroup>
 
   <Target Name="CompileComponentSass" BeforeTargets="CompileGlobalSass">
     <Message Text="Compiling Component SCSS files" Importance="high" />
