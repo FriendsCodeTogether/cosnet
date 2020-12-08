@@ -222,7 +222,18 @@ namespace CosNet.API.Data.DBContexts
                         CosplayItemId = cosplayItems[3].CosplayItemId,
                         CosplayItem = cosplayItems[3]
                     },
+                    new CosplayItemNote
+                    {
+                        CosplayItemNoteId = Guid.NewGuid(),
+                        Name = "Note #2 - Tricks",
+                        Description = "Always measure twice. Be always sure to have al tools in hand so you can easily start.",
+                        CreationDate = DateTime.Now,
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    }
                 };
+                context.CosplayItemNotes.AddRange(cosplayItemNotes);
+                context.SaveChanges();
             }
         }
 

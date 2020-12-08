@@ -13,24 +13,24 @@ namespace CosNet.API.Services
     public class CosplayItemNoteService : ICosplayItemNoteService
     {
         private readonly IMapper _mapper;
-        private readonly ICosplayRepository _cosplayRepository;
+        private readonly ICosplayItemRepository _cosplayItemRepository;
         private readonly ICosplayItemNoteRepository _cosplayItemNoteRepository;
 
-        public CosplayItemNoteService(IMapper mapper, ICosplayRepository cosplayRepository, ICosplayItemNoteRepository cosplayItemNoteRepository)
+        public CosplayItemNoteService(IMapper mapper, ICosplayItemRepository cosplayItemRepository, ICosplayItemNoteRepository cosplayItemNoteRepository)
         {
             _mapper = mapper;
-            _cosplayRepository = cosplayRepository;
+            _cosplayItemRepository = cosplayItemRepository;
             _cosplayItemNoteRepository = cosplayItemNoteRepository;
         }
 
-        public IEnumerable<CosplayItemNoteDTO> GetCosplayItemNotes(Guid cosplayId)
+        public IEnumerable<CosplayItemNoteDTO> GetCosplayItemNotes(Guid cosplayItemId)
         {
-            if (!_cosplayRepository.CosplayExists(cosplayId))
+            if (!_cosplayItemRepository.CosplayItemExists(cosplayItemId))
             {
                 throw new NotFoundException();
             }
 
-            var cosplayItemNotes = _cosplayItemNoteRepository.GetCosplayItemNotes(cosplayId);
+            var cosplayItemNotes = _cosplayItemNoteRepository.GetCosplayItemNotes(cosplayItemId);
             var cosplayItemNoteDTOs = _mapper.Map<IEnumerable<CosplayItemNoteDTO>>(cosplayItemNotes);
             return cosplayItemNoteDTOs;
         }
@@ -76,9 +76,9 @@ namespace CosNet.API.Services
 
         public void DeleteCosplayItemNote(Guid cosplayItemNoteId)
         {
-            var cosplay = _cosplayItemNoteRepository.GetCosplayItemNote(cosplayItemNoteId);
+            var cosplayItemNote = _cosplayItemNoteRepository.GetCosplayItemNote(cosplayItemNoteId);
 
-            if (cosplay == null)
+            if (cosplayItemNote == null)
             {
                 throw new NotFoundException();
             }

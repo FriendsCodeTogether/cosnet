@@ -76,9 +76,9 @@ namespace CosNet.API.Services
 
         public void DeleteCosplayNote(Guid cosplayNoteId)
         {
-            var cosplay = _cosplayNoteRepository.GetCosplayNote(cosplayNoteId);
+            var cosplayNote = _cosplayNoteRepository.GetCosplayNote(cosplayNoteId);
 
-            if (cosplay == null)
+            if (cosplayNote == null)
             {
                 throw new NotFoundException();
             }
