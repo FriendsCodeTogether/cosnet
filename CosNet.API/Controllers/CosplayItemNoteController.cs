@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CosNet.API.Controllers
 {
     [ApiController]
-    [Route("Cosplay/{cosplayId}/[controller]")]
+    [Route("CosplayItem/{cosplayItemId}/[controller]")]
     public class CosplayItemNoteController : ControllerBase
     {
         private readonly ICosplayItemNoteService _cosplayItemNoteService;
@@ -24,16 +24,16 @@ namespace CosNet.API.Controllers
         /// <summary>
         /// Get all cosplays notes
         /// </summary>
-        /// <param name="cosplayId">The id of the desired cosplay note</param>
+        /// <param name="cosplayItemId">The id of the desired cosplay note</param>
         /// <returns>A list of cosplay notes</returns>
         [HttpGet]
         [Description("Get all cosplay notes")]
         [ProducesResponseType(typeof(List<CosplayItemNoteDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult GetCosplayItemNotes([FromRoute] Guid cosplayId)
+        public IActionResult GetCosplayItemNotes([FromRoute] Guid cosplayItemId)
         {
-            return Ok(_cosplayItemNoteService.GetCosplayItemNotes(cosplayId));
+            return Ok(_cosplayItemNoteService.GetCosplayItemNotes(cosplayItemId));
         }
 
         /// <summary>
@@ -60,9 +60,9 @@ namespace CosNet.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public IActionResult CreateCosplayItemNote([FromRoute] Guid cosplayId, [FromBody] CosplayItemNoteForCreationDTO cosplayItemNote)
+        public IActionResult CreateCosplayItemNote([FromRoute] Guid cosplayItemId, [FromBody] CosplayItemNoteForCreationDTO cosplayItemNote)
         {
-            cosplayItemNote.CosplayItemId = cosplayId;
+            cosplayItemNote.CosplayItemId = cosplayItemId;
             _cosplayItemNoteService.CreateCosplayItemNote(cosplayItemNote);
             return NoContent();
         }
