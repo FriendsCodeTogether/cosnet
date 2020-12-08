@@ -28,6 +28,6 @@ namespace CosNet.API.Entities
         //Relations Item
         public Guid CosplayItemId { get; set; }
 
-        public Cosplay CosplayItem { get; set; }
+        public CosplayItem CosplayItem { get; set; }
     }
 }
