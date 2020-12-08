@@ -31,7 +31,7 @@ else
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/items.svg" alt="Items" />
             Items
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToUnderConstruction()">
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/toDos.svg" alt="Tasks" />
             Tasks
         </div>
@@ -39,23 +39,23 @@ else
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/notes.svg" alt="Notes" />
             Notes
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToUnderConstruction()">
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/statistics.svg" alt="Statistics" />
             Statistics
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToUnderConstruction()">
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/referencePics.svg" alt="Reference Pics" />
             Reference Pics
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToUnderConstruction()">
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/processPics.svg" alt="Process Pics" />
             Process Pics
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToUnderConstruction()">
             <img class="cosplay-show-icon" src="assets/icons/cosplay_menu_items/afterPics.svg" alt="After Pics" />
             After Pics
         </div>
-        <div class="cosplay-show-card">
+        <div class="cosplay-show-card" @onclick="() => ClickedToUnderConstruction()">
             ???
         </div>
     </div>
@@ -75,5 +75,9 @@ else
     public void ClickedToItem()
     {
         NavigationManager.NavigateTo($"cosplay/{CosplayId.ToString()}/cosplayitem");
+    }
+    public void ClickedToUnderConstruction()
+    {
+        NavigationManager.NavigateTo($"underconstruction");
     }
 }
