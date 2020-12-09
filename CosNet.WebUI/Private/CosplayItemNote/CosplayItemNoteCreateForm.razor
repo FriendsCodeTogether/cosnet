@@ -1,0 +1,58 @@
+﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}/cosplaynote/create"
+@inject ICosplayItemNoteService CosplayItemNoteService
+@inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.CosplayItemNote
+
+<div class="cosplay-form-container">
+    <h2 class="title cosplay-form-title">Create note</h2>
+
+    <div class="cosplay-form-content">
+
+        <EditForm Model="@cosplayItemNote" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <p>
+                <label class="form-label" for="name">Name:</label><br />
+                <input type="text" maxlength="150" class="form-input" id="name" placeholder="Item name" @bind-Value="cosplayItemNote.Name" @bind-Value:event="oninput" />
+                <label class="max-input">@cosplayItemNote.Name?.Count()/@maxName</label>
+            </p>
+
+            <p>
+                <label class="form-label" for="serie">Description:</label><br />
+                <textarea class="form-input" id="serie" placeholder="Description" @bind="cosplayItemNote.Description" @bind:event="oninput" />
+                <label class="form-error-description">*Max 500 Characters</label><label class="max-input">@cosplayItemNote.Description?.Count()/@maxDescription</label>
+            </p>
+
+            <div class="cosplay-form-group-button-row">
+                <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
+                <span class="flex-spacer"></span>
+                <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplaynote">Cancel</a>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private CosplayItemNoteForCreationDTO cosplayItemNote = new CosplayItemNoteForCreationDTO
+    {
+        Name = "",
+        Description = "",
+        CreationDate = DateTime.Now
+    };
+
+    [Parameter]
+    public Guid CosplayId { get; set; }
+
+    [Parameter]
+    public Guid CosplayItemId { get; set; }
+
+    private const int maxName = 150;
+    private const int maxDescription = 500;
+
+    private async Task HandleValidSubmit()
+    {
+        await CosplayItemNoteService.CreateCosplayItemNoteAsync(CosplayItemId, cosplayItemNote);
+
+        NavigationManager.NavigateTo($"/cosplay/{CosplayId}/cosplayitem/{CosplayItemId}");
+    }
+}
