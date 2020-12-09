@@ -4,14 +4,16 @@ using CosNet.API.Data.DBContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CosNet.API.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201208120637_NotesTableAdded")]
+    partial class NotesTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,6 +174,9 @@ namespace CosNet.API.Data.Migrations
                     b.Property<int?>("CosplayItemId1")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CosplayItemId2")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("CosplayItemNoteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
@@ -191,6 +196,8 @@ namespace CosNet.API.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CosplayItemId1");
+
+                    b.HasIndex("CosplayItemId2");
 
                     b.ToTable("CosplayItemNotes");
                 });
@@ -251,9 +258,13 @@ namespace CosNet.API.Data.Migrations
 
             modelBuilder.Entity("CosNet.API.Entities.CosplayItemNote", b =>
                 {
-                    b.HasOne("CosNet.API.Entities.CosplayItem", "CosplayItem")
+                    b.HasOne("CosNet.API.Entities.CosplayItem", null)
                         .WithMany("Notes")
                         .HasForeignKey("CosplayItemId1");
+
+                    b.HasOne("CosNet.API.Entities.Cosplay", "CosplayItem")
+                        .WithMany()
+                        .HasForeignKey("CosplayItemId2");
 
                     b.Navigation("CosplayItem");
                 });

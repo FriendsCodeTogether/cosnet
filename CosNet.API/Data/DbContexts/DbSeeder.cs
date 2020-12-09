@@ -71,6 +71,30 @@ namespace CosNet.API.Data.DBContexts
                 context.Cosplays.AddRange(cosplays);
                 context.SaveChanges();
 
+                var cosplayNotes = new List<CosplayNote>()
+                {
+                    new CosplayNote
+                    {
+                        CosplayNoteId = Guid.NewGuid(),
+                        Name = "Note #1 - Tips",
+                        Description = "Don't hurry and take your time. The longer it takes the better it looks.",
+                        CreationDate = DateTime.Now,
+                        CosplayId = cosplays[0].CosplayId,
+                        Cosplay = cosplays[0]
+                    },
+                    new CosplayNote
+                    {
+                        CosplayNoteId = Guid.NewGuid(),
+                        Name = "Note #2 - Tricks",
+                        Description = "Always measure twice. Be always sure to have al tools in hand so you can easily start.",
+                        CreationDate = DateTime.Now,
+                        CosplayId = cosplays[0].CosplayId,
+                        Cosplay = cosplays[0]
+                    }
+                };
+                context.CosplayNotes.AddRange(cosplayNotes);
+                context.SaveChanges();
+
                 var cosplayItems = new List<CosplayItem>
                 {
                     new CosplayItem
@@ -185,6 +209,30 @@ namespace CosNet.API.Data.DBContexts
                     }
                 };
                 context.CosplayItemMaterials.AddRange(cosplayItemMaterials);
+                context.SaveChanges();
+
+                var cosplayItemNotes = new List<CosplayItemNote>
+                {
+                    new CosplayItemNote
+                    {
+                        CosplayItemNoteId = Guid.NewGuid(),
+                        Name = "Item Note #1 - Tips",
+                        Description = "Don't hurry and take your time. The longer it takes the better it looks.",
+                        CreationDate = DateTime.Now,
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    },
+                    new CosplayItemNote
+                    {
+                        CosplayItemNoteId = Guid.NewGuid(),
+                        Name = "Note #2 - Tricks",
+                        Description = "Always measure twice. Be always sure to have al tools in hand so you can easily start.",
+                        CreationDate = DateTime.Now,
+                        CosplayItemId = cosplayItems[3].CosplayItemId,
+                        CosplayItem = cosplayItems[3]
+                    }
+                };
+                context.CosplayItemNotes.AddRange(cosplayItemNotes);
                 context.SaveChanges();
             }
         }

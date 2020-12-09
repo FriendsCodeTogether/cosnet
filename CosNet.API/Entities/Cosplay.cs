@@ -31,5 +31,6 @@ namespace CosNet.API.Entities
         public string Status { get; set; }
 
         public IEnumerable<CosplayItem> Items { get; set; }
+        public IEnumerable<CosplayNote> Notes { get; set; }
     }
 }

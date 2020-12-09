@@ -1,0 +1,109 @@
+.cosplay-note-list-container {
+  margin: 3rem 6.5rem;
+}
+
+.cosplay-note-list-top-row {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cosplay-note-list-add-btn {
+  border: none;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-right: 2rem;
+  margin-left: auto;
+  padding: 0.4rem 4rem;
+  font-size: 1.1em;
+  background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
+
+  &:hover {
+    filter: brightness(50%);
+  }
+}
+
+.cosplay-note-list-edit-btn,
+.cosplay-note-list-delete-btn {
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 1.1em;
+  width: 100%
+}
+
+.cosplay-note-list-edit-btn {
+  margin-bottom: .5rem;
+  background: linear-gradient(135deg, rgba(255, 57, 240, 1) 10%, rgba(82, 196, 255, 1) 100%);
+
+  &:hover {
+    filter: brightness(50%);
+  }
+}
+
+.cosplay-note-list-delete-btn {
+  background-color: #be1616;
+
+  &:hover {
+    background-color: #be161680;
+  }
+}
+
+.cosplay-note-item {
+  background-color: #808080;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cosplay-note-title-container {
+  background-color: #808080;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.cosplay-note-title {
+  padding: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 2rem;
+}
+
+.cosplay-note-item-text {
+  margin-left: 2rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.cosplay-note-item-text-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.cosplay-note-item-text-title-name {
+  width: 75%;
+}
+
+.cosplay-note-item-buttons {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  margin-right: 2rem;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
