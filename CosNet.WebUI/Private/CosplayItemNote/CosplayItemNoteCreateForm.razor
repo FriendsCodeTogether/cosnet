@@ -1,4 +1,4 @@
-﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}/cosplaynote/create"
+﻿@page "/cosplay/{CosplayId:guid}/cosplayitem/{CosplayItemId:guid}/cosplayitemnote/create"
 @inject ICosplayItemNoteService CosplayItemNoteService
 @inject NavigationManager NavigationManager
 @using CosNet.Shared.DTOs.CosplayItemNote
@@ -26,7 +26,7 @@
             <div class="cosplay-form-group-button-row">
                 <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
                 <span class="flex-spacer"></span>
-                <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplaynote">Cancel</a>
+                <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId">Cancel</a>
             </div>
         </EditForm>
     </div>
