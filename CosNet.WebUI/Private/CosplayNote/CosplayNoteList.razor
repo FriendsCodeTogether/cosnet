@@ -45,5 +45,6 @@
     protected override async Task OnInitializedAsync()
     {
         cosplayNotes = await CosplayNoteService.GetCosplayNotesAsync(CosplayId);
+        cosplayNotes = cosplayNotes.OrderByDescending(c => c.CreationDate);
     }
 }
