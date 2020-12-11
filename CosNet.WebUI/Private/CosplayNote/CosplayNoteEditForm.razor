@@ -1,0 +1,62 @@
+﻿@page "/cosplay/{CosplayId:guid}/cosplaynote/{CosplayNoteId:guid}/edit"
+@inject ICosplayNoteService CosplayNoteService
+@inject NavigationManager NavigationManager
+@using CosNet.Shared.DTOs.CosplayNote
+
+<div class="cosplay-form-container">
+    <h2 class="title cosplay-form-title">Edit note</h2>
+
+    <div class="cosplay-form-content">
+
+        <EditForm Model="@cosplayNote" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <p>
+                <label class="form-label" for="name">Name:</label><br />
+                <input type="text" maxlength="150" class="form-input" id="name" placeholder="Item name" @bind-Value="cosplayNote.Name" @bind-Value:event="oninput" />
+                <label class="max-input">@cosplayNote.Name?.Count()/@maxName</label>
+            </p>
+
+            <p>
+                <label class="form-label" for="serie">Description:</label><br />
+                <textarea class="form-input" id="serie" placeholder="Description" @bind="cosplayNote.Description" @bind:event="oninput" />
+                <label class="form-error-description">*Max 500 Characters</label><label class="max-input">@cosplayNote.Description?.Count()/@maxDescription</label>
+            </p>
+
+            <div class="cosplay-form-group-button-row">
+                <button class="cosplay-form-group-button-save btn btn-primary rounded-pill" type="submit">Save</button>
+                <span class="flex-spacer"></span>
+                <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplaynote">Cancel</a>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private CosplayNoteForUpdateDTO cosplayNote = new CosplayNoteForUpdateDTO();
+
+    [Parameter]
+    public Guid CosplayId { get; set; }
+
+    [Parameter]
+    public Guid CosplayNoteId { get; set; }
+
+    private const int maxName = 150;
+    private const int maxDescription = 500;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CosplayNoteDTO cosplayNoteUpdate = await CosplayNoteService.GetCosplayNoteAsync(CosplayId, CosplayNoteId);
+
+        cosplayNote.Name = cosplayNoteUpdate.Name;
+        cosplayNote.Description = cosplayNoteUpdate.Description;
+        cosplayNote.CreationDate = cosplayNoteUpdate.CreationDate;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await CosplayNoteService.UpdateCosplayNoteAsync(CosplayId, CosplayNoteId, cosplayNote);
+
+        NavigationManager.NavigateTo($"/cosplay/{CosplayId}/cosplaynote");
+    }
+}
