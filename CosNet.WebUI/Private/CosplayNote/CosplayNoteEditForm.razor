@@ -1,6 +1,7 @@
 ﻿@page "/cosplay/{CosplayId:guid}/cosplaynote/{CosplayNoteId:guid}/edit"
 @inject ICosplayNoteService CosplayNoteService
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 @using CosNet.Shared.DTOs.CosplayNote
 
 <div class="cosplay-form-container">
@@ -29,6 +30,7 @@
                 <a class="cosplay-form-group-button-cancel btn btn-secondary rounded-pill" href="cosplay/@CosplayId/cosplaynote">Cancel</a>
             </div>
         </EditForm>
+        <button class="cosplay-form-group-button-delete btn btn-primary rounded-pill" @onclick="() => Delete(cosplayNote)">Delete</button>
     </div>
 </div>
 
@@ -58,5 +60,14 @@
         await CosplayNoteService.UpdateCosplayNoteAsync(CosplayId, CosplayNoteId, cosplayNote);
 
         NavigationManager.NavigateTo($"/cosplay/{CosplayId}/cosplaynote");
+    }
+
+    async Task Delete(CosplayNoteForUpdateDTO cosplayNote)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the cosplay note '{cosplayNote.Name}'?"))
+            return;
+
+        await CosplayNoteService.DeleteCosplayNoteAsync(CosplayId, CosplayNoteId);
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplaynote");
     }
 }
