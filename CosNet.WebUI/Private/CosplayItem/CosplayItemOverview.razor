@@ -14,101 +14,104 @@
 }
 else
 {
-<div class="cosplay-item-show-container">
-    <h1>@cosplayItem.Name</h1>
-    <div class="cosplay-item-show">
-        <div class="cosplay-item-show-info">
-            <p>@cosplayItem.Description</p>
-
-            <h2>Info</h2>
-            <div>Status: @cosplayItem.Status</div>
-            <div>Price: @cosplayItem.Price</div>
-            <div>Due Date: @cosplayItem.DueDate</div>
-
-            @if (cosplayItem.IsMade)
-            {
-                <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
-                <div>Progress: @cosplayItem.Progress %</div>
-            }
-            else
-            {
-                <div>Buy Link: @cosplayItem.BuyLink</div>
-            }
+    <div class="cosplay-item-show-container">
+        <div class="cosplay-item-show-title">
+            <h1>@cosplayItem.Name</h1>
+            <span class="flex-spacer"></span>
+            <a class="cosplay-item-show-back-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId.ToString()/cosplayitem">Back</a>
         </div>
+        <div class="cosplay-item-show">
+            <div class="cosplay-item-show-info">
+                <p>@cosplayItem.Description</p>
 
-        <div class="cosplay-item-show-image-group">
-            <img class="cosplay-show-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
-            <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
-        </div>
-    </div>
+                <h2>Info</h2>
+                <div>Status: @cosplayItem.Status</div>
+                <div>Price: @cosplayItem.Price</div>
+                <div>Due Date: @cosplayItem.DueDate</div>
 
-    @if (cosplayItem.IsMade)
-    {
-        <div class="cosplay-item-material-list">
-            <div class="cosplay-item-material-title-container">
-                <h2 class="cosplay-item-material-title">Materials</h2>
-                <a class="cosplay-item-material-list-add-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/create">Add</a>
+                @if (cosplayItem.IsMade)
+                {
+                    <div>Work Time: @cosplayItem.WorkTimeHours : @cosplayItem.WorkTimeMinutes</div>
+                    <div>Progress: @cosplayItem.Progress %</div>
+                }
+                else
+                {
+                    <div>Buy Link: @cosplayItem.BuyLink</div>
+                }
             </div>
-            @if (cosplayItemMaterials == null)
+
+            <div class="cosplay-item-show-image-group">
+                <img class="cosplay-show-item-image" src="https://placekitten.com/600/600" alt="Picture of the cosplay">
+                <a class="cosplay-item-show-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/edit">Edit</a>
+            </div>
+        </div>
+
+        @if (cosplayItem.IsMade)
+        {
+            <div class="cosplay-item-material-list">
+                <div class="cosplay-item-material-title-container">
+                    <h2 class="cosplay-item-material-title">Materials</h2>
+                    <a class="cosplay-item-material-list-add-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/create">Add</a>
+                </div>
+                @if (cosplayItemMaterials == null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else
+                {
+
+                    @foreach (var material in cosplayItemMaterials)
+                    {
+                        <div class="cosplay-item-material-item">
+                            <div class="cosplay-item-material-item-first-text">
+                                <div>@material.Name</div>
+                                <div class="cosplay-item-material-item-description">@material.Description</div>
+                            </div>
+                            <div class="cosplay-item-material-item-middle-text">
+                                <div>€@material.Price</div>
+                                <div>@material.BuyLink</div>
+                            </div>
+                            <div class="cosplay-item-material-item-buttons">
+                                <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
+                                <button class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" @onclick="() => DeleteMaterial(material)">Delete</button>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+
+        <div class="cosplay-item-note-list">
+            <div class="cosplay-item-note-title-container">
+                <h2 class="cosplay-item-note-title">Notes</h2>
+                <a class="cosplay-item-note-list-add-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemnote/create">Add</a>
+            </div>
+            @if (cosplayItemNotes == null)
             {
                 <p><em>Loading...</em></p>
             }
             else
             {
 
-                @foreach (var material in cosplayItemMaterials)
+                @foreach (var note in cosplayItemNotes)
                 {
-                    <div class="cosplay-item-material-item">
-                        <div class="cosplay-item-material-item-first-text">
-                            <div>@material.Name</div>
-                            <div class="cosplay-item-material-item-description">@material.Description</div>
+                    <div class="cosplay-item-note-item">
+                        <div class="cosplay-item-note-item-text">
+                            <div class="cosplay-item-note-item-text-title">
+                                <div class="cosplay-item-note-item-text-title-name">@note.Name</div>
+                                <div class="cosplay-item-note-item-text-title-date">@note.CreationDate</div>
+                            </div>
+                            <div class="cosplay-item-note-item-description">@note.Description</div>
                         </div>
-                        <div class="cosplay-item-material-item-middle-text">
-                            <div>€@material.Price</div>
-                            <div>@material.BuyLink</div>
-                        </div>
-                        <div class="cosplay-item-material-item-buttons">
-                            <a class="cosplay-item-material-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemmaterial/@material.CosplayItemMaterialId/edit">Edit</a>
-                            <button class="cosplay-item-material-list-delete-btn btn btn-primary rounded-pill" @onclick="() => DeleteMaterial(material)">Delete</button>
+                        <div class="cosplay-item-note-item-buttons">
+                            <a class="cosplay-item-note-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemnote/@note.CosplayItemNoteId/edit">Edit</a>
+                            <button class="cosplay-item-note-list-delete-btn btn btn-primary rounded-pill" @onclick="() => DeleteNote(note)">Delete</button>
                         </div>
                     </div>
                 }
             }
         </div>
-    }
-
-    <div class="cosplay-item-note-list">
-        <div class="cosplay-item-note-title-container">
-            <h2 class="cosplay-item-note-title">Notes</h2>
-            <a class="cosplay-item-note-list-add-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemnote/create">Add</a>
-        </div>
-        @if (cosplayItemNotes == null)
-        {
-            <p><em>Loading...</em></p>
-        }
-        else
-        {
-
-            @foreach (var note in cosplayItemNotes)
-            {
-                <div class="cosplay-item-note-item">
-                    <div class="cosplay-item-note-item-text">
-                        <div class="cosplay-item-note-item-text-title">
-                            <div class="cosplay-item-note-item-text-title-name">@note.Name</div>
-                            <div class="cosplay-item-note-item-text-title-date">@note.CreationDate</div>
-                        </div>
-                        <div class="cosplay-item-note-item-description">@note.Description</div>
-                    </div>
-                    <div class="cosplay-item-note-item-buttons">
-                        <a class="cosplay-item-note-list-edit-btn btn btn-primary rounded-pill" href="cosplay/@CosplayId/cosplayitem/@CosplayItemId/cosplayitemnote/@note.CosplayItemNoteId/edit">Edit</a>
-                        <button class="cosplay-item-note-list-delete-btn btn btn-primary rounded-pill" @onclick="() => DeleteNote(note)">Delete</button>
-                    </div>
-                </div>
-            }
-        }
     </div>
-
-</div>
 }
 
 @code {
@@ -136,7 +139,7 @@ else
             return;
 
         await CosplayItemMaterialService.DeleteCosplayItemMaterialAsync(CosplayItemId, cosplayItemMaterial.CosplayItemMaterialId);
-        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}",true);
+        NavigationManager.NavigateTo($"cosplay/{CosplayId}/cosplayitem/{CosplayItemId}", true);
     }
 
     async Task DeleteNote(CosplayItemNoteDTO cosplayItemNote)

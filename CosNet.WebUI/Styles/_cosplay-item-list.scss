@@ -22,6 +22,17 @@
   }
 }
 
+.cosplayitem-list-back-btn {
+  border: none;
+  padding: 0.4rem 4rem;
+  font-size: 1.1em;
+  background-color: #808080;
+
+  &:hover {
+    background-color: #80808077;
+  }
+}
+
 .cosplayitem-list-row {
   display: flex;
   flex-direction: row;
@@ -56,24 +67,24 @@
   }
 }
 
-  .cosplayitem-list-item-image {
-    max-width: 6rem;
-    max-height: 6rem;
-    height: 100%;
-  }
+.cosplayitem-list-item-image {
+  max-width: 6rem;
+  max-height: 6rem;
+  height: 100%;
+}
 
-  .cosplayitem-list-item-text {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+.cosplayitem-list-item-text {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
+}
 
 .cosplayitem-list-item-icon {
   margin-right: 2rem;

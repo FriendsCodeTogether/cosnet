@@ -26,6 +26,23 @@
   }
 }
 
+.cosplay-item-show-title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.cosplay-note-list-back-btn {
+  border: none;
+  padding: 0.4rem 4rem;
+  font-size: 1.1em;
+  background-color: #808080;
+
+  &:hover {
+    background-color: #80808077;
+  }
+}
+
 .cosplay-note-list-edit-btn,
 .cosplay-note-list-delete-btn {
   border: none;
