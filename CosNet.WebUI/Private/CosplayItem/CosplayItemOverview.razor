@@ -127,6 +127,7 @@ else
         cosplayItem = await CosplayItemService.GetCosplayItemAsync(CosplayId, CosplayItemId);
         cosplayItemMaterials = await CosplayItemMaterialService.GetCosplayItemMaterialsAsync(CosplayItemId);
         cosplayItemNotes = await CosplayItemNoteService.GetCosplayItemNotesAsync(CosplayItemId);
+        cosplayItemNotes = cosplayItemNotes.OrderByDescending(c => c.CreationDate);
     }
 
     async Task DeleteMaterial(CosplayItemMaterialDTO cosplayItemMaterial)
