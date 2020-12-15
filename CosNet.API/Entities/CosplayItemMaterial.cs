@@ -29,7 +29,7 @@ namespace CosNet.API.Entities
         [MaxLength(200)]
         public string BuyLink { get; set; }
 
-        //Relations
+        //Relations CosplayItems
         public Guid CosplayItemId { get; set; }
         public CosplayItem CosplayItem { get; set; }
     }

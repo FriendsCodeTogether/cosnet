@@ -42,12 +42,14 @@ namespace CosNet.API.Entities
 
         public int WorkTimeHours { get; set; }
         public int WorkTimeMinutes { get; set; }
-        public IEnumerable<CosplayItemMaterial> Materials { get; set; }
 
         //Relations Cosplay
         public Guid CosplayId { get; set; }
 
         public Cosplay Cosplay { get; set; }
+
+        //Relations Materials
+        public IEnumerable<CosplayItemMaterial> Materials { get; set; }
 
         //Relations Notes
         public IEnumerable<CosplayItemNote> Notes { get; set; }

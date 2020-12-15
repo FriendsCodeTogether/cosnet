@@ -25,7 +25,7 @@ namespace CosNet.API.Entities
 
         public DateTime CreationDate { get; set; }
 
-        //Relations Item
+        //Relations CosplayItem
         public Guid CosplayItemId { get; set; }
 
         public CosplayItem CosplayItem { get; set; }
