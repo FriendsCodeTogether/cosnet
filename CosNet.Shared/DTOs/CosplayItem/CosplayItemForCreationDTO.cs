@@ -8,8 +8,6 @@ namespace CosNet.Shared.DTOs.CosplayItem
 {
     public class CosplayItemForCreationDTO
     {
-        public Guid CosplayId { get; set; }
-
         [Required]
         [MaxLength(150)]
         public string Name { get; set; }
@@ -35,5 +33,8 @@ namespace CosNet.Shared.DTOs.CosplayItem
         public int Progress { get; set; }
         public int WorkTimeHours { get; set; }
         public int WorkTimeMinutes { get; set; }
+
+        //Relations Cosplay
+        public Guid CosplayId { get; set; }
     }
 }
