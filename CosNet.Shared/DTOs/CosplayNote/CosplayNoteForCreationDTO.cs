@@ -18,6 +18,7 @@ namespace CosNet.Shared.DTOs.CosplayNote
         public string Description { get; set; }
 
         public DateTime CreationDate { get; set; }
+
         //Relations Cosplay
         public Guid CosplayId { get; set; }
     }
