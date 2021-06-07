@@ -22,7 +22,7 @@ namespace CosNet.API.Data.Repositories
 
         public Cosplay GetCosplay(Guid cosplayId)
         {
-            return _dbContext.Cosplays.FirstOrDefault(a => a.CosplayId == cosplayId);
+            return _dbContext.Cosplays.FirstOrDefault(c => c.CosplayId == cosplayId);
         }
 
         public void AddCosplay(Cosplay cosplay, Guid UserId)
