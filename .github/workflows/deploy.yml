@@ -16,7 +16,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.100'
+          dotnet-version: '6.0.x'
       - name: Build with dotnet
         run: dotnet build ./CosNet.API/CosNet.API.csproj --configuration Release
 
@@ -28,7 +28,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.100'
+          dotnet-version: '6.0.x'
       - name: Build with dotnet
         run: dotnet build ./CosNet.IDP/CosNet.IDP.csproj --configuration Release
 
@@ -41,11 +41,11 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.100'
+          dotnet-version: '6.0.x'
 
       - uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '14'
       - run: cd ./CosNet.WebUI && npm install
 
       - name: Build with dotnet
@@ -61,7 +61,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.100'
+          dotnet-version: '6.0.x'
 
       - name: dotnet publish
         run: dotnet publish ./CosNet.API/CosNet.API.csproj -c Release -o ./cosnet-api
@@ -84,7 +84,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.100'
+          dotnet-version: '6.0.x'
 
       - name: dotnet publish
         run: dotnet publish ./CosNet.IDP/CosNet.IDP.csproj -c Release -o ./cosnet-idp
@@ -107,11 +107,11 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.100'
+          dotnet-version: '6.0.x'
 
       - uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '14'
       - run: cd ./CosNet.WebUI && npm install
 
       - name: dotnet publish
