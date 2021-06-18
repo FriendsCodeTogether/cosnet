@@ -1,5 +1,5 @@
 Write-Output "Installing dotnet ef tools."
-dotnet tool install -g dotnet-ef --version 5.0.0
+dotnet tool install -g dotnet-ef
 
 Write-Output "`nCleaning CosNet.IDP"
 dotnet clean --verbosity m
